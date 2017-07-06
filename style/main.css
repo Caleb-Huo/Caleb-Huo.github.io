@@ -1,0 +1,167 @@
+body {
+  padding-bottom: 0;
+  background: #EEEEEE url(images/bg-tile.png) top left repeat;
+}
+ol {
+  padding: 0 0 0 20px;
+}
+.nav {
+  margin-top: 50px;
+  padding: 0;
+  text-align: center;
+}
+.nav li {
+  display: inline;
+  padding-right: 30px;
+  font-size: 30px;
+}
+.nav li:last-child {
+  padding-right: 0;
+}
+
+.sort {
+  margin-top: 50px;
+  padding: 0;
+  text-align: center;
+}
+.sort li {
+  display: inline;
+  padding-right: 30px;
+  font-size: 30px;
+}
+.sort li:last-child {
+  padding-right: 0;
+}
+
+.panel {
+  margin-top: 50px;
+  padding: 0;
+  margin-left: 20px;
+}
+.panel li {
+  display: inline;
+  padding-right: 30px;
+  font-size: 30px;
+}
+.panel li:last-child {
+  padding-right: 0;
+}
+
+.header {
+  padding: 15px;
+  background: #EFEFEF url(images/bg-header.png) top center no-repeat;
+}
+.header h1 {   
+  margin-top: 40px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  text-align:center;
+  border-top: solid 3px;
+  border-bottom: solid 3px;
+}
+
+.content-section {
+  padding: 15px;
+  width: 1000px;
+  margin: auto;
+  background: #efffef url(images/bg-content.png) top left repeat;
+}
+.basicInfo {
+  display: inline;
+  list-style-type: none;
+}
+.basicInfo img{
+  margin: 0;
+  padding-right: 40px;	
+  float: left;
+}
+
+.researchInterest p{
+    display: block;	
+	font-family: "Times New Roman", Times, serif;
+	font-size: 20px;
+	margin: 20px;
+}
+
+.researchInterest li{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 20px;
+	margin: 20px;
+}
+
+.publications li{
+	margin: 15px;
+	font-size: 18px;
+}
+
+.publications h3{
+	margin-left: 20px;
+}
+
+.Teaching li{
+	margin: 15px;
+	font-size: 18px;
+}
+
+.Teaching h1 {   
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align:center;
+  border-bottom: solid 3px;
+}
+.Teaching h2{
+	margin-left: 20px;
+}
+.topic li{
+    list-style-type: none;
+}
+
+.Presentation li{
+	margin: 15px;
+	font-size: 18px;
+}
+
+.Presentation h1 {   
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align:center;
+  border-bottom: solid 3px;
+}
+.Presentation h2{
+	margin-left: 20px;
+}
+
+.Award li{
+	margin: 15px;
+	font-size: 18px;
+}
+
+.Award h1 {   
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align:center;
+  border-bottom: solid 3px;
+}
+.Award h2{
+	margin-left: 20px;
+}
+
+.Other li{
+	margin: 15px;
+	font-size: 18px;
+}
+
+.Other h1 {   
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align:center;
+  border-bottom: solid 3px;
+}
+.Other h2{
+	margin-left: 20px;
+}
+.Other p{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 20px;
+	margin: 20px;
+}
