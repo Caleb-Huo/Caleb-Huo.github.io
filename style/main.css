@@ -1,12 +1,12 @@
 body {
   padding-bottom: 0;
-  background: #EEEEEE url(images/bg-tile.png) top left repeat;
+  background: #D9DEF0 url(images/bg-tile.png) top left repeat;
 }
 ol {
   padding: 0 0 0 20px;
 }
 .nav {
-  margin-top: 50px;
+  margin-top: 10px;
   padding: 0;
   text-align: center;
 }
@@ -48,8 +48,8 @@ ol {
 }
 
 .header {
-  padding: 15px;
-  background: #EFEFEF url(images/bg-header.png) top center no-repeat;
+  padding: 0px;
+  background: #D9DEF0 url(images/bg-header.png) top center no-repeat;
 }
 .header h1 {   
   margin-top: 40px;
@@ -75,6 +75,9 @@ ol {
   padding-right: 40px;	
   float: left;
 }
+.basicInfo h3 {   
+  margin:5px;
+}
 
 .researchInterest p{
     display: block;	
@@ -87,6 +90,10 @@ ol {
 	font-family: "Times New Roman", Times, serif;
 	font-size: 20px;
 	margin: 20px;
+}
+
+.researchInterest ul{
+	margin: 1px;
 }
 
 .publications li{
