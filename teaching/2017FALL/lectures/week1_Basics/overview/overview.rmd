@@ -1,0 +1,137 @@
+---
+title: "Biostatistical Computing, PHC 6068"
+subtitle: "Overview"
+author: Zhiguang Huo (Caleb)
+date: "Monday August 21, 2017"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: null
+---
+
+Why biostatisticians learn to program
+===
+
+- **Job:** Industry, academic, collaboration...
+- **Independence:** otherwise, you rely on someone else giving you exactly the right tool
+- **Honesty:** otherwise, you end up distorting your problem to match the tools you have
+- **Clarity:** often, turning your ideas into something a machine can do refines your thinking
+- **Fun:** these were the best of times (the worst of times)
+
+
+Basic description of this class
+===
+
+- Lecturer Zhiguang Huo (Caleb)
+- TAs: 
+- Lecture times:
+    * Monday: 12:50-2:45pm, [MAEB](https://campusmap.ufl.edu/#/index/0720), Room 0234 
+    * Wednesday: 1:55-2:45pm, [MAEB](https://campusmap.ufl.edu/#/index/0720), Room 0234 
+- Office hours:
+    * Tuesdays 3-5pm, [CTRB](https://campusmap.ufl.edu/#/index/1375), Room 5230
+- Course Website: 
+
+[https://caleb-huo.github.io/teaching/2017FALL/biostatisticalComputing.html](https://caleb-huo.github.io/teaching/2017FALL/biostatisticalComputing.html)
+
+- [elearning](http://elearning.ufl.edu/): used to collect submissions, and keep track of grades
+- [Syllabus](https://caleb-huo.github.io/teaching/2017FALL/PHC6068_Biostatistical_Computing_Syllabus.pdf): will be explained in the following slides.
+
+---
+
+- No programming knowledge assumed
+- Some statistics knowledge assumed 
+    * PHC 6092: Biostatistical Theory 
+    * PHC 6050: Statistical Methods for Health Sciences Research I
+    * PHC 6051: Biostatistical Methods II
+- Focus almost entirely on R 
+- Class will be cumulative, so keep up with the material and assignments!
+
+---
+
+Contents of this class
+===
+
+```{r echo = FALSE, results = 'asis'}
+suppressWarnings(library(knitr))
+Requirement <- paste("Week",1:15)
+topic1 <- "data structure, subsetting, regex, Rmarkdown"
+topic2 <- "functions, HiPerGator (when to use?)"
+topic3 <- "Basic plot, ggplot2, lattice function, spline smoothing, vectorized calculation?"
+topic4 <- "matrix operations, sweep, apply, SVD, PCA (implementation)"
+topic5 <- "linear model, AIC/BIC, lasso, ridge regression"
+topic6 <- "GLM, Random intercept model, GEE"
+topic7 <- "optimization: gradient decent, coordinate decent, Newton's method"
+topic8 <- "mid-term exam"
+topic9 <- "Simulating random variables?"
+topic10 <- "simulation: size and power of a statistical test or method, compare competing tests, asymptotics?"
+topic11 <- "object-oriented programming: S3, S4"
+topic12 <- "Building R packages, devtools, calling c++"
+topic13 <- "Bootstrap, permutation, cross validation, compare competing models"
+topic14 <- "Monte Carlo integration, importance sampling, Gibbs sampling, Metropolis-Hasting"
+topic15 <- "Multivariate optimization: LDA, SVM, tree-based methods, random forests?"
+
+Topics <- c(topic1,topic2,topic3,topic4,topic5,topic6,topic7,topic8,topic9,
+            topic10,topic11,topic12,topic13,topic14,topic15)
+ContentTable <- data.frame(Requirement, Topics)
+kable(ContentTable)
+```
+
+Assignment
+===
+
+```{r echo = FALSE, results = 'asis'}
+#suppressWarnings(library(knitr))
+Requirement <- c("Homework1", "Homework2", "Homework3", "Homework4", "Mid-term exam",
+                 "Homework5", "Homework6", "Homework7", "Final exam", "Final project")
+distributeDate <- character(length(Requirement))
+dueDate <- character(length(Requirement))
+points <- c("5%", "5%", "5%", "5%", "20%", "5%", "5%", "5%", "30%", "10%")
+gradeTable <- data.frame(Requirement, distributeDate, dueDate, points)
+kable(gradeTable, caption = "grading criteria")
+```
+
+Exams
+===
+- Mid-term exam
+- Final exam
+
+
+Final project
+===
+- Wrap up a R package (with one of these options)
+    * S3/S4 class
+    * calling c++
+    * make nice vignette
+- Complete documentation of all your functions.
+- Apply R package to real data or synthetic data.
+- Report using R markdown, include how you used your own package.
+
+
+R, R Studio, R Markdown
+===
+
+- R is a programming language for statistical computing
+- R Studio is an integrated development environment for R programming  
+- R Markdown is a markup language for combining R code with text
+
+All 3 are free, and all 3 will be used extensively in this course
+
+(survey, demo)
+
+
+Things you should have done, by the end of this week
+===
+
+- Install R Studio on your laptop
+- Get comfortable with R Studio, knitting Rmd documents into HTML files
+- Get comfortable with navigating R help files
+- Get comfortable with installing R packages
+
+
+Questions
+===
+- HiPerGator for student, how should students use it?
+- Targeted audience
+- computing vs algorithm? Emphasize
+- In class lab/ all lectures?
+
