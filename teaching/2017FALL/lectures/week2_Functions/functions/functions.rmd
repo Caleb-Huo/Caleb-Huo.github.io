@@ -1,0 +1,67 @@
+---
+title: "Biostatistical Computing, PHC 6068"
+subtitle: "Basics about R"
+author: Zhiguang Huo (Caleb)
+date: "Monday August 28, 2017"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: null
+---
+
+Why do we need functions
+===
+- If you repeat a procedure more than 2 times, you should consider make it as a function.
+    - save your work in the future.
+    - avoid mistakes.
+    
+    
+
+Component of a R function
+===
+
+- All R functions have three parts:
+    - body(), the code inside the function
+    - formals(), list of arguments which controls how you can call the function.
+    - environment(), the map of the location of the function's variables.
+
+```{r}
+f <- function(x){
+  result <- x^3
+  return(result)
+} 
+body(f)
+formals(f)
+environment(f)
+```
+
+
+
+Primitive functions
+===
+- Primitive funcitons are exceptions to the rule.
+- Primitive funcitons, like sum(), call C code directly .Primitive() and contain no R code.
+- Primitive funcitons are only in the base package, they can be more efficient.
+```{r}
+sum
+body(sum)
+formals(sum)
+environment(sum)
+```
+
+Example - Odds Ratio Function
+===
+- Suppose we want to write a function that calculates the odds ratio $\theta$ of a 2 x 2 contingency table and the asymptotic confidence interval for $\theta$.
+- Sample odds ratio, 
+   $$\hat{\theta}=\frac{ad}{bc} $$ 
+- The asymptotic standard error for $log(\hat{\theta})$ is $$SE(log\hat{\theta})=\sqrt{\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}} $$ 
+- The asymptotic 100(1-$\alpha$)\% confidence interval for $log\hat{\theta}$ is, $$ log\hat{\theta} \pm z_{\alpha/2}SE(log\hat{\theta}) $$
+- Exponentiate the upper and lower bounds to get a confidence interval for $\theta$.
+   
+    
+
+
+read and write
+===
+
+===

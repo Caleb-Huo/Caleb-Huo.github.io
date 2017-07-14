@@ -55,26 +55,39 @@ Contents of this class
 suppressWarnings(library(knitr))
 Requirement <- paste("Week",1:15)
 topic1 <- "data structure, subsetting, regex, Rmarkdown"
-topic2 <- "functions, HiPerGator (when to use?)"
+topic2 <- "functions, HiPerGator (when to use?), guest lecture?"
 topic3 <- "Basic plot, ggplot2, lattice function, spline smoothing, vectorized calculation?"
-topic4 <- "matrix operations, sweep, apply, SVD, PCA (implementation)"
-topic5 <- "linear model, AIC/BIC, lasso, ridge regression"
-topic6 <- "GLM, Random intercept model, GEE"
+topic4 <- "matrix operations? sweep, apply, SVD, PCA (implementation)"
+topic5 <- "linear model, Random intercept model, GEE, AIC/BIC, lasso, ridge regression"
+topic6 <- "GLM, different link function, random effect"
 topic7 <- "optimization: gradient decent, coordinate decent, Newton's method"
-topic8 <- "mid-term exam"
+topic8 <- "mid-term exam, how long time? In class or take home"
 topic9 <- "Simulating random variables?"
 topic10 <- "simulation: size and power of a statistical test or method, compare competing tests, asymptotics?"
 topic11 <- "object-oriented programming: S3, S4"
 topic12 <- "Building R packages, devtools, calling c++"
-topic13 <- "Bootstrap, permutation, cross validation, compare competing models"
+topic13 <- "Bootstrap, permutation, cross validation"
 topic14 <- "Monte Carlo integration, importance sampling, Gibbs sampling, Metropolis-Hasting"
-topic15 <- "Multivariate optimization: LDA, SVM, tree-based methods, random forests?"
+topic15 <- "Multivariate optimization: LDA, SVM, tree-based methods, random forests, implementation?"
 
 Topics <- c(topic1,topic2,topic3,topic4,topic5,topic6,topic7,topic8,topic9,
             topic10,topic11,topic12,topic13,topic14,topic15)
 ContentTable <- data.frame(Requirement, Topics)
 kable(ContentTable)
 ```
+
+
+Textbook
+===
+
+- No textbook is required
+- Recommanded reading:
+    * J. M. Chambers (2008) Software for Data Analysis: Programming with R. Springer.
+    * N. Matloff (2011). The Art of R Programming. No Starch Press.
+    * M. L. Rizzo (2008). Statistical Computing with R. Chapman & Hall/CRC.
+    * Venables, W.N. and Ripley, B.D. (2002) Modern Applied Statistics with S, 4th Edition, Springer-Verlag.
+
+
 
 Assignment
 ===
@@ -90,10 +103,14 @@ gradeTable <- data.frame(Requirement, distributeDate, dueDate, points)
 kable(gradeTable, caption = "grading criteria")
 ```
 
+Grade policy
+===
+
+
 Exams
 ===
-- Mid-term exam
-- Final exam
+- Mid-term exam (In class or take home?)
+- Final exam (In class or take home?)
 
 
 Final project
@@ -134,4 +151,76 @@ Questions
 - Targeted audience
 - computing vs algorithm? Emphasize
 - In class lab/ all lectures?
+- What will be on the qualifying exam?
+- auto grading?
+
+
+
+Why we should learn R
+===
+
+- It's <span style="color:red">free</span>, open source, and available on every major platform. 
+- A massive set of packges for statistical modeling, machine learning, visualization and importing and manipulating data. 
+- Cutting edge tools.
+- A fantastic community.
+- Powerful tools for communicating your results. (html, pdf, interactive website).
+- An IDE (RStudio).
+- Connect to high-performance programming languages (C, C++, Java)
+- When you published a statistical methodology paper, often you will be asked to publish a R package as well.
+
+
+Some drawbacks of R
+===
+- R is not a particularly fast programming language, and poorly written R code can be terribly slow. R is also a profligate user of memory.
+- R language focuses on results instead of processes. Too many R functions use tricks to reduce the amount of typing at the cost of making code hard to understand.
+- R is slow in loop (e.g. for, while) so try to avoid loop in R if you run a large program and care about speed.
+
+
+Installing R
+===
+- All R materials are download from the ``Comprehensive R Archive
+Network" (CRAN), which is a collection of sites from around the world
+carrying identical and current R code and documentation.
+- R can be installed on Windows, Mac or Linux operating systems.
+- In this course, the instructors will run R on Mac.
+- To install R, visit the R website, [http://www.r-project.org](http://www.r-project.org) and follow the installation directions (see the FAQ section for more details).
+
+
+
+R Console
+===
+
+- When you first open R, you will see the R \textbf{console} window. The console is
+the fundamental way for interacting with R.
+- In the console is a prompt, <span style="color:red">></span> this is where an **expression**, phrase of code that can be executed, is inputed into R (if entering lengthy expressions that require more than one line the prompt changes from > to +.
+- An expression is typed into the console at the prompt, press Enter, and
+the expression is evaluated.
+- Depending on the expression, the system may respond by outputting results
+to the console, creating a graph in a new window or performing some other
+task. Then another expression can be inputed and evaluated.
+- An R **session** is this interaction between you and the system.
+- Often included with outputted results in the console are numbers in [  ].
+These numbers are used to reference locations in the output.
+
+---
+
+![](https://caleb-huo.github.io/teaching/2017FALL/lectures/week1_Basics/figure/R_interface.png)
+
+
+RStudio
+===
+
+- RStudio is a free and open source integrated development environment (IDE) designed specifically for R.
+   [http://www.rstudio.com](http://www.rstudio.com)
+- Runs on, Windows, Mac or Linux operating systems.
+- Useful productivity tools：
+    - Syntax highlighting, smart indention, parentheses matching
+    - Easily execute code from the source editor
+    - Integrates all of the tools (source editor, console, plots, documentation, and more) when working with R into a single environment
+    - Extensive tools for developing R packages
+    - Interactive debugging for diagnosing and fixing errors
+
+---
+
+![Image](https://caleb-huo.github.io/teaching/2017FALL/lectures/week1_Basics/figure/Rstudio_interface.png)
 
