@@ -1,6 +1,6 @@
 ---
 title: "Biostatistical Computing, PHC 6068"
-subtitle: "Basics about R"
+subtitle: "R function"
 author: Zhiguang Huo (Caleb)
 date: "Monday August 28, 2017"
 output:
@@ -26,13 +26,12 @@ Component of a R function
     - environment(), the map of the location of the function's variables.
 
 ```{r}
-f <- function(x){
-  result <- x^3
-  return(result)
+cubic <- function(x){
+  return(x^3)
 } 
-body(f)
-formals(f)
-environment(f)
+body(cubic)
+formals(cubic)
+environment(cubic)
 ```
 
 
@@ -52,6 +51,9 @@ environment(sum)
 Example - Odds Ratio Function
 ===
 - Suppose we want to write a function that calculates the odds ratio $\theta$ of a 2 x 2 contingency table and the asymptotic confidence interval for $\theta$.
+
+![](https://caleb-huo.github.io/teaching/2017FALL/lectures/week2_Functions/figure/oddsRatioTable.png)
+
 - Sample odds ratio, 
    $$\hat{\theta}=\frac{ad}{bc} $$ 
 - The asymptotic standard error for $log(\hat{\theta})$ is $$SE(log\hat{\theta})=\sqrt{\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}} $$ 
@@ -60,8 +62,381 @@ Example - Odds Ratio Function
    
     
 
+Example - Odds Ratio Function
+===
+- Consider the following data that describes the relationship between myocardial infarction and aspirin use (Agresti 1996). 
+```{r}
+odds.ratio <- function(X){
+  result <- X[1,1]*X[2,2]/(X[1,2]*X[2,1])
+  return(result)
+}
 
-read and write
+X <- matrix(c(189, 104, 10845, 10933), nrow=2,
+            dimnames=list(Treatment=c("Placebo","Aspirin"), 
+                          "Myocardial Infarction"=c("Yes", "No")))
+X
+
+odds.ratio(X)
+
+```
+
+Returning Objects
+===
+- Often we will want a function to return an object that can be assigned. Two functions for returning objects are return() and invisible(). 
+- The return() function prints and returns its arguments. 
+- If the end of a function is reached without calling return(), the value of the last evaluated expression is returned and outputted.
+- You can also omit {} if there is only one line for the body
+
+```{r}
+odds.ratio0 <- function(X){
+  result <- X[1,1]*X[2,2]/(X[1,2]*X[2,1])
+  return(result)
+}
+odds.ratio0(X)
+odds.ratio1 <- function(X){
+  X[1,1]*X[2,2]/(X[1,2]*X[2,1])
+}
+odds.ratio1(X)
+odds.ratio2 <- function(X)
+  X[1,1]*X[2,2]/(X[1,2]*X[2,1])
+
+odds.ratio2(X)
+## here nothing is returned
+OR <- odds.ratio2(X)
+OR
+```
+
+
+Returning Objects 2
+===
+- The invisible() function is useful when we want a function to return values which can be assigned, but which do not print when they are not assigned.
+```{r}
+odds.ratio3 <- function(X){
+  result <- X[1,1]*X[2,2]/(X[1,2]*X[2,1])
+  invisible(result)
+}
+odds.ratio3(X)
+## here nothing is returned
+OR <- odds.ratio3(X)
+OR
+```
+
+
+Return multiple variables
+===
+- A list is often a good tool for returning multiple objects.
+```{r}
+odds.ratio <- function(X, conf.level=0.95){
+  OR <- X[1,1]*X[2,2]/(X[1,2]*X[2,1])
+  logOR.SE <- sqrt(sum(1/X))
+  
+  alpha <- 1 - conf.level
+  CI.lower <- exp(log(OR) - qnorm(1 - alpha/2)*logOR.SE)
+  CI.upper <- exp(log(OR) + qnorm(1 - alpha/2)*logOR.SE)
+  # qnorm returns the quantiles of a Gaussian distribution.
+  
+  out <- list(OR=OR, CI=c(CI.lower, CI.upper), conf.level=conf.level)
+  return(out)
+}
+odds.ratio(X)
+odds.ratio(X)$OR
+```
+
+tracking progress of a function
+===
+- The cat() and print() functions can be used to output results; 
+    - the cat() function gives more control over the appearance of the output. 
+
+```{r}
+odds.ratio <- function(X, conf.level=0.95){
+  cat("calculating odds ratio...","\n")
+  OR <- X[1,1]*X[2,2]/(X[1,2]*X[2,1])
+  logOR.SE <- sqrt(sum(1/X))
+  
+  cat("calculating confidence interval...","\n")
+  alpha <- 1 - conf.level
+  CI.lower <- exp(log(OR) - qnorm(1 - alpha/2)*logOR.SE)
+  CI.upper <- exp(log(OR) + qnorm(1 - alpha/2)*logOR.SE)
+  
+  cat("done, returning output...","\n")
+  out <- list(OR=OR, CI=c(CI.lower, CI.upper), conf.level=conf.level)
+  return(out)
+}
+out <- odds.ratio(X)
+```
+
+
+Verifying Arguments
+===
+- If you are writing a function for others to use it is often a good idea to include code that verifies that the appropriate arguments were entered.
+- If an argument value is not valid we want to stop executing the expression and return an error message.
+     - missing(): Can be used to test whether a value was specified as an argument to a function; returns TRUE if a value is not specified and FALSE if a value is specified.
+     - stop(): Stop execution of the current expression and prints an error.
+     - warning(): Generate a warning message.
+     - message(): Generate a diagnostic message.
+     - stopifnot(): If any of the arguments are not all TRUE then stop() is called and an error message is produced that indicates the first element of the argument list that is not TRUE. 
+     - stop() allows us to provide an informative error message, while stopifnot() requires less code.
+
+examples for verifying arguments
+===
+```{r}
+odds.ratio <- function(X, conf.level=0.95){
+  stopifnot(!missing(X), is.matrix(X),dim(X)==c(2,2),X>0)
+
+  cat("calculating odds ratio...","\n")
+  OR <- X[1,1]*X[2,2]/(X[1,2]*X[2,1])
+  logOR.SE <- sqrt(sum(1/X))
+  
+  cat("calculating confidence interval...","\n")
+  alpha <- 1 - conf.level
+  CI.lower <- exp(log(OR) - qnorm(1 - alpha/2)*logOR.SE)
+  CI.upper <- exp(log(OR) + qnorm(1 - alpha/2)*logOR.SE)
+  
+  cat("done, returning output...","\n")
+  out <- list(OR=OR, CI=c(CI.lower, CI.upper), conf.level=conf.level)
+  return(out)
+}
+out <- odds.ratio(X)
+```
+
+
+Every operation is a function call (optional)
 ===
 
+- infix operators: +, -, *, /
+```{r}
+x <- 10; y <- 5; 
+x + y
+'+'(x, y)
+```
+
+- Control flow operators: for, if while
+```{r}
+for(i in 1:2) cat(i,' ')
+'for'(i, 1:2, cat(i,' '))
+```
+
+- Subsetting operator
+```{r}
+x <- 1:10; x[3]
+'['(x,3)
+```
+
+
+Function arguments -- default value
 ===
+- default argument of a function can be defined in the function formals
+```{r}
+f <- function(arg, brg=10) 
+  list(arg = arg, brg = brg)
+str(f(arg=2, brg=10))
+str(f(arg=2)) 
+```
+
+- revisit = and <-
+    - = can be used for assigning value and specifying function argument
+    - <- can only be used for assigning value.
+
+
+Function arguments
+===
+- How to specify function arguments
+    - by position
+    - complete name
+    - partial name.
+- Arguments match order 
+    1. first by exact name (perfect matching), 
+```{r}
+f <- function(arg, brg=10) 
+  list(arg = arg, brg = brg)
+str(f(arg=2, brg=10))
+```
+
+---
+
+    2. then by prefix matching, 
+```{r}
+f <- function(arg, brg=10) 
+  list(a = arg, b = brg)
+str(f(b=10, ar=2))
+```
+    3. finally by position matching
+```{r}
+f <- function(arg, brg=10) 
+  list(a = arg, b = brg)
+str(f(2, 10))
+```
+
+
+function calling habits
+===
+- good calls
+```{r}
+mean(1:10); mean(1:10, trim = 0.05)
+```
+
+- overkill
+```{r}
+mean(x=1:10)
+```
+
+- confusing
+```{r}
+mean(1:10, n = T); mean(1:10, , FALSE); mean(1:10, 0.05); mean(, TRUE, x = c(1:10, NA))
+```
+
+
+calling a function given a list of arguments
+===
+- If you have a list of function arguments: 
+    - args <- list(1:10, na.rm=TRUE)
+- How could you then send that list to mean()? 
+    - Need do.call()
+```{r}
+do.call(mean, list(1:10, na.rm=TRUE))
+mean(1:10, na.rm=TRUE)
+```
+
+
+Lazy Evaluation
+===
+- R performs **lazy evaluation** of function arguments. The arguments are not evaluated until they are required.
+    - Lazy evaluation can save time and memory if the arguments are not needed.
+    - The function force() forces the evaluation of a function argument.
+- Consider the function 
+```{r}
+f <- function(x, y=x){
+  x <- x + 1
+  return(y)
+}
+f(1)
+```
+- Since there is no argument for y, R evaluates the default value of y only when it is needed. 
+```{r}
+f <- function(x, y=x){
+  force(y) # force to evaluate y.
+  x <- x + 1
+  return(y)
+}
+f(1)
+```
+
+
+Anonymous functions
+===
+- You use an anonymous function when it's not worth the effort to give it a name
+- Like all functions in R, anonymous functions have formals(), body() and a parent environment()
+'''{r}
+function(x=4) g(x) + h(x)
+formals(function(x=4) g(x) + h(x))
+body(function(x=4) g(x) + h(x))
+environment(function(x=4) g(x) + h(x))
+```
+
+Call functions from another library
+===
+- You can use functions from other packages by library
+```{r}
+library(survival)
+
+## seek for help about the survival package
+help(package=survival)
+
+## get help for a specific function
+?coxph
+```
+
+
+Environments
+===
+- Only introduce the basic structure of R environments.
+- Refer to Chapter 8 of Advanced R book for details.
+[http://adv-r.had.co.nz/Environments.html](http://adv-r.had.co.nz/Environments.html)
+
+
+Basic Environments
+===
+- The job of an environment is to associate, or bind, a set of names to a set of values.
+- You can think of an environment as a bag of names.
+```{r}
+e <- new.env()
+e$a <- FALSE
+e$b <- "a"
+e$c <- 2:3
+e$d <- 1:3
+```
+![](https://caleb-huo.github.io/teaching/2017FALL/lectures/week2_Functions/figure/environment.png)
+
+
+A hands on experiment
+===
+```{r}
+x <- matrix(1:4,nrow=2,ncol=2)
+nrow
+nrow(x)
+dim(x)
+dim <- function() c(1,1)
+## guess what is nrow(x) 
+nrow(x) 
+```
+
+Environment structure
+===
+- The globalenv(), or global environemnt, is the interactive workspace which you normally work on. The parent of the global environment is the last package you attached.
+- The baseenv(), or base environment, is the environment of the base package. Its parent is the empty environment.
+- emptyenv(), or empty environment, is the ultimate ancestor of all environments, and the only environment without a parent.
+- environment() is the current environment.
+![](https://caleb-huo.github.io/teaching/2017FALL/lectures/week2_Functions/figure/searchPath.png)
+
+Write
+===
+- write.csv: by default, csv is comma delimited
+```{r}
+amatrix <- matrix(1:4,2,2)
+write.csv(amatrix, file = "amatrix.csv")
+```
+- write.table, txt is tab delimited
+```{r}
+amatrix <- matrix(1:4,2,2)
+write.table(amatrix, file = "amatrix.txt")
+```
+- save
+```{r}
+amatrix <- matrix(1:4,2,2)
+save(amatrix, file='amatrix.rdata')
+```
+- writeLines
+```{r}
+aline <- "I like Biostatistical computing"
+zz <- file("writeLines.txt", "w")
+writeLines(aline, con=zz)
+close(zz)
+```
+
+
+read
+===
+- read.csv: 
+```{r}
+matrix_csv <- read.csv("amatrix.csv")
+matrix_csv
+```
+- read.table, txt is tab delimited
+```{r}
+matrix_table <- read.table("amatrix.txt")
+matrix_table
+```
+- save
+```{r}
+load("amatrix.rdata")
+amatrix
+matrix_load <- get(load("amatrix.rdata"))
+matrix_load
+```
+- writeLines
+```{r}
+dir()
+zz <- file("writeLines.txt", "r")
+readLines(con=zz)
+close(zz)
+```

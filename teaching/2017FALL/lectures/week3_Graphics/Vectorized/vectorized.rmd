@@ -1,0 +1,34 @@
+---
+title: "Biostatistical Computing, PHC 6068"
+subtitle: "Vectorized calculation"
+author: Zhiguang Huo (Caleb)
+date: "Monday August 28, 2017"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: null
+---
+
+Why do we need vectorized calculation
+===
+- Elegant and efficient
+- R is slow in loops but fast for vectorized calculation.
+```{r}
+a <- 1:1000000
+### version A, loop
+start <- Sys.time()
+meanA <- 0
+for(i in seq_along(a)){
+  meanA <- meanA + a[i]/length(a)
+}
+end <- Sys.time() 
+end - start
+meanA
+
+### version B, vectorized calculation
+start <- Sys.time()
+mean(a)
+end <- Sys.time() 
+end - start
+
+```

@@ -598,6 +598,14 @@ info[id,]
 ```
 
 
+How to get help?
+===
+
+- ? your function
+    - ?mean
+- check with best friend -- google
+
+
 R markdown
 ===
 
@@ -609,3 +617,11 @@ R markdown
 - Now time to demonstrate R Markdown in R studio
 
 R markdown cheatsheet: [https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+
+
+
+References
+===
+
+- [http://adv-r.had.co.nz](http://adv-r.had.co.nz)
+- [http://www.stat.cmu.edu/~ryantibs/statcomp/](http://www.stat.cmu.edu/~ryantibs/statcomp/)
