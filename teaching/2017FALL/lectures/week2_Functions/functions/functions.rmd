@@ -440,3 +440,46 @@ zz <- file("writeLines.txt", "r")
 readLines(con=zz)
 close(zz)
 ```
+
+
+
+Top-Down function design
+===
+- Break the original problem into smaller sub-problems.
+- Sub-problems are in turn broken down into even smaller sub-problems.
+- continuing until all sub-problems are solved.
+
+
+Code sketch
+===
+Below is pseudocode for top-down function design
+```{r}
+original.problem <- function(many.args){
+  sub1.problem.result <- step.sub1(some.args)
+  sub2.problem.result <- step.sub2(some.args, sub1.problem.result)
+  final.result <- step.sub3(some.args, sub2.problem.result)
+  return(final.result)
+}
+
+step.sub1 <- function(some.args){
+  ## blabla
+}
+
+step.sub2 <- function(some.args, sub1.problem.result){
+  ## blabla
+}
+
+step.sub3 <- function(some.args, sub2.problem.result){
+  ## blabla
+}
+
+```
+
+
+
+References
+===
+
+- [http://adv-r.had.co.nz](http://adv-r.had.co.nz)
+- [http://www.stat.cmu.edu/~ryantibs/statcomp/](http://www.stat.cmu.edu/~ryantibs/statcomp/)
+

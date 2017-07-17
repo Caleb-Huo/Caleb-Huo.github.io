@@ -1,0 +1,147 @@
+---
+title: "Biostatistical Computing, PHC 6068"
+author: "Zhiguang Huo (Caleb)"
+date: "Monday September 11, 2017"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: null
+subtitle: R graphics
+---
+
+Outline: what you expect to learn
+===
+- plot basics
+    - scattered plot
+    - margins
+    - histogram and heatmap
+- ggplot2
+- lattice
+
+
+
+Plotting in R
+===
+R is powerful to visualize your data.
+
+- plot(): a generic plotting function
+    - points(): add points to the plot.
+    - lines(), abline(): add lines
+    - text(): add text 
+    - legend(): add legend
+- hist(): histogram
+- image(), heatmap(): heatmaps
+- boxplot(): boxplot
+- curve(): any function curve
+- contour(): contour plot
+
+
+
+scattered plot
+===
+```{r}
+n <- 80
+set.seed(32611)
+x <- sort(runif(n, min = 0, max=2*pi))
+y <- sin(x) + rnorm(n, mean = 0, sd = 0.2)
+plot(x,y)
+```
+
+
+Type
+===
+
+- "p": for points
+- "l": for lines
+- "b" for both,
+- "o" for both ‘overplotted’,
+- "n" for no plotting.
+
+---
+
+```{r}
+plot(x,y, type="p") ## default is "p"
+```
+
+---
+
+```{r}
+plot(x,y, type="l")
+```
+
+---
+
+```{r}
+plot(x,y, type="b")
+```
+
+---
+
+```{r}
+plot(x,y, type="o")
+```
+
+---
+
+```{r}
+plot(x,y, type="n")
+```
+
+
+Labels
+===
+
+- main: title
+- xlab: x labels
+- ylab: y labels
+
+```{r}
+plot(x,y, main="sin function with Gaussian noise") # default xlab and ylab are the variable names of the arguments
+```
+
+
+---
+
+```{r}
+plot(x,y, main="sin function with Gaussian noise", 
+     xlab="x axis", ylab="y axis") 
+```
+
+
+Text and Symbol Size
+===
+- cex: number indicating the amount by which plotting text and symbols should be scaled relative to the default. 1=default, 1.5 is 50% larger, 0.5 is 50% smaller, etc.
+- cex.axis	magnification of axis annotation relative to cex
+- cex.lab	magnification of x and y labels relative to cex
+- cex.main	magnification of titles relative to cex
+- cex.sub	magnification of subtitles relative to cex
+
+--- 
+```{r}
+plot(x,y, main="sin function with Gaussian noise", 
+     xlab="x axis", ylab="y axis", 
+     cex=2, cex.axis=2, cex.lab=2, cex.main=2, cex.sub=2) 
+```
+
+
+
+Point type
+===
+- pch is an argument for point typs
+```{r}
+plot(1:25,1:25,pch=1:25)
+```
+
+---
+
+- use pch = 19
+```{r}
+plot(x,y, pch=19) 
+```
+
+
+Lines
+===
+- lty:	line type. see the chart below.
+
+- lwd	line width relative to the default (default=1). 2 is twice as wide.

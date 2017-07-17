@@ -481,7 +481,7 @@ e$d &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">3</
 nrow</code></pre></div>
 <pre><code>## function (x) 
 ## dim(x)[1L]
-## &lt;bytecode: 0x7fa8d2660ad8&gt;
+## &lt;bytecode: 0x7f9eab5396d8&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(x)</code></pre></div>
 <pre><code>## [1] 2</code></pre>
@@ -567,6 +567,43 @@ matrix_load</code></pre></div>
 <span class="kw">readLines</span>(<span class="dt">con=</span>zz)</code></pre></div>
 <pre><code>## [1] &quot;I like Biostatistical computing&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">close</span>(zz)</code></pre></div>
+</div>
+<div id="top-down-function-design" class="slide section level1">
+<h1>Top-Down function design</h1>
+<ul>
+<li>Break the original problem into smaller sub-problems.</li>
+<li>Sub-problems are in turn broken down into even smaller sub-problems.</li>
+<li>continuing until all sub-problems are solved.</li>
+</ul>
+</div>
+<div id="code-sketch" class="slide section level1">
+<h1>Code sketch</h1>
+<p>Below is pseudocode for top-down function design</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">original.problem &lt;-<span class="st"> </span>function(many.args){
+  sub1.problem.result &lt;-<span class="st"> </span><span class="kw">step.sub1</span>(some.args)
+  sub2.problem.result &lt;-<span class="st"> </span><span class="kw">step.sub2</span>(some.args, sub1.problem.result)
+  final.result &lt;-<span class="st"> </span><span class="kw">step.sub3</span>(some.args, sub2.problem.result)
+  <span class="kw">return</span>(final.result)
+}
+
+step.sub1 &lt;-<span class="st"> </span>function(some.args){
+  ## blabla
+}
+
+step.sub2 &lt;-<span class="st"> </span>function(some.args, sub1.problem.result){
+  ## blabla
+}
+
+step.sub3 &lt;-<span class="st"> </span>function(some.args, sub2.problem.result){
+  ## blabla
+}</code></pre></div>
+</div>
+<div id="references" class="slide section level1">
+<h1>References</h1>
+<ul>
+<li><a href="http://adv-r.had.co.nz" class="uri">http://adv-r.had.co.nz</a></li>
+<li><a href="http://www.stat.cmu.edu/~ryantibs/statcomp/" class="uri">http://www.stat.cmu.edu/~ryantibs/statcomp/</a></li>
+</ul>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
