@@ -1,0 +1,113 @@
+---
+title: "Biostatistical Computing, PHC 6068"
+author: "Zhiguang Huo (Caleb)"
+date: "Monday September 13, 2017"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: null
+subtitle: Matrix operation
+---
+
+Outlines
+===
+- Basic Matrix operations
+- Data reshape
+- SVD and PCA
+
+Create a matrix
+===
+- an example from ?matrix
+```{r}
+mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = FALSE,
+               dimnames = list(c("row1", "row2"),
+                               c("C.1", "C.2", "C.3")))
+mdat
+```
+
+- an alternative way
+```{r}
+mdat <- c(1,2,3, 11,12,13)
+dim(mdat) <- c(2,3)
+dimnames(mdat) <- list(c("row1", "row2"), c("C.1", "C.2", "C.3"))
+mdat
+```
+
+appending a column  or a row to a matrix
+===
+```{r}
+dim(mdat)
+```
+- appending a column
+```{r}
+mat2 <- cbind(mdat, c(3,4))
+dim(mat2)
+```
+
+- appending a row
+```{r}
+mat3 <- rbind(mdat, c(2,5,8))
+dim(mat3)
+```
+
+
+subset of a matrix
+===
+- by numeric index
+```{r}
+mdat[1,1]
+mdat[1,1:2]
+mdat[1,]
+mdat[1,-1]
+mdat[,]
+```
+
+---
+
+- by names
+```{r}
+dimnames(mdat); rownames(mdat); colnames(mdat)
+mdat["row1", "C.1"]
+mdat["row2", c("C.2", "C.3")]
+mdat["row1",-2] ## mixed usage
+```
+
+element-wise Multiplication by a Scalar/Vector/Matrix
+===
+- by a scalar
+```{r}
+mdat * 3
+```
+
+- by a **column** vector
+```{r}
+mdat * c(1,2)
+```
+
+
+- by a matrix of the same dimension
+```{r}
+mdat * matrix(1:6,nrow=2,ncol=3)
+```
+
+
+Addition/Subtraction by a Scalar/Vector/Matrix
+===
+- by a scalar
+```{r}
+mdat + 3
+```
+
+- by a **column** vector
+```{r}
+mdat - c(1,2)
+```
+
+
+- by a matrix of the same dimension
+```{r}
+mdat + matrix(1:6,nrow=2,ncol=3)
+```
+
+
+

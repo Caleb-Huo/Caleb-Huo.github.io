@@ -153,7 +153,12 @@ Questions
 - In class lab/ all lectures?
 - What will be on the qualifying exam?
 - auto grading?
-
+- graphics: ggplot2 or lattice
+- Simulating random variables and simulation studies
+    - size and power of a test
+    - asymptotics
+- lasso, SVM, LDA, CART, random forests, how deep should I cover
+- Mid terms and Final example, take home or in class exam
 
 
 Why we should learn R
