@@ -111,3 +111,83 @@ mdat + matrix(1:6,nrow=2,ncol=3)
 
 
 
+Matrix Multiplication
+===
+- %*%
+
+```{r}
+mat1 <- matrix(1:6,nrow=2,ncol=3)
+mat1
+
+mat2 <- matrix(1:6,nrow=3,ncol=2)
+mat2
+
+mat1 %*% mat2
+
+mat2 %*% mat1
+```
+
+Transponse of a Matrix
+===
+- t
+```{r}
+mat1 <- matrix(1:6,nrow=2,ncol=3)
+mat1
+t(mat1)
+```
+
+Diagonal Matrix
+===
+- diag()
+    - if input is a square matrix, return the diagnal element.
+    - if input is a vector, return a diagnal matrix.
+```{r}
+S <- matrix(1:9,3,3)
+S
+diag(S)
+diag(diag(S))
+```
+
+
+Inverse of a Matrix
+===
+```{r}
+S <- matrix(c(4,4,-2,2,6,2,2,8,4),3,3)
+SI <- solve(S)
+SI
+S %*% SI
+SI %*% S
+
+```
+
+Determinant of a Matrix
+===
+- det()
+```{r}
+S <- matrix(c(4,4,-2,2,6,2,2,8,4),3,3)
+det(S)
+```
+
+- rank (rank function has been implemented for the purpose of rank of a vector)
+- To get the rank of a matrix:
+```{r}
+S <- matrix(c(4,4,-2,2,6,2,2,8,4),3,3)
+QR <- qr(S)
+QR$rank
+```
+
+Column and Row Means
+===
+- row mean
+```{r}
+S <- matrix(c(4,4,-2,2,6,2,2,8,4),3,3)
+apply(S,1,mean)
+rowMeans(S)
+```
+
+- column mean
+```{r}
+S <- matrix(c(4,4,-2,2,6,2,2,8,4),3,3)
+apply(S,2,mean)
+colMeans(S)
+```

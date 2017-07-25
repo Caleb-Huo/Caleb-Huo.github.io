@@ -1,0 +1,26 @@
+---
+title: "Biostatistical Computing, PHC 6068"
+author: "Zhiguang Huo (Caleb)"
+date: "Monday September 13, 2017"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: null
+subtitle: Linear Model
+---
+
+Outlines
+===
+- Linear regression
+
+
+Prostate cancer data
+===
+```{r}
+library(ElemStatLearn)
+str(prostate)
+head(prostate)
+```
+
+
+
