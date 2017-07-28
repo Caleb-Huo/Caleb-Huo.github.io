@@ -1,0 +1,107 @@
+---
+title: "Biostatistical Computing, PHC 6068"
+author: "Zhiguang Huo (Caleb)"
+date: "Monday September 13, 2017"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+  beamer_presentation: null
+subtitle: Generalized Linear Model
+---
+
+
+Recap: linear regression model
+===
+$$Y = X^\top\beta + \varepsilon, \text{with }\varepsilon \sim N(0, \sigma^2)$$
+
+- Y: outcome variable or response.
+- $X = (1, X_1, X_2, \ldots, X_p)^\top$ are called predictors.
+- $\beta = (\beta_0, \beta_1, \ldots, \beta_p)^\top$ are called coefficient, for which we will estimate.
+
+Limitation of linear model:
+- $\varepsilon$ has to be normally distributed.
+- $Y$ has to be a linear function of $X^\top\beta$.
+
+How about other data types?
+
+- Count data
+- binary data
+- ordinal data
+
+Generalize the "linear regression model" (1)
+===
+$$Y = X^\top\beta + \varepsilon, \text{with }\varepsilon \sim N(0, \sigma^2)$$
+
+- Random (stochastic) component
+    - specifies the conditional distribution of the response variable $Y$ given the explanatory variables $X$
+    - $Y|X \sim N(\mu, \sigma^2), \mu = E(Y|X)$
+- Systematic component 
+    – the covariates $X$ combine linearly with the coefficients to form the linear predictor.
+    - $\eta = X^\top\beta$
+- Link function
+    - $\eta = \mu$
+
+Generalize the "linear regression model" (2)
+===
+We can generalize these conditions for linear regression model
+
+- Random (stochastic) component
+    - specifies the conditional distribution of the response variable $Y$ given the explanatory variables $X$
+    - $Y|X \sim f(\mu), \mu = E(Y|X)$, $f$ is other distribution (from the exponential family)
+    - In the linear model case, $f$ is Normal distribution.
+- Systematic component 
+    – Still assume covariates $X$ combine linearly with the coefficients to form the linear predictor.
+    - $\eta = X^\top\beta$
+- Link function
+    - an invertible function $g$ which transforms the expectation of the response to the linear predictor
+    - $\eta = g(\mu)$
+    - In the linear model case, $g$ is an identity function.
+
+
+Generalized linear model -- GLM
+===
+Component of a GLM:
+
+- Random (stochastic) component
+    - specifies the conditional distribution of the response variable $Y$ given the explanatory variables $X$
+    - $Y|X \sim$ a pdf from the exponential family
+- Systematic component 
+    – Still assume covariates $X$ combine linearly with the coefficients to form the linear predictor.
+    - $\eta = X^\top\beta$
+- Link function
+    - a monotone and twice-differentiable function $g$ which transforms the expectation of the linear predictor
+    - $\eta = g(\mu)$ where $\mu = E(Y|X)$
+
+Exponential family
+===
+
+GLM for continuous data - linear regression
+===
+
+GLM for binary data - logistic regression
+===
+
+
+GLM for count data
+===
+- possion regression
+- negative bionomial
+
+GLM for ordinal data
+===
+
+
+GLM for multinomial regression
+===
+
+
+Prostate cancer data
+===
+The data is from the book element of statistical learning
+
+```{r}
+library(ElemStatLearn)
+str(prostate)
+prostate$train <- NULL
+```
+

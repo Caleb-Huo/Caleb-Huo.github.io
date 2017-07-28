@@ -51,20 +51,114 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 <div class="slide titlepage">
   <h1 class="title">Biostatistical Computing, PHC 6068</h1>
-  <h1 class="subtitle">Linear Model</h1>
+  <h1 class="subtitle">Generalized Linear Model</h1>
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
   <p class="date">Monday September 13, 2017</p>
 </div>
-<div id="outlines" class="slide section level1">
-<h1>Outlines</h1>
+<div id="recap-linear-regression-model" class="slide section level1">
+<h1>Recap: linear regression model</h1>
+<p><span class="math display">\[Y = X^\top\beta + \varepsilon, \text{with }\varepsilon \sim N(0, \sigma^2)\]</span></p>
 <ul>
-<li>Linear regression</li>
+<li>Y: outcome variable or response.</li>
+<li><span class="math inline">\(X = (1, X_1, X_2, \ldots, X_p)^\top\)</span> are called predictors.</li>
+<li><span class="math inline">\(\beta = (\beta_0, \beta_1, \ldots, \beta_p)^\top\)</span> are called coefficient, for which we will estimate.</li>
 </ul>
+<p>Limitation of linear model: - <span class="math inline">\(\varepsilon\)</span> has to be normally distributed. - <span class="math inline">\(Y\)</span> has to be a linear function of <span class="math inline">\(X^\top\beta\)</span>.</p>
+<p>How about other data types?</p>
+<ul>
+<li>Count data</li>
+<li>binary data</li>
+<li>ordinal data</li>
+</ul>
+</div>
+<div id="generalize-the-linear-regression-model-1" class="slide section level1">
+<h1>Generalize the “linear regression model” (1)</h1>
+<p><span class="math display">\[Y = X^\top\beta + \varepsilon, \text{with }\varepsilon \sim N(0, \sigma^2)\]</span></p>
+<ul>
+<li>Random (stochastic) component
+<ul>
+<li>specifies the conditional distribution of the response variable <span class="math inline">\(Y\)</span> given the explanatory variables <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(Y|X \sim N(\mu, \sigma^2), \mu = E(Y|X)\)</span></li>
+</ul></li>
+<li>Systematic component – the covariates <span class="math inline">\(X\)</span> combine linearly with the coefficients to form the linear predictor.
+<ul>
+<li><span class="math inline">\(\eta = X^\top\beta\)</span></li>
+</ul></li>
+<li>Link function
+<ul>
+<li><span class="math inline">\(\eta = \mu\)</span></li>
+</ul></li>
+</ul>
+</div>
+<div id="generalize-the-linear-regression-model-2" class="slide section level1">
+<h1>Generalize the “linear regression model” (2)</h1>
+<p>We can generalize these conditions for linear regression model</p>
+<ul>
+<li>Random (stochastic) component
+<ul>
+<li>specifies the conditional distribution of the response variable <span class="math inline">\(Y\)</span> given the explanatory variables <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(Y|X \sim f(\mu), \mu = E(Y|X)\)</span>, <span class="math inline">\(f\)</span> is other distribution (from the exponential family)</li>
+<li>In the linear model case, <span class="math inline">\(f\)</span> is Normal distribution.</li>
+</ul></li>
+<li>Systematic component – Still assume covariates <span class="math inline">\(X\)</span> combine linearly with the coefficients to form the linear predictor.
+<ul>
+<li><span class="math inline">\(\eta = X^\top\beta\)</span></li>
+</ul></li>
+<li>Link function
+<ul>
+<li>an invertible function <span class="math inline">\(g\)</span> which transforms the expectation of the response to the linear predictor</li>
+<li><span class="math inline">\(\eta = g(\mu)\)</span></li>
+<li>In the linear model case, <span class="math inline">\(g\)</span> is an identity function.</li>
+</ul></li>
+</ul>
+</div>
+<div id="generalized-linear-model-glm" class="slide section level1">
+<h1>Generalized linear model – GLM</h1>
+<p>Component of a GLM:</p>
+<ul>
+<li>Random (stochastic) component
+<ul>
+<li>specifies the conditional distribution of the response variable <span class="math inline">\(Y\)</span> given the explanatory variables <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\(Y|X \sim\)</span> a pdf from the exponential family</li>
+</ul></li>
+<li>Systematic component – Still assume covariates <span class="math inline">\(X\)</span> combine linearly with the coefficients to form the linear predictor.
+<ul>
+<li><span class="math inline">\(\eta = X^\top\beta\)</span></li>
+</ul></li>
+<li>Link function
+<ul>
+<li>a monotone and twice-differentiable function <span class="math inline">\(g\)</span> which transforms the expectation of the linear predictor</li>
+<li><span class="math inline">\(\eta = g(\mu)\)</span> where <span class="math inline">\(\mu = E(Y|X)\)</span></li>
+</ul></li>
+</ul>
+</div>
+<div id="exponential-family" class="slide section level1">
+<h1>Exponential family</h1>
+</div>
+<div id="glm-for-continuous-data---linear-regression" class="slide section level1">
+<h1>GLM for continuous data - linear regression</h1>
+</div>
+<div id="glm-for-binary-data---logistic-regression" class="slide section level1">
+<h1>GLM for binary data - logistic regression</h1>
+</div>
+<div id="glm-for-count-data" class="slide section level1">
+<h1>GLM for count data</h1>
+<ul>
+<li>possion regression</li>
+<li>negative bionomial</li>
+</ul>
+</div>
+<div id="glm-for-ordinal-data" class="slide section level1">
+<h1>GLM for ordinal data</h1>
+</div>
+<div id="glm-for-multinomial-regression" class="slide section level1">
+<h1>GLM for multinomial regression</h1>
 </div>
 <div id="prostate-cancer-data" class="slide section level1">
 <h1>Prostate cancer data</h1>
+<p>The data is from the book element of statistical learning</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ElemStatLearn)
 <span class="kw">str</span>(prostate)</code></pre></div>
 <pre><code>## 'data.frame':    97 obs. of  10 variables:
@@ -78,21 +172,7 @@ Zhiguang Huo (Caleb)
 ##  $ pgg45  : int  0 0 20 0 0 0 0 0 0 0 ...
 ##  $ lpsa   : num  -0.431 -0.163 -0.163 -0.163 0.372 ...
 ##  $ train  : logi  TRUE TRUE TRUE TRUE TRUE TRUE ...</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(prostate)</code></pre></div>
-<pre><code>##       lcavol  lweight age      lbph svi       lcp gleason pgg45       lpsa
-## 1 -0.5798185 2.769459  50 -1.386294   0 -1.386294       6     0 -0.4307829
-## 2 -0.9942523 3.319626  58 -1.386294   0 -1.386294       6     0 -0.1625189
-## 3 -0.5108256 2.691243  74 -1.386294   0 -1.386294       7    20 -0.1625189
-## 4 -1.2039728 3.282789  58 -1.386294   0 -1.386294       6     0 -0.1625189
-## 5  0.7514161 3.432373  62 -1.386294   0 -1.386294       6     0  0.3715636
-## 6 -1.0498221 3.228826  50 -1.386294   0 -1.386294       6     0  0.7654678
-##   train
-## 1  TRUE
-## 2  TRUE
-## 3  TRUE
-## 4  TRUE
-## 5  TRUE
-## 6  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prostate$train &lt;-<span class="st"> </span><span class="ot">NULL</span></code></pre></div>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
