@@ -55,10 +55,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Wednesday August 23, 2017</p>
-</div>
-<div id="installation-of-r-r-studio-and-r-markdown" class="slide section level1">
-<h1>Installation of R, R studio and R markdown</h1>
+  <p class="date">Mon August 21, 2017</p>
 </div>
 <div id="how-did-i-learn-r" class="slide section level1">
 <h1>How did I learn R?</h1>
@@ -77,6 +74,16 @@ Zhiguang Huo (Caleb)
 <li>use typeof() function to check type of a variable.</li>
 </ul></li>
 </ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="fl">1.1</span>)</code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="st">&quot;a&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(4L)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="dv">4</span>)</code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
 </div>
 <div id="logical" class="slide section level1">
 <h1>logical</h1>
@@ -98,7 +105,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>1:10 represents integer sequence 1 to 10.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aseq &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aseq &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span> ## &lt;- represent assign value
 <span class="kw">typeof</span>(aseq)</code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <ul>
@@ -112,6 +119,20 @@ Zhiguang Huo (Caleb)
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.integer</span>(<span class="dv">6</span>)</code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="assign-values" class="slide section level1">
+<h1>Assign values</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="fl">1.6</span>; <span class="kw">print</span>(a) ## assign 1.6 to a </code></pre></div>
+<pre><code>## [1] 1.6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b &lt;-<span class="st"> </span><span class="fl">1.6</span>; <span class="kw">print</span>(b) ## assign 1.6 to b</code></pre></div>
+<pre><code>## [1] 1.6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">1.6</span> -&gt;<span class="st"> </span>d; <span class="kw">print</span>(d) ## assign 1.6 to d</code></pre></div>
+<pre><code>## [1] 1.6</code></pre>
+<p>Difference between = and &lt;-</p>
+<ul>
+<li>&lt;- can be only used for value assignment.</li>
+<li>= can be used for both value assignment and function argument.</li>
+</ul>
 </div>
 <div id="double" class="slide section level1">
 <h1>double</h1>
@@ -132,7 +153,7 @@ Zhiguang Huo (Caleb)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">acharacter &lt;-<span class="st"> &quot;I like Biostatistical computing&quot;</span>
 <span class="kw">typeof</span>(acharacter)</code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bcharacter &lt;-<span class="st"> &quot;You like Biostatistical computing&quot;</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bcharacter &lt;-<span class="st"> 'You like Biostatistical computing'</span>
 <span class="kw">is.character</span>(bcharacter)</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <ul>
@@ -159,8 +180,8 @@ Zhiguang Huo (Caleb)
 </ul></li>
 </ul>
 </div>
-<div id="vector-functions" class="slide section level1">
-<h1>Vector Functions</h1>
+<div id="commonly-used-vector-functions" class="slide section level1">
+<h1>Commonly used vector functions</h1>
 <table>
 <thead>
 <tr class="header">
@@ -347,6 +368,17 @@ Zhiguang Huo (Caleb)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="kw">c</span>(<span class="fl">1.2</span>,1L))</code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 </div>
+<div id="how-to-get-help" class="slide section level1">
+<h1>How to get help</h1>
+<ul>
+<li>How to get help of an R function
+<ul>
+<li>?sum</li>
+<li>help(“sum”)</li>
+</ul></li>
+<li>check with best friend – google</li>
+</ul>
+</div>
 <div id="missing-value" class="slide section level1">
 <h1>Missing value</h1>
 <ul>
@@ -422,8 +454,8 @@ Zhiguang Huo (Caleb)
 <li>some special characters:
 <ul>
 <li>&quot; &quot; for space</li>
-<li>“” for newline</li>
-<li>“” for tab</li>
+<li>“\n” for newline</li>
+<li>“\t” for tab</li>
 </ul></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sentenses &lt;-<span class="st"> &quot;R is a great statistical software.</span><span class="ch">\n\n</span><span class="st">We use R in Biostatistical computing class!&quot;</span>
@@ -891,34 +923,28 @@ id</code></pre></div>
 ## 1       3 Excellent FALSE
 ## 3.1     1      Poor  TRUE</code></pre>
 </div>
-<div id="how-to-get-help" class="slide section level1">
-<h1>How to get help?</h1>
+<div id="save-r-objects" class="slide section level1">
+<h1>Save R objects</h1>
+<p>If you take a long time to obtain your result. How to save your result so in the future, you won’t bother re-run them again?</p>
 <ul>
-<li>? your function
-<ul>
-<li>?mean</li>
-</ul></li>
-<li>check with best friend – google</li>
+<li>Create a list for these variables</li>
+<li>Save the list by save()</li>
 </ul>
-</div>
-<div id="r-markdown" class="slide section level1">
-<h1>R markdown</h1>
-<ul>
-<li>R Markdown provides an authoring framework for data science. You can use a single R Markdown file to:</li>
-<li>save and execute code</li>
-<li>generate high quality reports that can be shared with your advisor</li>
-<li>reproduce your result</li>
-<li>Homeworks/exam/final project should be finished using R Markdown.</li>
-<li>Now time to demonstrate R Markdown in R studio</li>
-</ul>
-<p>R markdown cheatsheet: <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf</a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">4</span>
+b &lt;-<span class="st"> </span><span class="dv">2</span>:<span class="dv">5</span>
+ans &lt;-<span class="st"> </span>a *<span class="st"> </span>b
+result &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a=</span>a, <span class="dt">b=</span>b, <span class="dt">ans=</span>ans)
+<span class="kw">save</span>(result,<span class="dt">file=</span><span class="st">&quot;myResult.rdata&quot;</span>)</code></pre></div>
 </div>
 <div id="references" class="slide section level1">
 <h1>References</h1>
 <ul>
 <li><a href="http://adv-r.had.co.nz" class="uri">http://adv-r.had.co.nz</a></li>
 <li><a href="http://www.stat.cmu.edu/~ryantibs/statcomp/" class="uri">http://www.stat.cmu.edu/~ryantibs/statcomp/</a></li>
+<li>reference code generation</li>
 </ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">suppressWarnings</span>(<span class="kw">library</span>(knitr))
+<span class="kw">purl</span>(<span class="st">&quot;basic.rmd&quot;</span>, <span class="dt">output =</span> <span class="st">&quot;basic.R &quot;</span>, <span class="dt">documentation =</span> <span class="dv">2</span>)</code></pre></div>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
