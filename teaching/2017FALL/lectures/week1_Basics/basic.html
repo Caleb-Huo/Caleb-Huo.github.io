@@ -554,7 +554,7 @@ sentenses</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">avec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>)
 <span class="kw">nchar</span>(avec)</code></pre></div>
 <pre><code>## [1] 4 2 1 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>), <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>)</code></pre></div>
 <pre><code>## [1] &quot;this is a dog&quot;</code></pre>
 </div>
 <div id="substituation" class="slide section level1">
@@ -688,7 +688,6 @@ while(i &lt;=<span class="st"> </span><span class="dv">10</span>){
 ## [2,]    2    4    6    8   10</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(y)</code></pre></div>
 <pre><code>## [1] &quot;matrix&quot;</code></pre>
-<p>\end{frame}</p>
 </div>
 <div id="factor" class="slide section level1">
 <h1>factor</h1>
@@ -710,13 +709,46 @@ x</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(x)</code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot;</code></pre>
 </div>
+<div id="factors-2" class="slide section level1">
+<h1>factors 2</h1>
+<p>factors are very useful when there exist missing class</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sex_char &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>)
+sex_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(sex_char, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;f&quot;</span>))
+<span class="kw">table</span>(sex_char)</code></pre></div>
+<pre><code>## sex_char
+## m 
+## 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(sex_factor)</code></pre></div>
+<pre><code>## sex_factor
+## m f 
+## 3 0</code></pre>
+</div>
 <div id="matrices" class="slide section level1">
+<h1>Matrices</h1>
+<ul>
+<li>Create a matrix with colnames and rownames</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>),
+                               <span class="kw">c</span>(<span class="st">&quot;C.1&quot;</span>, <span class="st">&quot;C.2&quot;</span>, <span class="st">&quot;C.3&quot;</span>)))
+a</code></pre></div>
+<pre><code>##      C.1 C.2 C.3
+## row1   1   3   5
+## row2   2   4   6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(a)</code></pre></div>
+<pre><code>## [1] &quot;C.1&quot; &quot;C.2&quot; &quot;C.3&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(a)</code></pre></div>
+<pre><code>## [1] &quot;row1&quot; &quot;row2&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(a)</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(a)</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="matrices-1" class="slide section level1">
 <h1>Matrices</h1>
 <ul>
 <li>Adding a dim() attribute to an atomic vector</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">nrow=</span><span class="dv">2</span>)
-c &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">6</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">6</span>
 <span class="kw">dim</span>(c) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)
 c</code></pre></div>
 <pre><code>##      [,1] [,2]
