@@ -1,12 +1,12 @@
 ---
 title: "Biostatistical Computing, PHC 6068"
-subtitle: "R markdown"
-author: Zhiguang Huo (Caleb)
+author: "Zhiguang Huo (Caleb)"
 date: "Wed August 23, 2017"
 output:
   slidy_presentation: default
   ioslides_presentation: default
   beamer_presentation: null
+subtitle: R markdown
 ---
 
 
@@ -37,6 +37,11 @@ Work flow:
 - Embed - Embed R code that creates output to include in the report.
 - Render - Replace R code with its output and transform the report into a slideshow, pdf, html or ms Word file.
 
+
+The R markdown default example
+===
+
+Demonstrate how it works
 
 
 Open File
@@ -71,10 +76,14 @@ Markdown Next
 - endash: --
 - emdash: ---
 - ellipsis: ...
-- inline equation: $A = \pi*r^{2}$, following latex format [http://www.codecogs.com/latex/eqneditor.php](http://www.codecogs.com/latex/eqneditor.php)
-- image: 
-![](https://caleb-huo.github.io/teaching/2017FALL/logo.png) <!-- .element height="50%" width="50%" -->
+- inline equation: $A = \pi \times r^{2}$, following latex format [http://www.codecogs.com/latex/eqneditor.php](http://www.codecogs.com/latex/eqneditor.php)
 - horizontal rule (or slide break): ***
+
+***
+
+- How io import an external image: 
+
+![](https://caleb-huo.github.io/teaching/2017FALL/logo.png) 
 
 
 Unordered list
@@ -168,7 +177,20 @@ Click the knit HTML button at the top of the RStudio scripts pane
 - open a preview of the output file in the viewer pane
 - save the output file in your working directory 
  
- 
+
+Other output options
+===
+output:
+
+- pdf_document
+- html_document
+- word_document
+- ioslides_presentation
+- slidy_presentation
+- beamer_presentation
+
+
+
 Try your self
 ===
 
@@ -182,3 +204,5 @@ Try your self
 - pdf report
 - make a slide 
 
+Take a look at homework example
+===
