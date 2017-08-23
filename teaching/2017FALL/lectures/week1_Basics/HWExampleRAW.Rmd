@@ -14,8 +14,8 @@ result$GatorLinkID <- "zhuo" ## i.e. prefix for your uf email address
 result$teammate <- NULL ## default is NULL, otherwise specify your teammate's name
 ```
 
-## Question A
-#### 1. Calculate $\sum_{i=1}^{1000} \frac{1}{i^2}$
+## Question A (10 pts)
+#### 1. Calculate $\sum_{i=1}^{1000} \frac{1}{i^2}$ (5 pts)
 
 ```{r}
 ## Your code
@@ -25,7 +25,7 @@ result$A1 <- NULL ## replace NULL with your answer (by replacing NULL with the v
 
 #### 2. Fibonacci number follows the following recurrence relation:
 $F_n = F_{n-1} + F_{n-2}$.
-Given the seed value $F_1 = 1$ and $F_2 = 1$, what is $F_{100}$?
+Given the seed value $F_1 = 1$ and $F_2 = 1$, what is $F_{100}$? (5 pts)
 
 ```{r}
 ## Your code
@@ -33,21 +33,21 @@ Given the seed value $F_1 = 1$ and $F_2 = 1$, what is $F_{100}$?
 result$A2 <- NULL ## replace NULL with your answer (by replacing NULL with the variable containing your answer)
 ```
 
-## Question B
+## Question B (10 pts)
 #### 1. In R base package, there is cars' data. data(cars), plot speed (x axis) vs dist (y axis).
 ```{r}
 ## Your code
 ```
 
-## Question C
+## Question C (10 pts)
 
 In R base package, there is mtcars' data. data(mtcars)
 
-#### 1. Fit a linear model: treat mpg as response variable and cyl, disp, hp and drat as predictors.
+#### 1. Fit a linear model: treat mpg as response variable and cyl, disp, hp and drat as predictors. (5 pts)
 ```{r}
 ## Your code
 ```
-#### 2. Find the p-value for cyl.
+#### 2. Find the p-value for cyl. (5 pts)
 ```{r}
 ## Your code
 
