@@ -144,7 +144,7 @@ plot(pressure)
 Rmd table
 ===
 
-```{r echo = FALSE, results = 'asis'}
+```{r echo = FALSE}
 suppressWarnings(library(knitr))
 kable(mtcars[1:5, ], caption = "A knitr kable.")
 ```

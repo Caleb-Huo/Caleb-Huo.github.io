@@ -1,7 +1,7 @@
 ---
 title: "HW example"
 author: "Caleb"
-date: "Aug 23, 2017"
+date: "Due: 11:59 pm, Aug 29th, 2017"
 output: html_document
 ---
 
@@ -47,7 +47,7 @@ In R base package, there is mtcars' data. data(mtcars)
 ```{r}
 ## Your code
 ```
-#### 2. Find the coefficient and p-value for cyl.
+#### 2. Find the p-value for cyl.
 ```{r}
 ## Your code
 
