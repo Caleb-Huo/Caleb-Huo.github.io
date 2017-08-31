@@ -1,0 +1,130 @@
+---
+title: "HW example"
+author: "Caleb"
+date: "Due: 11:59 pm, Aug 29th, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+result <- NULL
+result$firstName <- "your first name"
+result$lastName <- "your last name"
+result$GatorLinkID <- "zhuo" ## i.e. prefix for your uf email address
+result$teammate <- NULL ## default is NULL, otherwise specify your teammate's name
+```
+
+## Question A (10 pts)
+#### 1. Calculate $\sum_{i=1}^{1000} \frac{1}{i^2}$ (5 pts)
+
+```{r}
+## Your code
+i <- 1:1000
+result_A1 <- sum(1/i^2)
+result$A1 <- result_A1 ## replace NULL with your answer (by replacing NULL with the variable containing your answer)
+```
+
+#### 2. Fibonacci number follows the following recurrence relation:
+$F_n = F_{n-1} + F_{n-2}$.
+Given the seed value $F_1 = 1$ and $F_2 = 1$, what is $F_{100}$? (5 pts)
+
+```{r}
+## Your code
+N <- 100
+F <- rep(NA, N)
+F[1] <- 1
+F[2] <- 1
+for(n in 3:N){
+  F[n] <- F[n-1] + F[n-2]
+}
+
+result$A2 <- F[N] ## replace NULL with your answer (by replacing NULL with the variable containing your answer)
+```
+
+## Question B (10 pts)
+#### 1. In R base package, there is cars' data. data(cars), plot speed (x axis) vs dist (y axis).
+```{r}
+## Your code
+plot(x=cars$speed, y = cars$dist, xlab="speed", ylab="dist", main="dist vs speed")
+```
+
+## Question C (10 pts)
+
+In R base package, there is mtcars' data. data(mtcars)
+
+#### 1. Fit a linear model: treat mpg as response variable and cyl, disp, hp and drat as predictors. (5 pts)
+```{r}
+## Your code
+lmfit <- lm(mpg ~ cyl + disp + hp + drat, data=mtcars)
+```
+#### 2. Find the p-value for cyl. (5 pts)
+```{r}
+## Your code
+pvalue <- summary(lmfit)$coefficients["cyl", "Pr(>|t|)"]
+
+result$C2 <- pvalue ## replace NULL with your answer (by replacing NULL with the variable containing your answer)
+```
+
+
+## Note:
+#### Save your result as Rdata. So Auto grading can be performed.
+The chunk of code will verify that the Rdata contains your name, GatorLinkID, answers to all questions
+```{r}
+verify <- function(result){
+  ## first verify your basic information, if not, error will come up.
+  if(is.null(result$firstName)){
+    stop("firstName is missing")
+  } else {
+    cat("Name:", result$firstName, " ")
+  }
+  if(is.null(result$lastName)){
+    stop("lastName is missing")
+  } else {
+    cat(result$lastName, "\n")
+  }
+  if(is.null(result$GatorLinkID)){
+    stop("GatorLinkID is missing")
+  } else {
+    cat("GatorLinkID:", result$GatorLinkID, "\n")
+  }
+  if(is.null(result$teammate)){
+    cat("You have no teammate\n")
+  } else {
+    cat("Your teammate is", result$teammate, "\n")
+  }
+
+  ## second verify if you have provide an answer, if not, warning will come up.
+  completeAnswer <- TRUE
+  if(is.null(result$A1)) {
+    warning("Question A1 is answered")
+    completeAnswer <- FALSE
+  }
+  if(is.null(result$A2)) {
+    warning("Question A2 is answered")
+    completeAnswer <- FALSE
+  }
+  if(is.null(result$C2)) {
+    warning("Question C2 is answered")
+    completeAnswer <- FALSE
+  }
+  if(completeAnswer) cat("Congratulations! All questions are answered!\n")
+
+}
+
+verify(result) ## verify your result
+save(result, file="hw0_Lastname_Firstname.Rdata") ## save your result
+```
+
+
+
+### Homework should be uploaded to courseweb:
+1. Save your compiled result as html/pdf file. Rename the file name as: hw0_lastname_firstname.html or hw0_lastname_firstname.pdf.
+2. RMD file is not required.
+3. Save your result as Rdata and name it as hw0_lastname_firstname.Rdata.
+4. You can upload to courseweb (1 and 3) or 4.
+
+### If you generate a figure, please write appropriate figure title, labels, legend if necessary.
+
+### If your code is not intuitive, please write comments to make the code readible.
+
+
