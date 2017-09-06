@@ -55,7 +55,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Monday August 28, 2017</p>
+  <p class="date">Monday September 6, 2017</p>
 </div>
 <div id="why-do-we-need-vectorized-calculation-motivating-example-1" class="slide section level1">
 <h1>Why do we need vectorized calculation (motivating example 1)</h1>
@@ -72,7 +72,7 @@ for(i in <span class="kw">seq_along</span>(a)){
 }
 end &lt;-<span class="st"> </span><span class="kw">Sys.time</span>() 
 end -<span class="st"> </span>start</code></pre></div>
-<pre><code>## Time difference of 0.9597511 secs</code></pre>
+<pre><code>## Time difference of 1.313023 secs</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meanA</code></pre></div>
 <pre><code>## [1] 500000.5</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### version B, vectorized calculation
@@ -81,7 +81,7 @@ start &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()
 <pre><code>## [1] 500000.5</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">end &lt;-<span class="st"> </span><span class="kw">Sys.time</span>() 
 end -<span class="st"> </span>start</code></pre></div>
-<pre><code>## Time difference of 0.004321098 secs</code></pre>
+<pre><code>## Time difference of 0.005419016 secs</code></pre>
 </div>
 <div id="why-do-we-need-vectorized-calculation-motivating-example-2" class="slide section level1">
 <h1>Why do we need vectorized calculation (motivating example 2)</h1>
@@ -99,13 +99,13 @@ for(i in <span class="kw">seq_along</span>(a)){
 }
 end &lt;-<span class="st"> </span><span class="kw">Sys.time</span>() 
 end -<span class="st"> </span>start</code></pre></div>
-<pre><code>## Time difference of 1.916045 secs</code></pre>
+<pre><code>## Time difference of 2.219551 secs</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### version B, vectorized calculation
 start &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()
 result &lt;-<span class="st"> </span>a +<span class="st"> </span>b
 end &lt;-<span class="st"> </span><span class="kw">Sys.time</span>() 
 end -<span class="st"> </span>start</code></pre></div>
-<pre><code>## Time difference of 0.01463413 secs</code></pre>
+<pre><code>## Time difference of 0.01295304 secs</code></pre>
 </div>
 <div id="simple-examples-of-vectorized-calculation" class="slide section level1">
 <h1>Simple examples of vectorized calculation</h1>
@@ -169,6 +169,15 @@ a +<span class="st"> </span><span class="dv">2</span></code></pre></div>
 a_int &lt;-<span class="st"> </span><span class="kw">integer</span>(n)
 a_int</code></pre></div>
 <pre><code>## [1] 0 0 0 0 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b_int &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, n)
+b_int</code></pre></div>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c_int &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">5</span>,<span class="dv">0</span>)
+c_int</code></pre></div>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+</div>
+<div id="initialize-a-vector-other-types" class="slide section level1">
+<h1>Initialize a vector, other types</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a_double &lt;-<span class="st"> </span><span class="kw">double</span>(n)
 a_double</code></pre></div>
 <pre><code>## [1] 0 0 0 0 0</code></pre>
@@ -189,9 +198,9 @@ a</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">10</span>, <span class="dt">to=</span><span class="dv">100</span>, <span class="dt">length=</span><span class="dv">10</span>)
 b</code></pre></div>
 <pre><code>##  [1]  10  20  30  40  50  60  70  80  90 100</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">'a'</span>, <span class="dv">4</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">10</span>, <span class="dt">to=</span><span class="dv">100</span>, <span class="dt">along.with=</span><span class="dv">1</span>:<span class="dv">10</span>)
 c</code></pre></div>
-<pre><code>## [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot;</code></pre>
+<pre><code>##  [1]  10  20  30  40  50  60  70  80  90 100</code></pre>
 </div>
 <div id="random-number-generator" class="slide section level1">
 <h1>Random number generator</h1>
@@ -306,11 +315,37 @@ a</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(a,<span class="dv">2</span>,min)</code></pre></div>
 <pre><code>## [1] 1 4</code></pre>
 </div>
+<div id="sweep" class="slide section level1">
+<h1>Sweep</h1>
+<ul>
+<li>sweep() allows you to “sweep” out the values of a summary statistic. It is often used with apply() to standardise arrays.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">32611</span>)
+(x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">6</span>,<span class="dv">0</span>,<span class="dv">4</span>),<span class="dt">nrow=</span><span class="dv">2</span>))</code></pre></div>
+<pre><code>##            [,1]      [,2]      [,3]
+## [1,] -0.4094903 -4.234625  1.593006
+## [2,] -7.5476157  4.091040 -2.691786</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">sweep</span>(x,<span class="dv">1</span>,<span class="kw">apply</span>(x,<span class="dv">1</span>,min),<span class="st">'-'</span>)
+x1</code></pre></div>
+<pre><code>##          [,1]     [,2]     [,3]
+## [1,] 3.825135  0.00000 5.827631
+## [2,] 0.000000 11.63866 4.855829</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x2 &lt;-<span class="st"> </span><span class="kw">sweep</span>(x1,<span class="dv">1</span>,<span class="kw">apply</span>(x1,<span class="dv">1</span>,max),<span class="st">'/'</span>)
+x2</code></pre></div>
+<pre><code>##          [,1] [,2]      [,3]
+## [1,] 0.656379    0 1.0000000
+## [2,] 0.000000    1 0.4172157</code></pre>
+</div>
 <div id="lapply" class="slide section level1">
 <h1>lapply()</h1>
 <ul>
 <li>lapply will apply a function to each element of a list</li>
 <li>lapply() is written in C for performance,</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">10</span>), <span class="kw">list</span>(<span class="dt">a=</span><span class="st">'a'</span>), <span class="kw">c</span>(<span class="st">&quot;dog&quot;</span>,<span class="st">&quot;cat&quot;</span>,<span class="st">&quot;gator&quot;</span>))
+<span class="kw">unlist</span>(<span class="kw">lapply</span>(l, length))</code></pre></div>
+<pre><code>## [1] 10  1  3</code></pre>
+<ul>
 <li>a simple R implementation that does the same thing:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lapply2 &lt;-<span class="st"> </span>function(x, f, ...){
@@ -320,10 +355,7 @@ a</code></pre></div>
   }
   out
 }
-l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">10</span>), <span class="kw">list</span>(<span class="dt">a=</span><span class="st">'a'</span>), <span class="kw">c</span>(<span class="st">&quot;dog&quot;</span>,<span class="st">&quot;cat&quot;</span>,<span class="st">&quot;gator&quot;</span>))
-<span class="kw">unlist</span>(<span class="kw">lapply</span>(l, length))</code></pre></div>
-<pre><code>## [1] 10  1  3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlist</span>(<span class="kw">lapply2</span>(l, length))</code></pre></div>
+<span class="kw">unlist</span>(<span class="kw">lapply2</span>(l, length))</code></pre></div>
 <pre><code>## [1] 10  1  3</code></pre>
 </div>
 <div id="lapply-usages" class="slide section level1">
@@ -382,10 +414,41 @@ l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c<
 <pre><code>## col1 col2 
 ##    2    5</code></pre>
 </div>
+<div id="lapply-on-a-list-of-functions" class="slide section level1">
+<h1>lapply on a list of functions</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">compute_mean &lt;-<span class="st"> </span><span class="kw">list</span>(
+  <span class="dt">base =</span> function(x) <span class="kw">mean</span>(x),
+  <span class="dt">sum =</span> function(x){
+    <span class="kw">sum</span>(x)/<span class="kw">length</span>(x)},
+  <span class="dt">mannual =</span> function(x){
+    total &lt;-<span class="st"> </span><span class="dv">0</span>
+    n &lt;-<span class="st"> </span><span class="kw">length</span>(x)
+    for(i in <span class="kw">seq_along</span>(x)){
+      total &lt;-<span class="st"> </span>total +<span class="st"> </span>x[i]/n
+    }
+    total
+  }
+)
+
+<span class="kw">set.seed</span>(<span class="dv">32611</span>)
+x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="fl">1e5</span>)
+<span class="kw">lapply</span>(compute_mean,function(f) <span class="kw">system.time</span>(<span class="kw">f</span>(x)))</code></pre></div>
+<pre><code>## $base
+##    user  system elapsed 
+##   0.001   0.000   0.001 
+## 
+## $sum
+##    user  system elapsed 
+##   0.000   0.000   0.001 
+## 
+## $mannual
+##    user  system elapsed 
+##   0.071   0.004   0.094</code></pre>
+</div>
 <div id="sapply-and-vapply" class="slide section level1">
 <h1>sapply() and vapply()</h1>
 <ul>
-<li>Sapply() is similar to lapply except they simplify the output to produce an atomic vector.</li>
+<li>sapply() is similar to lapply except they simplify the output to produce an atomic vector.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aframe &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">col1=</span><span class="dv">1</span>:<span class="dv">3</span>,<span class="dt">col2=</span><span class="dv">4</span>:<span class="dv">6</span>)
 <span class="kw">sapply</span>(aframe, sum) ## if not the same atomic type, will coerce to a list</code></pre></div>
@@ -395,9 +458,62 @@ l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c<
 <li>vapply() is simimar to sapply but takes an additional argument specifying the output type.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aframe &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">col1=</span><span class="dv">1</span>:<span class="dv">3</span>,<span class="dt">col2=</span><span class="dv">4</span>:<span class="dv">6</span>)
-<span class="kw">vapply</span>(aframe, sum, <span class="kw">numeric</span>(<span class="dv">1</span>)) ## if not logical(1), will coerce to the most appropriate type</code></pre></div>
+<span class="kw">vapply</span>(aframe, sum, <span class="kw">numeric</span>(<span class="dv">1</span>)) </code></pre></div>
 <pre><code>## col1 col2 
 ##    6   15</code></pre>
+</div>
+<div id="aggregate" class="slide section level1">
+<h1>aggregate</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(state.x77)</code></pre></div>
+<pre><code>##            Population Income Illiteracy Life Exp Murder HS Grad Frost
+## Alabama          3615   3624        2.1    69.05   15.1    41.3    20
+## Alaska            365   6315        1.5    69.31   11.3    66.7   152
+## Arizona          2212   4530        1.8    70.55    7.8    58.1    15
+## Arkansas         2110   3378        1.9    70.66   10.1    39.9    65
+## California      21198   5114        1.1    71.71   10.3    62.6    20
+## Colorado         2541   4884        0.7    72.06    6.8    63.9   166
+##              Area
+## Alabama     50708
+## Alaska     566432
+## Arizona    113417
+## Arkansas    51945
+## California 156361
+## Colorado   103766</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(state.region)</code></pre></div>
+<pre><code>## [1] South West  West  South West  West 
+## Levels: Northeast South North Central West</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(state.x77, <span class="kw">list</span>(<span class="dt">Region =</span> state.region), mean)</code></pre></div>
+<pre><code>##          Region Population   Income Illiteracy Life Exp    Murder  HS Grad
+## 1     Northeast   5495.111 4570.222   1.000000 71.26444  4.722222 53.96667
+## 2         South   4208.125 4011.938   1.737500 69.70625 10.581250 44.34375
+## 3 North Central   4803.000 4611.083   0.700000 71.76667  5.275000 54.51667
+## 4          West   2915.308 4702.615   1.023077 71.23462  7.215385 62.00000
+##      Frost      Area
+## 1 132.7778  18141.00
+## 2  64.6250  54605.12
+## 3 138.8333  62652.00
+## 4 102.1538 134463.00</code></pre>
+</div>
+<div id="tapply" class="slide section level1">
+<h1>tapply</h1>
+<ul>
+<li>tapply() is a generalisation to apply by groups</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pulse &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">22</span>,<span class="dv">70</span>,<span class="dv">10</span>/<span class="dv">3</span>) +<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">12</span>)))
+groups &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">12</span>))
+<span class="kw">tapply</span>(pulse, groups, length)</code></pre></div>
+<pre><code>##  A  B 
+## 10 12</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(pulse, groups, mean)</code></pre></div>
+<pre><code>##        A        B 
+## 71.10000 75.83333</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tapply2 &lt;-<span class="st"> </span>function(x, group, f, ..., <span class="dt">simplify =</span> <span class="ot">TRUE</span>){
+  pieces &lt;-<span class="st"> </span><span class="kw">split</span>(x, group)
+  <span class="kw">sapply</span>(pieces, f, <span class="dt">simplify=</span>simplify)
+}
+<span class="kw">tapply2</span>(pulse, groups, length)</code></pre></div>
+<pre><code>##  A  B 
+## 10 12</code></pre>
 </div>
 <div id="multiple-inputs-map" class="slide section level1">
 <h1>Multiple inputs (Map)</h1>
@@ -409,22 +525,22 @@ l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c<
 ws &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">3</span>, <span class="kw">rnorm</span>(<span class="dv">4</span>, <span class="dv">1</span>) +<span class="st"> </span><span class="dv">1</span>,<span class="dt">simplify=</span><span class="ot">FALSE</span>)
 xs</code></pre></div>
 <pre><code>## [[1]]
-## [1] 0.95346560 0.32976330 0.08352812 0.11778159
+## [1] 0.98025667 0.61962004 0.09382717 0.94452920
 ## 
 ## [[2]]
-## [1] 0.2778664 0.1257173 0.7321872 0.5265919
+## [1] 0.1334957 0.8816876 0.8900496 0.4542970
 ## 
 ## [[3]]
-## [1] 0.7252483 0.7720659 0.4154090 0.4550764</code></pre>
+## [1] 0.01704906 0.74583446 0.51003283 0.81173743</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ws</code></pre></div>
 <pre><code>## [[1]]
-## [1] 1.4676732 3.1384629 3.1188829 0.8370828
+## [1] 0.4617377 2.0251183 1.6455966 1.4598447
 ## 
 ## [[2]]
-## [1] 2.4524447 2.2273302 0.8046328 2.9499891
+## [1]  1.0569145 -0.4492433  1.6109724  2.1102390
 ## 
 ## [[3]]
-## [1] 3.3197661 2.7152223 2.2282042 0.3865315</code></pre>
+## [1] 0.1507431 2.5354787 1.5159181 0.6887094</code></pre>
 </div>
 <div class="slide section level1">
 
@@ -434,20 +550,142 @@ xs</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlist</span>(<span class="kw">lapply</span>(<span class="kw">seq_along</span>(xs), function(i){
   <span class="kw">weighted.mean</span>(xs[[i]], ws[[i]])
 }))</code></pre></div>
-<pre><code>## [1] 0.3262555 0.3680225 0.6480557</code></pre>
+<pre><code>## [1] 0.5794923 0.4937814 0.6595657</code></pre>
 <ul>
 <li>approach 2</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlist</span>(<span class="kw">Map</span>(weighted.mean,xs,ws))</code></pre></div>
-<pre><code>## [1] 0.3262555 0.3680225 0.6480557</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Map</span>(weighted.mean,xs,ws)</code></pre></div>
+<pre><code>## [[1]]
+## [1] 0.5794923
+## 
+## [[2]]
+## [1] 0.4937814
+## 
+## [[3]]
+## [1] 0.6595657</code></pre>
 <ul>
 <li>extra argument</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlist</span>(<span class="kw">Map</span>(function(x,w) <span class="kw">weighted.mean</span>(x, w, <span class="dt">na.rm=</span><span class="ot">TRUE</span>),xs, ws))</code></pre></div>
-<pre><code>## [1] 0.3262555 0.3680225 0.6480557</code></pre>
+<pre><code>## [1] 0.5794923 0.4937814 0.6595657</code></pre>
 </div>
-<div id="vectorize" class="slide section level1">
-<h1>Vectorize</h1>
+<div id="approach-3" class="slide section level1">
+<h1>approach 3</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mapply</span>(weighted.mean,xs,ws)</code></pre></div>
+<pre><code>## [1] 0.5794923 0.4937814 0.6595657</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mapply</span>(function(x,y) <span class="kw">weighted.mean</span>(x,y), xs,ws)</code></pre></div>
+<pre><code>## [1] 0.5794923 0.4937814 0.6595657</code></pre>
+</div>
+<div id="common-higher-order-functions-in-functional-programming-languages" class="slide section level1">
+<h1>Common Higher-Order Functions in Functional Programming Languages</h1>
+<ul>
+<li>Reduce uses a binary function to successively combine the elements of a given vector and a possibly given initial value.</li>
+<li>Filter extracts the elements of a vector for which a predicate (logical) function gives true.</li>
+<li>Find and Position give the first or last such element and its position in the vector, respectively. - Map applies a function to the corresponding elements of given vectors.</li>
+</ul>
+</div>
+<div id="reduce" class="slide section level1">
+<h1>Reduce</h1>
+<ul>
+<li>Reduce() reduces a vector, x, to a single value by recursively calling a function, f, two arguments at a tile.</li>
+<li>Reduce(f, 1:3) is equivalent to f(f(1,2),3)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">32611</span>)
+l &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">4</span>, <span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="dv">15</span>, <span class="dt">replace =</span> T), <span class="dt">simplify =</span> <span class="ot">FALSE</span>)
+<span class="kw">str</span>(l)</code></pre></div>
+<pre><code>## List of 4
+##  $ : int [1:15] 5 4 1 6 2 1 9 5 7 6 ...
+##  $ : int [1:15] 6 7 8 6 10 3 4 9 2 10 ...
+##  $ : int [1:15] 8 6 8 8 5 5 3 6 9 8 ...
+##  $ : int [1:15] 5 6 7 2 5 9 4 10 3 8 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">intersect</span>(<span class="kw">intersect</span>(<span class="kw">intersect</span>(l[[<span class="dv">1</span>]], l[[<span class="dv">2</span>]]),
+  l[[<span class="dv">3</span>]]), l[[<span class="dv">4</span>]])</code></pre></div>
+<pre><code>## [1] 1 6 2 9 7 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Reduce</span>(intersect,l)</code></pre></div>
+<pre><code>## [1] 1 6 2 9 7 3</code></pre>
+</div>
+<div id="reduce-2" class="slide section level1">
+<h1>Reduce 2</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">10</span>)
+<span class="kw">Reduce</span>(<span class="st">'+'</span>, a)</code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b =<span class="st"> </span><span class="kw">as.list</span>(letters[<span class="dv">1</span>:<span class="dv">10</span>])
+<span class="kw">Reduce</span>(<span class="st">&quot;paste0&quot;</span>, b)</code></pre></div>
+<pre><code>## [1] &quot;abcdefghij&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d &lt;-<span class="st"> </span><span class="kw">as.list</span>(letters[<span class="dv">1</span>:<span class="dv">10</span>])
+<span class="kw">Reduce</span>(<span class="st">&quot;c&quot;</span>,d)</code></pre></div>
+<pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot;</code></pre>
+</div>
+<div id="reduce-3" class="slide section level1">
+<h1>Reduce 3</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Iterative function application:
+Funcall &lt;-<span class="st"> </span>function(f, ...) <span class="kw">f</span>(...)
+## Compute log(exp(acos(cos(0))
+<span class="kw">Reduce</span>(Funcall, <span class="kw">list</span>(log, exp, acos, cos), <span class="dv">0</span>, <span class="dt">right =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="filter" class="slide section level1">
+<h1>Filter</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alist =<span class="st"> </span><span class="kw">list</span>(<span class="dt">a=</span><span class="st">&quot;a&quot;</span>, <span class="dt">b=</span><span class="dv">1</span>, <span class="dt">c=</span><span class="ot">FALSE</span>, <span class="dt">d=</span><span class="kw">list</span>(<span class="dv">1</span>:<span class="dv">10</span>), <span class="dt">e=</span><span class="st">&quot;e&quot;</span>, <span class="dt">f =</span> <span class="dv">2</span>)
+<span class="kw">Filter</span>(is.character, alist)</code></pre></div>
+<pre><code>## $a
+## [1] &quot;a&quot;
+## 
+## $e
+## [1] &quot;e&quot;</code></pre>
+</div>
+<div id="find" class="slide section level1">
+<h1>Find</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alist =<span class="st"> </span><span class="kw">list</span>(<span class="dt">a=</span><span class="st">&quot;a&quot;</span>, <span class="dt">b=</span><span class="dv">1</span>, <span class="dt">c=</span><span class="ot">FALSE</span>, <span class="dt">d=</span><span class="kw">list</span>(<span class="dv">1</span>:<span class="dv">10</span>), <span class="dt">e=</span><span class="st">&quot;e&quot;</span>, <span class="dt">f =</span> <span class="dv">2</span>)
+<span class="kw">Find</span>(is.character, alist)</code></pre></div>
+<pre><code>## [1] &quot;a&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Find</span>(is.numeric, alist)</code></pre></div>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="position" class="slide section level1">
+<h1>Position</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alist =<span class="st"> </span><span class="kw">list</span>(<span class="dt">a=</span><span class="st">&quot;a&quot;</span>, <span class="dt">b=</span><span class="dv">1</span>, <span class="dt">c=</span><span class="ot">FALSE</span>, <span class="dt">d=</span><span class="kw">list</span>(<span class="dv">1</span>:<span class="dv">10</span>), <span class="dt">e=</span><span class="st">&quot;e&quot;</span>, <span class="dt">f =</span> <span class="dv">2</span>)
+<span class="kw">Position</span>(is.character, alist)</code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Position</span>(is.numeric, alist)</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="outer" class="slide section level1">
+<h1>Outer</h1>
+<ul>
+<li>It takes multiple vector inputs and creates a matrix or array output where the input function is run over every combination of the inputs.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">outer</span>(<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">5</span>, <span class="st">&quot;*&quot;</span>)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    2    3    4    5
+## [2,]    2    4    6    8   10
+## [3,]    3    6    9   12   15</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>:<span class="dv">3</span> %o%<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    2    3    4    5
+## [2,]    2    4    6    8   10
+## [3,]    3    6    9   12   15</code></pre>
+</div>
+<div id="outer-2" class="slide section level1">
+<h1>Outer 2</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">outer</span>(<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">5</span>, <span class="st">&quot;paste&quot;</span>)</code></pre></div>
+<pre><code>##      [,1]  [,2]  [,3]  [,4]  [,5] 
+## [1,] &quot;1 1&quot; &quot;1 2&quot; &quot;1 3&quot; &quot;1 4&quot; &quot;1 5&quot;
+## [2,] &quot;2 1&quot; &quot;2 2&quot; &quot;2 3&quot; &quot;2 4&quot; &quot;2 5&quot;
+## [3,] &quot;3 1&quot; &quot;3 2&quot; &quot;3 3&quot; &quot;3 4&quot; &quot;3 5&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">outer</span>(<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">5</span>, <span class="st">&quot;&gt;&quot;</span>)</code></pre></div>
+<pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]
+## [1,] FALSE FALSE FALSE FALSE FALSE
+## [2,]  TRUE FALSE FALSE FALSE FALSE
+## [3,]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">outer</span>(<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">5</span>, <span class="st">&quot;^&quot;</span>)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    1    1    1    1
+## [2,]    2    4    8   16   32
+## [3,]    3    9   27   81  243</code></pre>
+</div>
+<div id="vectorize-a-function" class="slide section level1">
+<h1>Vectorize a function</h1>
 <ul>
 <li>if your function has to take a scaler as input, you can vectorize it by vectorize function</li>
 </ul>
@@ -473,7 +711,217 @@ combnV &lt;-<span class="st"> </span><span class="kw">Vectorize</span>(function(
 ## [3,]    3    4    5    4    5    5    4    5    5     5</code></pre>
 </div>
 <div id="balance-between-efficiency-and-simplicity-of-your-code" class="slide section level1">
-<h1>balance between efficiency and simplicity of your code</h1>
+<h1>Balance between efficiency and simplicity of your code</h1>
+<ul>
+<li>If looping is very time-consuming relative to the actual operation, you may need to consider vectorized calculation to improve efficiency.</li>
+<li>If looping is ignorable comparing to the actual operation (e.g. Gibbs sampling), you can keep your loop to make it readible.</li>
+</ul>
+</div>
+<div class="slide section level1">
+
+<p>end</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">suppressWarnings</span>(<span class="kw">library</span>(knitr))
+<span class="kw">purl</span>(<span class="st">&quot;vectorized.rmd&quot;</span>, <span class="dt">output =</span> <span class="st">&quot;vectorized.R &quot;</span>, <span class="dt">documentation =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>## 
+## 
+## processing file: vectorized.rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.                                                                |   1%
+  |                                                                       
+  |.                                                                |   2%
+  |                                                                       
+  |..                                                               |   3%
+  |                                                                       
+  |...                                                              |   4%
+  |                                                                       
+  |...                                                              |   5%
+  |                                                                       
+  |....                                                             |   6%
+  |                                                                       
+  |.....                                                            |   7%
+  |                                                                       
+  |.....                                                            |   8%
+  |                                                                       
+  |......                                                           |   9%
+  |                                                                       
+  |.......                                                          |  10%
+  |                                                                       
+  |.......                                                          |  11%
+  |                                                                       
+  |........                                                         |  12%
+  |                                                                       
+  |.........                                                        |  14%
+  |                                                                       
+  |.........                                                        |  15%
+  |                                                                       
+  |..........                                                       |  16%
+  |                                                                       
+  |...........                                                      |  17%
+  |                                                                       
+  |............                                                     |  18%
+  |                                                                       
+  |............                                                     |  19%
+  |                                                                       
+  |.............                                                    |  20%
+  |                                                                       
+  |..............                                                   |  21%
+  |                                                                       
+  |..............                                                   |  22%
+  |                                                                       
+  |...............                                                  |  23%
+  |                                                                       
+  |................                                                 |  24%
+  |                                                                       
+  |................                                                 |  25%
+  |                                                                       
+  |.................                                                |  26%
+  |                                                                       
+  |..................                                               |  27%
+  |                                                                       
+  |..................                                               |  28%
+  |                                                                       
+  |...................                                              |  29%
+  |                                                                       
+  |....................                                             |  30%
+  |                                                                       
+  |....................                                             |  31%
+  |                                                                       
+  |.....................                                            |  32%
+  |                                                                       
+  |......................                                           |  33%
+  |                                                                       
+  |......................                                           |  34%
+  |                                                                       
+  |.......................                                          |  35%
+  |                                                                       
+  |........................                                         |  36%
+  |                                                                       
+  |........................                                         |  38%
+  |                                                                       
+  |.........................                                        |  39%
+  |                                                                       
+  |..........................                                       |  40%
+  |                                                                       
+  |..........................                                       |  41%
+  |                                                                       
+  |...........................                                      |  42%
+  |                                                                       
+  |............................                                     |  43%
+  |                                                                       
+  |............................                                     |  44%
+  |                                                                       
+  |.............................                                    |  45%
+  |                                                                       
+  |..............................                                   |  46%
+  |                                                                       
+  |..............................                                   |  47%
+  |                                                                       
+  |...............................                                  |  48%
+  |                                                                       
+  |................................                                 |  49%
+  |                                                                       
+  |................................                                 |  50%
+  |                                                                       
+  |.................................                                |  51%
+  |                                                                       
+  |..................................                               |  52%
+  |                                                                       
+  |...................................                              |  53%
+  |                                                                       
+  |...................................                              |  54%
+  |                                                                       
+  |....................................                             |  55%
+  |                                                                       
+  |.....................................                            |  56%
+  |                                                                       
+  |.....................................                            |  57%
+  |                                                                       
+  |......................................                           |  58%
+  |                                                                       
+  |.......................................                          |  59%
+  |                                                                       
+  |.......................................                          |  60%
+  |                                                                       
+  |........................................                         |  61%
+  |                                                                       
+  |.........................................                        |  62%
+  |                                                                       
+  |.........................................                        |  64%
+  |                                                                       
+  |..........................................                       |  65%
+  |                                                                       
+  |...........................................                      |  66%
+  |                                                                       
+  |...........................................                      |  67%
+  |                                                                       
+  |............................................                     |  68%
+  |                                                                       
+  |.............................................                    |  69%
+  |                                                                       
+  |.............................................                    |  70%
+  |                                                                       
+  |..............................................                   |  71%
+  |                                                                       
+  |...............................................                  |  72%
+  |                                                                       
+  |...............................................                  |  73%
+  |                                                                       
+  |................................................                 |  74%
+  |                                                                       
+  |.................................................                |  75%
+  |                                                                       
+  |.................................................                |  76%
+  |                                                                       
+  |..................................................               |  77%
+  |                                                                       
+  |...................................................              |  78%
+  |                                                                       
+  |...................................................              |  79%
+  |                                                                       
+  |....................................................             |  80%
+  |                                                                       
+  |.....................................................            |  81%
+  |                                                                       
+  |.....................................................            |  82%
+  |                                                                       
+  |......................................................           |  83%
+  |                                                                       
+  |.......................................................          |  84%
+  |                                                                       
+  |........................................................         |  85%
+  |                                                                       
+  |........................................................         |  86%
+  |                                                                       
+  |.........................................................        |  88%
+  |                                                                       
+  |..........................................................       |  89%
+  |                                                                       
+  |..........................................................       |  90%
+  |                                                                       
+  |...........................................................      |  91%
+  |                                                                       
+  |............................................................     |  92%
+  |                                                                       
+  |............................................................     |  93%
+  |                                                                       
+  |.............................................................    |  94%
+  |                                                                       
+  |..............................................................   |  95%
+  |                                                                       
+  |..............................................................   |  96%
+  |                                                                       
+  |...............................................................  |  97%
+  |                                                                       
+  |................................................................ |  98%
+  |                                                                       
+  |................................................................ |  99%
+  |                                                                       
+  |.................................................................| 100%</code></pre>
+<pre><code>## output file: vectorized.R</code></pre>
+<pre><code>## [1] &quot;vectorized.R &quot;</code></pre>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
