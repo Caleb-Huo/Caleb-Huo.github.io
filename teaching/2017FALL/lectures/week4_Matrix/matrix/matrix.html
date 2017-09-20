@@ -55,15 +55,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Monday September 13, 2017</p>
+  <p class="date">Monday September 20, 2017</p>
 </div>
-<div id="outlines" class="slide section level1">
-<h1>Outlines</h1>
-<ul>
-<li>Basic Matrix operations</li>
-<li>Data reshape</li>
-<li>SVD and PCA</li>
-</ul>
+<div id="summary-of-all-matrix-operations" class="slide section level1">
+<h1>Summary of all matrix operations</h1>
+<p><a href="http://www.statmethods.net/advstats/matrix.html" class="uri">http://www.statmethods.net/advstats/matrix.html</a></p>
 </div>
 <div id="create-a-matrix" class="slide section level1">
 <h1>Create a matrix</h1>
@@ -89,7 +85,7 @@ mdat</code></pre></div>
 ## row2   2  11  13</code></pre>
 </div>
 <div id="appending-a-column-or-a-row-to-a-matrix" class="slide section level1">
-<h1>appending a column or a row to a matrix</h1>
+<h1>Appending a column or a row to a matrix</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(mdat)</code></pre></div>
 <pre><code>## [1] 2 3</code></pre>
 <ul>
@@ -106,7 +102,7 @@ mdat</code></pre></div>
 <pre><code>## [1] 3 3</code></pre>
 </div>
 <div id="subset-of-a-matrix" class="slide section level1">
-<h1>subset of a matrix</h1>
+<h1>Subset of a matrix</h1>
 <ul>
 <li>by numeric index</li>
 </ul>
@@ -148,8 +144,24 @@ mdat</code></pre></div>
 <pre><code>## C.1 C.3 
 ##   1  12</code></pre>
 </div>
+<div id="transponse-of-a-matrix" class="slide section level1">
+<h1>Transponse of a Matrix</h1>
+<ul>
+<li>t()</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>,<span class="dt">nrow=</span><span class="dv">2</span>,<span class="dt">ncol=</span><span class="dv">3</span>)
+mat1</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t</span>(mat1)</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+## [3,]    5    6</code></pre>
+</div>
 <div id="element-wise-multiplication-by-a-scalarvectormatrix" class="slide section level1">
-<h1>element-wise Multiplication by a Scalar/Vector/Matrix</h1>
+<h1>Element-wise Multiplication by a Scalar/Vector/Matrix</h1>
 <ul>
 <li>by a scalar</li>
 </ul>
@@ -222,21 +234,37 @@ mat2</code></pre></div>
 ## [2,]   12   26   40
 ## [3,]   15   33   51</code></pre>
 </div>
-<div id="transponse-of-a-matrix" class="slide section level1">
-<h1>Transponse of a Matrix</h1>
+<div id="crossprod" class="slide section level1">
+<h1>crossProd</h1>
 <ul>
-<li>t</li>
+<li>crossprod(A,B): <span class="math inline">\(A^\top B\)</span></li>
+<li>crossprod(A) <span class="math inline">\(A^\top A\)</span></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>,<span class="dt">nrow=</span><span class="dv">2</span>,<span class="dt">ncol=</span><span class="dv">3</span>)
-mat1</code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    3    5
-## [2,]    2    4    6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t</span>(mat1)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">ncol =</span><span class="dv">1</span>)
+B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">ncol=</span><span class="dv">1</span>)
+
+A </code></pre></div>
+<pre><code>##      [,1]
+## [1,]    1
+## [2,]    2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">B</code></pre></div>
+<pre><code>##      [,1]
+## [1,]    2
+## [2,]    2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">crossprod</span>(A,B)</code></pre></div>
+<pre><code>##      [,1]
+## [1,]    6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">crossprod</span>(<span class="kw">t</span>(A),<span class="kw">t</span>(B))</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    2    2
+## [2,]    4    4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">crossprod</span>(A)</code></pre></div>
+<pre><code>##      [,1]
+## [1,]    5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">crossprod</span>(<span class="kw">t</span>(A))</code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    2
-## [2,]    3    4
-## [3,]    5    6</code></pre>
+## [2,]    2    4</code></pre>
 </div>
 <div id="diagonal-matrix" class="slide section level1">
 <h1>Diagonal Matrix</h1>
@@ -245,6 +273,7 @@ mat1</code></pre></div>
 <ul>
 <li>if input is a square matrix, return the diagnal element.</li>
 <li>if input is a vector, return a diagnal matrix.</li>
+<li>if input is a scalar (i.e. k), return this creates a k x k identity matrix</li>
 </ul></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">3</span>)
@@ -255,11 +284,16 @@ S</code></pre></div>
 ## [3,]    3    6    9</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(S)</code></pre></div>
 <pre><code>## [1] 1 5 9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(<span class="kw">diag</span>(S))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>))</code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    0    0
-## [2,]    0    5    0
-## [3,]    0    0    9</code></pre>
+## [2,]    0    4    0
+## [3,]    0    0    7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(<span class="dv">3</span>)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0
+## [3,]    0    0    1</code></pre>
 </div>
 <div id="inverse-of-a-matrix" class="slide section level1">
 <h1>Inverse of a Matrix</h1>
@@ -281,6 +315,135 @@ SI</code></pre></div>
 ## [2,]    0    1    0
 ## [3,]    0    0    1</code></pre>
 </div>
+<div id="more-about-solve" class="slide section level1">
+<h1>More about solve</h1>
+<ul>
+<li>solve(A, b) Returns vector x in the equation <span class="math inline">\(b = Ax\)</span> (i.e., <span class="math inline">\(A^{-1}b\)</span>)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">32608</span>)
+(A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>))</code></pre></div>
+<pre><code>##             [,1]       [,2]       [,3]
+## [1,]  0.07699352  0.3381365 -1.9363229
+## [2,] -0.56610906 -0.3786229 -0.5720703
+## [3,]  0.80627284  0.7446219  0.7198154</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(b &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">3</span>))</code></pre></div>
+<pre><code>## [1] 0.5756702 0.8367205 0.2964995</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(x &lt;-<span class="st"> </span><span class="kw">solve</span>(A,b))</code></pre></div>
+<pre><code>## [1] -7.2976775  7.5871849  0.7374597</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A %*%<span class="st"> </span>x</code></pre></div>
+<pre><code>##           [,1]
+## [1,] 0.5756702
+## [2,] 0.8367205
+## [3,] 0.2964995</code></pre>
+</div>
+<div id="moore-penrose-generalized-inverse" class="slide section level1">
+<h1>Moore-Penrose Generalized Inverse</h1>
+<ul>
+<li>Generalized inverse of a matrix <span class="math inline">\(A\in \mathbb{R}^{n\times m}\)</span> is defined as <span class="math inline">\(A^g \in \mathbb{R}^{m\times n}\)</span>: <span class="math display">\[AA^gA = A\]</span></li>
+<li>Regular inverse is a special case of Generalized Inverse when <span class="math inline">\(m = n\)</span> and <span class="math inline">\(A\)</span> is non-singular.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
+<span class="kw">set.seed</span>(<span class="dv">32608</span>)
+A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>),<span class="dv">3</span>,<span class="dv">3</span>)
+<span class="kw">ginv</span>(A)</code></pre></div>
+<pre><code>##            [,1]      [,2]       [,3]
+## [1,]  0.7013869 -7.703428 -4.2355174
+## [2,] -0.2457031  7.389853  5.2121071
+## [3,] -0.5314604  0.984167  0.7417649</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(A2 &lt;-<span class="st"> </span>A[,<span class="dv">1</span>:<span class="dv">2</span>])</code></pre></div>
+<pre><code>##             [,1]       [,2]
+## [1,]  0.07699352  0.3381365
+## [2,] -0.56610906 -0.3786229
+## [3,]  0.80627284  0.7446219</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ginv</span>(A2)</code></pre></div>
+<pre><code>##           [,1]      [,2]      [,3]
+## [1,] -2.572491 -1.640808 0.3338684
+## [2,]  3.079399  1.232375 0.5712269</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A2 %*%<span class="st"> </span><span class="kw">ginv</span>(A2) %*%<span class="st"> </span>A2</code></pre></div>
+<pre><code>##             [,1]       [,2]
+## [1,]  0.07699352  0.3381365
+## [2,] -0.56610906 -0.3786229
+## [3,]  0.80627284  0.7446219</code></pre>
+</div>
+<div id="eigen-value-decomposition" class="slide section level1">
+<h1>Eigen value decomposition</h1>
+<ul>
+<li><p>reference: <a href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix" class="uri">https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix</a></p></li>
+<li><p>A (non-zero) vector <span class="math inline">\(v\)</span> of dimension <span class="math inline">\(N\)</span> is an eigenvector of a square <span class="math inline">\(A\in \mathbb{R}^{N\times N}\)</span> if it satisfies the linear equation <span class="math display">\[Av = \lambda v\]</span></p></li>
+<li><p>Let A be a square (N×N) matrix with N linearly independent eigenvectors, <span class="math inline">\(q_i (i = 1, \ldots, N)\)</span>. Then <span class="math inline">\(A\)</span> can be factorized as <span class="math display">\[A = Q \Lambda Q^{-1}\]</span></p></li>
+</ul>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A0 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,
+       <span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,
+       <span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)
+A &lt;-<span class="st"> </span><span class="kw">matrix</span>(A0,<span class="dv">3</span>,<span class="dv">3</span>)
+<span class="kw">eigen</span>(A)</code></pre></div>
+<pre><code>## $values
+## [1] 5.732051 2.267949 1.000000
+## 
+## $vectors
+##            [,1]       [,2]       [,3]
+## [1,] -0.4597008  0.8880738  0.0000000
+## [2,] -0.6279630 -0.3250576 -0.7071068
+## [3,] -0.6279630 -0.3250576  0.7071068</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Q &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)$vectors
+lambda &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)$values
+
+Q %*%<span class="st"> </span><span class="kw">t</span>(Q)</code></pre></div>
+<pre><code>##               [,1]          [,2]          [,3]
+## [1,]  1.000000e+00 -5.551115e-17  0.000000e+00
+## [2,] -5.551115e-17  1.000000e+00 -2.220446e-16
+## [3,]  0.000000e+00 -2.220446e-16  1.000000e+00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Q %*%<span class="st"> </span><span class="kw">diag</span>(lambda) %*%<span class="st"> </span><span class="kw">ginv</span>(Q)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    3    1    1
+## [2,]    1    3    2
+## [3,]    1    2    3</code></pre>
+</div>
+<div id="singular-value-decomposition-svd" class="slide section level1">
+<h1>Singular value decomposition (SVD)</h1>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Singular_value_decomposition" class="uri">https://en.wikipedia.org/wiki/Singular_value_decomposition</a></p></li>
+<li>Singular value decomposition of <span class="math inline">\(M \in \mathbb{R}^{m \times n}\)</span> can be factorized as <span class="math inline">\(U\Sigma V^\top\)</span>
+<ul>
+<li><span class="math inline">\(U \in \mathbb{R}^{m \times m}\)</span> such that <span class="math inline">\(UU^\top = I_m\)</span>.</li>
+<li><span class="math inline">\(\Sigma \in \mathbb{R}^{m \times n}\)</span> rectangular diagonal matrix.</li>
+<li><span class="math inline">\(V \in \mathbb{R}^{n \times n}\)</span> such that <span class="math inline">\(VV^\top = I_n\)</span>.</li>
+</ul></li>
+<li>Equivalently, if <span class="math inline">\(m \le n\)</span>, <span class="math inline">\(M \in \mathbb{R}^{m \times n}\)</span>, <span class="math inline">\(M = U\Sigma V^\top\)</span>
+<ul>
+<li><span class="math inline">\(U \in \mathbb{R}^{m \times m}\)</span> such that <span class="math inline">\(UU^\top = I_m\)</span>.</li>
+<li><span class="math inline">\(\Sigma \in \mathbb{R}^{m \times m}\)</span> rectangular diagonal matrix.</li>
+<li><span class="math inline">\(V \in \mathbb{R}^{n \times m}\)</span> such that <span class="math inline">\(V^\top V= I_m\)</span>.</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">3</span>) 
+M</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">svd</span>(M)</code></pre></div>
+<pre><code>## $d
+## [1] 9.5255181 0.5143006
+## 
+## $u
+##            [,1]       [,2]
+## [1,] -0.6196295 -0.7848945
+## [2,] -0.7848945  0.6196295
+## 
+## $v
+##            [,1]       [,2]
+## [1,] -0.2298477  0.8834610
+## [2,] -0.5247448  0.2407825
+## [3,] -0.8196419 -0.4018960</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">svdRes &lt;-<span class="st"> </span><span class="kw">svd</span>(M)
+svdRes$u %*%<span class="st"> </span><span class="kw">diag</span>(svdRes$d) %*%<span class="st"> </span><span class="kw">t</span>(svdRes$v)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+</div>
 <div id="determinant-of-a-matrix" class="slide section level1">
 <h1>Determinant of a Matrix</h1>
 <ul>
@@ -291,7 +454,10 @@ SI</code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <ul>
 <li>rank (rank function has been implemented for the purpose of rank of a vector)</li>
-<li>To get the rank of a matrix:</li>
+<li>To get the rank of a matrix:
+<ul>
+<li>Perform QR decomposition first.</li>
+</ul></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,-<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">3</span>)
 QR &lt;-<span class="st"> </span><span class="kw">qr</span>(S)
@@ -316,6 +482,126 @@ QR$rank</code></pre></div>
 <pre><code>## [1] 2.000000 3.333333 4.666667</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colMeans</span>(S)</code></pre></div>
 <pre><code>## [1] 2.000000 3.333333 4.666667</code></pre>
+</div>
+<div id="generate-code" class="slide section level1">
+<h1>Generate code</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">purl</span>(<span class="st">&quot;matrix.rmd&quot;</span>, <span class="dt">output =</span> <span class="st">&quot;matrix.R &quot;</span>, <span class="dt">documentation =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>## 
+## 
+## processing file: matrix.rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.                                                                |   2%
+  |                                                                       
+  |..                                                               |   4%
+  |                                                                       
+  |....                                                             |   6%
+  |                                                                       
+  |.....                                                            |   7%
+  |                                                                       
+  |......                                                           |   9%
+  |                                                                       
+  |.......                                                          |  11%
+  |                                                                       
+  |........                                                         |  13%
+  |                                                                       
+  |..........                                                       |  15%
+  |                                                                       
+  |...........                                                      |  17%
+  |                                                                       
+  |............                                                     |  19%
+  |                                                                       
+  |.............                                                    |  20%
+  |                                                                       
+  |..............                                                   |  22%
+  |                                                                       
+  |................                                                 |  24%
+  |                                                                       
+  |.................                                                |  26%
+  |                                                                       
+  |..................                                               |  28%
+  |                                                                       
+  |...................                                              |  30%
+  |                                                                       
+  |....................                                             |  31%
+  |                                                                       
+  |......................                                           |  33%
+  |                                                                       
+  |.......................                                          |  35%
+  |                                                                       
+  |........................                                         |  37%
+  |                                                                       
+  |.........................                                        |  39%
+  |                                                                       
+  |..........................                                       |  41%
+  |                                                                       
+  |............................                                     |  43%
+  |                                                                       
+  |.............................                                    |  44%
+  |                                                                       
+  |..............................                                   |  46%
+  |                                                                       
+  |...............................                                  |  48%
+  |                                                                       
+  |................................                                 |  50%
+  |                                                                       
+  |..................................                               |  52%
+  |                                                                       
+  |...................................                              |  54%
+  |                                                                       
+  |....................................                             |  56%
+  |                                                                       
+  |.....................................                            |  57%
+  |                                                                       
+  |.......................................                          |  59%
+  |                                                                       
+  |........................................                         |  61%
+  |                                                                       
+  |.........................................                        |  63%
+  |                                                                       
+  |..........................................                       |  65%
+  |                                                                       
+  |...........................................                      |  67%
+  |                                                                       
+  |.............................................                    |  69%
+  |                                                                       
+  |..............................................                   |  70%
+  |                                                                       
+  |...............................................                  |  72%
+  |                                                                       
+  |................................................                 |  74%
+  |                                                                       
+  |.................................................                |  76%
+  |                                                                       
+  |...................................................              |  78%
+  |                                                                       
+  |....................................................             |  80%
+  |                                                                       
+  |.....................................................            |  81%
+  |                                                                       
+  |......................................................           |  83%
+  |                                                                       
+  |.......................................................          |  85%
+  |                                                                       
+  |.........................................................        |  87%
+  |                                                                       
+  |..........................................................       |  89%
+  |                                                                       
+  |...........................................................      |  91%
+  |                                                                       
+  |............................................................     |  93%
+  |                                                                       
+  |.............................................................    |  94%
+  |                                                                       
+  |...............................................................  |  96%
+  |                                                                       
+  |................................................................ |  98%
+  |                                                                       
+  |.................................................................| 100%</code></pre>
+<pre><code>## output file: matrix.R</code></pre>
+<pre><code>## [1] &quot;matrix.R &quot;</code></pre>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
