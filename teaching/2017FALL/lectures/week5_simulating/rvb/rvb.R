@@ -9,6 +9,19 @@
 #'   beamer_presentation: null
 #' ---
 #' 
+#' HW1
+#' ===
+#' ![](https://caleb-huo.github.io/teaching/2017FALL/HW/HW1/solution/gradeDistHW1.png)![](https://caleb-huo.github.io/teaching/2017FALL/HW/HW1/solution/questionCountHW1.png)
+#' 
+#' 
+#' HW1 Solution:
+#' ===
+#' 
+#' - Rdata: canvas
+#' - html: canvas
+#' - grading script: <https://caleb-huo.github.io/teaching/2017FALL/HW/HW1/solution/grade.R>
+#' 
+#' 
 #' Outlines
 #' ===
 #' 
