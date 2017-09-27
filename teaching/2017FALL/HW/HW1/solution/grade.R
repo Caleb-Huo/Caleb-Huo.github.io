@@ -21,27 +21,8 @@ grading <- function(standard, submission, tol=1e-2){
 	  scores["B3"] <- abs(submission$B3 - standard$B3) < tol * standard$B3
 	}
 	 
-	
-	B4_a <- tryCatch(submission$B4("a"), error=function(e) {-1}) == -1
-	B4_c <- tryCatch(submission$B4(x=1:4, a=-3), error=function(e) {-1}) == -1
-	B4_d <- all(tryCatch(submission$B4(x=1:4, a=2), error=function(e) {-1}) == tryCatch(standard$B4(x=1:4, a=2), error=function(e) {-1}))
-	B4_all <- list(B4_a, B4_c, B4_d)
-	if(any(sapply(B4_all,length) == 0)){
-	  scores["B4"] <- 0
-	} else {
-		scores["B4"] <- B4_a  && B4_c && B4_d
-	}
-	
-	B5_a <- tryCatch(tryCatch(submission$B5("a"), error=function(e) {-2}) == standard$B5("a"), error=function(ee) 0)
-	B5_c <- tryCatch(tryCatch(submission$B5(x=1:4, a=-3), error=function(e) {-2}) == standard$B5(x=1:4, a=-3), error=function(ee) 0)
-	B5_d <- tryCatch(all(tryCatch(submission$B5(x=1:4, a=2), error=function(e) {-2}) == standard$B5(x=1:4, a=2)), error=function(ee) 0)
-	B5_all <- list(B5_a, B5_c, B5_d)
-	if(any(sapply(B5_all,length) == 0)){
-	  scores["B5"] <- 0
-	} else {
-	  scores["B5"] <- B5_a  && B5_c && B5_d
-	}
-  
+	scores["B4"] <- 1
+	scores["B5"] <- 1
 	
 	scores["C1a"] <- abs(submission$C1a - standard$C1a) < tol
 	scores["C1b"] <- abs(submission$C1b - standard$C1b) < tol
@@ -49,12 +30,11 @@ grading <- function(standard, submission, tol=1e-2){
 	scores["C3a"] <- all(submission$C3a %in% standard$C3a) & all(standard$C3a %in% submission$C3a)
 	scores["C3b"] <- all(submission$C3b %in% standard$C3b) & all(standard$C3b %in% submission$C3b)
 	scores["C4"] <- all(submission$C4 %in% standard$C4) & all(standard$C4 %in% submission$C4)
-	scores["C5a"] <- abs(submission$C5a - standard$C5a) < tol * standard$C5a
-	scores["C5b"] <- abs(submission$C5b - standard$C5b) < tol * standard$C5b
+	scores["C5a"] <- abs(unlist(submission$C5a) - standard$C5a) < tol * standard$C5a
+	scores["C5b"] <- abs(unlist(submission$C5b) - standard$C5b) < tol * standard$C5b
 	scores["C6"] <- abs(submission$C6 - standard$C6) < tol * standard$C6
 	
 	gradeInfo <- list(name=studentName, scores=scores, grade=sum(scores * scoreTitle) + 10)
 	return(gradeInfo)
 }
-
 
