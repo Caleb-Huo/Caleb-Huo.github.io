@@ -67,6 +67,7 @@ Zhiguang Huo (Caleb)
 <li>Rdata: canvas</li>
 <li>html: canvas</li>
 <li>grading script: <a href="https://caleb-huo.github.io/teaching/2017FALL/HW/HW1/solution/grade.R" class="uri">https://caleb-huo.github.io/teaching/2017FALL/HW/HW1/solution/grade.R</a></li>
+<li>get your grade: <a href="https://caleb-huo.github.io/teaching/2017FALL/HW/HW1/solution/getYourGrade.R" class="uri">https://caleb-huo.github.io/teaching/2017FALL/HW/HW1/solution/getYourGrade.R</a></li>
 </ul>
 </div>
 <div id="outlines" class="slide section level1">
@@ -80,11 +81,11 @@ Zhiguang Huo (Caleb)
 <h1>Random samples from a given pool of numbers</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
 <span class="kw">sample</span>(<span class="dt">x =</span> a, <span class="dt">size =</span> <span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1]  6 10</code></pre>
+<pre><code>## [1] 4 2</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">x =</span> a, <span class="dt">size =</span> <span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 6 2</code></pre>
+<pre><code>## [1] 6 9</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">x =</span> a, <span class="dt">size =</span> <span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 5 8</code></pre>
+<pre><code>## [1] 1 4</code></pre>
 </div>
 <div id="are-they-really-random-can-generate-the-same-random-number-for-reproducibility" class="slide section level1">
 <h1>Are they really random? Can generate the same random number (for reproducibility)?</h1>
