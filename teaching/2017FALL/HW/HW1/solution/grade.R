@@ -1,8 +1,3 @@
-setwd("~/Dropbox/teaching/2017FALL/HW/HW1/grading")
-
-standard <- get(load("hw1_Huo_Zhiguang.Rdata"))
-
-
 grading <- function(standard, submission, tol=1e-2){
 	studentName <- paste(submission$firstName, submission$lastName)
 	fixedTitle <- c("firstName", "lastName", "GatorLinkID")
@@ -62,40 +57,4 @@ grading <- function(standard, submission, tol=1e-2){
 	return(gradeInfo)
 }
 
-
-submissionFiles0 <- dir("submission", full.names = T)
-submissionFiles <- setdiff(submissionFiles0, c("submission/HW1_Hasan_Hasibul.rds",
-                                               "submission/hw1_Subedi_Pooja-1.Rdata"))
-
-names <- NULL
-finalGrades <- NULL
-details <- NULL
-
-for(i in 1:length(submissionFiles)){
-  afile <- submissionFiles[i]
-  cat("grading ",afile, "\n")
-  submission <- get(load(afile))
-  
-  agrading <- grading(standard=standard, submission=submission)
-  
-  names <- c(names, agrading$name)
-  finalGrades <- c(finalGrades, agrading$grade)
-  details <- cbind(details, agrading$scores)
-}
-
-colnames(details) <- names
-names(finalGrades) <- names
-
-write.csv(finalGrades, "finalGrades.csv")
-
-png("gradeDistHW1.png")
-hist(finalGrades,nclass=10, main="HW1 grade")
-dev.off()
-
-## analysize the grade
-questionCount <- rowSums(details)
-
-png("questionCountHW1.png")
-barplot(questionCount)
-dev.off()
 
