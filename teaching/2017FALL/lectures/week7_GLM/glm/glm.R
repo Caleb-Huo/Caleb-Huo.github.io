@@ -302,7 +302,7 @@ summary(glm_binomial_logit)
 #' 
 #' interpret logistic regression
 #' ===
-#' $$y|X = f(\mu) + \varepsilon$$
+#' $$y|X \sim f(\mu)$$
 #' 
 #' - $logit(\mu_i) = \log(\frac{\mu_i}{1 - \mu_i}) = X_i^\top \beta = \beta_0 + \beta_1 x_i$
 #' - $0 \le \mu_i$ for any given value $X_i$
@@ -339,7 +339,7 @@ curve(flogit_minus, -5, 5,  ylab = expression(beta < 0), lwd = 2)
 #' ===
 #' 
 #' - $logit(\mu_i) = \log(\frac{\mu_i}{1 - \mu_i}) = \beta_0 + \beta_1 x_i + Z_i^\top\gamma$
-#' - Suppose there is only one binary predictor x
+#' - for predictor x
 #' 
 #' $$\hat{OR} = \frac{\hat{odds}|_{x_1=1}}{\hat{odds}|_{x_1=0}}
 #' = \frac{\frac{\hat{\mu}_i}{1 - \hat{\mu}_i}|_{x_1=1}}{\frac{\hat{\mu}_i}{1 - \hat{\mu}_i}|_{x_1=0}}
@@ -379,6 +379,7 @@ step(glm(svi ~ ., data = prostate,  family = binomial()))
 #' Estimation for $\beta$
 #' ===
 #' 
+#' - The estimating equation can be least square loss or likelihood function.
 #' - Two methods are typically used to solve the estimating equations of $\beta$:
 #'     - Newton-Raphson method (an iterative method for solving nonlinear equations)
 #'     - Fisher scoring method (similar to the Newton-Raphson method but using the expected information or Hessian matrix instead of the observed information)
@@ -416,10 +417,11 @@ head(ml)
 #' ===
 #' 
 ## ------------------------------------------------------------------------
-ml$prog2 <- relevel(ml$prog, ref = "academic")
+ml$prog2 <- relevel(ml$prog, ref = "vocation")
+ml$ses2 <- relevel(ml$ses, ref = "low")
 
 library("nnet")
-test <- multinom(prog2 ~ ses + write, data = ml)
+test <- multinom(prog2 ~ ses2 + write, data = ml)
 
 summary(test)
 
@@ -428,12 +430,9 @@ summary(test)
 #' Multinomial logistic Regression interpretation
 #' ===
 #' 
-#' 1. A one-unit increase in write decreases the log odds of being in general program vs. academic program by 0.0579
-#' 2. A one-unit increase in write decreases the log odds of being in vocation program vs. academic program by 0.1136
-#' 3. The log odds of being in general program than in academic program will decrease by 1.163 if moving from ses=”low” to ses=”high”.
-#' 4. On the other hand, Log odds of being in general program than in academic program will decrease by 0.5332 if moving from ses=”low” to ses=”middle”
-#' 5. The log odds of being in vocation program vs. in academic program will decrease by 0.983 if moving from ses=”low” to ses=”high”
-#' 6. The log odds of being in vocation program vs. in academic program will increase by 0.291 if moving from ses=”low” to ses=”middle”
+#' 1. A one-unit increase in write increases the log odds of being in academic program vs. vocation  program by 0.11
+#' 2. A one-unit increase in write increases the log odds of being in general program vs. vocation program by 0.056
+#' 3. The log odds of being in academic program than in vocation program will increases by 0.98 if moving from ses=”low” to ses=”high”.
 #' 
 #' 
 #' ordinal logistic regression
@@ -605,8 +604,6 @@ summary(glm_poisson_rate) # display results
 #' - Poisson regression is the standard method used to model count (and rate) response data.
 #' - Poisson distribution assumes the equality of its mean and variance, which is a property that is rarely found in real data.
 #' - Response variance is greater than the mean in Poisson models is called **(Poisson) overdispersion**.
-#' - Overdispersion can be a problem in any model where the mean is related to the variance
-#' - Overdispersion may cause standard error of the estimates to be underestimated, i.e., a variable may appear to be a significant predictor when it is in fact not significant.
 #' 
 #' 
 #' bioChemists data
@@ -658,6 +655,7 @@ var(bioChemists$art)
 #' + \frac{\partial b}{\partial p} \times \frac{\partial^2 p}{\partial \theta^2}
 #' = \frac{r(1-p)}{p^2}
 #' $$
+#' 
 #' - Reparametrization:
 #'     - $\alpha = 1/r$
 #'     - $\mu =  \frac{r(1-p)}{p}$

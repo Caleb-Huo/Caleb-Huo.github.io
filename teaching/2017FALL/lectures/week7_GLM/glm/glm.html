@@ -512,7 +512,7 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="interpret-logistic-regression" class="slide section level1">
 <h1>interpret logistic regression</h1>
-<p><span class="math display">\[y|X = f(\mu) + \varepsilon\]</span></p>
+<p><span class="math display">\[y|X \sim f(\mu)\]</span></p>
 <ul>
 <li><span class="math inline">\(logit(\mu_i) = \log(\frac{\mu_i}{1 - \mu_i}) = X_i^\top \beta = \beta_0 + \beta_1 x_i\)</span></li>
 <li><span class="math inline">\(0 \le \mu_i\)</span> for any given value <span class="math inline">\(X_i\)</span></li>
@@ -550,7 +550,7 @@ flogit_minus &lt;-<span class="st"> </span>function(x) <span class="kw">exp</spa
 <h1>interpret logistic regression coefficient <span class="math inline">\(\beta\)</span> adjusting for other covaraites</h1>
 <ul>
 <li><span class="math inline">\(logit(\mu_i) = \log(\frac{\mu_i}{1 - \mu_i}) = \beta_0 + \beta_1 x_i + Z_i^\top\gamma\)</span></li>
-<li>Suppose there is only one binary predictor x</li>
+<li>for predictor x</li>
 </ul>
 <p><span class="math display">\[\hat{OR} = \frac{\hat{odds}|_{x_1=1}}{\hat{odds}|_{x_1=0}}
 = \frac{\frac{\hat{\mu}_i}{1 - \hat{\mu}_i}|_{x_1=1}}{\frac{\hat{\mu}_i}{1 - \hat{\mu}_i}|_{x_1=0}}
@@ -714,6 +714,7 @@ flogit_minus &lt;-<span class="st"> </span>function(x) <span class="kw">exp</spa
 <div id="estimation-for-beta" class="slide section level1">
 <h1>Estimation for <span class="math inline">\(\beta\)</span></h1>
 <ul>
+<li>The estimating equation can be least square loss or likelihood function.</li>
 <li>Two methods are typically used to solve the estimating equations of <span class="math inline">\(\beta\)</span>:
 <ul>
 <li>Newton-Raphson method (an iterative method for solving nonlinear equations)</li>
@@ -759,28 +760,29 @@ flogit_minus &lt;-<span class="st"> </span>function(x) <span class="kw">exp</spa
 </div>
 <div id="multinomial-logistic-regression-result" class="slide section level1">
 <h1>Multinomial logistic Regression result</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ml$prog2 &lt;-<span class="st"> </span><span class="kw">relevel</span>(ml$prog, <span class="dt">ref =</span> <span class="st">&quot;academic&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ml$prog2 &lt;-<span class="st"> </span><span class="kw">relevel</span>(ml$prog, <span class="dt">ref =</span> <span class="st">&quot;vocation&quot;</span>)
+ml$ses2 &lt;-<span class="st"> </span><span class="kw">relevel</span>(ml$ses, <span class="dt">ref =</span> <span class="st">&quot;low&quot;</span>)
 
 <span class="kw">library</span>(<span class="st">&quot;nnet&quot;</span>)
-test &lt;-<span class="st"> </span><span class="kw">multinom</span>(prog2 ~<span class="st"> </span>ses +<span class="st"> </span>write, <span class="dt">data =</span> ml)</code></pre></div>
+test &lt;-<span class="st"> </span><span class="kw">multinom</span>(prog2 ~<span class="st"> </span>ses2 +<span class="st"> </span>write, <span class="dt">data =</span> ml)</code></pre></div>
 <pre><code>## # weights:  15 (8 variable)
 ## initial  value 219.722458 
-## iter  10 value 179.983731
+## iter  10 value 179.993001
 ## final  value 179.981726 
 ## converged</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(test)</code></pre></div>
 <pre><code>## Call:
-## multinom(formula = prog2 ~ ses + write, data = ml)
+## multinom(formula = prog2 ~ ses2 + write, data = ml)
 ## 
 ## Coefficients:
-##          (Intercept)    seslow sesmiddle       write
-## general     1.689478 1.1628411 0.6295638 -0.05793086
-## vocation    4.235574 0.9827182 1.2740985 -0.11360389
+##          (Intercept)   ses2high ses2middle      write
+## academic   -5.218216  0.9826776 -0.2913902 0.11360290
+## general    -2.366021 -0.1801588 -0.8246874 0.05567435
 ## 
 ## Std. Errors:
-##          (Intercept)    seslow sesmiddle      write
-## general     1.226939 0.5142211 0.4650289 0.02141101
-## vocation    1.204690 0.5955688 0.5111119 0.02222000
+##          (Intercept)  ses2high ses2middle      write
+## academic    1.163550 0.5955674  0.4763737 0.02221991
+## general     1.174249 0.6484555  0.4901231 0.02333137
 ## 
 ## Residual Deviance: 359.9635 
 ## AIC: 375.9635</code></pre>
@@ -788,12 +790,9 @@ test &lt;-<span class="st"> </span><span class="kw">multinom</span>(prog2 ~<span
 <div id="multinomial-logistic-regression-interpretation" class="slide section level1">
 <h1>Multinomial logistic Regression interpretation</h1>
 <ol style="list-style-type: decimal">
-<li>A one-unit increase in write decreases the log odds of being in general program vs. academic program by 0.0579</li>
-<li>A one-unit increase in write decreases the log odds of being in vocation program vs. academic program by 0.1136</li>
-<li>The log odds of being in general program than in academic program will decrease by 1.163 if moving from ses=”low” to ses=”high”.</li>
-<li>On the other hand, Log odds of being in general program than in academic program will decrease by 0.5332 if moving from ses=”low” to ses=”middle”</li>
-<li>The log odds of being in vocation program vs. in academic program will decrease by 0.983 if moving from ses=”low” to ses=”high”</li>
-<li>The log odds of being in vocation program vs. in academic program will increase by 0.291 if moving from ses=”low” to ses=”middle”</li>
+<li>A one-unit increase in write increases the log odds of being in academic program vs. vocation program by 0.11</li>
+<li>A one-unit increase in write increases the log odds of being in general program vs. vocation program by 0.056</li>
+<li>The log odds of being in academic program than in vocation program will increases by 0.98 if moving from ses=”low” to ses=”high”.</li>
 </ol>
 </div>
 <div id="ordinal-logistic-regression" class="slide section level1">
@@ -1110,8 +1109,6 @@ m &lt;-<span class="st"> </span><span class="kw">polr</span>(apply2 ~<span class
 <li>Poisson regression is the standard method used to model count (and rate) response data.</li>
 <li>Poisson distribution assumes the equality of its mean and variance, which is a property that is rarely found in real data.</li>
 <li>Response variance is greater than the mean in Poisson models is called <strong>(Poisson) overdispersion</strong>.</li>
-<li>Overdispersion can be a problem in any model where the mean is related to the variance</li>
-<li>Overdispersion may cause standard error of the estimates to be underestimated, i.e., a variable may appear to be a significant predictor when it is in fact not significant.</li>
 </ul>
 </div>
 <div id="biochemists-data" class="slide section level1">
@@ -1159,8 +1156,13 @@ m &lt;-<span class="st"> </span><span class="kw">polr</span>(apply2 ~<span class
 <p><span class="math display">\[b''(\theta) = \frac{\partial^2 b}{\partial p^2} \times (\frac{\partial p}{\partial \theta})^2
 + \frac{\partial b}{\partial p} \times \frac{\partial^2 p}{\partial \theta^2}
 = \frac{r(1-p)}{p^2}
-\]</span> - Reparametrization: - <span class="math inline">\(\alpha = 1/r\)</span> - <span class="math inline">\(\mu = \frac{r(1-p)}{p}\)</span></p>
+\]</span></p>
 <ul>
+<li>Reparametrization:
+<ul>
+<li><span class="math inline">\(\alpha = 1/r\)</span></li>
+<li><span class="math inline">\(\mu = \frac{r(1-p)}{p}\)</span></li>
+</ul></li>
 <li>Negative bionomial mean: <span class="math display">\[b'(\theta) = \frac{\partial b}{\partial p} \times \frac{\partial p}{\partial \theta}
 = \mu
 \]</span></li>
