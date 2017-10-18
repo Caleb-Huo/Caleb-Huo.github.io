@@ -108,7 +108,7 @@ Zhiguang Huo (Caleb)
 <span class="co"># add works like a regular R function</span>
 add</code></pre></div>
 <pre><code>## function (x, y) 
-## .Primitive(&quot;.Call&quot;)(&lt;pointer: 0x1153397e0&gt;, x, y)</code></pre>
+## .Primitive(&quot;.Call&quot;)(&lt;pointer: 0x10ad737e0&gt;, x, y)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">add</span>(<span class="dv">3</span>,<span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 5</code></pre>
 </div>
@@ -215,13 +215,13 @@ add</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="fl">1e7</span>)
 <span class="kw">system.time</span>(<span class="kw">sum</span>(x))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.012   0.000   0.013</code></pre>
+##   0.011   0.000   0.011</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">sumC</span>(x))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.011   0.000   0.011</code></pre>
+##   0.010   0.000   0.011</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">sumR</span>(x))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.488   0.001   0.490</code></pre>
+##   0.459   0.000   0.462</code></pre>
 </div>
 <div id="vector-input-vector-output-4." class="slide section level1">
 <h1>Vector input, vector output (4).</h1>
@@ -434,7 +434,8 @@ List lapply1(List input, Function f) {
 <ol style="list-style-type: decimal">
 <li>devtools::create() create an new R package</li>
 <li>devtools::use_rcpp().</li>
-<li>Copy your R code with documentation in inside R folder 4, put cpp file in src</li>
+<li>Copy your R code with documentation in inside R folder</li>
+<li>put cpp file in src</li>
 <li>devtools::document() generate R documentation</li>
 <li>devtools::build() build the package</li>
 <li>devtools::install() install the package</li>
