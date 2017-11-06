@@ -577,8 +577,8 @@ for(r in <span class="dv">1</span>:Repeats){
 &amp; = P( \hat{\theta}_n -  q_{1 - \alpha/2} &lt; \theta &lt; \hat{\theta}_n - q_{\alpha/2} ) 
 \end{align}\]</span></li>
 </ol>
-<p>We can define <span class="math inline">\(1 - \alpha\)</span> confidence interval using <span class="math display">\[[\hat{\theta}_n - q_{1 - \alpha/2}\hat{\sigma}_B, \hat{\theta}_n - q_{\alpha/2}\hat{\sigma}_B],\]</span></p>
-<p>Where <span class="math inline">\(\hat{\theta}_n\)</span> is the estimator from the original sample and <span class="math inline">\(\hat{\sigma}_B\)</span> is bootstrap se.</p>
+<p>We can define <span class="math inline">\(1 - \alpha\)</span> confidence interval using <span class="math display">\[[\hat{\theta}_n - q_{1 - \alpha/2}, \hat{\theta}_n - q_{\alpha/2}],\]</span></p>
+<p>Where <span class="math inline">\(\hat{\theta}_n\)</span> is the estimator from the original sample. No <span class="math inline">\(\hat{\sigma}_B\)</span> is required.</p>
 </div>
 <div id="performance-of-bootstrap-confidence-interval-via-pivotal-intervals-no-se" class="slide section level1">
 <h1>Performance of Bootstrap confidence interval via Pivotal Intervals (no SE)</h1>
@@ -751,7 +751,7 @@ for(r in <span class="dv">1</span>:Repeats){
 <div id="permutation-test-procedure-2" class="slide section level1">
 <h1>Permutation test procedure (2)</h1>
 <ul>
-<li>Define <span class="math display">\[p = \frac{1}{N!}\sum_\pi I(g(L_\pi,Z) &gt; g(L,Z)),\]</span></li>
+<li>Define <span class="math display">\[p = \frac{1}{N!}\sum_\pi I(g(L_\pi,Z) \ge g(L,Z)),\]</span></li>
 </ul>
 <p>where <span class="math inline">\(L_\pi\)</span> is a permutation of the labels and the sum is over all permutations.</p>
 <ul>

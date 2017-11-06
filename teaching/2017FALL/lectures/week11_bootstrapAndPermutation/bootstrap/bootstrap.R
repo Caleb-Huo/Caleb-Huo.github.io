@@ -547,9 +547,10 @@ counts/Repeats
 #' \end{align}
 #' 
 #' We can define $1 - \alpha$ confidence interval using
-#' $$[\hat{\theta}_n - q_{1 - \alpha/2}\hat{\sigma}_B, \hat{\theta}_n - q_{\alpha/2}\hat{\sigma}_B],$$
+#' $$[\hat{\theta}_n - q_{1 - \alpha/2}, \hat{\theta}_n - q_{\alpha/2}],$$
 #' 
-#' Where $\hat{\theta}_n$ is the estimator from the original sample and $\hat{\sigma}_B$ is bootstrap se.
+#' Where $\hat{\theta}_n$ is the estimator from the original sample.
+#' No $\hat{\sigma}_B$ is required.
 #' 
 #' 
 #' 
@@ -708,7 +709,7 @@ counts/Repeats
 #' ===
 #' 
 #' - Define
-#' $$p = \frac{1}{N!}\sum_\pi I(g(L_\pi,Z) > g(L,Z)),$$
+#' $$p = \frac{1}{N!}\sum_\pi I(g(L_\pi,Z) \ge g(L,Z)),$$
 #' 
 #' where $L_\pi$ is a permutation of the labels and the sum is over all permutations.
 #' 
