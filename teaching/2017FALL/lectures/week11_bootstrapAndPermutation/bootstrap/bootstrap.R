@@ -338,8 +338,8 @@ var(boot_para$t)
 #' ===
 #' 
 #' - Percentiles
-#' - bootstrap-t interval
-#' - bootstrap-t interval (simplified)
+#' - Pivotal Intervals
+#' - Pivotal Intervals (simplified)
 #' - normal approximation
 #' 
 #' 
@@ -426,7 +426,7 @@ boot.ci(boot_nonpara, type="perc")
 
 #' 
 #' 
-#' Bootstrap confidence interval via bootstrap-t interval (better accuracy and theoretical guarantee), (There is a improved way to do this later)
+#' Bootstrap confidence interval via Pivotal Intervals (better accuracy and theoretical guarantee), (There is a improved way to do this later)
 #' ===
 #' 
 #' 1.  Draw a bootstrap sample $X_1^*, \ldots, X_n^* \sim F_n$. Compute $\hat{\theta^*}_n = g(X_1^*, \ldots, X_n^*)$.
@@ -447,11 +447,13 @@ boot.ci(boot_nonpara, type="perc")
 #' We can define $1 - \alpha$ confidence interval using
 #' $$[\hat{\theta}_n - q_{1 - \alpha/2}\hat{\sigma}_B, \hat{\theta}_n - q_{\alpha/2}\hat{\sigma}_B],$$
 #' 
-#' Where $\hat{\theta}_n$ is the estimator from the original sample and $\hat{\sigma}_B$ can be estimated as bootstrap se.
+#' Where $\hat{\theta}_n$ is the estimator from the original sample and $\hat{\sigma}_B$ is bootstrap se.
+#' 
+#' If $\hat{\sigma^*}_n^{(b)}$ is hard to estiamte, 
+#' we need to use another round of bootstrap to estiamte.
 #' 
 #' 
-#' 
-#' Performance of Bootstrap confidence interval via bootstrap-t interval (1)
+#' Performance of Bootstrap confidence interval via Pivotal Intervals (1)
 #' ===
 #' 
 ## ------------------------------------------------------------------------
@@ -482,7 +484,7 @@ print(c(CI_l, CI_h))
 
 #' 
 #' 
-#' Performance of Bootstrap confidence interval via bootstrap-t interval (2)
+#' Performance of Bootstrap confidence interval via Pivotal Intervals (2)
 #' ===
 #' 
 #' 
@@ -527,7 +529,7 @@ counts/Repeats
 
 #' 
 #' 
-#' Bootstrap confidence interval via bootstrap-t interval - no SE (better accuracy and theoretical guarantee)
+#' Bootstrap confidence interval via Pivotal Intervals - no SE (better accuracy and theoretical guarantee)
 #' ===
 #' 
 #' 1.  Draw a bootstrap sample $X_1^*, \ldots, X_n^* \sim F_n$. Compute $\hat{\theta^*}_n = g(X_1^*, \ldots, X_n^*)$.
@@ -547,11 +549,11 @@ counts/Repeats
 #' We can define $1 - \alpha$ confidence interval using
 #' $$[\hat{\theta}_n - q_{1 - \alpha/2}\hat{\sigma}_B, \hat{\theta}_n - q_{\alpha/2}\hat{\sigma}_B],$$
 #' 
-#' Where $\hat{\theta}_n$ is the estimator from the original sample
+#' Where $\hat{\theta}_n$ is the estimator from the original sample and $\hat{\sigma}_B$ is bootstrap se.
 #' 
 #' 
 #' 
-#' Performance of Bootstrap confidence interval via bootstrap-t interval (no SE)
+#' Performance of Bootstrap confidence interval via Pivotal Intervals (no SE)
 #' ===
 #' 
 #' - Remove SE term.
@@ -598,12 +600,51 @@ counts/Repeats
 #' Normal approximation
 #' ===
 #' 
-#' $$[\hat{\theta}_n - Z_{1 - \alpha/2}\hat{\sigma}^{SD}_B, \hat{\theta}_n - Z_{\alpha/2}\hat{\sigma}^{SD}_B],$$
+#' $$[\hat{\theta}_n - Z_{1 - \alpha/2}\hat{\sigma}_B, \hat{\theta}_n - Z_{\alpha/2}\hat{\sigma}_B],$$
 #' Where $Z_\alpha = \Phi^{-1}(1-\alpha)$, $\Phi$ is the cdf of standard Normal distribution.
 #' 
 #' - $Z_{0.025} = -1.96$
 #' - $Z_{0.975} = 1.96$
-#' - Here $\hat{\sigma}^{SD}_B$ is the square root of bootstrap variance instead of standard error.
+#' 
+#' Where $\hat{\theta}_n$ is the estimator from the original sample and $\hat{\sigma}_B$ is bootstrap se.
+#' 
+#' 
+#' experiment for Normal approximation
+#' ===
+#' 
+## ------------------------------------------------------------------------
+lambda <- 5
+n <- 100
+truth <- lambda^2 + lambda/n
+B <- 1000
+Repeats <- 100
+
+counts <- 0
+
+plot(c(0,100),c(0,Repeats), type="n", xlab="boot CI", ylab="repeats index")
+abline(v = truth, col=2)
+
+for(r in 1:Repeats){
+  set.seed(r)
+  X <- rpois(n, lambda)
+  lambdaHat <- mean(X)
+  That <- lambdaHat^2 + lambdaHat/n
+  TB <- numeric(B)
+  for(b in 1:B){
+    set.seed(b)
+    aX <- sample(X,n,replace = T)
+    TB[b] <- (mean(aX))^2
+  }
+  ci_l <- That - 1.96*sd(TB)
+  ci_u <- That + 1.96*sd(TB)
+  segments(ci_l, r, ci_u, r)
+  if(ci_l < truth & truth < ci_u){
+    counts <- counts + 1
+  }
+}
+
+counts/Repeats
+
 #' 
 #' Summary Bootstrap confidence interval
 #' ===
@@ -611,8 +652,8 @@ counts/Repeats
 #' Precedure  | Theoritical guarantee | Fast | R package Boot?
 #' ------------- | ------------- | ------------- | -------------
 #' Percentiles    | No | Yes | Yes
-#' bootstrap-t interval       | Yes | No | Yes
-#' bootstrap-t interval (simplified, no se) | Yes | Yes | No
+#' Pivotal Intervals       | Yes | No | Yes
+#' Pivotal Intervals (simplified, no se) | Yes | Yes | No
 #' normal approximation | Yes | Yes | Yes
 #' 
 #' 
