@@ -26,7 +26,7 @@
 #' 
 #' 
 #' 
-#' Cross validation
+#' Cross validation to evaluate machine learning accuracy
 #' ===
 #' 
 #' ![](../figure/crossValidation.png)
@@ -228,9 +228,11 @@ ggplot(adataFrame) + aes(x=lambda, y=coef, col=variable) +
 #' - pre-specify a range of tuning parameters $\lambda_1, \ldots, \lambda_B$
 #' 
 #' - For each iteration $k = 1, \ldots, K$,
-#' use the $D_k$ as the testing dataset and $D_{-k} = D - D_k$ as the training dataset. Build the classifier $f^k_{\lambda_b}$ based on $D_{-k}$ and tuning parameter $\lambda_b$, $(1 \le b \le B)$. Then predict $D_k$ and obtain the mean squared error (MSE) or root mean squared error (rMSE) $e_k(\lambda_b)$
+#' use the $D_k$ as the testing dataset and $D_{-k} = D - D_k$ as the training dataset. Build the classifier $f^k_{\lambda_b}$ based on $D_{-k}$ and tuning parameter $\lambda_b$, $(1 \le b \le B)$. Then predict $D_k$ and obtain the 
+#'     - mean squared error (MSE) or root mean squared error (rMSE) $e_k(\lambda_b)$ for continuous outcome.
+#'     - classification error rate for categorical outcome variable. 
 #' 
-#' - Use $e(\lambda_b) = \frac{1}{K} \sum_k e_k(\lambda_b)$ as the average (MSE or rMSE) for tuning parameter $(\lambda_b)$.
+#' - Use $e(\lambda_b) = \frac{1}{K} \sum_k e_k(\lambda_b)$ as the average (MSE, rMSE or classification error rate) for tuning parameter $(\lambda_b)$.
 #' 
 #' - Choose the tuning parameter $\hat{\lambda} = \arg \min_{\lambda\in (\lambda_1, \ldots, \lambda_B)} e(\lambda)$
 #' 
@@ -299,8 +301,8 @@ ggplot(data_train, aes(x=x,y=y,col=label, label = text)) +
 #' ===
 #' 
 #' - pre-specify $K$ (e.g. $K = 5$).
-#' - for each testing sample, find the $K$ training samples that are closest to the testing sample.
-#' - The label of the testing sample will depend on the majority vote of the training labels.
+#' - for each testing sample, find the top $K$ training samples that are closest to the testing sample.
+#' - The label of the testing sample will depend on the majority vote of the training labels for categorical outcome.
 #' 
 #' $$\hat{f}(x) = mode_{i \in N_k(x)} y_i$$
 #' 
