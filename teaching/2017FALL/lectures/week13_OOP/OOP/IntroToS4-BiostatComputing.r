@@ -581,3 +581,61 @@ a <- new("ptGroupSimple", nbGroups = 3, part = factor(LETTERS[c(1, 2, 3, 2, 2, 1
 nbMultTwo(a)
 # b <- new("ptGroupEval", nbGroups = 5, part = ordered(LETTERS[c(1, 5, 3, 4, 2, 4)]))
 # nbMultTwo(b)
+
+student <- setRefClass("student")
+student$new()
+
+student <- setRefClass("student",
+  fields = list(Age = "numeric"))
+
+Bob <- student$new(Age = 11)
+cat("Bob is", Bob$Age, "year old. \n")
+
+Bob$Age <- 12
+cat("Bob is", Bob$Age, "year old. \n")
+
+Bob$Age <- 11
+Mary <- Bob
+Mary$Age <- 20
+cat("Mary' is", Mary$Age, "year old. \n")
+cat("Bob is", Bob$Age, "year old. \n")
+
+Bob$Age <- 11
+Mary <- Bob$copy()
+Mary$Age <- 20
+cat("Mary' is", Mary$Age, "year old. \n")
+cat("Bob is", Bob$Age, "year old. \n")
+
+student <- setRefClass("student",
+  fields = list(Age = "numeric"),
+  methods = list(
+    grow = function(x = 1) {
+      Age <<- Age + x
+    },
+    setAge = function(x) {
+      Age <<- x
+    }
+  )
+)
+Bob <- student$new(Age = 11)
+Bob$grow()
+cat("Bob is", Bob$Age, "year old. \n")
+Bob$setAge(11)
+cat("Bob is", Bob$Age, "year old. \n")
+
+studentPlus <- setRefClass("studentPlus", 
+                          contains = "student",
+                          methods = list(
+                              setAge = function(x) {
+                                  if(x < 0) stop("Age can't be under 0. ")
+                                  Age <<- x
+                              }
+                          ))
+
+Bob <- studentPlus$new(Age = 11)
+Bob$grow(2)
+cat("Bob is", Bob$Age, "year old. \n")
+
+Bob$setAge(-1)
+
+
