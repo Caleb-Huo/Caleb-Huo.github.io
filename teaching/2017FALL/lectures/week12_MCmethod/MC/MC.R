@@ -197,7 +197,7 @@ barplot(table(round(x.acc,1))/length(x.acc))
 #' - Sampling from $p^*(x)$ is hard.
 #' - Want to calculate expectation of $\phi(x)$ under $p^*(x)$.
 #' - Suppose we can sample from a simpler proposal distribution $q^*$ instead.
-#' - If $q^*$ dominates $p^*$ (i.e., $q^*(x)>0$ whenever $p^*(x)>0$), we can sample from $q^*$ and reweight: $w(x) = \frac{q^*(x)}{p^*(x)}$
+#' - If $q^*$ dominates $p^*$ (i.e., $q^*(x)>0$ whenever $p^*(x)>0$), we can sample from $q^*$ and reweight: $w(x) = \frac{p^*(x)}{q^*(x)}$
 #' 
 #' ![](../figure/importanceSamplingAlgorithm.png)
 #' 
@@ -217,7 +217,7 @@ barplot(table(round(x.acc,1))/length(x.acc))
 #' 
 #' - This can be estimated using M draws $x_1, \ldots, x_M$ from $q^*(x)$ by the following expression.
 #' 
-#' $$\hat{\mathbb{E}} (\phi (x) | p^* ) = \frac{\frac{1}{M} [\phi (x_m) p(x_m)/q^*(x_m)] }{ \frac{1}{M} [p(x_m)/q^*(x_m)]}$$
+#' $$\hat{\mathbb{E}} (\phi (x) | p^* ) = \frac{\frac{1}{M} \sum_{m=1}^M[\phi (x_m) p(x_m)/q^*(x_m)] }{ \frac{1}{M} \sum_{m=1}^M[p(x_m)/q^*(x_m)]}$$
 #' 
 #' 
 #' $w(x_m) =\frac{p(x_m)}{q^*(x_m)}$
@@ -466,7 +466,7 @@ barplot(table(round(x.acc,1))/length(x.acc))
 #' ===
 #' 
 #' - target distribution: $p(x) = \exp [ 0.4(x-0.4)^2 - 0.08x^4  ]$
-#' - sampling distribution: $q(x) = dnorm(x,x',1)$
+#' - sampling distribution: $q(x^{(t)}) = dnorm(x^{(t)},x^{(t-1)},1)$
 #' 
 ## ------------------------------------------------------------------------
 p <- function(x, a=.4, b=.08){exp(a*(x-a)^2 - b*x^4)}
