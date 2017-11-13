@@ -473,6 +473,10 @@ p <- function(x, a=.4, b=.08){exp(a*(x-a)^2 - b*x^4)}
 x <- seq(-4, 4, 0.1)
 plot(x,p(x),type="l")
 
+#' 
+#' ---
+#' 
+## ------------------------------------------------------------------------
 N <- 10000
 x.acc5 <- rep.int(NA, N)
 u <- runif(N)
@@ -490,10 +494,15 @@ for (ii in 1:N){
 ## Fraction of accepted *new* proposals
 acc.count/N
 
+#' ---
+#' 
+#' 
+## ------------------------------------------------------------------------
 par(mfrow=c(1,2), mar=c(2,2,1,1))
 plot(x,p(x),type="l")
 barplot(table(round(x.acc5,1))/length(x.acc5))
 
+#' 
 #' 
 #' Check samples from MH
 #' ===
@@ -518,6 +527,59 @@ plot(x.acc5,type="l")
 #'     - total 10,000 samples.
 #'     - 500 burnin samples.
 #' 
+#' 
+#' Remove initial values for burnin period
+#' ===
+#' 
+## ------------------------------------------------------------------------
+N <- 1000
+x.acc5 <- rep.int(NA, N)
+u <- runif(N)
+acc.count <- 0
+std <- 1 ## Spread of proposal distribution
+xc <- 8; ## Starting value
+for (ii in 1:N){
+  xp <- rnorm(1, mean=xc, sd=std) ## proposal
+  alpha <- min(1, (p(xp)/p(xc)) *
+                 (dnorm(xc, mean=xp,sd=std)/dnorm(xp, mean=xc,sd=std)))
+  x.acc5[ii] <- xc <- ifelse(u[ii] < alpha, xp, xc)
+  ## find number of acccepted proposals:
+  acc.count <- acc.count + (u[ii] < alpha)
+}
+## Fraction of accepted *new* proposals
+acc.count/N
+
+## ------------------------------------------------------------------------
+plot(x.acc5,type="l")
+
+#' 
+#' 
+#' Doesn't converge 
+#' ===
+#' 
+## ------------------------------------------------------------------------
+N <- 1000
+x.acc5 <- rep.int(NA, N)
+u <- runif(N)
+acc.count <- 0
+std <- 0.1 ## Spread of proposal distribution
+xc <- 0; ## Starting value
+for (ii in 1:N){
+  xp <- rnorm(1, mean=xc, sd=std) ## proposal
+  alpha <- min(1, (p(xp)/p(xc)) *
+                 (dnorm(xc, mean=xp,sd=std)/dnorm(xp, mean=xc,sd=std)))
+  x.acc5[ii] <- xc <- ifelse(u[ii] < alpha, xp, xc)
+  ## find number of acccepted proposals:
+  acc.count <- acc.count + (u[ii] < alpha)
+}
+## Fraction of accepted *new* proposals
+acc.count/N
+
+## ------------------------------------------------------------------------
+plot(x.acc5,type="l")
+
+#' 
+#' 
 #' Why MH converge? (optional)
 #' ===
 #' 
@@ -532,8 +594,8 @@ plot(x.acc5,type="l")
 #' $$ p(x)T(x'|x)  = p(x')T(x|x') $$
 #' The last line is called detailed balance condition.
 #' 
-#' $$ \int_{x'} p(x)T(x'|x) dx' = \int_{x'} p(x')T(x|x') dx'$$
-#' $$ p(x) = \int_{x'} p(x')T(x|x') dx'$$
+#' $$ \int_{x} p(x)T(x'|x) dx = \int_{x} p(x')T(x|x') dx$$
+#' $$ p(x') = \int_{x} p(x)T(x'|x) dx$$
 #' 
 #' Since p(x) is the true distribution.
 #' MH algorithm will eventually converges to the true distribution.
