@@ -281,7 +281,7 @@ x.m <- q.r(M)
 ww <- p(x.m) / q.d(x.m)
 qq <- ww / sum(ww)
 x.g <- phi(x.m)
-sum(x.g * qq)/sum(qq)
+sum(x.g * qq)
 
 #' 
 #' Number of samples for importance sampling
