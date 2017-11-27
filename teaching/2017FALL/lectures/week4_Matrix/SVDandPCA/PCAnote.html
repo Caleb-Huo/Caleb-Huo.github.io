@@ -174,14 +174,13 @@ print(aeigen$values)</code></pre>
 <div id="do-we-need-to-scale-the-data-to-standardization-1" class="section level4">
 <h4>Do we need to scale the data to standardization 1?</h4>
 <ul>
-<li>Not necessary. For Dimension reduction, usually people care about relative distance.</li>
-<li>Change standard deviation won’t change Principal component directions and the relative structure remains the same.</li>
+<li>Yes. Otherwise, different features are not comparable.</li>
 </ul>
 </div>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion:</h2>
-<p><strong>For PCA and SVD, center the data is necessary!</strong></p>
+<p><strong>For PCA and SVD, scale the data (mean 0 and sd 1) is necessary!</strong></p>
 </div>
 
 
