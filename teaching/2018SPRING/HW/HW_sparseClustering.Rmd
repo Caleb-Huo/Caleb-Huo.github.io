@@ -1,0 +1,77 @@
+---
+title: "HW sparse clustering"
+author: "Name: (E.g. Caleb Huo)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(stringsAsFactors = FALSE) ## prevent read in string data to factors.
+```
+
+
+In this question we will apply the sparse $k$-means algorithm and the sparse hierarchical algorithm on the iris data.
+The Iris data is directly available in R. 
+There are `r nrow(iris)` samples and `r nrow(iris[,1:4])` features in the iris data.
+The fifth column of the iris data is species.
+Below is the head of the iris data.
+
+```{r}
+head(iris)
+```
+
+In order to demonstrate the effectiveness of feature selection of the sparse $k$-means algorithm and the sparse hierarchical algorithm,
+we also added $p_2 = 10$ noise features.
+Then the noise data is combined with the original data. 
+Then the combined data (iris2) is further scaled to mean 0 and sd 1 for each feature.
+You only need to start with iris2 as the input data throughout this HW.
+Below is how to prepare iris2 as well as iris_label.
+
+```{r}
+n <- nrow(iris)
+p2 <- 10
+set.seed(32611)
+iris_noise <- matrix(rnorm(n*p2), ncol=p2)
+iris_label <- iris$Species
+
+iris2 <- cbind(iris[,1:4], iris_noise)
+iris2 <- scale(iris2)
+iris2 <- as.matrix(iris2)
+```
+
+### Part 1, apply the sparse $k$-means algorithm.
+Apply sparse $k$-means algorithm to iris2 data to cluster the samples.
+Fix the number of clusters to be K=3. 
+Fix the tuning parameter wbounds $wbounds = 1.9$.
+Draw the feature selection plot similarly to <https://caleb-huo.github.io/teaching/2018SPRING/lectures/sparseClustering1.html#(29)>.
+Also preform PCA to iris2, visualize the data using the first two principal components, label each sample with the same color according their species.
+Also add appropriate legend to the result.
+
+
+```{r}
+```
+
+
+### Part 2, apply the sparse hierarchical clustering algorithm.
+Apply sparse hierarchical clustering algorithm to iris2 data to cluster the samples.
+Fix the tuning parameter wbounds $wbounds = 1.9$ with complete linkage.
+Draw the hierarchical tree structure and feature selection plot similarly to <https://caleb-huo.github.io/teaching/2018SPRING/lectures/sparseClustering2.html#(16)>.
+Also draw the hierarchical tree structure with each sample colored according their species.
+Also add appropriate legend to the result.
+
+
+```{r}
+```
+
+
+## Note:
+
+### Homework should be uploaded to courseweb <http://elearning.ufl.edu>:
+1. If you know how to generate knitted html files by Rmd, please submit a html file (only html). Rename the file name as: hw6_Lastname_Firstname.html.
+2. Otherwise, you can submit your homework in any format.
+
+### If you generate a figure, please write appropriate figure title, labels, legend if necessary.
+
+### If your code is not intuitive, please write comments to make the code readible.
+
+
