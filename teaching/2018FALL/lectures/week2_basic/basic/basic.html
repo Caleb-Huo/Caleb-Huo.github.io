@@ -644,17 +644,22 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="example-of-vector-functions" class="slide section level1">
 <h1>Example of Vector Functions</h1>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">avec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">9</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="kw">length</span>(avec)</a></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">sort</span>(avec)</a></code></pre></div>
-<pre><code>## [1] 2 3 5 9</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">rev</span>(avec)</a></code></pre></div>
-<pre><code>## [1] 3 9 2 5</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">max</span>(avec)</a></code></pre></div>
-<pre><code>## [1] 9</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">which.min</span>(avec)</a></code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="kw">length</span>(x)</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="kw">unique</span>(x)</a>
+<a class="sourceLine" id="cb44-4" data-line-number="4"><span class="kw">length</span>(<span class="kw">unique</span>(x))</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="kw">sort</span>(x)</a>
+<a class="sourceLine" id="cb44-6" data-line-number="6"><span class="kw">rev</span>(x)</a>
+<a class="sourceLine" id="cb44-7" data-line-number="7"><span class="kw">which</span>(x<span class="op">==</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb44-8" data-line-number="8"><span class="kw">which.max</span>(x)</a>
+<a class="sourceLine" id="cb44-9" data-line-number="9"><span class="kw">which.min</span>(x)</a>
+<a class="sourceLine" id="cb44-10" data-line-number="10"><span class="kw">append</span>(x,<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb44-11" data-line-number="11"><span class="kw">match</span>(<span class="dv">9</span>,x)</a>
+<a class="sourceLine" id="cb44-12" data-line-number="12">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb44-13" data-line-number="13"><span class="kw">union</span>(x,y)</a>
+<a class="sourceLine" id="cb44-14" data-line-number="14"><span class="kw">intersect</span>(x,y)</a>
+<a class="sourceLine" id="cb44-15" data-line-number="15"><span class="kw">setdiff</span>(x,y)</a>
+<a class="sourceLine" id="cb44-16" data-line-number="16"><span class="kw">setequal</span>(x,y)</a></code></pre></div>
 </div>
 <div id="statistical-vector-functions" class="slide section level1">
 <h1>Statistical Vector Functions</h1>
@@ -739,14 +744,14 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="example-of-statistical-vector-functions" class="slide section level1">
 <h1>Example of Statistical Vector Functions</h1>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">avec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">9</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="kw">max</span>(avec)</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">avec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">9</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="kw">max</span>(avec)</a></code></pre></div>
 <pre><code>## [1] 9</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">which.max</span>(avec)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">which.max</span>(avec)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">mean</span>(avec)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">mean</span>(avec)</a></code></pre></div>
 <pre><code>## [1] 4.75</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">range</span>(avec)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">range</span>(avec)</a></code></pre></div>
 <pre><code>## [1] 2 9</code></pre>
 </div>
 <div id="coercion" class="slide section level1">
@@ -755,14 +760,14 @@ Zhiguang Huo (Caleb)
 <li>All elements of an atomic vector must be the same type. Otherwise they will be <strong>coerced</strong> to the most flexible type.</li>
 <li>Types from least to most flexible are: logical, integer, double and character.</li>
 </ul>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">typeof</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">typeof</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">1</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="kw">as.numeric</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="kw">as.numeric</span>(x)</a></code></pre></div>
 <pre><code>## [1] 0 0 1</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">as.character</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">as.character</span>(x)</a></code></pre></div>
 <pre><code>## [1] &quot;FALSE&quot; &quot;FALSE&quot; &quot;TRUE&quot;</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">typeof</span>(<span class="kw">c</span>(<span class="fl">1.2</span>,1L))</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">typeof</span>(<span class="kw">c</span>(<span class="fl">1.2</span>,1L))</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 </div>
 <div id="how-to-get-help" class="slide section level1">
@@ -783,13 +788,13 @@ Zhiguang Huo (Caleb)
 <li>NA will always be coerced to be the correct type if used inside c()</li>
 <li>(optional) You can create NA of a specific type with NA_real_, NA_integer_, NA_character_</li>
 </ul>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NA</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NA</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NA_integer_</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NA_integer_</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NA_real_</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NA_real_</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NA_character_</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NA_character_</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
 <div id="list" class="slide section level1">
@@ -800,8 +805,8 @@ Zhiguang Huo (Caleb)
 </li>
 <li>str() function (short for structure) and gives a compact description of any R data structure.</li>
 </ul>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="st">&quot;a&quot;</span>, <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), <span class="kw">list</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>))</a>
-<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="kw">str</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="st">&quot;a&quot;</span>, <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), <span class="kw">list</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>))</a>
+<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="kw">str</span>(x)</a></code></pre></div>
 <pre><code>## List of 4
 ##  $ : int [1:3] 1 2 3
 ##  $ : chr &quot;a&quot;
@@ -809,7 +814,7 @@ Zhiguang Huo (Caleb)
 ##  $ :List of 2
 ##   ..$ : num 2.3
 ##   ..$ : num 5.9</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">x[[<span class="dv">1</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">x[[<span class="dv">1</span>]]</a></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
 </div>
 <div id="list-1" class="slide section level1">
@@ -817,8 +822,8 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Set names for a list</li>
 </ul>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">p1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">p2 =</span> <span class="st">&quot;a&quot;</span>, <span class="dt">p3 =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), <span class="dt">p4 =</span> <span class="kw">list</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>))</a>
-<a class="sourceLine" id="cb82-2" data-line-number="2"><span class="kw">str</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">p1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">p2 =</span> <span class="st">&quot;a&quot;</span>, <span class="dt">p3 =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), <span class="dt">p4 =</span> <span class="kw">list</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>))</a>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="kw">str</span>(x)</a></code></pre></div>
 <pre><code>## List of 4
 ##  $ p1: int [1:3] 1 2 3
 ##  $ p2: chr &quot;a&quot;
@@ -826,9 +831,9 @@ Zhiguang Huo (Caleb)
 ##  $ p4:List of 2
 ##   ..$ : num 2.3
 ##   ..$ : num 5.9</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">x[[<span class="dv">1</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">x[[<span class="dv">1</span>]]</a></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">x<span class="op">$</span>p1</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">x<span class="op">$</span>p1</a></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
 </div>
 <div id="data-structure" class="slide section level1">
@@ -877,11 +882,11 @@ Zhiguang Huo (Caleb)
 <li>structure(1:10, myAttribute=“this is a vector”)</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="kw">attr</span>(y, <span class="st">&quot;my_attribute&quot;</span>) &lt;-<span class="st"> &quot;This is a vector&quot;</span></a>
-<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="kw">attr</span>(y, <span class="st">&quot;my_attribute&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="kw">attr</span>(y, <span class="st">&quot;my_attribute&quot;</span>) &lt;-<span class="st"> &quot;This is a vector&quot;</span></a>
+<a class="sourceLine" id="cb79-3" data-line-number="3"><span class="kw">attr</span>(y, <span class="st">&quot;my_attribute&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;This is a vector&quot;</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw">attributes</span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="kw">attributes</span>(y)</a></code></pre></div>
 <pre><code>## $my_attribute
 ## [1] &quot;This is a vector&quot;</code></pre>
 </div>
@@ -895,18 +900,18 @@ Zhiguang Huo (Caleb)
 <li>class(): used to implement the S3 object system.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">a=</span><span class="dv">1</span>,<span class="dv">2</span><span class="op">:</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="kw">names</span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">a=</span><span class="dv">1</span>,<span class="dv">2</span><span class="op">:</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb83-2" data-line-number="2"><span class="kw">names</span>(y)</a></code></pre></div>
 <pre><code>##  [1] &quot;a&quot; &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">names</span>(y)[<span class="dv">2</span>] &lt;-<span class="st"> 'b'</span></a>
-<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="kw">dim</span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="kw">names</span>(y)[<span class="dv">2</span>] &lt;-<span class="st"> 'b'</span></a>
+<a class="sourceLine" id="cb85-2" data-line-number="2"><span class="kw">dim</span>(y)</a></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw">dim</span>(y) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="kw">print</span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="kw">dim</span>(y) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="kw">print</span>(y)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    3    5    7    9
 ## [2,]    2    4    6    8   10</code></pre>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">class</span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="kw">class</span>(y)</a></code></pre></div>
 <pre><code>## [1] &quot;matrix&quot;</code></pre>
 </div>
 <div id="factor" class="slide section level1">
@@ -920,25 +925,25 @@ Zhiguang Huo (Caleb)
 <li>levels(), which defines the set of allowed values.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">'a'</span>))</a>
-<a class="sourceLine" id="cb100-2" data-line-number="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">'a'</span>))</a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>## [1] a b b a
 ## Levels: a b</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="kw">class</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">class</span>(x)</a></code></pre></div>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw">levels</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="kw">levels</span>(x)</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot;</code></pre>
 </div>
 <div id="factors-2" class="slide section level1">
 <h1>factors 2</h1>
 <p>factors are very useful when there exist missing class</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">sex_char &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>)</a>
-<a class="sourceLine" id="cb106-2" data-line-number="2">sex_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(sex_char, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;f&quot;</span>))</a>
-<a class="sourceLine" id="cb106-3" data-line-number="3"><span class="kw">table</span>(sex_char)</a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">sex_char &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>)</a>
+<a class="sourceLine" id="cb97-2" data-line-number="2">sex_factor &lt;-<span class="st"> </span><span class="kw">factor</span>(sex_char, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;f&quot;</span>))</a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="kw">table</span>(sex_char)</a></code></pre></div>
 <pre><code>## sex_char
 ## m 
 ## 3</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">table</span>(sex_factor)</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">table</span>(sex_factor)</a></code></pre></div>
 <pre><code>## sex_factor
 ## m f 
 ## 3 0</code></pre>
@@ -948,19 +953,19 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Create a matrix with colnames and rownames</li>
 </ul>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>),</a>
-<a class="sourceLine" id="cb110-2" data-line-number="2">                               <span class="kw">c</span>(<span class="st">&quot;C.1&quot;</span>, <span class="st">&quot;C.2&quot;</span>, <span class="st">&quot;C.3&quot;</span>)))</a>
-<a class="sourceLine" id="cb110-3" data-line-number="3">a</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>),</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2">                               <span class="kw">c</span>(<span class="st">&quot;C.1&quot;</span>, <span class="st">&quot;C.2&quot;</span>, <span class="st">&quot;C.3&quot;</span>)))</a>
+<a class="sourceLine" id="cb101-3" data-line-number="3">a</a></code></pre></div>
 <pre><code>##      C.1 C.2 C.3
 ## row1   1   3   5
 ## row2   2   4   6</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">colnames</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="kw">colnames</span>(a)</a></code></pre></div>
 <pre><code>## [1] &quot;C.1&quot; &quot;C.2&quot; &quot;C.3&quot;</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">rownames</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="kw">rownames</span>(a)</a></code></pre></div>
 <pre><code>## [1] &quot;row1&quot; &quot;row2&quot;</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">ncol</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="kw">ncol</span>(a)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw">nrow</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">nrow</span>(a)</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 <div id="matrices-1" class="slide section level1">
@@ -968,15 +973,15 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Adding a dim() attribute to an atomic vector</li>
 </ul>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">c &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></a>
-<a class="sourceLine" id="cb120-2" data-line-number="2"><span class="kw">dim</span>(c) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb120-3" data-line-number="3">c</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">c &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb111-2" data-line-number="2"><span class="kw">dim</span>(c) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb111-3" data-line-number="3">c</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    4
 ## [2,]    2    5
 ## [3,]    3    6</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1"><span class="kw">dim</span>(c) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb122-2" data-line-number="2">c</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="kw">dim</span>(c) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb113-2" data-line-number="2">c</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
@@ -991,15 +996,15 @@ Zhiguang Huo (Caleb)
 <li>length() and ncol() are the same thing</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">y=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="dt">z=</span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb124-2" data-line-number="2"><span class="kw">str</span>(df)</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">y=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="dt">z=</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb115-2" data-line-number="2"><span class="kw">str</span>(df)</a></code></pre></div>
 <pre><code>## 'data.frame':    3 obs. of  3 variables:
 ##  $ x: int  1 2 3
 ##  $ y: Factor w/ 3 levels &quot;a&quot;,&quot;b&quot;,&quot;c&quot;: 1 2 3
 ##  $ z: num  0 0 0</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="kw">cat</span>(<span class="kw">names</span>(df), <span class="st">&quot;same as&quot;</span>, <span class="kw">colnames</span>(df))</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="kw">cat</span>(<span class="kw">names</span>(df), <span class="st">&quot;same as&quot;</span>, <span class="kw">colnames</span>(df))</a></code></pre></div>
 <pre><code>## x y z same as x y z</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1"><span class="kw">cat</span>(<span class="kw">length</span>(df), <span class="st">&quot;same as&quot;</span>, <span class="kw">ncol</span>(df))</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1"><span class="kw">cat</span>(<span class="kw">length</span>(df), <span class="st">&quot;same as&quot;</span>, <span class="kw">ncol</span>(df))</a></code></pre></div>
 <pre><code>## 3 same as 3</code></pre>
 </div>
 <div id="data-frames-2" class="slide section level1">
@@ -1011,14 +1016,14 @@ Zhiguang Huo (Caleb)
 <li>or globally set options(stringsAsFactors=FALSE)</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">y=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="dt">z=</span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb130-2" data-line-number="2"><span class="kw">str</span>(df1)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">y=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="dt">z=</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="kw">str</span>(df1)</a></code></pre></div>
 <pre><code>## 'data.frame':    3 obs. of  3 variables:
 ##  $ x: int  1 2 3
 ##  $ y: Factor w/ 3 levels &quot;a&quot;,&quot;b&quot;,&quot;c&quot;: 1 2 3
 ##  $ z: num  0 0 0</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">y=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="dt">z=</span><span class="dv">0</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="kw">str</span>(df2)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">y=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>),<span class="dt">z=</span><span class="dv">0</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="kw">str</span>(df2)</a></code></pre></div>
 <pre><code>## 'data.frame':    3 obs. of  3 variables:
 ##  $ x: int  1 2 3
 ##  $ y: chr  &quot;a&quot; &quot;b&quot; &quot;c&quot;
@@ -1034,25 +1039,25 @@ Zhiguang Huo (Caleb)
 <li>“\t” for tab</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">sentenses &lt;-<span class="st"> &quot;R is a great statistical software.</span><span class="ch">\n\n</span><span class="st">We use R in Biostatistical computing class!&quot;</span></a>
-<a class="sourceLine" id="cb134-2" data-line-number="2">sentenses</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">sentenses &lt;-<span class="st"> &quot;R is a great statistical software.</span><span class="ch">\n\n</span><span class="st">We use R in Biostatistical computing class!&quot;</span></a>
+<a class="sourceLine" id="cb125-2" data-line-number="2">sentenses</a></code></pre></div>
 <pre><code>## [1] &quot;R is a great statistical software.\n\nWe use R in Biostatistical computing class!&quot;</code></pre>
 <ul>
 <li>cat function will recognize these special characters and print to the console:</li>
 </ul>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">cat</span>(sentenses)</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="kw">cat</span>(sentenses)</a></code></pre></div>
 <pre><code>## R is a great statistical software.
 ## 
 ## We use R in Biostatistical computing class!</code></pre>
 </div>
 <div id="convert-to-upper-case-or-lower-case" class="slide section level1">
 <h1>convert to upper case or lower case</h1>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">achar &lt;-<span class="st"> &quot;this is a dog.&quot;</span></a>
-<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="kw">print</span>(achar)</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">achar &lt;-<span class="st"> &quot;this is a dog.&quot;</span></a>
+<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="kw">print</span>(achar)</a></code></pre></div>
 <pre><code>## [1] &quot;this is a dog.&quot;</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">toupper</span>(achar))</a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">toupper</span>(achar))</a></code></pre></div>
 <pre><code>## [1] &quot;THIS IS A DOG.&quot;</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">tolower</span>(<span class="st">&quot;WWW.UFL.EDU&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">tolower</span>(<span class="st">&quot;WWW.UFL.EDU&quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;www.ufl.edu&quot;</code></pre>
 </div>
 <div id="length-of-a-string" class="slide section level1">
@@ -1060,10 +1065,10 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>use nchar to count how many characters in a string instead of length</li>
 </ul>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">achar &lt;-<span class="st"> &quot;this is a dog.&quot;</span></a>
-<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="kw">nchar</span>(achar)</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1">achar &lt;-<span class="st"> &quot;this is a dog.&quot;</span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2"><span class="kw">nchar</span>(achar)</a></code></pre></div>
 <pre><code>## [1] 14</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">length</span>(achar)</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">length</span>(achar)</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 </div>
 <div id="vectorizes-nchar" class="slide section level1">
@@ -1071,10 +1076,10 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>we can pass a vector of character to nchar</li>
 </ul>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a dog&quot;</span>, <span class="st">&quot;a cat&quot;</span>, <span class="st">&quot;a gator&quot;</span>)</a>
-<a class="sourceLine" id="cb148-2" data-line-number="2"><span class="kw">nchar</span>(chars)</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a dog&quot;</span>, <span class="st">&quot;a cat&quot;</span>, <span class="st">&quot;a gator&quot;</span>)</a>
+<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="kw">nchar</span>(chars)</a></code></pre></div>
 <pre><code>## [1] 5 5 7</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="kw">length</span>(chars)</a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="kw">length</span>(chars)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 <div id="obtaining-a-substring" class="slide section level1">
@@ -1082,16 +1087,16 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>take a sub-sequence of characters – use substr(), short for sub string.</li>
 </ul>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">chars &lt;-<span class="st"> &quot;this is a dog&quot;</span></a>
-<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="kw">substring</span>(chars,<span class="dv">1</span>,<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">chars &lt;-<span class="st"> &quot;this is a dog&quot;</span></a>
+<a class="sourceLine" id="cb143-2" data-line-number="2"><span class="kw">substring</span>(chars,<span class="dv">1</span>,<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;t&quot;</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">substring</span>(chars,<span class="dv">11</span>,<span class="dv">13</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="kw">substring</span>(chars,<span class="dv">11</span>,<span class="dv">13</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;dog&quot;</code></pre>
 <ul>
 <li>replace with sub-string.</li>
 </ul>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="kw">substring</span>(chars,<span class="dv">11</span>,<span class="dv">13</span>) &lt;-<span class="st"> &quot;cat&quot;</span></a>
-<a class="sourceLine" id="cb156-2" data-line-number="2"><span class="kw">print</span>(chars)</a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="kw">substring</span>(chars,<span class="dv">11</span>,<span class="dv">13</span>) &lt;-<span class="st"> &quot;cat&quot;</span></a>
+<a class="sourceLine" id="cb147-2" data-line-number="2"><span class="kw">print</span>(chars)</a></code></pre></div>
 <pre><code>## [1] &quot;this is a cat&quot;</code></pre>
 </div>
 <div id="strsplit" class="slide section level1">
@@ -1099,16 +1104,16 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>you can split a string by a certain pattern using strsplit() function</li>
 </ul>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="kw">strsplit</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="dt">split=</span><span class="st">&quot; &quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1"><span class="kw">strsplit</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="dt">split=</span><span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;this&quot; &quot;is&quot;   &quot;a&quot;    &quot;dog&quot;</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">strsplit</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="dt">split=</span><span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="kw">strsplit</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="dt">split=</span><span class="st">&quot;&quot;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1] &quot;t&quot; &quot;h&quot; &quot;i&quot; &quot;s&quot; &quot; &quot; &quot;i&quot; &quot;s&quot; &quot; &quot; &quot;a&quot; &quot; &quot; &quot;d&quot; &quot;o&quot; &quot;g&quot;</code></pre>
 <ul>
 <li>Note the return type is a list with only one element. strsplit can be also vectorized.</li>
 </ul>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">strsplit</span>(<span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>), <span class="dt">split=</span><span class="st">&quot; &quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">strsplit</span>(<span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>), <span class="dt">split=</span><span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;this&quot; &quot;is&quot;   &quot;a&quot;    &quot;dog&quot; 
 ## 
@@ -1123,14 +1128,14 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>paste multiple strings</li>
 </ul>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">paste</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1"><span class="kw">paste</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;this is a dog&quot;</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="kw">paste0</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="kw">paste0</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;thisisadog&quot;</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">avec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>)</a>
-<a class="sourceLine" id="cb168-2" data-line-number="2"><span class="kw">nchar</span>(avec)</a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1">avec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>)</a>
+<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="kw">nchar</span>(avec)</a></code></pre></div>
 <pre><code>## [1] 4 2 1 3</code></pre>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1"><span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>), <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">'this'</span>,<span class="st">'is'</span>,<span class="st">'a'</span>,<span class="st">'dog'</span>), <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;this is a dog&quot;</code></pre>
 </div>
 <div id="substituation" class="slide section level1">
@@ -1138,16 +1143,16 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>use gsub to replace certain pattern within a string.</li>
 </ul>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">achar &lt;-<span class="st"> &quot;this is a dog&quot;</span></a>
-<a class="sourceLine" id="cb172-2" data-line-number="2"><span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot;dog&quot;</span>,<span class="dt">replacement=</span><span class="st">&quot;cat&quot;</span>,<span class="dt">x=</span>achar) ## pattern, replacement, x</a></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1">achar &lt;-<span class="st"> &quot;this is a dog&quot;</span></a>
+<a class="sourceLine" id="cb163-2" data-line-number="2"><span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot;dog&quot;</span>,<span class="dt">replacement=</span><span class="st">&quot;cat&quot;</span>,<span class="dt">x=</span>achar) ## pattern, replacement, x</a></code></pre></div>
 <pre><code>## [1] &quot;this is a cat&quot;</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">gsub</span>(<span class="st">&quot;dog&quot;</span>,<span class="st">&quot;cat&quot;</span>,achar) ## pattern, replacement, x</a></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="kw">gsub</span>(<span class="st">&quot;dog&quot;</span>,<span class="st">&quot;cat&quot;</span>,achar) ## pattern, replacement, x</a></code></pre></div>
 <pre><code>## [1] &quot;this is a cat&quot;</code></pre>
 <ul>
 <li>vectorize</li>
 </ul>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
-<a class="sourceLine" id="cb176-2" data-line-number="2"><span class="kw">gsub</span>(<span class="st">&quot;this&quot;</span>,<span class="st">&quot;that&quot;</span>,chars) ## pattern, replacement, x</a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
+<a class="sourceLine" id="cb167-2" data-line-number="2"><span class="kw">gsub</span>(<span class="st">&quot;this&quot;</span>,<span class="st">&quot;that&quot;</span>,chars) ## pattern, replacement, x</a></code></pre></div>
 <pre><code>## [1] &quot;that is a dog&quot;   &quot;that is a cat&quot;   &quot;that is a gator&quot;</code></pre>
 </div>
 <div id="regular-expression" class="slide section level1">
@@ -1156,14 +1161,14 @@ Zhiguang Huo (Caleb)
 <li>A regular expression or regex is a structured string to match specific patterns in the text.</li>
 <li>grep() function allows us to scan through a vector against regex</li>
 </ul>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
-<a class="sourceLine" id="cb178-2" data-line-number="2"><span class="kw">grep</span>(<span class="st">&quot;gator&quot;</span>, chars)</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
+<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="kw">grep</span>(<span class="st">&quot;gator&quot;</span>, chars)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;this&quot;</span>, chars)</a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;this&quot;</span>, chars)</a></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;gator&quot;</span>, chars, <span class="dt">value =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;gator&quot;</span>, chars, <span class="dt">value =</span> T)</a></code></pre></div>
 <pre><code>## [1] &quot;this is a gator&quot;</code></pre>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;gator&quot;</span>, chars, <span class="dt">invert =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;gator&quot;</span>, chars, <span class="dt">invert =</span> T)</a></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
 </div>
 <div id="regular-expression-2" class="slide section level1">
@@ -1171,8 +1176,8 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>match dog or cat</li>
 </ul>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
-<a class="sourceLine" id="cb186-2" data-line-number="2"><span class="kw">grep</span>(<span class="st">&quot;dog|cat&quot;</span>, chars)</a></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
+<a class="sourceLine" id="cb177-2" data-line-number="2"><span class="kw">grep</span>(<span class="st">&quot;dog|cat&quot;</span>, chars)</a></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
 </div>
 <div id="metacharacters" class="slide section level1">
@@ -1181,16 +1186,16 @@ Zhiguang Huo (Caleb)
 <li><strong>Metacharacters</strong> are special characters with a special meaning.</li>
 <li>Square braces are used to match anything in the braces</li>
 </ul>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
-<a class="sourceLine" id="cb188-2" data-line-number="2"><span class="kw">grep</span>(<span class="st">&quot;[bced]&quot;</span>, chars)</a></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
+<a class="sourceLine" id="cb179-2" data-line-number="2"><span class="kw">grep</span>(<span class="st">&quot;[bced]&quot;</span>, chars)</a></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
 <ul>
 <li>dash inside square braces is used to indicate a range</li>
 </ul>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
-<a class="sourceLine" id="cb190-2" data-line-number="2"><span class="kw">grep</span>(<span class="st">&quot;[b-d]&quot;</span>, chars)</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1">chars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this is a dog&quot;</span>, <span class="st">&quot;this is a cat&quot;</span>, <span class="st">&quot;this is a gator&quot;</span>)</a>
+<a class="sourceLine" id="cb181-2" data-line-number="2"><span class="kw">grep</span>(<span class="st">&quot;[b-d]&quot;</span>, chars)</a></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;[0-9]&quot;</span>, chars)</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1"><span class="kw">grep</span>(<span class="st">&quot;[0-9]&quot;</span>, chars)</a></code></pre></div>
 <pre><code>## integer(0)</code></pre>
 </div>
 <div id="metacharacters-2" class="slide section level1">
@@ -1212,18 +1217,18 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>for loop</li>
 </ul>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb194-2" data-line-number="2">  <span class="kw">cat</span>(i,<span class="st">&quot; &quot;</span>)</a>
-<a class="sourceLine" id="cb194-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb185-2" data-line-number="2">  <span class="kw">cat</span>(i,<span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb185-3" data-line-number="3">}</a></code></pre></div>
 <pre><code>## 1  2  3  4  5  6  7  8  9  10</code></pre>
 <ul>
 <li>while loop</li>
 </ul>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">i &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb196-2" data-line-number="2"><span class="cf">while</span>(i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb196-3" data-line-number="3">  <span class="kw">cat</span>(i,<span class="st">&quot; &quot;</span>)</a>
-<a class="sourceLine" id="cb196-4" data-line-number="4">  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb196-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">i &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb187-2" data-line-number="2"><span class="cf">while</span>(i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb187-3" data-line-number="3">  <span class="kw">cat</span>(i,<span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb187-4" data-line-number="4">  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb187-5" data-line-number="5">}</a></code></pre></div>
 <pre><code>## 1  2  3  4  5  6  7  8  9  10</code></pre>
 </div>
 <div id="loop-2" class="slide section level1">
@@ -1231,22 +1236,22 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>next: directly start next round of loop</li>
 </ul>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb198-2" data-line-number="2">  <span class="cf">if</span>(i<span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>){</a>
-<a class="sourceLine" id="cb198-3" data-line-number="3">    <span class="cf">next</span></a>
-<a class="sourceLine" id="cb198-4" data-line-number="4">  }</a>
-<a class="sourceLine" id="cb198-5" data-line-number="5">  <span class="kw">cat</span>(i,<span class="st">&quot; &quot;</span>)</a>
-<a class="sourceLine" id="cb198-6" data-line-number="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb189-2" data-line-number="2">  <span class="cf">if</span>(i<span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb189-3" data-line-number="3">    <span class="cf">next</span></a>
+<a class="sourceLine" id="cb189-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb189-5" data-line-number="5">  <span class="kw">cat</span>(i,<span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb189-6" data-line-number="6">}</a></code></pre></div>
 <pre><code>## 1  3  5  7  9</code></pre>
 <ul>
 <li>break: break the loop</li>
 </ul>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb200-2" data-line-number="2">  <span class="cf">if</span>(i<span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>){</a>
-<a class="sourceLine" id="cb200-3" data-line-number="3">    <span class="cf">break</span></a>
-<a class="sourceLine" id="cb200-4" data-line-number="4">  }</a>
-<a class="sourceLine" id="cb200-5" data-line-number="5">  <span class="kw">cat</span>(i,<span class="st">&quot; &quot;</span>)</a>
-<a class="sourceLine" id="cb200-6" data-line-number="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb191-2" data-line-number="2">  <span class="cf">if</span>(i<span class="op">%%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb191-3" data-line-number="3">    <span class="cf">break</span></a>
+<a class="sourceLine" id="cb191-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb191-5" data-line-number="5">  <span class="kw">cat</span>(i,<span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb191-6" data-line-number="6">}</a></code></pre></div>
 <pre><code>## 1</code></pre>
 </div>
 <div id="subsetting-atomic-vectors-1" class="slide section level1">
@@ -1255,16 +1260,16 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Positive integers: return elements at the specified position.</li>
 </ul>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1">### subseting</a>
-<a class="sourceLine" id="cb202-2" data-line-number="2">## atomic vectors</a>
-<a class="sourceLine" id="cb202-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">3.3</span>, <span class="fl">5.4</span>)</a>
-<a class="sourceLine" id="cb202-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb202-5" data-line-number="5"><span class="co"># Positive integer</span></a>
-<a class="sourceLine" id="cb202-6" data-line-number="6">x[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">### subseting</a>
+<a class="sourceLine" id="cb193-2" data-line-number="2">## atomic vectors</a>
+<a class="sourceLine" id="cb193-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">3.3</span>, <span class="fl">5.4</span>)</a>
+<a class="sourceLine" id="cb193-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb193-5" data-line-number="5"><span class="co"># Positive integer</span></a>
+<a class="sourceLine" id="cb193-6" data-line-number="6">x[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)]</a></code></pre></div>
 <pre><code>## [1] 3.3 2.1</code></pre>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">x[<span class="kw">order</span>(x)]</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">x[<span class="kw">order</span>(x)]</a></code></pre></div>
 <pre><code>## [1] 2.1 3.3 4.2 5.4</code></pre>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">x[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1">x[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)]</a></code></pre></div>
 <pre><code>## [1] 2.1 2.1 2.1</code></pre>
 </div>
 <div id="subsetting-atomic-vectors-1-1" class="slide section level1">
@@ -1273,10 +1278,10 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Negative integers: omit elements at the specified positions.</li>
 </ul>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="co"># negative integer</span></a>
-<a class="sourceLine" id="cb208-2" data-line-number="2">x[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1"><span class="co"># negative integer</span></a>
+<a class="sourceLine" id="cb199-2" data-line-number="2">x[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</a></code></pre></div>
 <pre><code>## [1] 4.2 5.4</code></pre>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1">x[<span class="op">-</span><span class="kw">grep</span>(<span class="fl">4.2</span>, x)]</a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">x[<span class="op">-</span><span class="kw">grep</span>(<span class="fl">4.2</span>, x)]</a></code></pre></div>
 <pre><code>## [1] 2.1 3.3 5.4</code></pre>
 </div>
 <div id="subsetting-atomic-vectors-3" class="slide section level1">
@@ -1285,13 +1290,13 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Logical vectors: select elements where the corresponding logical value is TRUE.</li>
 </ul>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)]</a></code></pre></div>
 <pre><code>## [1] 2.1 4.2</code></pre>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></a></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></a></code></pre></div>
 <pre><code>## [1] FALSE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">x[x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1">x[x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] 4.2 3.3 5.4</code></pre>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">NA</span>, <span class="ot">FALSE</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">NA</span>, <span class="ot">FALSE</span>)]</a></code></pre></div>
 <pre><code>## [1] 2.1 4.2  NA</code></pre>
 </div>
 <div id="subsetting-atomic-vectors-4" class="slide section level1">
@@ -1300,12 +1305,12 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Nothing: return the original vector.</li>
 </ul>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">x[]</a></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">x[]</a></code></pre></div>
 <pre><code>## [1] 2.1 4.2 3.3 5.4</code></pre>
 <ul>
 <li>Zero: return a zero length vector.</li>
 </ul>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">x[<span class="dv">0</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">x[<span class="dv">0</span>]</a></code></pre></div>
 <pre><code>## numeric(0)</code></pre>
 </div>
 <div id="subsetting-atomic-vectors-5" class="slide section level1">
@@ -1314,12 +1319,12 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Character vectors: to return elements with matching names.</li>
 </ul>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">a=</span><span class="fl">2.1</span>, <span class="dt">b=</span><span class="fl">4.2</span>, <span class="dt">c=</span><span class="fl">3.3</span>, <span class="dt">d=</span><span class="fl">5.4</span>)</a>
-<a class="sourceLine" id="cb224-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb224-3" data-line-number="3">x[<span class="st">&quot;a&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">a=</span><span class="fl">2.1</span>, <span class="dt">b=</span><span class="fl">4.2</span>, <span class="dt">c=</span><span class="fl">3.3</span>, <span class="dt">d=</span><span class="fl">5.4</span>)</a>
+<a class="sourceLine" id="cb215-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb215-3" data-line-number="3">x[<span class="st">&quot;a&quot;</span>]</a></code></pre></div>
 <pre><code>##   a 
 ## 2.1</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1">x[letters[<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">x[letters[<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>]]</a></code></pre></div>
 <pre><code>##   b   c 
 ## 4.2 3.3</code></pre>
 </div>
@@ -1328,22 +1333,22 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>1d index for each dimension, separated by comma</li>
 </ul>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb228-2" data-line-number="2"><span class="kw">colnames</span>(a) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>)</a>
-<a class="sourceLine" id="cb228-3" data-line-number="3">a</a></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb219-2" data-line-number="2"><span class="kw">colnames</span>(a) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>)</a>
+<a class="sourceLine" id="cb219-3" data-line-number="3">a</a></code></pre></div>
 <pre><code>##      A B C
 ## [1,] 1 4 7
 ## [2,] 2 5 8
 ## [3,] 3 6 9</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">a[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,]</a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">a[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,]</a></code></pre></div>
 <pre><code>##      A B C
 ## [1,] 1 4 7
 ## [2,] 2 5 8</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1">a[<span class="kw">c</span>(T,F,T), <span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">a[<span class="kw">c</span>(T,F,T), <span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>)]</a></code></pre></div>
 <pre><code>##      B A
 ## [1,] 4 1
 ## [2,] 6 3</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">a[,<span class="op">-</span><span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">a[,<span class="op">-</span><span class="dv">2</span>]</a></code></pre></div>
 <pre><code>##      A C
 ## [1,] 1 7
 ## [2,] 2 8
@@ -1354,16 +1359,16 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Data frames possess the characteristics of both lists and matrices.</li>
 </ul>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb236-2" data-line-number="2">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">y=</span><span class="dv">2</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">z=</span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb236-3" data-line-number="3">df[df<span class="op">$</span>x<span class="op">==</span><span class="dv">2</span>,]</a></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb227-2" data-line-number="2">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">y=</span><span class="dv">2</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">z=</span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb227-3" data-line-number="3">df[df<span class="op">$</span>x<span class="op">==</span><span class="dv">2</span>,]</a></code></pre></div>
 <pre><code>##   x y z
 ## 2 2 1 b</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">df[<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;z&quot;</span>)] <span class="co"># like a list</span></a></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">df[<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;z&quot;</span>)] <span class="co"># like a list</span></a></code></pre></div>
 <pre><code>##   x z
 ## 1 1 a
 ## 2 2 b</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">df[,<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;z&quot;</span>)] <span class="co"># like a matrix</span></a></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1">df[,<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;z&quot;</span>)] <span class="co"># like a matrix</span></a></code></pre></div>
 <pre><code>##   x z
 ## 1 1 a
 ## 2 2 b</code></pre>
@@ -1411,12 +1416,12 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="matching" class="slide section level1">
 <h1>Matching</h1>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1">grades &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb242-2" data-line-number="2">info &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">grade=</span><span class="dv">3</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">desc=</span><span class="kw">c</span>(<span class="st">&quot;Excellent&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Poor&quot;</span>), <span class="dt">fail=</span><span class="kw">c</span>(F,F,T))</a>
-<a class="sourceLine" id="cb242-3" data-line-number="3">id &lt;-<span class="st"> </span><span class="kw">match</span>(grades, info<span class="op">$</span>grade)</a>
-<a class="sourceLine" id="cb242-4" data-line-number="4">id</a></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">grades &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb233-2" data-line-number="2">info &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">grade=</span><span class="dv">3</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">desc=</span><span class="kw">c</span>(<span class="st">&quot;Excellent&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Poor&quot;</span>), <span class="dt">fail=</span><span class="kw">c</span>(F,F,T))</a>
+<a class="sourceLine" id="cb233-3" data-line-number="3">id &lt;-<span class="st"> </span><span class="kw">match</span>(grades, info<span class="op">$</span>grade)</a>
+<a class="sourceLine" id="cb233-4" data-line-number="4">id</a></code></pre></div>
 <pre><code>## [1] 3 2 2 1 3</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1">info[id,]</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">info[id,]</a></code></pre></div>
 <pre><code>##     grade      desc  fail
 ## 3       1      Poor  TRUE
 ## 2       2      Good FALSE
@@ -1430,19 +1435,19 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>read in locally</li>
 </ul>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</a></code></pre></div>
 <ul>
 <li>read directly from URL</li>
 </ul>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://caleb-huo.github.io/teaching/data/Burn/burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://caleb-huo.github.io/teaching/data/Burn/burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</a></code></pre></div>
 <ul>
 <li>read only the first two lines</li>
 </ul>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>, <span class="dt">nrows =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>, <span class="dt">nrows =</span> <span class="dv">2</span>)</a></code></pre></div>
 <ul>
 <li>skip the first three lines</li>
 </ul>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>, <span class="dt">skip =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>, <span class="dt">skip =</span> <span class="dv">3</span>)</a></code></pre></div>
 </div>
 <div id="delimiter" class="slide section level1">
 <h1>Delimiter</h1>
