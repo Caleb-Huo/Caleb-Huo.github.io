@@ -1,0 +1,66 @@
+---
+title: "HW example"
+author: "Caleb"
+date: "Due: 11:59 pm, Sep 6th, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question A (0 pts)
+#### 1. Calculate $\sum_{i=1}^{1000} \frac{1}{i^2}$ (0 pts)
+
+```{r}
+## Your code
+
+
+```
+
+#### 2. Fibonacci number follows the following recurrence relation (0 pts):
+$F_n = F_{n-1} + F_{n-2}$.
+Given the seed value $F_1 = 1$ and $F_2 = 1$, what is $F_{100}$? 
+
+```{r}
+## Your code
+
+```
+
+## Question B (0 pts)
+#### 1. In R base package, there is cars' data. Plot speed (x axis) vs dist (y axis).
+```{r}
+## Your code
+data(cars)
+
+```
+
+## Question C (0 pts)
+
+In R base package, there is mtcars' data. data(mtcars)
+
+#### 1. Fit a linear model: treat mpg as response variable and cyl, disp, hp and drat as predictors. (0 pts)
+```{r}
+## Your code
+
+```
+#### 2. Find the p-value for cyl. (0 pts)
+
+```{r}
+## Your code
+
+```
+
+
+## Note:
+
+
+### Homework should be uploaded to courseweb:
+1. Save your compiled result as html file. Rename the file name as: hw0_Lastname_Firstname.html.
+2. RMD file is not required. You only need to upload the html file to the [e-leaning](https://elearning.ufl.edu) website.
+
+### If you generate a figure, please write appropriate figure title, labels, legend if necessary.
+
+### If your code is not intuitive, please write comments to make the code readible.
+
+
