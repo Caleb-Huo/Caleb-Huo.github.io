@@ -606,11 +606,23 @@ xpra_list_sessions</code></pre>
 <li>On the terminal of your local PC:
 <ul>
 <li>Direct copy from the xpra code you obtained</li>
+<li>Make sure you have installed xpra
+<ul>
+<li>See next slde about how to install xpra</li>
+</ul></li>
+<li>Paste the xpra code in the terminal
+<ul>
+<li>MAC has imbedded terminal</li>
+<li>Windows need to install MotaXterm. (Next slides)</li>
+</ul></li>
 </ul></li>
 </ul>
-<pre><code>xpra attach ssh:zhuo@i21a-s3.rc.ufl.edu:3049 ## an example, you need your own code</code></pre>
+<pre><code>cd '/drives/c/Program Files/Xpra' ## make sure xpra is executable (here by setting working directory)
+./xpra attach ssh:zhuo@i21a-s3.rc.ufl.edu:3049 ## an example, you need your own code</code></pre>
+</div>
+<div id="install-xpra" class="slide section level1">
+<h1>Install xpra</h1>
 <ul>
-<li>if this doesn’t work, you need to install xpra</li>
 <li>MAC:
 <ul>
 <li>xpra: <a href="https://help.rc.ufl.edu/doc/Xpra_MacOS_X_Installation" class="uri">https://help.rc.ufl.edu/doc/Xpra_MacOS_X_Installation</a> (suggest use brew)</li>
