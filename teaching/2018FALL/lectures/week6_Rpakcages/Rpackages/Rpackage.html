@@ -579,13 +579,13 @@ Zhiguang Huo (Caleb)
 <li><p>An in-development package has a fourth component: the development version. This should start at 9000. For example, the first version of the package should be 0.0.0.9000.</p></li>
 </ul>
 </div>
-<div id="namespace-file-in-r-package" class="slide section level1">
-<h1>Namespace file in R package</h1>
+<div id="the-namespace-file-in-r-package" class="slide section level1">
+<h1>The namespace file in R package</h1>
 <ul>
 <li>You have many functions.</li>
 <li>The Namespace file specifies which functions will be visible to users.</li>
 <li>Other functions are internal funciton, for which you don’t want the users to see and use.</li>
-<li>Namespace file specifies how to interaction with other programming language (e.g., c++)</li>
+<li>The namespace file also specifies how to interaction with other programming language (e.g., c++)</li>
 <li>Don’t need to revise the namespace file, will be managed by devtools.</li>
 </ul>
 </div>
@@ -618,7 +618,7 @@ nrow(mtcars)</code></pre>
 </div>
 <div id="devtools-starting-from-sketches." class="slide section level1">
 <h1>Devtools, starting from sketches.</h1>
-<p><span style="color:red">Red color indicates essential step</span></p>
+<p><span style="color:red">Red color indicates essential steps</span></p>
 <ol style="list-style-type: decimal">
 <li><span style="color:red">devtools::create() create an new R package</span></li>
 <li><span style="color:red">Copy your R code in inside R folder</span></li>
@@ -775,8 +775,9 @@ nrow(mtcars)</code></pre>
 <p>Change:</p>
 <ul>
 <li>data folder</li>
-<li>after install the package, do data(xxxx)</li>
+<li>after install the package, do“”</li>
 </ul>
+<pre><code>data(xxxx)</code></pre>
 </div>
 <div id="documenting-external-data" class="slide section level1">
 <h1>6. documenting external data</h1>
@@ -784,19 +785,19 @@ nrow(mtcars)</code></pre>
 <li>no need to export external data</li>
 </ul>
 <p>xxxx.R</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="co">#' Prices of 50,000 round cut diamonds.</span></a>
-<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="co">#'</span></a>
-<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="co">#' A dataset containing the prices and other attributes of almost 54,000</span></a>
-<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co">#' diamonds.</span></a>
-<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co">#'</span></a>
-<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="co">#' @format A data frame with 53940 rows and 10 variables:</span></a>
-<a class="sourceLine" id="cb25-7" data-line-number="7"><span class="co">#' \describe{</span></a>
-<a class="sourceLine" id="cb25-8" data-line-number="8"><span class="co">#'   \item{price}{price, in US dollars}</span></a>
-<a class="sourceLine" id="cb25-9" data-line-number="9"><span class="co">#'   \item{carat}{weight of the diamond, in carats}</span></a>
-<a class="sourceLine" id="cb25-10" data-line-number="10"><span class="co">#'   ...</span></a>
-<a class="sourceLine" id="cb25-11" data-line-number="11"><span class="co">#' }</span></a>
-<a class="sourceLine" id="cb25-12" data-line-number="12"><span class="co">#' @source \url{http://www.diamondse.info/}</span></a>
-<a class="sourceLine" id="cb25-13" data-line-number="13"><span class="st">&quot;xxxx&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co">#' Prices of 50,000 round cut diamonds.</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="co">#'</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="co">#' A dataset containing the prices and other attributes of almost 54,000</span></a>
+<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="co">#' diamonds.</span></a>
+<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="co">#'</span></a>
+<a class="sourceLine" id="cb26-6" data-line-number="6"><span class="co">#' @format A data frame with 53940 rows and 10 variables:</span></a>
+<a class="sourceLine" id="cb26-7" data-line-number="7"><span class="co">#' \describe{</span></a>
+<a class="sourceLine" id="cb26-8" data-line-number="8"><span class="co">#'   \item{price}{price, in US dollars}</span></a>
+<a class="sourceLine" id="cb26-9" data-line-number="9"><span class="co">#'   \item{carat}{weight of the diamond, in carats}</span></a>
+<a class="sourceLine" id="cb26-10" data-line-number="10"><span class="co">#'   ...</span></a>
+<a class="sourceLine" id="cb26-11" data-line-number="11"><span class="co">#' }</span></a>
+<a class="sourceLine" id="cb26-12" data-line-number="12"><span class="co">#' @source \url{http://www.diamondse.info/}</span></a>
+<a class="sourceLine" id="cb26-13" data-line-number="13"><span class="st">&quot;xxxx&quot;</span></a></code></pre></div>
 </div>
 <div id="internal-data" class="slide section level1">
 <h1>6. internal data</h1>
@@ -806,81 +807,81 @@ nrow(mtcars)</code></pre>
 <li>No documentation</li>
 <li>Good to put the raw code in data-raw/ for reproducibility purpose</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">yyyy &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb26-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">use_data</span>(yyyy, <span class="dt">internal =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">yyyy &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">use_data</span>(yyyy, <span class="dt">internal =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="devtoolsuse-testthat-prepare-test-functions" class="slide section level1">
 <h1>7. devtools::use testthat() prepare test functions</h1>
 <ul>
 <li>create test functions</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">use_testthat</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">use_testthat</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a></code></pre></div>
 <ul>
 <li>actual test function (e.g. testthat/testf.R)</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">test_that</span>(<span class="st">&quot;test if f function is correct&quot;</span>, {</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">    <span class="kw">expect_equal</span>(<span class="kw">f</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">  }</a>
-<a class="sourceLine" id="cb28-4" data-line-number="4">)</a>
-<a class="sourceLine" id="cb28-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb28-6" data-line-number="6"><span class="kw">test_that</span>(<span class="st">&quot;test if f function is correct&quot;</span>, {</a>
-<a class="sourceLine" id="cb28-7" data-line-number="7">    <span class="kw">expect_equal</span>(<span class="kw">f</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb28-8" data-line-number="8">  }</a>
-<a class="sourceLine" id="cb28-9" data-line-number="9">)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">test_that</span>(<span class="st">&quot;test if f function is correct&quot;</span>, {</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">    <span class="kw">expect_equal</span>(<span class="kw">f</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">  }</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="kw">test_that</span>(<span class="st">&quot;test if f function is correct&quot;</span>, {</a>
+<a class="sourceLine" id="cb29-7" data-line-number="7">    <span class="kw">expect_equal</span>(<span class="kw">f</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb29-8" data-line-number="8">  }</a>
+<a class="sourceLine" id="cb29-9" data-line-number="9">)</a></code></pre></div>
 </div>
 <div id="devtoolstest-preform-test" class="slide section level1">
 <h1>8. devtools::test() preform test</h1>
 <ul>
 <li>perform test</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">test</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">test</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a></code></pre></div>
 </div>
 <div id="devtoolsuse_vignette-generate-vignettes" class="slide section level1">
 <h1>9. devtools::use_vignette() generate vignettes</h1>
 <ul>
 <li>browse all Vignettes</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">browseVignettes</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">browseVignettes</span>()</a></code></pre></div>
 <ul>
 <li>create our own Vignettes</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">setwd</span>(WD2)</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">use_vignette</span>(<span class="st">&quot;Gators&quot;</span>, <span class="dt">pkg =</span> <span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb31-3" data-line-number="3">## or </a>
-<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="kw">setwd</span>(WD)</a>
-<a class="sourceLine" id="cb31-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">use_vignette</span>(<span class="st">&quot;Gators&quot;</span>, <span class="dt">pkg =</span> <span class="st">&quot;GatorPKG&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">setwd</span>(WD2)</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">use_vignette</span>(<span class="st">&quot;Gators&quot;</span>, <span class="dt">pkg =</span> <span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">## or </a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="kw">setwd</span>(WD)</a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">use_vignette</span>(<span class="st">&quot;Gators&quot;</span>, <span class="dt">pkg =</span> <span class="st">&quot;GatorPKG&quot;</span>)</a></code></pre></div>
 </div>
 <div id="devtoolscheck-check-the-package" class="slide section level1">
 <h1>10. devtools::check() check the package</h1>
 <ul>
 <li>check the package</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">setwd</span>(WD2)</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">check</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">setwd</span>(WD2)</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">check</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a></code></pre></div>
 </div>
 <div id="devtoolsbuild-build-the-package" class="slide section level1">
 <h1>11. devtools::build() build the package</h1>
 <ul>
 <li>build() will generate .tar.gz package</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">## build the package</a>
-<a class="sourceLine" id="cb33-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">build</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">## build the package</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">build</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a></code></pre></div>
 </div>
 <div id="devtoolsinstall-install-the-package" class="slide section level1">
 <h1><span style="color:red">12. devtools::install() install the package</span></h1>
 <ul>
 <li>install the package</li>
 </ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install</span>(<span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>) ## build the vignettes</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install</span>() ## default argument is pkg = &quot;.&quot;, current working directory</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install</span>(<span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>) ## also build the vignettes</a></code></pre></div>
 <ul>
 <li>remove the package</li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">remove.packages</span>(<span class="st">&quot;GatorPKG&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">remove.packages</span>(<span class="st">&quot;GatorPKG&quot;</span>)</a></code></pre></div>
 <ul>
 <li>install the pacakge again</li>
 </ul>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">file.path</span>(<span class="st">&quot;~/Desktop&quot;</span>,<span class="st">&quot;GatorPKG_0.0.0.9000.tar.gz&quot;</span>),<span class="dt">repos=</span><span class="ot">NULL</span>,<span class="dt">type=</span><span class="st">&quot;source&quot;</span>) ## directly with vignettes</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">file.path</span>(<span class="st">&quot;~/Desktop&quot;</span>,<span class="st">&quot;GatorPKG_0.0.0.9000.tar.gz&quot;</span>),<span class="dt">repos=</span><span class="ot">NULL</span>,<span class="dt">type=</span><span class="st">&quot;source&quot;</span>) ## directly with vignettes</a></code></pre></div>
 </div>
 <div id="others-internal-function" class="slide section level1">
 <h1>others (internal function)</h1>
@@ -894,6 +895,20 @@ nrow(mtcars)</code></pre>
 <ul>
 <li><p>DESCRIPTION file Depends: R (&gt;= 3.4.1), survival</p></li>
 <li><p>change your function f.R to depend on coxph</p></li>
+</ul>
+</div>
+<div id="others-r-package-and-github" class="slide section level1">
+<h1>others (R package and GitHub)</h1>
+<ul>
+<li>GitHub is a great open platform to host R packages
+<ul>
+<li>Apply for a github acccount</li>
+<li><a href="https://github.com" class="uri">https://github.com</a></li>
+</ul></li>
+<li>Play with the following git tutorials (HW)
+<ul>
+<li><a href="https://www.codecademy.com/learn/learn-git" class="uri">https://www.codecademy.com/learn/learn-git</a></li>
+</ul></li>
 </ul>
 </div>
 <div id="references" class="slide section level1">
