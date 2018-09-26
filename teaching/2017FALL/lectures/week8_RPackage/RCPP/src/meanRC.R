@@ -6,6 +6,8 @@
 ##' @return mean of the vector
 ##' @author Caleb
 ##' @export
+##' @useDynLib GatorCPP
+##' @importFrom Rcpp sourceCpp
 ##' @examples
 ##' meanRC(1:10)
 meanRC <- function(x){
