@@ -669,7 +669,7 @@ Zhiguang Huo (Caleb)
 ## 0.4506712 0.2910916 0.0000000 0.0000000 0.3475427 0.0000000 0.0000000 
 ##     pgg45 
 ## 0.0000000</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">## Mode=&quot;lambda&quot; uses the lasso regularization parameter for s</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">## Mode=&quot;lambda&quot; uses s as the lasso regularization parameter for lambda</a></code></pre></div>
 </div>
 <div id="lasso-the-penalty-form-and-the-constraint-form" class="slide section level1">
 <h1>lasso, the penalty form and the constraint form</h1>
@@ -754,7 +754,7 @@ Zhiguang Huo (Caleb)
 <div id="how-to-choose-tuning-parameter" class="slide section level1">
 <h1>How to choose Tuning parameter</h1>
 <ul>
-<li>cross validation, leave this for future lecture.</li>
+<li>cross validation, we leave this for future lectures.</li>
 </ul>
 </div>
 <div id="lasso-path" class="slide section level1">
@@ -791,13 +791,16 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="generalized-lasso" class="slide section level1">
 <h1>Generalized lasso</h1>
-<p>Consider a general setting <span class="math display">\[\min_{\beta \in \mathbb{R}^p} f(\beta) + \lambda ||D\beta||_1\]</span> where <span class="math inline">\(f: \mathbb{R}^n \rightarrow \mathbb{R}\)</span> is a smooth convex function. <span class="math inline">\(D \in \mathbb{R}^{m\times n}\)</span> is a penalty matrix. When <span class="math inline">\(D=I\)</span>, the formulation will reduce to the lasso regression problem.</p>
-<p>When <span class="math display">\[D= \left( \begin{array}{cccccc}
+<p>Consider a general setting <span class="math display">\[\min_{\beta \in \mathbb{R}^p} f(\beta) + \lambda ||D\beta||_1\]</span> where <span class="math inline">\(f: \mathbb{R}^n \rightarrow \mathbb{R}\)</span> is a smooth convex function. <span class="math inline">\(D \in \mathbb{R}^{m\times n}\)</span> is a penalty matrix.</p>
+<ul>
+<li>When <span class="math inline">\(D=I\)</span>, the formulation will reduce to the lasso regression problem.</li>
+<li>When <span class="math display">\[D= \left( \begin{array}{cccccc}
 -1 &amp; 1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 \\
 1 &amp; -1 &amp; 1 &amp; \ldots &amp; 0 &amp; 0 \\
 \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots &amp; \vdots \\
  0 &amp; 0 &amp; 0 &amp; \ldots &amp; -1 &amp; 1
- \end{array} \right),\]</span> The penalty will be the fussed lasso penalty.</p>
+ \end{array} \right),\]</span> The penalty will be the fussed lasso penalty.</li>
+</ul>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
