@@ -1728,6 +1728,28 @@ fm_zinb2 &lt;- zeroinfl(art ~ . | ., data = bioChemists, dist = &quot;negbin&quo
 ## inflation with regressors
 ## (&quot;art ~ . | .&quot; is &quot;art ~ fem + mar + kid5 + phd + ment | fem + mar + kid5 + phd + ment&quot;)</code></pre>
 </div>
+<div id="generalized-linear-model" class="slide section level1">
+<h1>Generalized linear model</h1>
+<p>We can generalize these conditions for linear regression model</p>
+<ul>
+<li>Random (stochastic) component
+<ul>
+<li><span class="math inline">\(\mu = E(Y|X), Y|X \sim f(\mu)\)</span>, <span class="math inline">\(f\)</span> is a distribution from the exponential family.</li>
+</ul></li>
+<li>Systematic component – Assume linear model: <span class="math inline">\(X^\top\beta\)</span></li>
+<li>Link function
+<ul>
+<li><span class="math inline">\(X^\top\beta = g(\mu)\)</span></li>
+</ul></li>
+</ul>
+<p>How about non linear systematic component:</p>
+<ul>
+<li>generalized additive model
+<ul>
+<li>Assume additive model: <span class="math inline">\(\beta_0 + \sum_p r_p (x_p)\)</span></li>
+</ul></li>
+</ul>
+</div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
   <script>
