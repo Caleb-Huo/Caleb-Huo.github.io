@@ -531,7 +531,7 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="tmean" class="slide section level1">
 <h1><span class="math inline">\(T^{mean}\)</span></h1>
-<p><span class="math display">\[T^{mean} = \frac{1}{n}\sum_{i=1}^n Y_i\]</span></p>
+<p><span class="math display">\[T^{mean} = \frac{1}{n}\sum_{i=1}^n X_i\]</span></p>
 <ul>
 <li>Bias: <span class="math inline">\(|E({T}^{(mean)}) - \mu| = |\frac{1}{n}\sum_{i=1}^n \mu - \mu| = 0\)</span></li>
 <li>Variance: <span class="math inline">\(E[{T}^{(mean)} - E({T}^{(mean)})]^2 = \frac{\sigma^2}{n}\)</span></li>
@@ -1280,7 +1280,7 @@ Zhiguang Huo (Caleb)
 <li>The first idea is to test each hypothesis separately, using a same significance <span class="math inline">\(\alpha\)</span>.</li>
 <li>i.e.,You have 20 hypothesis to test at a significance level <span class="math inline">\(\alpha = 0.05\)</span>. What is the probability of observing at least one significant result just due to chance?</li>
 </ul>
-<p><span class="math inline">\(\begin{aligned} P(\mbox{at least one significant result}) &amp;= 1 - P(\mbox{no significant result}) \\ &amp; = (1 - 0.05)^{20} \\ &amp; \approx 0.64 \\ \end{aligned}\)</span></p>
+<p><span class="math inline">\(\begin{aligned} P(\mbox{at least one significant result}) &amp;= 1 - P(\mbox{no significant result}) \\ &amp; = 1 - (1 - 0.05)^{20} \\ &amp; \approx 0.64 \\ \end{aligned}\)</span></p>
 <ul>
 <li>i.e.,In genomic study, say you are tesing 10,000 genes and all of them are non-significant. At <span class="math inline">\(\alpha\)</span> level <span class="math inline">\(0.05\)</span>, by chance you will declare 500 sigfinicant genes.</li>
 </ul>
@@ -1291,7 +1291,7 @@ Zhiguang Huo (Caleb)
 <li>The Bonferroni correction sets the significance cut-off at <span class="math inline">\(\alpha / n\)</span>.</li>
 <li>In the previous example with 20 tests and <span class="math inline">\(\alpha = 0.05\)</span>, we will only reject a null hypothesis if the p-value is less than 0.0025.</li>
 </ul>
-<p><span class="math inline">\(\begin{aligned} P(\mbox{at least one significant result}) &amp;= 1 - P(\mbox{no significant result}) \\ &amp; = (1 - 0.0025)^{20} \\ &amp; \approx 0.0488 \\ \end{aligned}\)</span></p>
+<p><span class="math inline">\(\begin{aligned} P(\mbox{at least one significant result}) &amp;= 1 - P(\mbox{no significant result}) \\ &amp; = 1 - (1 - 0.0025)^{20} \\ &amp; \approx 0.0488 \\ \end{aligned}\)</span></p>
 <ul>
 <li>Bonferroni correction tends to be a bit too conservative (and very conservative if the samples are correlated).</li>
 </ul>
