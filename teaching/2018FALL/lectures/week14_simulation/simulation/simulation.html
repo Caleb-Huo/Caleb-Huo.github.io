@@ -541,7 +541,7 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="tmedian" class="slide section level1">
 <h1><span class="math inline">\(T^{median}\)</span></h1>
-<p><span class="math display">\[T^{median} = Median_{i=1}^n Y_i\]</span></p>
+<p><span class="math display">\[T^{median} = Median_{i=1}^n X_i\]</span></p>
 <ul>
 <li>Bias: <span class="math inline">\(|E({T}^{(median)}) - \mu| =0?\)</span></li>
 <li>Variance: <span class="math inline">\(E[{T}^{(median)} - E({T}^{(median)})]^2 =?\)</span></li>
@@ -552,7 +552,7 @@ Zhiguang Huo (Caleb)
 <div id="tmean20" class="slide section level1">
 <h1><span class="math inline">\(T^{mean20\%}\)</span></h1>
 <p>Can be calculated</p>
-<p><span class="math display">\[T^{mean20\%} = \frac{1}{0.8n}\sum_{i=0.1n+1}^{0.9n} Y_i\]</span></p>
+<p><span class="math display">\[T^{mean20\%} = \frac{1}{0.8n}\sum_{i=0.1n+1}^{0.9n} X_i\]</span></p>
 <ul>
 <li>Bias: <span class="math inline">\(| E({T}^{(mean20\%)}) - \mu| =0?\)</span></li>
 <li>Variance: <span class="math inline">\(E[{T}^{(mean20\%)} - E({T}^{(mean20\%)})]^2 =?\)</span></li>
@@ -621,7 +621,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>In simulation
 <ul>
-<li>Know the underlying truth (e.g., <span class="math inline">\(\theta\)</span>)</li>
+<li>Know the underlying truth (e.g., <span class="math inline">\(\mu\)</span>)</li>
 <li>Can evaluate the performance of our estimator/procedure (e.g., <span class="math inline">\(T\)</span>) by comparing to the underlying truth</li>
 </ul></li>
 <li>In real data application
@@ -755,11 +755,11 @@ Zhiguang Huo (Caleb)
 <ol style="list-style-type: decimal">
 <li>simulate <span class="math inline">\(Y_b = Y_0 + N(0,3^2)\)</span></li>
 <li>Calculate <span class="math inline">\(\hat{\beta}^{ols}_b \in \mathbb{6}\)</span></li>
+</ol></li>
 <li>Calculate <span class="math inline">\(\hat{\bar{\beta}}^{ols} = \frac{1}{B}\sum_{b=1}^B \hat{\beta}^{ols}_b\)</span></li>
 <li>Calculate bias <span class="math inline">\(bias(\beta, \hat{\bar{\beta}}^{ols})^2 = \sum_{j=0}^5 bias(\beta_j, \hat{\bar{\beta}}^{ols}_j)^2\)</span></li>
 <li>Calculate variance: <span class="math inline">\(var(\hat{\beta}^{ols}_j) = \frac{1}{B-1} \sum_{b=1}^B (\hat{\beta_j}^{ols}_b - \hat{\bar{\beta}}_j^{ols})^2\)</span> , <span class="math inline">\(var_T(\hat{\beta}^{ols}) = \sum_{j=0}^5 var(\hat{\beta}^{ols}_j)\)</span></li>
 <li><span class="math inline">\(MSE(\hat{\beta}^{ols}) = bias(\beta, \hat{\beta}^{ols})^2 + var_T(\hat{\beta}^{ols})\)</span></li>
-</ol></li>
 </ul>
 </div>
 <div id="for-simulation-of-lasso" class="slide section level1">
@@ -770,11 +770,11 @@ Zhiguang Huo (Caleb)
 <ol style="list-style-type: decimal">
 <li>simulate <span class="math inline">\(Y_b = Y_0 + N(0,3^2)\)</span></li>
 <li>Calculate <span class="math inline">\(\hat{\beta}^{lasso}_b \in \mathbb{6}\)</span></li>
+</ol></li>
 <li>Calculate <span class="math inline">\(\hat{\bar{\beta}}^{lasso} = \frac{1}{B}\sum_{b=1}^B \hat{\beta}^{lasso}_b\)</span></li>
 <li>Calculate bias <span class="math inline">\(bias(\beta, \hat{\bar{\beta}}^{lasso})^2 = \sum_{j=0}^5 bias(\beta_j, \hat{\bar{\beta}}^{lasso}_j)^2\)</span></li>
 <li>Calculate variance: <span class="math inline">\(var(\hat{\beta}^{lasso}_j) = \frac{1}{B-1} \sum_{b=1}^B (\hat{\beta_j}^{lasso}_b - \hat{\bar{\beta}}_j^{lasso})^2\)</span> , <span class="math inline">\(var_T(\hat{\beta}^{lasso}) = \sum_{j=0}^5 var(\hat{\beta}^{lasso}_j)\)</span></li>
 <li><span class="math inline">\(MSE(\hat{\beta}^{lasso}) = bias(\beta, \hat{\beta}^{lasso})^2 + var_T(\hat{\beta}^{lasso})\)</span></li>
-</ol></li>
 <li>Repeat this procedure for all tuning parameters</li>
 </ul>
 </div>
