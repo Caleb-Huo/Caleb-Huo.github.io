@@ -972,7 +972,7 @@ Zhiguang Huo (Caleb)
 <pre><code>## [1] 50005000</code></pre>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">end &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</a>
 <a class="sourceLine" id="cb119-2" data-line-number="2">end <span class="op">-</span><span class="st"> </span>start</a></code></pre></div>
-<pre><code>## Time difference of 0.001559019 secs</code></pre>
+<pre><code>## Time difference of 0.001560926 secs</code></pre>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">start &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</a>
 <a class="sourceLine" id="cb121-2" data-line-number="2">result &lt;-<span class="st"> </span><span class="dv">0</span></a>
 <a class="sourceLine" id="cb121-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e4</span>){</a>
@@ -982,7 +982,7 @@ Zhiguang Huo (Caleb)
 <pre><code>## [1] 50005000</code></pre>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">end &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</a>
 <a class="sourceLine" id="cb123-2" data-line-number="2">end <span class="op">-</span><span class="st"> </span>start</a></code></pre></div>
-<pre><code>## Time difference of 0.004564047 secs</code></pre>
+<pre><code>## Time difference of 0.004572868 secs</code></pre>
 </div>
 <div id="lazy-evaluation" class="slide section level1">
 <h1>Lazy Evaluation</h1>
@@ -1142,7 +1142,7 @@ Zhiguang Huo (Caleb)
 <a class="sourceLine" id="cb160-2" data-line-number="2">nrow</a></code></pre></div>
 <pre><code>## function (x) 
 ## dim(x)[1L]
-## &lt;bytecode: 0x7fdd6ad93c40&gt;
+## &lt;bytecode: 0x7fb279695940&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">nrow</span>(x)</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
@@ -1160,8 +1160,8 @@ Zhiguang Huo (Caleb)
 <pre><code>## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="kw">environment</span>(dim)</a></code></pre></div>
 <pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">environment</span>(base<span class="op">::</span>nrow)</a></code></pre></div>
-<pre><code>## &lt;environment: namespace:base&gt;</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">environment</span>(base<span class="op">::</span>dim)</a></code></pre></div>
+<pre><code>## NULL</code></pre>
 </div>
 <div id="references" class="slide section level1">
 <h1>References</h1>
