@@ -11,7 +11,7 @@
   <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -24,13 +24,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -444,6 +442,7 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="rstudio-on-hipergator" class="slide section level1">
 <h1>Rstudio on HiperGator</h1>
+<p>Review:</p>
 <ul>
 <li><p><a href="https://caleb-huo.github.io/teaching/2019FALL/lectures/week5_ggplot2/hiperGator/hiperGator_Rstudio.html" class="uri">https://caleb-huo.github.io/teaching/2019FALL/lectures/week5_ggplot2/hiperGator/hiperGator_Rstudio.html</a></p></li>
 <li><p>Rsudio on HiperGator is recommended for all assignemnts of this class.</p></li>
@@ -474,7 +473,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>MobaXterm
 <ul>
-<li>ssh <a href="mailto:user@hpg.rc.ufl.edu">user@hpg.rc.ufl.edu</a></li>
+<li>ssh <a href="mailto:user@hpg.rc.ufl.edu" class="email">user@hpg.rc.ufl.edu</a></li>
 <li>enter your password</li>
 </ul></li>
 </ul>
@@ -485,7 +484,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>terminal
 <ul>
-<li>ssh <a href="mailto:user@hpg.rc.ufl.edu">user@hpg.rc.ufl.edu</a></li>
+<li>ssh <a href="mailto:user@hpg.rc.ufl.edu" class="email">user@hpg.rc.ufl.edu</a></li>
 <li>enter your password</li>
 </ul></li>
 </ul>
@@ -616,10 +615,10 @@ dir()</code></pre>
 <ul>
 <li>Save the following code into saveCars.R</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">WD &lt;-<span class="st"> &quot;/ufrc/phc6068/share/zhuo/example/testR&quot;</span> ## change to your own directory</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">dir.create</span>(WD, <span class="dt">re=</span>T) ## force to create this folder</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">WD &lt;-<span class="st"> &quot;/ufrc/phc6068/share/zhuo/example/testR&quot;</span> <span class="co">## change to your own directory</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">dir.create</span>(WD, <span class="dt">re=</span>T) <span class="co">## force to create this folder</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">setwd</span>(WD) ## set to your own directory!</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">setwd</span>(WD) <span class="co">## set to your own directory!</span></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5">mycars &lt;-<span class="st"> </span>mtcars</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw">write.csv</span>(mycars,<span class="st">&quot;mycars.csv&quot;</span>)</a></code></pre></div>
 </div>
@@ -712,7 +711,7 @@ cat mycars.csv</code></pre>
 <ul>
 <li>Save the following code into saveCarsArgs.R</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">args =<span class="st"> </span><span class="kw">commandArgs</span>(<span class="dt">trailingOnly =</span> <span class="ot">TRUE</span>) ## pass in external argument</a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">args =<span class="st"> </span><span class="kw">commandArgs</span>(<span class="dt">trailingOnly =</span> <span class="ot">TRUE</span>) <span class="co">## pass in external argument</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3">rowID &lt;-<span class="st"> </span>args[<span class="dv">1</span>]</a>
 <a class="sourceLine" id="cb10-4" data-line-number="4">aarg &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(rowID)</a>
