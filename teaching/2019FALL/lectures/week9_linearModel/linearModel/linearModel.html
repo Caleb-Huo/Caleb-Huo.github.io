@@ -621,8 +621,8 @@ Zhiguang Huo (Caleb)
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">cor_prostate &lt;-<span class="st"> </span><span class="kw">cor</span>(prostate)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">max</span>(cor_prostate[cor_prostate<span class="op">!=</span><span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## [1] 0.7519045</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">maxID &lt;-<span class="st"> </span><span class="kw">arrayInd</span>(<span class="kw">which</span>(<span class="kw">max</span>(cor_prostate[cor_prostate<span class="op">!=</span><span class="dv">1</span>]) <span class="op">==</span><span class="st"> </span>cor_prostate), <span class="kw">dim</span>(cor_prostate))</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw">names</span>(prostate[maxID[<span class="dv">1</span>,]])</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">maxID &lt;-<span class="st"> </span><span class="kw">arrayInd</span>(<span class="kw">which</span>(<span class="kw">max</span>(cor_prostate[cor_prostate<span class="op">!=</span><span class="dv">1</span>]) <span class="op">==</span><span class="st"> </span>cor_prostate)[<span class="dv">1</span>], <span class="kw">dim</span>(cor_prostate))</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw">names</span>(prostate)[maxID]</a></code></pre></div>
 <pre><code>## [1] &quot;pgg45&quot;   &quot;gleason&quot;</code></pre>
 </div>
 <div class="slide section level1">
