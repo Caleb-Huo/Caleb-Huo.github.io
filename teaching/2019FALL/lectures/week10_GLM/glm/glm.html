@@ -597,11 +597,14 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="logistic-regression-motivating-example-1" class="slide section level1">
 <h1>logistic regression motivating example</h1>
+<ul>
+<li>The input data is usually formatted as this way:</li>
+</ul>
 <table>
 <thead>
 <tr class="header">
 <th>ID</th>
-<th>Y(Yes/No)</th>
+<th>Myocardial Infarction (Yes/No)</th>
 <th>Treatment(1/0)</th>
 </tr>
 </thead>
@@ -874,7 +877,7 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 <td>logit</td>
 <td><span class="math inline">\(\theta = \log(\frac{\mu}{1 - \mu})\)</span></td>
 <td><span class="math inline">\(X^\top\beta = \log(\frac{\mu}{1 - \mu})\)</span></td>
-<td><span class="math inline">\(\mu = \frac{X^\top\beta}{1 + X^\top\beta}\)</span></td>
+<td><span class="math inline">\(\mu = \frac{\exp (X^\top\beta)}{1 + \exp (X^\top\beta)}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Poisson</td>
@@ -1008,18 +1011,10 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 ## lcavol      3.269481e+00 21.085191
 ## lweight     1.233400e-01  4.848066
 ## age         9.344452e-01  1.142958</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">head</span>(<span class="kw">predict</span>(glm_binomial3, <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)) <span class="co"># predicted values type = c(&quot;link&quot;, &quot; response&quot;, &quot;terms&quot;)</span></a></code></pre></div>
-<pre><code>##            1            2            3            4            5 
-## 0.0015117583 0.0007476917 0.0038053593 0.0004963039 0.0263507563 
-##            6 
-## 0.0005295007</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">head</span>(<span class="kw">residuals</span>(glm_binomial3)) <span class="co"># residuals</span></a></code></pre></div>
-<pre><code>##           1           2           3           4           5           6 
-## -0.05500731 -0.03867742 -0.08732260 -0.03150959 -0.23110240 -0.03254661</code></pre>
 </div>
 <div id="model-selection-for-logistic-regression-also-all-other-glm" class="slide section level1">
 <h1>Model selection for logistic regression (also all other GLM)</h1>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">step</span>(<span class="kw">glm</span>(svi <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> prostate,  <span class="dt">family =</span> <span class="kw">binomial</span>()))</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">step</span>(<span class="kw">glm</span>(svi <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> prostate,  <span class="dt">family =</span> <span class="kw">binomial</span>()))</a></code></pre></div>
 <pre><code>## Start:  AIC=55.72
 ## svi ~ lcavol + lweight + age + lbph + lcp + gleason + pgg45 + 
 ##     lpsa
@@ -1137,8 +1132,8 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 <li>The program choices are general program, vocational program and academic program.</li>
 <li>Their choices can be modeled using their writing score and their social economic status.</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">ml &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://caleb-huo.github.io/teaching/data/mlogistic_program/hsbdemo.csv&quot;</span>,<span class="dt">row.names=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="kw">head</span>(ml)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">ml &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://caleb-huo.github.io/teaching/data/mlogistic_program/hsbdemo.csv&quot;</span>,<span class="dt">row.names=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">head</span>(ml)</a></code></pre></div>
 <pre><code>##    id female    ses schtyp     prog read write math science socst
 ## 1  45 female    low public vocation   34    35   41      29    26
 ## 2 108   male middle public  general   34    33   41      36    36
@@ -1156,17 +1151,17 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="multinomial-logistic-regression-result" class="slide section level1">
 <h1>Multinomial logistic Regression result</h1>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">ml<span class="op">$</span>prog2 &lt;-<span class="st"> </span><span class="kw">relevel</span>(ml<span class="op">$</span>prog, <span class="dt">ref =</span> <span class="st">&quot;vocation&quot;</span>)</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2">ml<span class="op">$</span>ses2 &lt;-<span class="st"> </span><span class="kw">relevel</span>(ml<span class="op">$</span>ses, <span class="dt">ref =</span> <span class="st">&quot;low&quot;</span>)</a>
-<a class="sourceLine" id="cb34-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="kw">library</span>(<span class="st">&quot;nnet&quot;</span>)</a>
-<a class="sourceLine" id="cb34-5" data-line-number="5">test &lt;-<span class="st"> </span><span class="kw">multinom</span>(prog2 <span class="op">~</span><span class="st"> </span>ses2 <span class="op">+</span><span class="st"> </span>write, <span class="dt">data =</span> ml)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">ml<span class="op">$</span>prog2 &lt;-<span class="st"> </span><span class="kw">relevel</span>(ml<span class="op">$</span>prog, <span class="dt">ref =</span> <span class="st">&quot;vocation&quot;</span>)</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">ml<span class="op">$</span>ses2 &lt;-<span class="st"> </span><span class="kw">relevel</span>(ml<span class="op">$</span>ses, <span class="dt">ref =</span> <span class="st">&quot;low&quot;</span>)</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="kw">library</span>(<span class="st">&quot;nnet&quot;</span>)</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">test &lt;-<span class="st"> </span><span class="kw">multinom</span>(prog2 <span class="op">~</span><span class="st"> </span>ses2 <span class="op">+</span><span class="st"> </span>write, <span class="dt">data =</span> ml)</a></code></pre></div>
 <pre><code>## # weights:  15 (8 variable)
 ## initial  value 219.722458 
 ## iter  10 value 179.993001
 ## final  value 179.981726 
 ## converged</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">summary</span>(test)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">summary</span>(test)</a></code></pre></div>
 <pre><code>## Call:
 ## multinom(formula = prog2 ~ ses2 + write, data = ml)
 ## 
@@ -1196,7 +1191,23 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 <ul>
 <li>An ordinal logistic regression model has <span class="math inline">\(J-1\)</span> logit functions</li>
 </ul>
-<p><span class="math display">\[log (\frac{P(Y &gt; j | X)}{P(Y \le j | X)}) = log (\frac{P(Y &gt; j | X)}{1 - P(Y &gt; j | X)}) = \alpha_j + \beta^T X\]</span> For all <span class="math inline">\(j = 1, \ldots, J - 1\)</span>.</p>
+<p><span class="math display">\[\log (\frac{P(Y &gt; j | X)}{P(Y \le j | X)}) = \log (\frac{P(Y &gt; j | X)}{1 - P(Y &gt; j | X)}) = \alpha_j + \beta^T X\]</span> For all <span class="math inline">\(j = 1, \ldots, J - 1\)</span>.</p>
+<ul>
+<li>When <span class="math inline">\(J = 3\)</span></li>
+</ul>
+<p><span class="math display">\[\log (\frac{P(Y &gt; 1 | X)}{P(Y \le 1 | X)}) = 
+\log (\frac{P(Y = 2 | X) + P(Y = 3 | X)}{P(Y = 1 | X)}) = 
+\alpha_1 + \beta^T X\]</span></p>
+<p><span class="math display">\[\log (\frac{P(Y &gt; 2 | X)}{P(Y \le 2 | X)}) = 
+\log (\frac{P(Y = 3 | X)}{P(Y = 1 | X) + P(Y = 2 | X)}) = 
+\alpha_2 + \beta^T X\]</span></p>
+</div>
+<div id="ordinal-logistic-regression-1" class="slide section level1">
+<h1>ordinal logistic regression</h1>
+<ul>
+<li>An ordinal logistic regression model has <span class="math inline">\(J-1\)</span> logit functions</li>
+</ul>
+<p><span class="math display">\[\log (\frac{P(Y &gt; j | X)}{P(Y \le j | X)}) = \log (\frac{P(Y &gt; j | X)}{1 - P(Y &gt; j | X)}) = \alpha_j + \beta^T X\]</span> For all <span class="math inline">\(j = 1, \ldots, J - 1\)</span>.</p>
 <ul>
 <li>The sign of the coefficient <span class="math inline">\(\beta\)</span> indicates that
 <ul>
@@ -1207,8 +1218,8 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="ordinal-logistic-regression-example" class="slide section level1">
 <h1>Ordinal Logistic Regression example</h1>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://caleb-huo.github.io/teaching/data/ologit/ologit.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="kw">head</span>(dat)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://caleb-huo.github.io/teaching/data/ologit/ologit.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">head</span>(dat)</a></code></pre></div>
 <pre><code>##             apply pared public  gpa
 ## 1     very likely     0      0 3.26
 ## 2 somewhat likely     1      0 3.21
@@ -1219,10 +1230,10 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="ordinal-logistic-regression-result" class="slide section level1">
 <h1>Ordinal logistic Regression result</h1>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">library</span>(MASS)</a>
-<a class="sourceLine" id="cb40-2" data-line-number="2">dat<span class="op">$</span>apply2 &lt;-<span class="st"> </span><span class="kw">relevel</span>(dat<span class="op">$</span>apply, <span class="dt">ref =</span> <span class="st">&quot;unlikely&quot;</span>)</a>
-<a class="sourceLine" id="cb40-3" data-line-number="3">m &lt;-<span class="st"> </span><span class="kw">polr</span>(apply2 <span class="op">~</span><span class="st"> </span>pared <span class="op">+</span><span class="st"> </span>public <span class="op">+</span><span class="st"> </span>gpa, <span class="dt">data =</span> dat, <span class="dt">Hess=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="kw">summary</span>(m)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">library</span>(MASS)</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">dat<span class="op">$</span>apply2 &lt;-<span class="st"> </span><span class="kw">relevel</span>(dat<span class="op">$</span>apply, <span class="dt">ref =</span> <span class="st">&quot;unlikely&quot;</span>)</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">m &lt;-<span class="st"> </span><span class="kw">polr</span>(apply2 <span class="op">~</span><span class="st"> </span>pared <span class="op">+</span><span class="st"> </span>public <span class="op">+</span><span class="st"> </span>gpa, <span class="dt">data =</span> dat, <span class="dt">Hess=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="kw">summary</span>(m)</a></code></pre></div>
 <pre><code>## Call:
 ## polr(formula = apply2 ~ pared + public + gpa, data = dat, Hess = TRUE)
 ## 
@@ -1239,7 +1250,7 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 ## 
 ## Residual Deviance: 717.0249 
 ## AIC: 727.0249</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">exp</span>(<span class="kw">coef</span>(m))</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">exp</span>(<span class="kw">coef</span>(m))</a></code></pre></div>
 <pre><code>##     pared    public       gpa 
 ## 2.8510579 0.9429088 1.8513972</code></pre>
 </div>
@@ -1290,14 +1301,14 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="fit-poisson-model-in-r" class="slide section level1">
 <h1>fit Poisson Model in R</h1>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">library</span>(pscl)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">library</span>(pscl)</a></code></pre></div>
 <pre><code>## Classes and Methods for R developed in the
 ## Political Science Computational Laboratory
 ## Department of Political Science
 ## Stanford University
 ## Simon Jackman
 ## hurdle and zeroinfl functions by Achim Zeileis</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">head</span>(bioChemists)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">head</span>(bioChemists)</a></code></pre></div>
 <pre><code>##   art   fem     mar kid5  phd ment
 ## 1   0   Men Married    0 2.52    7
 ## 2   0 Women  Single    0 2.05    6
@@ -1308,8 +1319,8 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="fit-poisson-model-in-r-1" class="slide section level1">
 <h1>fit Poisson Model in R</h1>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">glm_poisson &lt;-<span class="st"> </span><span class="kw">glm</span>(art <span class="op">~</span><span class="st"> </span>. , <span class="dt">data =</span> bioChemists,  <span class="dt">family =</span> <span class="kw">poisson</span>())</a>
-<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="kw">summary</span>(glm_poisson) <span class="co"># display results</span></a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">glm_poisson &lt;-<span class="st"> </span><span class="kw">glm</span>(art <span class="op">~</span><span class="st"> </span>. , <span class="dt">data =</span> bioChemists,  <span class="dt">family =</span> <span class="kw">poisson</span>())</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="kw">summary</span>(glm_poisson) <span class="co"># display results</span></a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = art ~ ., family = poisson(), data = bioChemists)
@@ -1339,7 +1350,7 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">confint</span>(glm_poisson) <span class="co"># 95% CI for the coefficients</span></a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">confint</span>(glm_poisson) <span class="co"># 95% CI for the coefficients</span></a></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                   2.5 %      97.5 %
 ## (Intercept)  0.10155469  0.50526581
@@ -1348,10 +1359,10 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 ## kid5        -0.26422746 -0.10689876
 ## phd         -0.03881122  0.06467552
 ## ment         0.02154163  0.02940716</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">exp</span>(<span class="kw">coef</span>(glm_poisson)) <span class="co"># exponentiated coefficients</span></a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">exp</span>(<span class="kw">coef</span>(glm_poisson)) <span class="co"># exponentiated coefficients</span></a></code></pre></div>
 <pre><code>## (Intercept)    femWomen  marMarried        kid5         phd        ment 
 ##   1.3561053   0.7988403   1.1679422   0.8312018   1.0129051   1.0258718</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">exp</span>(<span class="kw">confint</span>(glm_poisson)) <span class="co"># 95% CI for exponentiated coefficients</span></a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">exp</span>(<span class="kw">confint</span>(glm_poisson)) <span class="co"># 95% CI for exponentiated coefficients</span></a></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                 2.5 %    97.5 %
 ## (Intercept) 1.1068905 1.6574260
@@ -1360,9 +1371,6 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 ## kid5        0.7677989 0.8986166
 ## phd         0.9619323 1.0668128
 ## ment        1.0217753 1.0298438</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">head</span>(<span class="kw">residuals</span>(glm_poisson)) <span class="co"># residuals</span></a></code></pre></div>
-<pre><code>##         1         2         3         4         5         6 
-## -1.977948 -1.610197 -1.627842 -1.698833 -2.101566 -1.388027</code></pre>
 </div>
 <div id="interpretation-of-beta-for-poisson-model" class="slide section level1">
 <h1>Interpretation of <span class="math inline">\(\beta\)</span> for Poisson model</h1>
@@ -1378,13 +1386,11 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 <li><span class="math inline">\(\mu_1 = \exp(\beta_1) \mu_0\)</span></li>
 </ul>
 <p><span class="math inline">\(\beta_1\)</span> is difference in log of expected counts when <span class="math inline">\(X\)</span> increases by 1 unit.</p>
-<p><span class="math inline">\(\exp (\beta_1)\)</span> is multiplicative effect of the mean of <span class="math inline">\(Y\)</span> when <span class="math inline">\(X\)</span> increase by 1 unit.</p>
-<p>If <span class="math inline">\(\beta_1 &gt; 0\)</span>, then <span class="math inline">\(\exp(\beta_1) &gt; 1\)</span>. Therefore, <span class="math inline">\(\mu_1 &gt; \mu_0\)</span>; <span class="math inline">\(\mu_1\)</span> is <span class="math inline">\(\exp (\beta_1)\)</span> times larger than <span class="math inline">\(\mu_0\)</span>.</p>
-<p>If <span class="math inline">\(\beta_1 &lt; 0\)</span>, then <span class="math inline">\(\exp(\beta_1) &lt; 1\)</span>. Therefore, <span class="math inline">\(\mu_1 &lt; \mu_0\)</span>; <span class="math inline">\(\mu_1\)</span> is <span class="math inline">\(\exp (\beta_1)\)</span> times smaller than <span class="math inline">\(\mu_0\)</span>.</p>
+<p><span class="math inline">\(\exp (\beta_1)\)</span> is multiplicative effect of the mean of <span class="math inline">\(Y\)</span> when <span class="math inline">\(X\)</span> increases by 1 unit.</p>
 </div>
 <div id="model-selection-for-poisson-regression-also-all-other-glm" class="slide section level1">
 <h1>Model selection for Poisson regression (also all other GLM)</h1>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">step</span>(glm_poisson)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">step</span>(glm_poisson)</a></code></pre></div>
 <pre><code>## Start:  AIC=3314.11
 ## art ~ fem + mar + kid5 + phd + ment
 ## 
@@ -1440,8 +1446,8 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 <li><span class="math inline">\(\log (n_i)\)</span> is called the offset term</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://caleb-huo.github.io/teaching/data/Burn/burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="kw">head</span>(burnData)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">burnData &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://caleb-huo.github.io/teaching/data/Burn/burn.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="kw">head</span>(burnData)</a></code></pre></div>
 <pre><code>##   treatment gender race percent head buttock trunk upper_leg lower_leg
 ## 1         0      0    0      15    0       0     1         1         0
 ## 2         0      0    1      20    0       0     1         0         0
@@ -1459,8 +1465,8 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="modeling-the-rate-1" class="slide section level1">
 <h1>Modeling the rate</h1>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">glm_poisson_rate &lt;-<span class="st"> </span><span class="kw">glm</span>(infection <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>numfup <span class="op">+</span><span class="st"> </span><span class="kw">offset</span>(<span class="kw">log</span>(numfup)), <span class="dt">data =</span> burnData,  <span class="dt">family =</span> <span class="kw">poisson</span>())</a>
-<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="kw">summary</span>(glm_poisson_rate) <span class="co"># display results</span></a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">glm_poisson_rate &lt;-<span class="st"> </span><span class="kw">glm</span>(infection <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>numfup <span class="op">+</span><span class="st"> </span><span class="kw">offset</span>(<span class="kw">log</span>(numfup)), <span class="dt">data =</span> burnData,  <span class="dt">family =</span> <span class="kw">poisson</span>())</a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="kw">summary</span>(glm_poisson_rate) <span class="co"># display results</span></a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = infection ~ . - numfup + offset(log(numfup)), family = poisson(), 
@@ -1505,18 +1511,20 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="biochemists-data" class="slide section level1">
 <h1>bioChemists data</h1>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">mean</span>(bioChemists<span class="op">$</span>art)</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">mean</span>(bioChemists<span class="op">$</span>art)</a></code></pre></div>
 <pre><code>## [1] 1.692896</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">var</span>(bioChemists<span class="op">$</span>art)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">var</span>(bioChemists<span class="op">$</span>art)</a></code></pre></div>
 <pre><code>## [1] 3.709742</code></pre>
 </div>
 <div id="negative-bionomial-regression" class="slide section level1">
 <h1>Negative Bionomial Regression</h1>
 <ul>
 <li><strong>Negative binomial (NB) regression</strong> is a standard method to model overdispersed Poisson data.</li>
-<li>Negative binomial can be derived from a Poisson-gamma mixture model.</li>
+<li>Negative binomial can be derived from a Poisson-gamma mixture model.
+<ul>
 <li>Let random variable <span class="math inline">\(Y|\lambda \sim Poisson(\lambda)\)</span> and <span class="math inline">\(\lambda \sim gamma(\alpha, \beta)\)</span>.</li>
 <li>The marginal distribution <span class="math inline">\(Y\)</span> follows a negative binomial distribution with <span class="math inline">\(r = \alpha\)</span> and <span class="math inline">\(p = 1/(\beta + 1)\)</span></li>
+</ul></li>
 </ul>
 <p><span class="math display">\[Y|\lambda \sim Poisson(\lambda)\]</span> <span class="math display">\[\lambda \sim gamma(\alpha, \beta)\]</span> <span class="math display">\[Y \sim NB(\alpha, 1/(\beta + 1))\]</span></p>
 </div>
@@ -1568,9 +1576,9 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="negative-binomial-example-1" class="slide section level1">
 <h1>Negative binomial example 1</h1>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">library</span>(MASS)</a>
-<a class="sourceLine" id="cb71-2" data-line-number="2">glm_nb &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(art <span class="op">~</span><span class="st"> </span>. , <span class="dt">data =</span> bioChemists)</a>
-<a class="sourceLine" id="cb71-3" data-line-number="3"><span class="kw">summary</span>(glm_nb) <span class="co"># display results</span></a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">library</span>(MASS)</a>
+<a class="sourceLine" id="cb65-2" data-line-number="2">glm_nb &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(art <span class="op">~</span><span class="st"> </span>. , <span class="dt">data =</span> bioChemists)</a>
+<a class="sourceLine" id="cb65-3" data-line-number="3"><span class="kw">summary</span>(glm_nb) <span class="co"># display results</span></a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm.nb(formula = art ~ ., data = bioChemists, init.theta = 2.264387695, 
@@ -1607,10 +1615,10 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="negative-binomial-example-2" class="slide section level1">
 <h1>Negative binomial example 2</h1>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">glm_nb_rate &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(infection <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>numfup <span class="op">+</span><span class="st"> </span><span class="kw">offset</span>(<span class="kw">log</span>(numfup)), <span class="dt">data =</span> burnData)</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">glm_nb_rate &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(infection <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>numfup <span class="op">+</span><span class="st"> </span><span class="kw">offset</span>(<span class="kw">log</span>(numfup)), <span class="dt">data =</span> burnData)</a></code></pre></div>
 <pre><code>## Warning in glm.nb(infection ~ . - numfup + offset(log(numfup)), data =
 ## burnData): alternation limit reached</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">summary</span>(glm_nb_rate)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">summary</span>(glm_nb_rate)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm.nb(formula = infection ~ . - numfup + offset(log(numfup)), 
@@ -1739,7 +1747,7 @@ fm_zinb2 &lt;- zeroinfl(art ~ . | ., data = bioChemists, dist = &quot;negbin&quo
 <ul>
 <li>generalized additive model
 <ul>
-<li>Assume additive model: <span class="math inline">\(\beta_0 + \sum_p r_p (x_p)\)</span></li>
+<li>Assume additive models for the link function: <span class="math inline">\(g(\mu) = \beta_0 + \sum_p r_p (x_p)\)</span></li>
 </ul></li>
 </ul>
 </div>
