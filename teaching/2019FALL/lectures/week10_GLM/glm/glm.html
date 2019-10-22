@@ -1686,7 +1686,7 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 <div id="zero-inflated-poisson-regression" class="slide section level1">
 <h1>zero inflated Poisson regression</h1>
 <ul>
-<li>The zero-inflated Poisson (ZIP) regression is used for count data with overdispersion and excess zeros.</li>
+<li>The zero-inflated Poisson (ZIP) regression is used for count data with excess zeros.</li>
 <li>The data distribution combines the Poisson distribution and the Bernoulli distribution.</li>
 </ul>
 <p><span class="math display">\[
@@ -1719,6 +1719,9 @@ fm_zip2 &lt;- zeroinfl(art ~ . | ., data = bioChemists)
 </div>
 <div id="zinb-in-r" class="slide section level1">
 <h1>ZINB in R</h1>
+<ul>
+<li>The zero-inflated negative binomial (ZINB) regression is used for count data with overdispersion and excess zeros.</li>
+</ul>
 <pre><code>fm_nb &lt;- MASS::glm.nb(art ~ ., data = bioChemists)
 ## without inflation
 
