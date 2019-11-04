@@ -459,9 +459,9 @@ Zhiguang Huo (Caleb)
 <h1>What is a simulation study?</h1>
 <p>Simulation (a.k.a Monte Carlo simulation):</p>
 <ul>
-<li>Rely on repeated random sampling to obtain numerical results.</li>
+<li>Rely on repeated random samplings to obtain numerical results.</li>
 </ul>
-<p>Why we need simulation study</p>
+<p>Why we need simulation studies</p>
 <ul>
 <li>After we propose a statistical method, we want to validate the method using simulation so people can use it with confidence.</li>
 <li>Exact analytical derivations of properties are rarely possible.</li>
@@ -500,7 +500,7 @@ Zhiguang Huo (Caleb)
 </ul></li>
 </ul>
 <p>Note: 20% trimmed mean indicates average value after deleting first 10% quantile and last 10% quantile.</p>
-<p>E.g. 3,2,4,7,1,6,5,8,9,10</p>
+<p>E.g. 1,2,…,10</p>
 <ul>
 <li>mean = mean(1:10)</li>
 <li>mean20% = mean(2:9)</li>
@@ -877,7 +877,7 @@ Zhiguang Huo (Caleb)
 <h1>Simulation for sizes of hypothesis tests</h1>
 <ul>
 <li>Test <span class="math inline">\(H_0: \mu = \mu_0\)</span> against <span class="math inline">\(H_A: \mu \neq \mu_0\)</span></li>
-<li>To evaluate whether size/level of test achieves advertised <span class="math inline">\(\alpha\)</span>
+<li>To evaluate whether size/level of test achieves advertised <span class="math inline">\(\alpha\)</span> under <span class="math inline">\(H_0\)</span>
 <ul>
 <li>Generate data under <span class="math inline">\(H_0: \mu = \mu_0\)</span> and calculate the proportion of rejections of <span class="math inline">\(H_0\)</span></li>
 <li>Proportion of rejecting <span class="math inline">\(H_0\)</span> approximately equals to <span class="math inline">\(\alpha\)</span></li>
@@ -1049,7 +1049,7 @@ Zhiguang Huo (Caleb)
 <p>In general, the larger sample sizes, the larger power.</p>
 </div>
 <div id="example-10-validate-the-result-using-r-function" class="slide section level1">
-<h1>Example 10, , Validate the result using R function</h1>
+<h1>Example 10, Validate the result using R function</h1>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span>; mu=<span class="dv">0</span>; mu1 &lt;-<span class="st"> </span><span class="dv">1</span>; n &lt;-<span class="st"> </span><span class="dv">20</span>; B &lt;-<span class="st"> </span><span class="dv">1000</span></a>
 <a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw">pwr.t.test</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">d =</span> mu1, <span class="dt">sig.level =</span> alpha, <span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span>, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</a></code></pre></div>
 <pre><code>## 
@@ -1061,6 +1061,13 @@ Zhiguang Huo (Caleb)
 ##           power = 0.8030969
 ##     alternative = two.sided</code></pre>
 </div>
+<div id="summary-size-and-power" class="slide section level1">
+<h1>Summary: Size and Power</h1>
+<ul>
+<li><p>Size of a test: Generate data under <span class="math inline">\(H_0\)</span>, at alpha level 0.05, the proportation of rejecting <span class="math inline">\(H_0\)</span> is the size of a test</p></li>
+<li><p>Power of a test: Generate data under <span class="math inline">\(H_A\)</span>, at alpha level 0.05, the proportation of rejecting <span class="math inline">\(H_0\)</span> is the power of a test</p></li>
+</ul>
+</div>
 <div id="confidence-interval" class="slide section level1">
 <h1>Confidence interval</h1>
 <p>A <span class="math inline">\(1 - \alpha\)</span> confidence interval for parameter <span class="math inline">\(\mu\)</span> is an interval <span class="math inline">\(C_n = (a,b)\)</span> where <span class="math inline">\(a = a(X_1, \ldots, X_n)\)</span> and <span class="math inline">\(b = b(X_1, \ldots, X_n)\)</span> are functions of the data such that <span class="math display">\[P(\mu \in C_n) \ge 1 - \alpha\]</span> In other words, <span class="math inline">\((a,b)\)</span> traps <span class="math inline">\(\mu\)</span> with probability <span class="math inline">\(1 - \alpha\)</span>. We call <span class="math inline">\(1 - \alpha\)</span> the coverage of the confidence interval.</p>
@@ -1070,8 +1077,8 @@ Zhiguang Huo (Caleb)
 <li>if I repeat the experiment over and over, the interval will contain the parameter <span class="math inline">\(\mu\)</span> 95 percent of the time.</li>
 </ul>
 </div>
-<div id="example-11-confidence-interval-mu-can-be-random" class="slide section level1">
-<h1>Example 11, Confidence interval (<span class="math inline">\(\mu\)</span> can be random)</h1>
+<div id="example-11-confidence-interval" class="slide section level1">
+<h1>Example 11, Confidence interval</h1>
 <ul>
 <li><span class="math inline">\(\mu = 1\)</span></li>
 <li><span class="math inline">\(n=10, i = 1, \ldots, n\)</span></li>
@@ -1269,7 +1276,6 @@ Zhiguang Huo (Caleb)
 <a class="sourceLine" id="cb38-23" data-line-number="23">pvalue =<span class="st"> </span><span class="kw">mean</span>(TB <span class="op">&gt;=</span><span class="st"> </span>T)</a>
 <a class="sourceLine" id="cb38-24" data-line-number="24">pvalue</a></code></pre></div>
 <pre><code>## [1] 0.353</code></pre>
-<p>HW: compare size and power of t.test, Wilcoxon test, and permutation test</p>
 </div>
 <div id="multiple-testing" class="slide section level1">
 <h1>Multiple testing</h1>
@@ -1286,6 +1292,10 @@ Zhiguang Huo (Caleb)
 <div id="bonferroni-correction" class="slide section level1">
 <h1>Bonferroni correction</h1>
 <ul>
+<li>Bonferroni correction controls the familywise error rate.
+<ul>
+<li>Bonferroni corrected p-value is the pvalue for at least one significant result</li>
+</ul></li>
 <li>The Bonferroni correction sets the significance cut-off at <span class="math inline">\(\alpha / n\)</span>.</li>
 <li>In the previous example with 20 tests and <span class="math inline">\(\alpha = 0.05\)</span>, we will only reject a null hypothesis if the p-value is less than 0.0025.</li>
 </ul>
@@ -1322,6 +1332,7 @@ Zhiguang Huo (Caleb)
 <li>Bonferroni correction: among all tests for samples from null distribution, the probability to falsely reject at least one sample is <span class="math inline">\(\alpha\)</span>. Too stringent.</li>
 <li>False discover rate (FDR)
 <ul>
+<li>Also known as Benjamini-Hochberg correction</li>
 <li>This is defined as the proportion of false positives among all significant results.</li>
 </ul></li>
 </ul>
@@ -1375,9 +1386,9 @@ Zhiguang Huo (Caleb)
 ## SigLabel             FALSE TRUE
 ##   0                   8562  438
 ##   0.0828389118685122     0 1000</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">fdr_raw &lt;-<span class="st">  </span><span class="kw">sum</span>(test_raw <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span>SigLabel) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(test_raw)</a>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">fpr_raw &lt;-<span class="st">  </span><span class="kw">sum</span>(test_raw <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span>SigLabel) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(test_raw)</a>
 <a class="sourceLine" id="cb49-2" data-line-number="2">fnr_raw &lt;-<span class="st">  </span><span class="kw">sum</span>(<span class="op">!</span>test_raw <span class="op">&amp;</span><span class="st"> </span>SigLabel) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(<span class="op">!</span>test_raw)</a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">fdr_raw</a></code></pre></div>
+<a class="sourceLine" id="cb49-3" data-line-number="3">fpr_raw</a></code></pre></div>
 <pre><code>## [1] 0.3045897</code></pre>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">fnr_raw</a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
