@@ -551,13 +551,14 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="empirical-process" class="slide section level1">
 <h1>Empirical process</h1>
+<p>Empirical distribution is close to the underlying distribution</p>
 <ul>
 <li><p>Glivenko-Cantelli Theorem <span class="math display">\[\sup_x | F_n(x) - F(x)| \rightarrow 0\]</span></p></li>
 <li><p>Dvoretzky-Kiefer-Wolfowitz inequality, for any <span class="math inline">\(\varepsilon &gt; 0\)</span> <span class="math display">\[P(\sup_x | F_n(x) - F(x)| &gt; \varepsilon) \le 2\exp(-2n\varepsilon^2)\]</span></p></li>
 </ul>
 </div>
-<div id="variance-of-median-estimator-bootstrapping-method" class="slide section level1">
-<h1>Variance of “median estimator”, Bootstrapping method</h1>
+<div id="variance-of-the-median-estimator-bootstrapping-method" class="slide section level1">
+<h1>Variance of the “median estimator”, Bootstrapping method</h1>
 <p>Instead of drawing samples from the underlying distribution <span class="math inline">\(F \sim N(\mu, \sigma^2)\)</span>, we draw from the empirical distribution <span class="math inline">\(F_n\)</span></p>
 <ul>
 <li>For <span class="math inline">\(b = 1, \ldots, B\)</span>
@@ -583,7 +584,7 @@ Zhiguang Huo (Caleb)
 <li><span class="math inline">\(\hat{V}_{F_n} (T_n) = \frac{1}{B-1} \sum_{b=1}^B \{T^{(b)}_n - \bar{T}_n \}^2\)</span></li>
 </ul>
 </div>
-<div id="variance-of-median-estimator-bootstrapping-method-1" class="slide section level1">
+<div id="variance-of-median-estimator-bootstrapping-method" class="slide section level1">
 <h1>Variance of “median estimator”, Bootstrapping method</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">mu &lt;-<span class="st"> </span><span class="dv">1</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">sigma &lt;-<span class="st"> </span><span class="dv">1</span></a>
@@ -640,7 +641,7 @@ Zhiguang Huo (Caleb)
 <li>Compute <span class="math inline">\(\hat{T}^{(b)}_n = median_{i=1}^n(X^{b}_i)\)</span></li>
 </ul></li>
 <li><span class="math inline">\(\bar{\hat{T}}_n = \frac{1}{B} \sum_{b=1}^B \hat{T}^{(b)}_n\)</span></li>
-<li><span class="math inline">\(\hat{V}_F (T_n) = \frac{1}{B} \sum_{b=1}^B \{\hat{T}^{(b)}_n - \bar{\hat{T}}_n \}^2\)</span></li>
+<li><span class="math inline">\(\hat{V}_F (T_n) = \frac{1}{B-1} \sum_{b=1}^B \{\hat{T}^{(b)}_n - \bar{\hat{T}}_n \}^2\)</span></li>
 </ul>
 </div>
 <div id="the-parametric-bootstrapping-variance-of-median-estimator-1" class="slide section level1">
@@ -676,7 +677,7 @@ Zhiguang Huo (Caleb)
 <li>delta method</li>
 <li>non-parametric Bootstrapping</li>
 <li>parametric Bootstrapping</li>
-<li>simulation</li>
+<li>simulation (requires knowning the underlying parameter <span class="math inline">\(\lambda\)</span>)</li>
 </ul></li>
 </ul>
 </div>
@@ -822,6 +823,14 @@ Zhiguang Huo (Caleb)
 </tr>
 </tbody>
 </table>
+</div>
+<div id="comparison-between-simulation-and-non-parametric-bootstrapping" class="slide section level1">
+<h1>Comparison between Simulation and Non-parametric bootstrapping</h1>
+<ul>
+<li>Simulation: Monte Carlo Simulation from underlying distribution.</li>
+<li>Non-parametric bootstrapping: Monte Carlo Simulation from the empirical distribution.</li>
+</ul>
+<p>The rest of the percedures are the same</p>
 </div>
 <div id="bootstrap-confidence-interval" class="slide section level1">
 <h1>Bootstrap confidence interval</h1>
@@ -1041,7 +1050,6 @@ Zhiguang Huo (Caleb)
 <ul>
 <li><a href="http://www.stat.cmu.edu/~larry/=stat705/Lecture13.pdf" class="uri">http://www.stat.cmu.edu/~larry/=stat705/Lecture13.pdf</a></li>
 <li><a href="http://users.stat.umn.edu/~helwig/notes/bootci-Notes.pdf" class="uri">http://users.stat.umn.edu/~helwig/notes/bootci-Notes.pdf</a></li>
-<li><a href="http://www.stat.cmu.edu/~larry/=stat705/Lecture10.pdf" class="uri">http://www.stat.cmu.edu/~larry/=stat705/Lecture10.pdf</a></li>
 </ul>
 </div>
 
