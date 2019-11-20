@@ -545,7 +545,7 @@ Zhiguang Huo (Caleb)
 <div id="rejection-sampling" class="slide section level1">
 <h1>Rejection sampling</h1>
 <ul>
-<li><span class="math inline">\(p^*(x)\)</span> is difficult to directly draw samples, but <span class="math inline">\(p(x)\)</span> is easy to evaluate the function value.</li>
+<li><span class="math inline">\(p^*(x)\)</span> is difficult to directly draw samples, but <span class="math inline">\(p(x)\)</span> is easy to evaluate..</li>
 </ul>
 <p>(e.g. <span class="math inline">\(p(x) = \exp [ 0.4(x-0.4)^2 - 0.08x^4 ]\)</span>)</p>
 <ul>
@@ -811,7 +811,7 @@ p^*(x) &amp;= \frac{p(x)}{Z} \\
 <a class="sourceLine" id="cb24-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.01</span>)</a>
 <a class="sourceLine" id="cb24-3" data-line-number="3"><span class="kw">plot</span>(x,<span class="kw">p</span>(x),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</a>
 <a class="sourceLine" id="cb24-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb24-5" data-line-number="5">qstar &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">rep.int</span>(<span class="fl">0.125</span>,<span class="kw">length</span>(x))}</a>
+<a class="sourceLine" id="cb24-5" data-line-number="5">qstar &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">rep.int</span>(<span class="fl">0.125</span>,<span class="kw">length</span>(x))} <span class="co">## proposal distribution: uniform distribution.</span></a>
 <a class="sourceLine" id="cb24-6" data-line-number="6">N &lt;-<span class="st"> </span><span class="dv">10000</span></a>
 <a class="sourceLine" id="cb24-7" data-line-number="7">S &lt;-<span class="st"> </span><span class="dv">1000</span></a>
 <a class="sourceLine" id="cb24-8" data-line-number="8">x.qstar &lt;-<span class="st"> </span><span class="kw">runif</span>( N, <span class="dv">-4</span>, <span class="dv">4</span> )</a>
