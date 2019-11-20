@@ -432,8 +432,8 @@ Zhiguang Huo (Caleb)
   </p>
   <p class="date">Wednesday Nov 20, 2019</p>
 </div>
-<div id="bayesian-sampling-method" class="slide section level1">
-<h1>Bayesian sampling method</h1>
+<div id="sampling-method" class="slide section level1">
+<h1>Sampling method</h1>
 <ol style="list-style-type: decimal">
 <li>Monte Carlo methods.
 <ul>
@@ -652,7 +652,7 @@ p^*(x) &amp;= \frac{p(x)}{Z} \\
 </ul>
 <p><span class="math display">\[\mathbb{E} (\phi (x) | p^* )  = \int \phi (x) p^*(x) dx\]</span></p>
 <ul>
-<li><p>If we can sample <span class="math inline">\(x_m\)</span> from <span class="math inline">\(p^*(x)\)</span>, when we can use <span class="math inline">\(\frac{1}{M} \sum_{m=1}^M \phi(x_m)\)</span> to estimate <span class="math inline">\(\mathbb{E} (\phi (x) | p^* )\)</span></p></li>
+<li><p>If we can sample <span class="math inline">\(x_m\)</span> from <span class="math inline">\(p^*(x)\)</span>, then we can use <span class="math inline">\(\frac{1}{M} \sum_{m=1}^M \phi(x_m)\)</span> to estimate <span class="math inline">\(\mathbb{E} (\phi (x) | p^* )\)</span></p></li>
 <li>If we cannot sample <span class="math inline">\(x_m\)</span> from <span class="math inline">\(p^*(x)\)</span>,
 <ul>
 <li>Rely on a proposed distribution (Sampler): <span class="math inline">\(q^*(x)\)</span>.</li>
