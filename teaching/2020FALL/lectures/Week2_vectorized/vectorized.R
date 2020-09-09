@@ -26,7 +26,7 @@ for(i in seq_along(a)){
 end <- Sys.time() 
 end - start
 meanA
-
+ 
 #' 
 #' ---
 #'   
