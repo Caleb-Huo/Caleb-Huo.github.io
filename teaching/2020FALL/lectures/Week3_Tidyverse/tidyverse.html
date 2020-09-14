@@ -480,10 +480,10 @@ Zhiguang Huo (Caleb)
 <li>alternatively, you can do library(tidyverse) to include all of them</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ tibble  2.1.3     ✓ forcats 0.4.0
 ## ✓ purrr   0.3.3</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 </div>
@@ -1493,7 +1493,7 @@ Zhiguang Huo (Caleb)
 <div id="detect-matches-2" class="slide section level1">
 <h1>Detect Matches (2)</h1>
 <ul>
-<li>str_detect: return a index vector to indicate match position</li>
+<li>str_which: return a index vector to indicate match position</li>
 </ul>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">colorVec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;white&quot;</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">str_which</span>(colorVec, <span class="st">&quot;e&quot;</span>) <span class="co">## contains e</span></a></code></pre></div>
