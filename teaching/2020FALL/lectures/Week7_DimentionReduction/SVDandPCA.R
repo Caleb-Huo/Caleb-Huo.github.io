@@ -46,12 +46,12 @@
 #' <img width="45%" src="../figure/PC_simu3.png"/>
 #' 
 #' 
-#' Another motivating example
+#' An example
 #' ===
 #' 
 #' - Usually use the first principle component and the second principle component direction to visualize the data
 #' - Motivating example: iris data, 150 observations, 4 variables (features)
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 head(iris)
 dim(iris)
 
@@ -61,7 +61,7 @@ dim(iris)
 #' - Perform PCA
 #'     - project these 150 observations from 4 dimentional space onto 2 dimensional space 
 #' - visualize the data.
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 iris.data <- iris[,1:4]
 ir.pca <- prcomp(iris.data,
                  center = TRUE,
@@ -84,7 +84,7 @@ legend("topright", legend = levels(iris$Species), col =  unique(iris$Species), p
 #' - Angle between Arrows: Correlation = cos(angle).
 #' 
 #' 
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 biplot(ir.pca)
 
 #' 
@@ -93,7 +93,7 @@ biplot(ir.pca)
 #' - Perform PCA (using ggplot)
 #'     - project these 150 observations from 4 dimentional space onto 2 dimensional space 
 #' - visualize the data.
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 suppressWarnings(suppressMessages(library(tidyverse)))
 iris.data <- iris[,1:4]
 ir.pca <- prcomp(iris.data,
@@ -215,10 +215,10 @@ data_PCA %>%
 #' 
 #' - Project the original data into orthonormal space ($\bf v_1, v_2, \ldots$) where $\bf v_g$ is the $g^{th}$ eigen vector of the covariance matrix $\Sigma$, such that the variance of the projected value along $\bf v_1$ is maximized, then along $\bf v_2$ is maximized, ...
 #' - $L_1 = {\bf v_1}^\top {\bf x}$ is the projected value of $x$ on the first principal component
-#'   - Also referred as the loading of the first principal component
-#'   - We also observe that the new loading is the linear combination of original data
+#'   - Also referred as the score of the first principal component
+#'   - We also observe that the new score is the linear combination of original data
 #' - $L_2 = {\bf v_2}^\top {\bf x}$ is the projected value of $x$ on the second principal component
-#'   - Also referred as the load of the second principal component
+#'   - Also referred as the score of the second principal component
 #' - These projection directions are the eigenvectors by applying eigenvalue decomposition to the covariance matrix $\Sigma$.
 #' - Eigen value $d_1$ is the variance explained by $L_1$
 #' - The proportion of variance explained by the first $g$ PCs is $r_g = \frac{d_g}{\sum_{g'} d_{g'}}$.
@@ -310,7 +310,7 @@ data_PCA %>%
 #' Cell cycle data (will be on HW)
 #' ===
 #' 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE------------------------------------------------------------------------
 ## library(impute)
 ## raw = read.table("http://Caleb-Huo.github.io/teaching/data/cellCycle/cellCycle.txt",header=TRUE,as.is=TRUE)
 ## cellCycle = raw
@@ -360,7 +360,7 @@ data_PCA %>%
 #' 
 #'   - $v_1$ is the first principal component
 #'   - $d_1$ is the variance explained by $v_1$
-#'   - $v_1^\top x$ is the loading of x on the first principal component
+#'   - $v_1^\top x$ is the score of x on the first principal component
 #' 
 #' - SVD
 #'   - Suppose $X = U E  V^\top$, where $X$ has been standardized (mean 0 and sd 1).
@@ -389,7 +389,7 @@ data_PCA %>%
 #' Validate the SVD results using iris data
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 iris.data <- iris[,1:4]
 iris.data.center <- scale(iris.data) ## mean 0 and std 1
 asvd <- svd(iris.data.center)
@@ -421,13 +421,14 @@ legend("topright", legend = levels(iris$Species), col =  unique(iris$Species), p
 #' $$\min_{W\in \mathbb{R}^{p\times r}, H \in \mathbb{R}^{r \times n}} \|X - WH\|_F,$$  
 #' where $X \in \mathbb{R}^{p \times n}$, $\|X\|_F = \sqrt{\sum_{j=1}^p \sum_{i=1}^n X_{ji}^2}$
 #' 
-#' 
+#' - W: score matrix
+#' - H: loading matrix
 #' 
 #' 
 #' NMF example
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 suppressMessages(library(NMF))
 
 iris.data <- iris[,1:4]
@@ -443,7 +444,7 @@ legend("topright", legend = levels(iris$Species), col =  unique(iris$Species), p
 #' NMF example
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 basismap(anmf) ## W
 coefmap(anmf) ## H
 
@@ -457,7 +458,7 @@ coefmap(anmf) ## H
 #'   - The input is dissimilarity matrix, not high dimentional data matrix (which is for PCA and SVD)
 #' - Flight mileage of ten cities obtained from <http://www.webyer.com/travel/mileage_calculator/>.
 #' 
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 z <- read.delim("https://Caleb-Huo.github.io/teaching/data/UScityDistance/Mileage.txt", row.names=1)
 knitr::kable(z, caption = "distance between cities (miles)")
 
@@ -545,7 +546,7 @@ knitr::kable(z, caption = "distance between cities (miles)")
 #' Another MDS example - Genetic dissimilarity between races
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 z0 <- read.csv("https://Caleb-Huo.github.io/teaching/data/SNP_MDS/SNP_PCA.csv", row.names=1)
 knitr::kable(z0, caption = "Genetic dissimilarity between races")
 
@@ -553,7 +554,7 @@ knitr::kable(z0, caption = "Genetic dissimilarity between races")
 #' Another MDS example - Genetic dissimilarity between races
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 library(ggplot2)
 library(ggrepel)
 
@@ -583,7 +584,7 @@ ggplot(data=mdsDataFrame, aes(x=x, y=y, label=Race)) +
 #' applications with tSNE
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------------
 library(tsne)
 
 data_tsne0 <- tsne(iris[,1:4])
