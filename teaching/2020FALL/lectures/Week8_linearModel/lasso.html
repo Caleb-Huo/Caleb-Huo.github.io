@@ -790,7 +790,7 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="elastic-net-1" class="slide section level1">
 <h1>Elastic net</h1>
-<p><span class="math display">\[\hat{\beta}^{elastic} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2 + \lambda (1 - \alpha  \|\beta\|_2 + (\alpha)  \|\beta\|_1)\]</span></p>
+<p><span class="math display">\[\hat{\beta}^{elastic} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2 + \lambda ( (1 - \alpha ) \|\beta\|_2 + \alpha  \|\beta\|_1)\]</span></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">library</span>(glmnet)</a></code></pre></div>
 <pre><code>## Loading required package: Matrix</code></pre>
 <pre><code>## Loaded glmnet 3.0-2</code></pre>
