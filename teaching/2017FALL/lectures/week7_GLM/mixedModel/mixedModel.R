@@ -37,8 +37,8 @@
 #' voice pitch data
 #' ===
 #' 
-## ------------------------------------------------------------------------
-d = read.csv("http://www.bodowinter.com/tutorial/politeness_data.csv")
+## -----------------------------------------------------------------------------
+d = read.csv("https://caleb-huo.github.io/teaching/data/politeness/politeness_data.csv")
 str(d)
 d$attitude <- as.factor(d$attitude)
 d$scenario0 <- as.factor(d$scenario)
@@ -55,7 +55,7 @@ d$scenario0 <- as.factor(d$scenario)
 #' voice pitch data
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 head(d)
 
 with(d, table(subject, gender))
@@ -66,7 +66,7 @@ which(apply(d,1,function(x) any(is.na(x))))
 #' visualize the data
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 library(ggplot2)
 ggplot(aes(attitude, frequency, color = subject), data=d) + facet_grid(~subject) + geom_boxplot() + geom_jitter() + theme_bw()
 
@@ -84,7 +84,7 @@ ggplot(aes(attitude, frequency, color = subject), data=d) + facet_grid(~subject)
 #' Linear model in R
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 lmFit <- lm(frequency ~ attitude + gender, data = d)
 summary(lmFit)
 
@@ -100,7 +100,7 @@ summary(lmFit)
 #' data independence
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 pol_subj = subset(d, attitude == "pol")
 inf_subj = subset(d, attitude == "inf")
 pol_subj$attitude <- NULL
@@ -116,7 +116,7 @@ head(subj_merge)
 #' ===
 #' 
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggplot(data=subj_merge, aes(frequency_pol, frequency_inf)) + 
   geom_point(aes(col=subject)) + 
   geom_smooth(method="lm")
@@ -125,7 +125,7 @@ ggplot(data=subj_merge, aes(frequency_pol, frequency_inf)) +
 #' Subject dependence
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggplot(data=subj_merge, aes(frequency_pol, frequency_inf)) + 
   geom_point(aes(col=subject)) + 
   stat_ellipse(aes(col=subject)) +
@@ -137,7 +137,7 @@ ggplot(data=subj_merge, aes(frequency_pol, frequency_inf)) +
 #' ===
 #' 
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggplot(data=subj_merge, aes(frequency_pol, frequency_inf)) + 
   geom_point(aes(col=scenario0)) + 
   geom_smooth(method="lm")
@@ -147,7 +147,7 @@ ggplot(data=subj_merge, aes(frequency_pol, frequency_inf)) +
 #' ===
 #' 
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggplot(data=subj_merge, aes(frequency_pol, frequency_inf)) + 
   geom_point(aes(col=scenario0)) + 
   stat_ellipse(aes(col=scenario0)) +
@@ -195,7 +195,7 @@ ggplot(data=subj_merge, aes(frequency_pol, frequency_inf)) +
 #' 
 #' - In R, lmer() function in lme4 package will do the job
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 lm(frequency ~ attitude, data = d)
 library(lme4)
 library(lmerTest) ## this package helps provide a p-value
@@ -206,7 +206,7 @@ tryCatch({lmer(frequency ~ attitude, data = d)}, error=function(e) print(e))
 #' 
 #' Fit linear mixed model in R
 #' ===
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 rs_subj_reml = lmer(frequency ~ attitude + (1 | subject), data = d)
 summary(rs_subj_reml)
 
@@ -214,7 +214,7 @@ summary(rs_subj_reml)
 #' Further explore rs_subj_reml
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 coef(rs_subj_reml)
 AIC(rs_subj_reml)
 
@@ -236,7 +236,7 @@ AIC(rs_subj_reml)
 #' Fit linear mixed model in R (REML = FALSE)
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 rs_subj_ml = lmer(frequency ~ attitude + (1 | subject), REML = FALSE, data = d)
 summary(rs_subj_ml)
 
@@ -251,7 +251,7 @@ summary(rs_subj_ml)
 #' 
 #' Compare to linear model
 #' ===
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 summary(lm(frequency ~ attitude, data = d))
 
 #' 
@@ -261,7 +261,7 @@ summary(lm(frequency ~ attitude, data = d))
 #' Getting p-values
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 rs_subj_reml = lmer(frequency ~ attitude + (1 | subject), data = d) 
 anova(rs_subj_reml, ddf = "Kenward-Roger")
 
@@ -276,14 +276,14 @@ anova(rs_null_ml, rs_subj_ml)
 #' 
 #' add another covariate gender and its interaction with attitude
 #' ===
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 summary(lmer(frequency ~ attitude * gender +  (1 | subject), data = d))
 
 #' 
 #' Investigate scenario
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggplot(aes(1, frequency, col=scenario0), data=d) + 
   geom_boxplot() + 
   geom_jitter() + 
@@ -295,7 +295,7 @@ ggplot(aes(1, frequency, col=scenario0), data=d) +
 #' A larger mixed model
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 rs_intergen_subjscene_ml = lmer(frequency ~ attitude + gender + (1 | subject) + 
     (1 | scenario), REML = FALSE, data = d)
 summary(rs_intergen_subjscene_ml)
@@ -303,14 +303,14 @@ summary(rs_intergen_subjscene_ml)
 #' 
 #' A larger mixed model
 #' ===
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 coef(rs_intergen_subjscene_ml)
 
 #' 
 #' Random Slopes
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggplot(aes(attitude, frequency, color = subject), data=d) + 
   geom_point() + 
   geom_smooth(method="lm", aes(group=1)) + 
@@ -321,7 +321,7 @@ ggplot(aes(attitude, frequency, color = subject), data=d) +
 #' Random Slopes
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggplot(data=subj_merge, aes(frequency_pol, frequency_inf, col=scenario0)) + 
   geom_point() + 
   geom_smooth(method="lm", se = F)
@@ -331,7 +331,7 @@ ggplot(data=subj_merge, aes(frequency_pol, frequency_inf, col=scenario0)) +
 #' Random Slopes in R
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 politeness.model.rs = lmer(frequency ~  attitude + gender + (1 + attitude | subject) + 
     (1 | scenario), REML = FALSE, data = d)
 summary(politeness.model.rs)
@@ -339,13 +339,13 @@ summary(politeness.model.rs)
 #' 
 #' Random Slopes in R
 #' ===
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 coef(politeness.model.rs)
 
 #' 
 #' Is random slope necessary
 #' ===
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 rs_gen_subjscene_con_reml = lmer(frequency ~ attitude + gender + (1 + attitude | 
     subject) + (1 | scenario), REML = TRUE, data = d)
 
@@ -374,8 +374,8 @@ anova(rs_gen_subjscene_reml, rs_gen_subjscene_con_reml)
 #' Another example sleep study
 #' ===
 #' 
-## ------------------------------------------------------------------------
-sleepStudy <- read.table("https://www.stat.tamu.edu/~sheather/book/docs/datasets/sleepstudy.txt", header=T, row.names = 1)
+## -----------------------------------------------------------------------------
+sleepStudy <- read.table("https://caleb-huo.github.io/teaching/data/sleep/sleepstudy.txt", header=T, row.names = 1)
 sleepStudy$Subject <- as.factor(sleepStudy$Subject)
 
 head(sleepStudy, n=10)
@@ -402,27 +402,27 @@ str(sleepStudy)
 #' Data exploratory
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ggplot(aes(Days, Reaction, col=Subject), data = sleepStudy) + geom_point() + geom_smooth(method="lm") + facet_wrap(~Subject)
 
 #' 
 #' 
 #' Fit linear mixed model in R
 #' ===
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 fm1 <- lmer(Reaction ~ Days + (Days|Subject), sleepstudy)
 summary(fm1)
 
 #' 
 #' coef
 #' ===
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 coef(fm1)
 
 #' 
 #' generate .R file
 #' ===
 #' 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 knitr::purl("mixedModel.rmd", output = "mixedModel.R ", documentation = 2)
 
