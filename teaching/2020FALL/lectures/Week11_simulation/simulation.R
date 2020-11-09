@@ -20,7 +20,6 @@
 #'     - size
 #'     - power
 #'     - confidence intercal
-#' - Permutation test
 #' - Multiple testing
 #'     - Bonferroni correction
 #'     - False discovery rate
@@ -308,7 +307,7 @@ comparisonTable
 #' Model setup: 
 #' 
 #' - $\beta_0 = 1$, $\beta_1 = 3$, $\beta_2 = 5$, $\beta_3 = \beta_4 = \beta_5 = 0$
-#' - $X_1, \ldots, X_5 \sim N(0,1)$
+#' - $X_1, \ldots, X_5 \sim N(0,1)$, fixed
 #' - $Y_0 = \beta_0 + X_1 \beta_1 + X_2 \beta_2 +\ldots,  X_5 \beta_5$
 #' - $Y = Y_0 + N(0,3^2)$
 #' - $n = 30$
@@ -377,7 +376,7 @@ for(b in 1:B){
   abeta_ols <- lm(Y~X0)$coefficients
   beta_ols[[b]] <- abeta_ols
   
-  alars <- lars(x = X, y = Y, intercept=F)
+  alars <- lars(x = X, y = Y, normalize = FALSE, intercept=F)
   beta_lasso[[b]] <- alars
 }
 
@@ -393,7 +392,7 @@ beta_ols_bias <- sqrt(sum((beta_ols_hat - beta)^2))
 beta_ols_variance <-  sum(Reduce("+", lapply(beta_ols,function(x) (x - beta_ols_hat)^2))/(length(beta_ols) - 1))
 beta_ols_MSE <- beta_ols_bias + beta_ols_variance
 
-as <- seq(0,10,0.1)
+as <- seq(0,30,0.1)
 lassoCoef <- lapply(beta_lasso, function(alars){
   alassoCoef <- t(coef(alars, s=as, mode="lambda"))
   alassoCoef
@@ -420,7 +419,7 @@ legend("bottomleft", legend = c("lasso", "OLS"), col = 4, lty = c(1,2))
 
 plot(x = as, y = beta_lasso_MSE, col=2, type = "l", xlab="lambda", main="MSE")
 abline(h = beta_ols_MSE, lty=2, col=2)
-legend("topleft", legend = c("lasso", "OLS"), col = 2, lty = c(1,2))
+legend("bottomright", legend = c("lasso", "OLS"), col = 2, lty = c(1,2))
 
 
 plot(x = as, y = beta_lasso_MSE, ylim = c(min(beta_lasso_bias), max(beta_lasso_MSE)), 
@@ -450,14 +449,29 @@ legend("bottomright", legend = c("bias", "variance", "MSE"), col = c(1,4,2), lty
 #' ![](../figure/hypothesisTwosided.png)
 #' 
 #' 
+#' Size and Power
+#' ===
 #' 
-#' Does a hypothesis testing procedure attain the nominal (advertised) level of significance or size?
+#' - Size of a test: 
+#'   - Generate data under $H_0$
+#'   - The proportation of rejecting $H_0$ is the size of a test, given a decision rule.
+#'   - A common decision rule: alpha level 0.05, 
+#'     - a rule such that the size of a test is 0.05. 
+#' 
+#' - Power of a test: 
+#'   - Generate data under $H_A$
+#'   - The proportation of rejecting $H_0$ is the power of a test, given a decision rule.
+#' 
+#' 
+#' Does a hypothesis testing procedure attain the nominal (advertised) size?
 #' ===
 #' 
 #' Consider the following tests:
 #' 
 #' - Parametric: t.test()
 #' - Non-Parametric: wilcox.test()
+#' 
+#' 
 #' 
 #' Simulation for sizes of hypothesis tests
 #' ===
@@ -643,15 +657,6 @@ alpha <- 0.05; mu=0; mu1 <- 1; n <- 20; B <- 1000
 pwr.t.test(n = 10, d = mu1, sig.level = alpha, type = "one.sample", alternative = "two.sided")
 
 #' 
-#' Summary: Size and Power
-#' ===
-#' 
-#' - Size of a test: 
-#'   Generate data under $H_0$, at alpha level 0.05, the proportation of rejecting $H_0$ is the size of a test
-#' 
-#' - Power of a test: 
-#'   Generate data under $H_A$, at alpha level 0.05, the proportation of rejecting $H_0$ is the power of a test
-#' 
 #' Confidence interval
 #' ===
 #' 
@@ -780,7 +785,7 @@ print(counts/B)
 #' 
 #' - Say you have a set of hypothesis that you want to test simultaneously.
 #' - The first idea is to test each hypothesis separately, using a same significance $\alpha$.
-#' - i.e.,You have 20 hypothesis to test at a significance level $\alpha = 0.05$. What is the probability of observing at least one significant result just due to chance?
+#' - i.e.,You have 20 hypothesis to test at a significance level $\alpha = 0.05$. Under the null (no significant results), what is the probability of observing at least one significant result just due to chance?
 #' 
 #' $\begin{aligned}
 #' P(\mbox{at least one significant result}) &= 1 - P(\mbox{no significant result}) \\ 
@@ -796,22 +801,21 @@ print(counts/B)
 #' ===
 #' 
 #' - Bonferroni correction controls the familywise error rate.
-#'   - Bonferroni corrected p-value is the pvalue for at least one significant result
-#' - The Bonferroni correction sets the significance cut-off at $\alpha / n$.
-#' - In the previous example with 20 tests and $\alpha = 0.05$, we will only reject a null hypothesis if the p-value is less than 0.0025.
+#' - The Bonferroni correction sets the significance cut-off for individual tests at $\alpha / n$, where $n$ is total number of tests.
+#'   - Then under the null, the probablity of rejecting at least one test among all $n$ tests is $\alpha$
+#' - In the previous example with 20 tests and $\alpha = 0.05$, we will only reject an individual test if the its p-value is less than 0.0025.
 #' 
 #' $\begin{aligned}
-#' P(\mbox{at least one significant result}) &= 1 - P(\mbox{no significant result}) \\ 
+#' P(\mbox{reject at least one test}|H_0) &= 1 - P(\mbox{reject nothing}|H_0) \\ 
 #' & = 1 - (1 - 0.0025)^{20} \\
 #' & \approx 0.0488 \\
 #' \end{aligned}$
 #' 
-#' - Bonferroni correction tends to be a bit too conservative (and very conservative if the samples are correlated).
 #' 
 #' Simulation experiment
 #' ===
 #' 
-#' Under the null hypothesis, the p-values follow $U(0,1)$.
+#' Under the null hypothesis, $X \sim N(0,1)$.
 #' 
 ## ------------------------------------------------------------------------
 B <- 1000
@@ -840,18 +844,37 @@ count/B
 #' - raw $\alpha$ level: doesn't control for multiple comparison. False positive by chance. Too loose.
 #' - Bonferroni correction: among all tests for samples from null distribution, the probability to falsely reject at least one sample is $\alpha$. Too stringent.
 #' - False discover rate (FDR)
-#'     - Also known as Benjamini-Hochberg correction
 #'     - This is defined as the proportion of false positives among all significant results.
 #' 
 #' ![](../figure/FDRTable.png)
 #' 
-#' - Control $FDR = FP/R$ within a pre-specified range.
+#' - Benjamini-Hochberg proposed a method to directly control $FDR = FP/R$ within a pre-specified range.
+#' 
+#' 
+#' Q-value
+#' ===
+#' 
+#' - A vector of p-values can be convereted to a vector of q-values
+#'   - R code: p.adjust(, method = "BH")
+#' - The q-value can be interpreted as the false discovery rate (FDR).
+#' - Rejecting the null hypothesis for all tests whose q-value $\le \alpha$ ensures that the expected value of the false discovery rate is $\alpha$.
+#' - E.g., among 1000 tests, 100 tests have qvalue $\le 0.05$. And if we reject using qvalue = 0.05: 
+#'   - The false discovery rate of these 100 tests is 5\%.
+#'   - Among these 100 rejected tests, 5 were expected to be falsely rejected.
+#' - qvalues have the same order as pvalues (also known as FDR-adjusted p-valuel)
+#' 
+#' 
 #' 
 #' Simulation setting
 #' ===    
+#' 
+#' - test whether mean is 0
+#'   - 9000 tests from null (mean = 0)
+#'   - 1000 tests from alternative (mean = 2)
+#' 
 ## ------------------------------------------------------------------------
-B1 <- 9000
-B2 <- 1000
+B1 <- 9000 ## from null
+B2 <- 1000 ## from alternative
 B <- B1 + B2
 n <- 10
 
@@ -862,12 +885,12 @@ pval <- numeric(B)
 for(b in 1:B){
     set.seed(b)
     if(b <= B1){
-    x <- rnorm(n)
+    x <- rnorm(n) ## null
   } else {
-    x <- rnorm(n, mean = 2)
+    x <- rnorm(n, mean = 2) ## alternative
   }
   
-  pval[b] <- t.test(x=x)$p.value
+  pval[b] <- t.test(x=x)$p.value ## get raw p-value
 }
 
 #' 
@@ -876,12 +899,12 @@ for(b in 1:B){
 #' ===
 ## ------------------------------------------------------------------------
 qvalue <- p.adjust(pval, "BH")
-test_fdr <- qvalue < 0.05
-table_fdr <- table(SigLabel, test_fdr)
-table_fdr
+test_qvalue <- qvalue < 0.05 ## set a nominal FDR
+table_qvalue <- table(SigLabel, test_qvalue)
+table_qvalue
 
-fpr_fdr <-  sum(test_fdr & !SigLabel) / sum(test_fdr)
-fpr_fdr
+fdr_qvalue <-  sum(test_qvalue & !SigLabel) / sum(test_qvalue)
+fdr_qvalue ## this is the actual FDR
 
 #' 
 #' Comparison - raw p-value
@@ -892,10 +915,8 @@ test_raw <- pval < 0.05
 table_raw <- table(SigLabel, test_raw)
 table_raw
 
-fpr_raw <-  sum(test_raw & !SigLabel) / sum(test_raw)
-fnr_raw <-  sum(!test_raw & SigLabel) / sum(!test_raw)
-fpr_raw
-fnr_raw
+fdr_raw <-  sum(test_raw & !SigLabel) / sum(test_raw)
+fdr_raw ## fdr = 30%, though reject 1438 tests, too loose
 
 #' 
 #' Comparison - bonferroni correction
@@ -905,25 +926,10 @@ test_bonferroni <- pval < 0.05/length(pval)
 table_bonferroni <- table(SigLabel, test_bonferroni)
 table_bonferroni
 
-fpr_bonferroni <-  sum(test_bonferroni & !SigLabel) / sum(test_bonferroni)
-fnr_bonferroni <- sum(!test_bonferroni & SigLabel) / sum(!test_bonferroni)
-fpr_bonferroni
-fnr_bonferroni
+fdr_bonferroni <-  sum(test_bonferroni & !SigLabel) / sum(test_bonferroni)
+fdr_bonferroni ## though fdr = 0, but only reject 138 tests, too conservative
 
 #' 
-#' Comparison - false discovery rate
-#' ===
-## ------------------------------------------------------------------------
-qvalue <- p.adjust(pval, "BH")
-test_fdr <- qvalue < 0.05
-table_fdr <- table(SigLabel, test_fdr)
-table_fdr
-
-fpr_fdr <-  sum(test_fdr & !SigLabel) / sum(test_fdr)
-fnr_fdr <- sum(!test_fdr & SigLabel) / sum(!test_fdr)
-fpr_fdr
-fnr_fdr
-
 #' 
 #' 
 #' 
@@ -931,10 +937,8 @@ fnr_fdr
 #' ===
 #' 
 #' 1. A Monte Carlo simulation is just like any other experiment
-#'     - Factors that are of interest to vary in the experiment: sample size n, distribution of the data, magnitude of variation...
 #'     - Each combination of factors is a separate simulation, so that many factors can lead to very large number of combinations and thus number of simulations (time consuming)
 #'     - Results must be recorded and saved in a systematic way
-#'     - Don't only choose factors favorable to a method you have developed!
 #'     - Sample size B (number of data sets) must deliver acceptable precision.
 #' 
 #' 2. Save everything!
