@@ -450,6 +450,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Bootstrapping variance, confidence interval</li>
 <li>non-parametric Bootstrapping, parametric Bootstrapping</li>
+<li>Bootstrapping p-values</li>
 </ul></li>
 </ul>
 <p>International Prize in Statistics Awarded to Bradley Efron, for his contribution in Bootstrapping (annouced in 11/12/2018)</p>
@@ -1119,14 +1120,12 @@ Zhiguang Huo (Caleb)
 <h1>Bootstrapping p-value</h1>
 <ul>
 <li>We are interested in calculating the bootstrapping for lcavol</li>
+</ul>
+<ol style="list-style-type: decimal">
 <li>Estimate the bootstrapping se</li>
 <li>Then calculate the Z statistics <span class="math display">\[Z = \frac{\hat{\beta}}{\hat{se(\hat{\beta})}}\]</span></li>
-<li>Under the NULL, <span class="math inline">\(Z\sim N(0,1)\)</span>
-<ul>
-<li>We can obtain the pvalue for lcavol using lm pacakge</li>
-<li>How to get thie pvalue from bootstrapping procedure?</li>
-</ul></li>
-</ul>
+<li>Under the NULL, <span class="math inline">\(Z\sim N(0,1)\)</span></li>
+</ol>
 </div>
 <div class="slide section level1">
 
@@ -1187,9 +1186,9 @@ Zhiguang Huo (Caleb)
 <h1>HW, Large scale Bootstrapping exercise</h1>
 <ul>
 <li>For the HAPMAP data on hiperGator.</li>
-<li>Calculate the sample contrivance matrix.</li>
-<li>what is the Bootstrapping variance of the largest eigen value.</li>
-<li>what is the Bootstrapping confidence interval of the largest eigen value.</li>
+<li>Perform SVD and obtain the largest singular value.</li>
+<li>what is the Bootstrapping variance of the largest singular value.</li>
+<li>what is the Bootstrapping confidence interval of the largest singular value.</li>
 </ul>
 </div>
 <div id="permutation-test" class="slide section level1">
@@ -1329,7 +1328,9 @@ Zhiguang Huo (Caleb)
 <li><a href="http://users.stat.umn.edu/~helwig/notes/bootci-Notes.pdf" class="uri">http://users.stat.umn.edu/~helwig/notes/bootci-Notes.pdf</a></li>
 <li>proof of p-value follows <span class="math inline">\(UNIF(0,1)\)</span> under the null
 <ul>
-<li>Under the null, a test statistic <span class="math inline">\(S\)</span> has distribution <span class="math inline">\(F(s)\)</span>, p-value <span class="math inline">\(p = Pr(S \le s) = F(s)\)</span></li>
+<li>Under the null, a test statistic <span class="math inline">\(S\)</span> has distribution <span class="math inline">\(F(s)\)</span></li>
+<li><span class="math inline">\(s\)</span> is the observed test statistics</li>
+<li>p-value <span class="math inline">\(p = Pr(S \le s) = F(s)\)</span></li>
 <li><span class="math inline">\(Pr(P \le p) = Pr(F^{-1}(P) \le F^{-1}(p)) = Pr(S \le s) = p\)</span></li>
 <li>QED (completion of proof)</li>
 </ul></li>
