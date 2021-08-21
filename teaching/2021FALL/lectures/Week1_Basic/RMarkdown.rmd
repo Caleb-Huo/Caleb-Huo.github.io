@@ -1,7 +1,7 @@
 ---
 title: "Biostatistical Computing, PHC 6068"
 author: "Zhiguang Huo (Caleb)"
-date: "Mon August 31, 2020"
+date: "Mon August 23, 2021"
 output:
   slidy_presentation: default
   ioslides_presentation: default
@@ -84,7 +84,7 @@ Markdown Next
 
 - How io import an external image: 
 
-![](https://caleb-huo.github.io/teaching/2018FALL/logo.png) 
+![](https://caleb-huo.github.io/teaching/2021FALL/logo.png) 
 
 
 Unordered list

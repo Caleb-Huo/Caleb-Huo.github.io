@@ -7,7 +7,14 @@
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Zhiguang Huo (Caleb)" />
   <title>Biostatistical Computing, PHC 6068</title>
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+              </style>
   <style type="text/css">
 body
 {
@@ -378,32 +385,34 @@ list-style-type: none;
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Monday August 31, 2020</p>
+  <p class="date">Monday August 23, 2021</p>
 </div>
 <div id="basic-description-of-this-class" class="slide section level1">
 <h1>Basic description of this class</h1>
 <ul>
 <li>Lecturer: Zhiguang Huo (Caleb) <a href="mailto:zhuo@ufl.edu" class="email">zhuo@ufl.edu</a></li>
-<li>TAs: Xiulin Xie <a href="mailto:xiulin.xie@ufl.edu" class="email">xiulin.xie@ufl.edu</a></li>
+<li>TAs: Runzhi Zhang <a href="mailto:runzhi.zhang@ufl.edu" class="email">runzhi.zhang@ufl.edu</a></li>
+<li>Deliver format: HyFlex (Stduents could choose one of these options)
+<ul>
+<li>On campus: Room: <a href="https://campusmap.ufl.edu/#/index/0212">HPNP G-301A</a></li>
+<li>Online synchronous: Check out canvas website <a href="https://elearning.ufl.edu/" class="uri">https://elearning.ufl.edu/</a> for the Zoom link</li>
+<li>Online asynchronous: All lectures will be recorded, and the recorded videos will be made available</li>
+</ul></li>
 <li>Lecture times:
 <ul>
 <li>Monday: 12:50-2:45pm</li>
 <li>Wednesday: 1:55-2:45pm</li>
-<li>Check out canvas website <a href="https://elearning.ufl.edu/" class="uri">https://elearning.ufl.edu/</a> for the Zoom link</li>
-<li>All lectures will be recorded, and the recorded videos will be made available</li>
 </ul></li>
-<li>Office hours:
+<li>Virtual office hours (<a href="https://ufl.zoom.us/j/94451437002" class="uri">https://ufl.zoom.us/j/94451437002</a>):
 <ul>
-<li>Caleb: Monday 3:00-5:00pm</li>
-<li>Xiulin: Wednesday 3:00-5:00pm</li>
-<li>Zoom (<a href="https://ufl.zoom.us/j/98744965403" class="uri">https://ufl.zoom.us/j/98744965403</a>)</li>
+<li>Caleb: Monday 3:00-4:30pm</li>
+<li>Runzhi: Wednesday 3:00-4:30pm</li>
 </ul></li>
 <li>Course Website:</li>
 </ul>
-<p><a href="https://caleb-huo.github.io/teaching/2020FALL/biostatisticalComputing.html">https://caleb-huo.github.io/teaching/2020FALL/biostatisticalComputing.html</a></p>
+<p><a href="https://caleb-huo.github.io/teaching/2021FALL/biostatisticalComputing.html">https://caleb-huo.github.io/teaching/2021FALL/biostatisticalComputing.html</a></p>
 <ul>
 <li><a href="http://elearning.ufl.edu/">elearning</a>: used to collect submissions, and keep track of grades</li>
-<li><a href="https://caleb-huo.github.io/teaching/2020FALL/PHC6068_2020_Biostatistical_Computing_Syllabus.pdf">Syllabus</a>: will be explained in the following slides.</li>
 </ul>
 </div>
 <div id="more-description-of-this-class" class="slide section level1">
@@ -433,8 +442,8 @@ Zhiguang Huo (Caleb)
 <div id="contents-of-this-class" class="slide section level1">
 <h1>Contents of this class</h1>
 <ul>
-<li>See syllabus <a href="https://caleb-huo.github.io/teaching/2020FALL/PHC6068_2020_Biostatistical_Computing_Syllabus.pdf">https://caleb-huo.github.io/teaching/2020FALL/PHC6068_2020_Biostatistical_Computing_Syllabus.pdf</a></li>
-<li>Lecture notes <a href="https://caleb-huo.github.io/teaching/2020FALL/biostatisticalComputing.html">https://caleb-huo.github.io/teaching/2020FALL/biostatisticalComputing.html</a>
+<li>See syllabus <a href="https://caleb-huo.github.io/teaching/2020FALL/PHC6068_2020_Biostatistical_Computing_Syllabus.pdf">https://caleb-huo.github.io/teaching/2021FALL/PHC6068_2021_Biostatistical_Computing_Syllabus.pdf</a></li>
+<li>Lecture notes <a href="https://caleb-huo.github.io/teaching/2021FALL/biostatisticalComputing.html">https://caleb-huo.github.io/teaching/2021FALL/biostatisticalComputing.html</a>
 <ul>
 <li>Former part: how to use R.</li>
 <li>Later part: how to perform statistical modeling using R.</li>
@@ -461,7 +470,7 @@ Zhiguang Huo (Caleb)
 <div id="assignment" class="slide section level1">
 <h1>Assignment</h1>
 <table>
-<caption>grading criteria</caption>
+<caption>grading (total 100%)</caption>
 <thead>
 <tr class="header">
 <th align="left">Requirement</th>
@@ -541,9 +550,17 @@ Zhiguang Huo (Caleb)
 <div id="trouble-shooting" class="slide section level1">
 <h1>Trouble shooting</h1>
 <ul>
-<li>You may ask questions during the live zoom class.</li>
-<li>You may ask questions during office hours.</li>
-<li>You may ask/answer questions in the canvas discussion section.</li>
+<li>You may ask questions during in class or zoom chat.</li>
+<li>You may ask questions during the virtual office hours (<a href="https://ufl.zoom.us/j/94451437002" class="uri">https://ufl.zoom.us/j/94451437002</a>):
+<ul>
+<li>Caleb: Monday 3:00-4:30pm</li>
+<li>Runzhi: Wednesday 3:00-4:30pm</li>
+</ul></li>
+<li>You may ask/answer questions in the canvas discussion section.
+<ul>
+<li>If you have a question, other students are likely to have similar questions, so posting your question in the canvas discussion section will benefit other students.</li>
+<li>The instructor and the TA will also frequently check the canvas discussions.</li>
+</ul></li>
 </ul>
 </div>
 <div id="exams" class="slide section level1">
@@ -574,7 +591,7 @@ Zhiguang Huo (Caleb)
 <div id="final-project" class="slide section level1">
 <h1>Final project</h1>
 <ul>
-<li>Wrap up a R package
+<li>Wrap up a R package/R Shiny app
 <ul>
 <li>Complete documentation of all your functions.</li>
 <li>Apply R package to real data or synthetic data.</li>
@@ -588,7 +605,7 @@ Zhiguang Huo (Caleb)
 <li>A comprehensive package</li>
 <li>Host the package on GitHub</li>
 </ul></li>
-<li>Instructions: will be released on Monday Sep 28.</li>
+<li>Instructions: will be released on Monday Sep 27.</li>
 <li>Can work alone, or work in group with less than 3.</li>
 </ul>
 </div>
@@ -683,8 +700,7 @@ Zhiguang Huo (Caleb)
 <div id="some-drawbacks-of-r" class="slide section level1">
 <h1>Some drawbacks of R</h1>
 <ul>
-<li>R is not a particularly fast programming language, and poorly written R code can be terribly slow. R is also a profligate user of memory.</li>
-<li>R language focuses on results instead of processes. Too many R functions use tricks to reduce the amount of typing at the cost of making code hard to understand.</li>
+<li>R is not a particularly fast programming language, and poorly written R code can be terribly slow. R also uses lots of memory.</li>
 <li>R is slow in loop (e.g. for, while) so try to avoid loop in R if you run a large program and care about speed.
 <ul>
 <li>Solution: vectorize your program.</li>
