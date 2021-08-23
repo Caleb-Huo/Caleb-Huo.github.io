@@ -431,21 +431,6 @@ cat(names(df), "same as", colnames(df))
 cat(length(df), "same as", ncol(df))
 
 #' 
-#' Data frames 2
-#' ===
-#' 
-#' - data.frame()'s default behaviour turns strings into factors.
-#'     - Use stringsAsFactors = FALSE to suppress
-#'     - or globally set options(stringsAsFactors=FALSE)
-#' 
-## -------------------------------------------------------------------------
-df1 <- data.frame(x=1:3, y=c("a","b","c"),z=0)
-str(df1)
-
-df2 <- data.frame(x=1:3, y=c("a","b","c"),z=0, stringsAsFactors=FALSE)
-str(df2)
-
-#' 
 #' 
 #' 
 #' String manipulation
@@ -806,7 +791,6 @@ a[,-2]
 #' ===
 #' - Data frames possess the characteristics of both lists and matrices.
 ## -------------------------------------------------------------------------
-options(stringsAsFactors = FALSE)
 df <- data.frame(x=1:2, y=2:1, z=letters[1:2])
 df[df$x==2,]
 df[c("x","z")] # like a list
