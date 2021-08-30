@@ -909,12 +909,41 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="slice" class="slide section level1">
 <h1>slice</h1>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">which</span>(data1<span class="op">$</span>Reaction <span class="op">&gt;=</span><span class="st"> </span><span class="dv">300</span> <span class="op">&amp;</span><span class="st"> </span>data1<span class="op">$</span>Subject <span class="op">==</span><span class="st"> </span><span class="dv">308</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">data1 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>) </a></code></pre></div>
+<pre><code>## # A tibble: 8 x 3
+##   Reaction  Days Subject
+##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1     250.     0     308
+## 2     259.     1     308
+## 3     251.     2     308
+## 4     321.     3     308
+## 5     357.     4     308
+## 6     415.     5     308
+## 7     382.     6     308
+## 8     290.     7     308</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">data1 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="st">  </span><span class="kw">head</span>(<span class="dt">n=</span><span class="dv">8</span>) </a></code></pre></div>
+<pre><code>## # A tibble: 8 x 3
+##   Reaction  Days Subject
+##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1     250.     0     308
+## 2     259.     1     308
+## 3     251.     2     308
+## 4     321.     3     308
+## 5     357.     4     308
+## 6     415.     5     308
+## 7     382.     6     308
+## 8     290.     7     308</code></pre>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">which</span>(data1<span class="op">$</span>Reaction <span class="op">&gt;=</span><span class="st"> </span><span class="dv">300</span> <span class="op">&amp;</span><span class="st"> </span>data1<span class="op">$</span>Subject <span class="op">==</span><span class="st"> </span><span class="dv">308</span>)</a></code></pre></div>
 <pre><code>## [1]  4  5  6  7  9 10</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">with</span>(data1, <span class="kw">which</span>(Reaction <span class="op">&gt;=</span><span class="st"> </span><span class="dv">300</span> <span class="op">&amp;</span><span class="st"> </span>Subject <span class="op">==</span><span class="st"> </span><span class="dv">308</span>)) <span class="co">## works for data.frame</span></a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">with</span>(data1, <span class="kw">which</span>(Reaction <span class="op">&gt;=</span><span class="st"> </span><span class="dv">300</span> <span class="op">&amp;</span><span class="st"> </span>Subject <span class="op">==</span><span class="st"> </span><span class="dv">308</span>)) <span class="co">## works for data.frame</span></a></code></pre></div>
 <pre><code>## [1]  4  5  6  7  9 10</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">data1 <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="st">  </span><span class="kw">slice</span>(<span class="kw">which</span>(Reaction <span class="op">&gt;=</span><span class="st"> </span><span class="dv">300</span> <span class="op">&amp;</span><span class="st"> </span>Subject <span class="op">==</span><span class="st"> </span><span class="dv">308</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">data1 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="st">  </span><span class="kw">slice</span>(<span class="kw">which</span>(Reaction <span class="op">&gt;=</span><span class="st"> </span><span class="dv">300</span> <span class="op">&amp;</span><span class="st"> </span>Subject <span class="op">==</span><span class="st"> </span><span class="dv">308</span>)) </a></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   Reaction  Days Subject
 ##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
@@ -924,35 +953,6 @@ Zhiguang Huo (Caleb)
 ## 4     382.     6     308
 ## 5     431.     8     308
 ## 6     466.     9     308</code></pre>
-</div>
-<div class="slide section level1">
-
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">data1 <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>) </a></code></pre></div>
-<pre><code>## # A tibble: 8 x 3
-##   Reaction  Days Subject
-##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-## 1     250.     0     308
-## 2     259.     1     308
-## 3     251.     2     308
-## 4     321.     3     308
-## 5     357.     4     308
-## 6     415.     5     308
-## 7     382.     6     308
-## 8     290.     7     308</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">data1 <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="st">  </span><span class="kw">head</span>(<span class="dt">n=</span><span class="dv">8</span>) </a></code></pre></div>
-<pre><code>## # A tibble: 8 x 3
-##   Reaction  Days Subject
-##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-## 1     250.     0     308
-## 2     259.     1     308
-## 3     251.     2     308
-## 4     321.     3     308
-## 5     357.     4     308
-## 6     415.     5     308
-## 7     382.     6     308
-## 8     290.     7     308</code></pre>
 </div>
 <div id="arrange" class="slide section level1">
 <h1>arrange</h1>
