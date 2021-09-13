@@ -235,7 +235,7 @@ ls(pattern = '^geom_', env = as.environment('package:ggplot2'))
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ggplot(data = mpg) + 
   aes(displ, hwy, colour=class) + 
-  geom_point(aes(size=cyl)) + 
+  geom_point() + 
   geom_line()
 
 #' 
@@ -244,7 +244,7 @@ ggplot(data = mpg) +
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ggplot(data = mpg) + 
   aes(displ, hwy) + 
-  geom_point(aes(size=cyl)) + 
+  geom_point() + 
   geom_line(aes(colour=class))
 
 #' 
@@ -256,7 +256,7 @@ ggplot(data = mpg) +
 ## ---- eval=FALSE------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ggplot(data = mpg) +
 ##   aes(displ, hwy, colour=class) + ## this is global color
-##   geom_point(aes(size=cyl)) +
+##   geom_point() +
 ##   geom_line()
 
 #' 
@@ -264,7 +264,7 @@ ggplot(data = mpg) +
 ## ---- eval=FALSE------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ggplot(data = mpg) +
 ##   aes(displ, hwy) +
-##   geom_point(aes(size=cyl)) +
+##   geom_point() +
 ##   geom_line(aes(colour=class)) ## this is local color
 
 #' 
@@ -949,7 +949,7 @@ p + scale_x_continuous(breaks = c(15,25),
 #' 
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 df <- data.frame(x = rnorm(1000))
-ggplot(df, aes(x)) + stat_ecdf(geom = "step")
+ggplot(df, aes(x)) + stat_ecdf()
 
 #' 
 #' 
@@ -971,7 +971,6 @@ set.seed(32611)
 df <- data.frame(
   x = rnorm(n)
 )
-x <- df$x
 base <- ggplot(df, aes(x)) + geom_density()
 base + stat_function(fun = dnorm, colour = "red") + xlim(c(-3,3))
 
@@ -1036,7 +1035,6 @@ p + xlim(3, 5)
 ## ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 p <- ggplot(mpg, aes(displ, hwy)) +  geom_point()
 p + coord_fixed(ratio = 0.5)
-p + coord_fixed(ratio = 0.1)
 
 #' 
 #' flip x and y
