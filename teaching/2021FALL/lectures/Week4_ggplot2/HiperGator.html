@@ -527,7 +527,7 @@ Zhiguang Huo (Caleb)
 <h1>Basic usage of HiperGator</h1>
 <ul>
 <li>Interactive sessions on HiperGator</li>
-<li>Slurm jobs on HiperGator</li>
+<li>Job submissions on HiperGator</li>
 </ul>
 <p>These usages can be applied to other Linux machines.</p>
 </div>
@@ -744,7 +744,7 @@ date</code></pre>
 sbatch saveCars.slurm ## submit job</code></pre>
 <ol style="list-style-type: decimal">
 <li>Submit the slurm job (saveCars.slurm)</li>
-<li>The slurm job will submit the R job (saveCars.R)</li>
+<li>The slurm job contains the code to run the R job (R CMD BATCH saveCars.R)</li>
 <li>The R job will return the result</li>
 </ol>
 </div>
@@ -774,7 +774,9 @@ cat mycars.csv</code></pre>
 <li>Copy the saveCars.R and saveCars.slurm into your own working directory</li>
 <li>Revise the saveCars.R
 <ul>
+<li>Transfer to your local computer using Filezilla</li>
 <li>Change to your own working directory</li>
+<li>Transfer back to hiperGator</li>
 </ul></li>
 <li>Try to revise the saveCars.slurm
 <ul>
@@ -922,6 +924,7 @@ sbatch saveCarsArgsLoops.slurm ## submit a loop job</code></pre>
 <li>32 CPUs</li>
 </ul></li>
 </ul>
+<p>Since our entire class share these resouces, please plan ahead when you work on your HWs. Using the hiperGator at the last minute may make you compete with other students for resources.</p>
 <p>If all computing resources are occupied</p>
 <ul>
 <li>Burst mode (9 times of original number of CPUs &amp; memory)
