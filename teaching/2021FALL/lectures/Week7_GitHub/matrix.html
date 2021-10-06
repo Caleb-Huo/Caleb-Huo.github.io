@@ -980,7 +980,7 @@ y_{p1} &amp; y_{p2} &amp; \ldots &amp; y_{pm}
 <h1>Eigen value decomposition</h1>
 <ul>
 <li><p>reference: <a href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix" class="uri">https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix</a></p></li>
-<li><p>A (non-zero) vector <span class="math inline">\(v \in \mathbb{R}^N\)</span> is an eigenvector of a square matrix <span class="math inline">\(A\in \mathbb{R}^{N\times N}\)</span> if it satisfies the linear equation <span class="math display">\[A\textbf{v} = \lambda \textbf{v}\]</span> where <span class="math inline">\(\lambda \in \mathbb{R}\)</span> is the eigenvalue corresponding to <span class="math inline">\(\textbf{v}\)</span>. Since if <span class="math inline">\(\textbf{v}\)</span> is eigenvector, <span class="math inline">\(b\textbf{v}\)</span> (<span class="math inline">\(b\in \mathbb{R}\)</span>) is also eigenvector, we restrict <span class="math inline">\(\|\textbf{v}\|_2 = 1\)</span></p></li>
+<li><p>A (non-zero) vector <span class="math inline">\(\textbf{v} \in \mathbb{R}^N\)</span> is an eigenvector of a square matrix <span class="math inline">\(A\in \mathbb{R}^{N\times N}\)</span> if it satisfies the linear equation <span class="math display">\[A\textbf{v} = \lambda \textbf{v}\]</span> where <span class="math inline">\(\lambda \in \mathbb{R}\)</span> is the eigenvalue corresponding to <span class="math inline">\(\textbf{v}\)</span>. Since if <span class="math inline">\(\textbf{v}\)</span> is eigenvector, <span class="math inline">\(b\textbf{v}\)</span> (<span class="math inline">\(b\in \mathbb{R}\)</span>) is also eigenvector, we restrict <span class="math inline">\(\|\textbf{v}\|_2 = 1\)</span></p></li>
 <li>Let <span class="math inline">\(A \in \mathbb{R}^{N \times N}\)</span> be a square matrix with N linearly independent eigenvectors, <span class="math inline">\(\textbf{v}_i (i = 1, \ldots, N)\)</span>. Then <span class="math inline">\(A\)</span> can be factorized as <span class="math display">\[A = V \Lambda V^{-1}\]</span>
 <ul>
 <li><span class="math inline">\(V=(\textbf{v}_{1}, \ldots, \textbf{v}_{N})\)</span></li>
@@ -1022,15 +1022,15 @@ y_{p1} &amp; y_{p2} &amp; \ldots &amp; y_{pm}
 <li><span class="math inline">\(A = V \Lambda V^{-1}\)</span></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">Q &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</a>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">V &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>vectors</a>
 <a class="sourceLine" id="cb100-2" data-line-number="2">lambda &lt;-<span class="st"> </span><span class="kw">eigen</span>(A)<span class="op">$</span>values</a>
 <a class="sourceLine" id="cb100-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb100-4" data-line-number="4">Q <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(Q)</a></code></pre></div>
+<a class="sourceLine" id="cb100-4" data-line-number="4">V <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(V)</a></code></pre></div>
 <pre><code>##               [,1]          [,2]          [,3]
 ## [1,]  1.000000e+00 -5.551115e-17  0.000000e+00
 ## [2,] -5.551115e-17  1.000000e+00 -2.220446e-16
 ## [3,]  0.000000e+00 -2.220446e-16  1.000000e+00</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">Q <span class="op">%*%</span><span class="st"> </span><span class="kw">diag</span>(lambda) <span class="op">%*%</span><span class="st"> </span><span class="kw">ginv</span>(Q)</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">V <span class="op">%*%</span><span class="st"> </span><span class="kw">diag</span>(lambda) <span class="op">%*%</span><span class="st"> </span><span class="kw">ginv</span>(V)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    3    1    1
 ## [2,]    1    3    2
@@ -1041,19 +1041,19 @@ y_{p1} &amp; y_{p2} &amp; \ldots &amp; y_{pm}
 <ul>
 <li>Verify <span class="math inline">\(A\textbf{v} = \lambda \textbf{v}\)</span></li>
 </ul>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>Q[,<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>V[,<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>##           [,1]
 ## [1,] -2.635029
 ## [2,] -3.599516
 ## [3,] -3.599516</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">lambda[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>Q[,<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">lambda[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>V[,<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [1] -2.635029 -3.599516 -3.599516</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>Q[,<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">A <span class="op">%*%</span><span class="st"> </span>V[,<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>##            [,1]
 ## [1,]  2.0141063
 ## [2,] -0.7372141
 ## [3,] -0.7372141</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">lambda[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>Q[,<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">lambda[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>V[,<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1]  2.0141063 -0.7372141 -0.7372141</code></pre>
 </div>
 <div id="singular-value-decomposition-svd" class="slide section level1">

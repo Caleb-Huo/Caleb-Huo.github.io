@@ -382,7 +382,7 @@ A2 %*% ginv(A2) %*% A2
 #' 
 #' - reference: <https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix>
 #' 
-#' - A (non-zero) vector $v \in \mathbb{R}^N$  is an eigenvector of a square matrix $A\in \mathbb{R}^{N\times N}$ if it satisfies the linear equation
+#' - A (non-zero) vector $\textbf{v} \in \mathbb{R}^N$  is an eigenvector of a square matrix $A\in \mathbb{R}^{N\times N}$ if it satisfies the linear equation
 #' $$A\textbf{v} = \lambda \textbf{v}$$
 #' where $\lambda \in \mathbb{R}$ is the eigenvalue corresponding to $\textbf{v}$.
 #' Since if $\textbf{v}$ is eigenvector, $b\textbf{v}$ ($b\in \mathbb{R}$) is also eigenvector, we restrict $\|\textbf{v}\|_2 = 1$
@@ -422,12 +422,12 @@ eigen(A)
 #'   - $A = V \Lambda V^{-1}$
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------
-Q <- eigen(A)$vectors
+V <- eigen(A)$vectors
 lambda <- eigen(A)$values
 
-Q %*% t(Q)
+V %*% t(V)
 
-Q %*% diag(lambda) %*% ginv(Q)
+V %*% diag(lambda) %*% ginv(V)
 
 #' 
 #' 
@@ -436,11 +436,11 @@ Q %*% diag(lambda) %*% ginv(Q)
 #' - Verify $A\textbf{v} = \lambda \textbf{v}$
 #' 
 ## ----------------------------------------------------------------------------------------------------------------------------------------------
-A %*% Q[,1]
-lambda[1] * Q[,1]
+A %*% V[,1]
+lambda[1] * V[,1]
 
-A %*% Q[,2]
-lambda[2] * Q[,2]
+A %*% V[,2]
+lambda[2] * V[,2]
 
 #' 
 #' 
