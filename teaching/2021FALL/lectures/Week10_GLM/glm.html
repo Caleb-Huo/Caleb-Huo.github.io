@@ -902,7 +902,7 @@ Zhiguang Huo (Caleb)
 
 f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
       &amp;= \frac{1}{\sqrt{2\pi \sigma^2}} \exp(- \frac{-(y - \mu)^2}{2\sigma^2}) \\
-      &amp;= \exp( \frac{y \mu - \frac{\mu^2}{2}}{\sigma^2} - \frac{1}{2} [\frac{y^2}{\sigma^2 + \log(2\pi \sigma^2)}] )
+      &amp;= \exp( \frac{y \mu - \frac{\mu^2}{2}}{\sigma^2} - \frac{1}{2} [\frac{y^2}{\sigma^2} + \log(2\pi \sigma^2)] )
 \end{aligned}\]</span>
 <ul>
 <li>Canonical parameter <span class="math inline">\(\theta = \mu\)</span></li>
@@ -926,6 +926,9 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 </div>
 <div id="canonical-link-functions-for-distributions-in-the-exponential-families" class="slide section level1">
 <h1>Canonical link functions for distributions in the exponential families</h1>
+<ul>
+<li>The canonical link function is derived by replacing <span class="math inline">\(\theta\)</span> by the systematic component <span class="math inline">\(X^\top\beta\)</span> in the canonical parameter expression</li>
+</ul>
 <table style="width:100%;">
 <colgroup>
 <col width="17%"></col>
@@ -1377,6 +1380,10 @@ f(y) &amp;= \exp (\frac{y\theta - b(\theta)}{a(\phi)} + c(y; \phi)) \\
 <p><span class="math display">\[\log (\frac{P(Y &gt; 2 | X)}{P(Y \le 2 | X)}) = 
 \log (\frac{P(Y = 3 | X)}{P(Y = 1 | X) + P(Y = 2 | X)}) = 
 \alpha_2 + \beta^T X\]</span></p>
+<ul>
+<li>The coefficient <span class="math inline">\(\beta\)</span> is shared by all models</li>
+<li>The intercept term is model specific</li>
+</ul>
 </div>
 <div id="ordinal-logistic-regression-1" class="slide section level1">
 <h1>ordinal logistic regression</h1>
@@ -2079,7 +2086,7 @@ P(y_i = j)=
 \pi_i + (1 - \pi_i) \exp (-\mu_i), \mbox{if } j=0\\
 (1 - \pi_i) \frac{\mu_i^{y_i} \exp(-\mu_i)}{y_i!}, \mbox{if } j&gt;0
 \end{cases}
-\]</span> - The Poisson component is <span class="math display">\[\log(\mu_i) = \beta_0x_{10} + \beta_1 x_{1i} + \ldots + \beta_px_{1p}\]</span> - The zero proportion component is <span class="math display">\[\pi_i = \frac{\exp(\gamma_0z_{10} + \gamma_1 z_{1i} + \ldots + \gamma_pz_{1p})}{1 + \exp(\gamma_0z_{10} + \gamma_1 z_{1i} + \ldots + \gamma_pz_{1p})}\]</span></p>
+\]</span> - The Poisson component is - Design matrix <span class="math inline">\(X\)</span> and coefficient <span class="math inline">\(\beta\)</span> <span class="math display">\[\log(\mu_i) = \beta_0x_{10} + \beta_1 x_{1i} + \ldots + \beta_px_{1p}\]</span> - The zero proportion component is - Design matrix <span class="math inline">\(Z\)</span> and coefficient <span class="math inline">\(\gamma\)</span> <span class="math display">\[\pi_i = \frac{\exp(\gamma_0z_{10} + \gamma_1 z_{1i} + \ldots + \gamma_pz_{1p})}{1 + \exp(\gamma_0z_{10} + \gamma_1 z_{1i} + \ldots + \gamma_pz_{1p})}\]</span></p>
 </div>
 <div id="zip-in-r" class="slide section level1">
 <h1>ZIP in R</h1>
@@ -2092,13 +2099,13 @@ P(y_i = j)=
 </ul></li>
 </ul>
 <pre><code>fm_pois &lt;- glm(art ~ ., data = bioChemists, family = poisson) 
-## without inflation
+## without inflation, regular Possion model
 
 fm_zip &lt;- zeroinfl(art ~ . | 1, data = bioChemists) 
-## with simple inflation (no regressors for zero component)
+## with simple inflation (intercept only for zero component)
 
 fm_zip2 &lt;- zeroinfl(art ~ . | ., data = bioChemists) 
-## inflation with regressors
+## inflation with all regressors
 ## (&quot;art ~ . | .&quot; is &quot;art ~ fem + mar + kid5 + phd + ment | fem + mar + kid5 + phd + ment&quot;)</code></pre>
 </div>
 <div id="zinb-in-r" class="slide section level1">
