@@ -129,7 +129,7 @@ ggplot(data=subj_spread, aes(pol, inf)) + theme_bw() +
 #' 
 #' When to use random effects?
 #' 
-#' - A "group" effect is random if we can think of the levels we observe in that group to be samples from a larger population.
+#' - A "subject" effect is random if we can think of the levels we observe for that subject to be samples from a larger population.
 #' - Example: we are investigating the GPA of UF undergraduate students by surveying a small group of students.
 #'     - Gender and race are considered fixed effect since their categories are well-defined.
 #'     - Department is considered as random effect, since our survey may not covering all departments in UF.
@@ -144,8 +144,7 @@ ggplot(data=subj_spread, aes(pol, inf)) + theme_bw() +
 #'     - error term is considered no structure.
 #' 
 #' - Mixed model is a mixture of fixed effect and random effect
-#'    - Random effect: error terms of the same subject is considered to be correlated.
-#'     - Repeated measurement from the same subject are correlated.
+#'     
 #' 
 #'     
 #' Benefit of random effect models
@@ -371,8 +370,7 @@ rs_gen_subjscene_reml = lmer(frequency ~ attitude + gender + (1 | subject), REML
 anova(rs_gen_subjscene_reml, rs_gen_subjscene_con_reml)
 
 #' 
-#' - it appears that we don't need to include random slope for condition in the model 
-#' - because the likelihood ratio test is not significant
+#' - it appears that we don't need to include random slope for condition in the model, because the likelihood ratio test is not significant
 #' - however, others would argue that we should keep our models maximal
 #' 
 #' 
@@ -387,6 +385,12 @@ anova(rs_gen_subjscene_reml, rs_gen_subjscene_con_reml)
 #' 
 #' Function lmer is used to fit linear mixed models, function glmer is used to fit generalized (non-Gaussian) linear mixed models.
 #' 
+#' 
+#' Longitudinal data
+#' ===
+#' 
+#' - Longitudinal data are repeated measures data in which the observations are taken over time.
+#' - We wish to characterize the response over time within subjects and the variation in the time trends between subjects.
 #' 
 #' Longitudinal data -- sleep study
 #' ===
@@ -409,11 +413,6 @@ str(sleepStudy)
 #' - On each day of the trial each subject’s reaction time was measured. The reaction time shown here is the average of several measurements.
 #' - These data are balanced in that each subject is measured the same number of times and on the same occasions.
 #' 
-#' Longitudinal data
-#' ===
-#' 
-#' - Longitudinal data are repeated measures data in which the observations are taken over time.
-#' - We wish to characterize the response over time within subjects and the variation in the time trends between subjects.
 #' 
 #' Data exploratory
 #' ===
