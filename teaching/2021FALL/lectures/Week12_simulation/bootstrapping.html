@@ -509,7 +509,7 @@ list-style-type: none;
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Monday November 10th, 2021</p>
+  <p class="date">Wednesday November 10th, 2021</p>
 </div>
 <div id="outline" class="slide section level1">
 <h1>Outline</h1>
@@ -548,14 +548,6 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Seems difficult.</li>
 </ul></li>
-</ul>
-</div>
-<div id="aim-of-bootstrapping-how-to-estimate-variance" class="slide section level1">
-<h1>Aim of bootstrapping: how to estimate variance</h1>
-<ul>
-<li>Suppose <span class="math inline">\(X_1, \ldots, X_n \sim F\)</span> where <span class="math inline">\(F\)</span> is a distribution.</li>
-<li>Let <span class="math inline">\(T_n = g(X_1, \ldots, X_n)\)</span> be a statistic, where <span class="math inline">\(T_n\)</span> is a function of the data.</li>
-<li>What is the variance of <span class="math inline">\(T_n\)</span>, <span class="math inline">\(V_F(T_n)\)</span>?</li>
 </ul>
 </div>
 <div id="variance-of-median-estimator" class="slide section level1">
@@ -606,6 +598,18 @@ Zhiguang Huo (Caleb)
 </ul></li>
 </ul>
 </div>
+<div id="aim-of-bootstrapping-how-to-estimate-variance" class="slide section level1">
+<h1>Aim of bootstrapping: how to estimate variance</h1>
+<ul>
+<li>Suppose <span class="math inline">\(X_1, \ldots, X_n \sim F\)</span>
+<ul>
+<li><span class="math inline">\(F\)</span> is an unknown distribution</li>
+<li>We only observe the data <span class="math inline">\(X_1, \ldots, X_n\)</span></li>
+</ul></li>
+<li>Let <span class="math inline">\(T_n = g(X_1, \ldots, X_n)\)</span> be a statistic, where <span class="math inline">\(T_n\)</span> is a function of the data.</li>
+<li>What is the variance of <span class="math inline">\(T_n\)</span>, <span class="math inline">\(V_F(T_n)\)</span>?</li>
+</ul>
+</div>
 <div id="emperical-distribution" class="slide section level1">
 <h1>Emperical distribution</h1>
 <ul>
@@ -653,7 +657,7 @@ Zhiguang Huo (Caleb)
 <div id="how-to-sample-from-the-empirical-distribution" class="slide section level1">
 <h1>How to sample from the empirical distribution?</h1>
 <ul>
-<li><strong>Drawing <span class="math inline">\(X_1^*, \ldots, X_n^*\)</span> from <span class="math inline">\(F_n\)</span> is equivalent to draw <span class="math inline">\(n\)</span> observations, with replacement from the original data <span class="math inline">\(\{X_1, \ldots, X_n\}\)</span></strong>.</li>
+<li><strong>Drawing <span class="math inline">\(X_1^*, \ldots, X_n^*\)</span> from the empirical distribution <span class="math inline">\(F_n\)</span> is equivalent to draw <span class="math inline">\(n\)</span> observations, with replacement from the original data <span class="math inline">\(\{X_1, \ldots, X_n\}\)</span></strong>.</li>
 <li>Therefore, Bootstrapping sampling is also described as resampling data.</li>
 <li>For <span class="math inline">\(b = 1, \ldots, B\)</span>
 <ul>
@@ -692,24 +696,6 @@ Zhiguang Huo (Caleb)
 <li>Compute <span class="math display">\[\hat{Var}_{F_n}({T}_n) = \frac{1}{B-1}\sum_{b=1}^B ({T^*}_n^{(b)} - \bar{T}^*)^2,\]</span> where <span class="math inline">\(\bar{T}^* = \frac{1}{B}\sum_{b=1}^B {T^*}_n^{(b)}\)</span></li>
 <li>Output <span class="math inline">\(\hat{Var}_{F_n}({T}_n)\)</span> as the bootstrapping variance of <span class="math inline">\({T}_n\)</span>.</li>
 </ol>
-</div>
-<div id="why-bootstrapping-variance-works" class="slide section level1">
-<h1>Why Bootstrapping variance works?</h1>
-<ul>
-<li><span class="math inline">\(T_n = g(X_1, \ldots, X_n)\)</span></li>
-<li><span class="math inline">\(mean_F(T_n) = \int g(X_1, \ldots, X_n) f(X) dX = \int g(X_1, \ldots, X_n) dF\)</span></li>
-<li><span class="math inline">\(Var_F(T_n) = \int (g(X_1, \ldots, X_n) - mean_F(T_n))^2 dF\)</span></li>
-</ul>
-<p>Since in general, we don’t know distribution <span class="math inline">\(F\)</span>, we will calculate using the empirical CDF <span class="math inline">\(F_n\)</span>.</p>
-<ul>
-<li><span class="math inline">\(Var_{F_n}(T_n) = \int (g(X_1, \ldots, X_n) - mean_{F_n}(T_n))^2 dF_n\)</span></li>
-<li>Finally, we used bootstrapping variance <span class="math inline">\(\hat{Var}_{F_n}(T_n)\)</span> to estimate <span class="math inline">\(Var_{F_n}(T_n)\)</span>.</li>
-</ul>
-<p>To summarize:</p>
-<ul>
-<li>Estimation error: <span class="math inline">\(Var_F(T_n) - Var_{F_n}(T_n) = O_p(1/\sqrt{n})\)</span></li>
-<li>Simulation error: <span class="math inline">\(Var_{F_n}(T_n) - \hat{Var}_{F_n}(T_n) = O_p(1/\sqrt{B})\)</span></li>
-</ul>
 </div>
 <div id="the-parametric-bootstrapping-variance-of-median-estimator" class="slide section level1">
 <h1>The parametric Bootstrapping (Variance of “median estimator”)</h1>
@@ -816,7 +802,7 @@ Zhiguang Huo (Caleb)
 <h1>Bootstrapping using R package</h1>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(boot)</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">myMean &lt;-<span class="st"> </span><span class="cf">function</span>(data, indices){</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">  d &lt;-<span class="st"> </span>data[indices]</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">  d &lt;-<span class="st"> </span>data[indices] <span class="co">## here data is a vector. If data is a matrix, you might consider data[,indices] or data[indices, ]</span></a>
 <a class="sourceLine" id="cb15-4" data-line-number="4">  <span class="kw">mean</span>(d)<span class="op">^</span><span class="dv">2</span></a>
 <a class="sourceLine" id="cb15-5" data-line-number="5">}</a>
 <a class="sourceLine" id="cb15-6" data-line-number="6"></a>
@@ -838,7 +824,7 @@ Zhiguang Huo (Caleb)
 <div id="simulation" class="slide section level1">
 <h1>Simulation</h1>
 <ul>
-<li>We know the underlying parameters in simulations</li>
+<li>If we know the underlying parameters in simulations</li>
 </ul>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">lambda &lt;-<span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb19-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="dv">100</span></a>
@@ -860,7 +846,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>draw <span class="math inline">\(X^{b}_1, \ldots, X^{b}_n\)</span> from
 <ul>
-<li>Simulation: <span class="math inline">\(N(\mu,\sigma^2)\)</span></li>
+<li>Simulation: <span class="math inline">\(N(\mu,\sigma^2)\)</span> ((this assumes <span class="math inline">\(\mu\)</span> is known)</li>
 <li>Non-parametric bootstrapping: <span class="math inline">\(X^{b}_1, \ldots, X^{b}_n \sim \{ X_1, \ldots, X_n \}\)</span> with replacement.</li>
 <li>Parametric bootstrapping: <span class="math inline">\(N(\hat{\mu},\sigma^2)\)</span></li>
 </ul></li>
@@ -920,7 +906,6 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Percentiles</li>
 <li>normal approximation</li>
-<li>Pivotal Intervals</li>
 </ul>
 </div>
 <div id="bootstrapping-confidence-interval-via-percentiles" class="slide section level1">
@@ -931,6 +916,7 @@ Zhiguang Huo (Caleb)
 <li>Rank <span class="math inline">\({T^*}_n^{(1)}, \ldots, {T^*}_n^{(B)}\)</span> such that <span class="math inline">\({T^r}_n^{(1)} \le {T^r}_n^{(2)} \le \ldots \le {T^r}_n^{(B)}\)</span></li>
 </ol>
 <p>We can define 95% confidence interval using (if B = 10,000) <span class="math display">\[[{T^r}_n^{(250)}, {T^r}_n^{(9750)}]\]</span></p>
+<p>Example in the next slide, <span class="math inline">\(g = \bar{X}^2\)</span></p>
 </div>
 <div id="calculate-bootstrapping-confidence-interval-via-percentiles-1" class="slide section level1">
 <h1>Calculate Bootstrapping confidence interval via Percentiles (1)</h1>
@@ -1096,52 +1082,6 @@ Zhiguang Huo (Caleb)
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">counts<span class="op">/</span>Repeats</a></code></pre></div>
 <pre><code>## [1] 0.93</code></pre>
 </div>
-<div id="bootstrapping-confidence-interval-via-pivotal-intervals" class="slide section level1">
-<h1>Bootstrapping confidence interval via Pivotal Intervals</h1>
-<ul>
-<li>Won’t be covered this year.</li>
-<li>If you are interested in this, checkout previous lecture notes <a href="https://caleb-huo.github.io/teaching/2017FALL/lectures/week11_bootstrapAndPermutation/bootstrap/bootstrap.html" class="uri">https://caleb-huo.github.io/teaching/2017FALL/lectures/week11_bootstrapAndPermutation/bootstrap/bootstrap.html</a></li>
-</ul>
-</div>
-<div id="summary-bootstrapping-confidence-interval" class="slide section level1">
-<h1>Summary Bootstrapping confidence interval</h1>
-<table>
-<thead>
-<tr class="header">
-<th>Precedure</th>
-<th>Theoritical guarantee</th>
-<th>Fast</th>
-<th>R package Boot?</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Percentiles</td>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Pivotal Intervals</td>
-<td>Yes</td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>Pivotal Intervals (simplified, no se)</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td>normal approximation</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-</div>
 <div id="bootstrapping-p-value" class="slide section level1">
 <h1>Bootstrapping p-value</h1>
 <ul>
@@ -1184,7 +1124,7 @@ Zhiguang Huo (Caleb)
 <div id="bootstrapping-p-value-1" class="slide section level1">
 <h1>Bootstrapping p-value</h1>
 <ul>
-<li>We are interested in calculating the bootstrapping for lcavol</li>
+<li>We are interested in calculating the bootstrapping pvalue for lcavol</li>
 </ul>
 <ol style="list-style-type: decimal">
 <li>Estimate the bootstrapping se</li>
@@ -1199,7 +1139,7 @@ Zhiguang Huo (Caleb)
 <a class="sourceLine" id="cb37-3" data-line-number="3"><span class="cf">for</span>(b <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>B){</a>
 <a class="sourceLine" id="cb37-4" data-line-number="4">  <span class="kw">set.seed</span>(b)</a>
 <a class="sourceLine" id="cb37-5" data-line-number="5">  bindex &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">nrow</span>(prostate), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb37-6" data-line-number="6">  bprostate &lt;-<span class="st"> </span>prostate[bindex,]</a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">  bprostate &lt;-<span class="st"> </span>prostate[bindex,] <span class="co">## in this data, each row is an observation</span></a>
 <a class="sourceLine" id="cb37-7" data-line-number="7">  blm &lt;-<span class="st"> </span><span class="kw">lm</span>(lpsa <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> bprostate)</a>
 <a class="sourceLine" id="cb37-8" data-line-number="8">  coef_lcavol[b] &lt;-<span class="st"> </span><span class="kw">coef</span>(blm)[<span class="st">&quot;lcavol&quot;</span>]</a>
 <a class="sourceLine" id="cb37-9" data-line-number="9">}</a>
