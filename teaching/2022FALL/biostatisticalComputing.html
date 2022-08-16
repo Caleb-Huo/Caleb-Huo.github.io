@@ -1,0 +1,430 @@
+<html>
+<head>
+<title>Intro to Biostat Computing</title>
+<link rel=StyleSheet href="style/style.css" type="text/css" media=screen>
+<script type="text/javascript" src="style/lastModified.js"></script>
+
+</head>
+
+<body>
+<a name="top"></a>
+<h1>Intro to Biostat Computing: Fall 2022
+</h1>
+
+<table style="width: 100%;"><tr><td>  
+  <h2>PHC 6937: Introduction to Biostatistical Computing
+  </h2>
+  
+  <b>Instructors: </b><br>
+  <a href="https://caleb-huo.github.io/">Zhiguang Huo</a>
+  (zhuo@ufl.edu)<br>
+  
+  <br>
+  <b>TAs:</b><br>
+  TBD
+  <br>
+
+  <br>
+  <b>Lecture time and room:</b><br>
+  Monday: 12:50-14:45, <a href="https://campusmap.ufl.edu/#/index/0212"> Room: HPNPG210</a> <br>
+  Wednesday: 13:55-14:45, <a href="https://campusmap.ufl.edu/#/index/0212"> Room: HPNPG210</a><br>
+  <br> 
+  <br> 
+
+  <b>Office Hours:</b><br>
+  HZ: Monday 3:00-4:30pm<br>
+  TA: TBD<br>
+  <br>
+  <b>Syllabus:</b> 
+  <a href="./PHC6068_2021_Biostatistical_Computing_Syllabus.pdf">here</a>.
+  <b>Courseweb:</b>
+  <a href="http://elearning.ufl.edu/">elearning</a>.  
+</td>
+<td style="width: 50%;">
+  <img style="width: 100%;" src="logo.png"></td>
+</tr></table>
+
+<hr id="dash">
+
+
+<a name="schedule"></a>
+<h2>Schedule</h2>
+	<!--
+<b>Archived final project topics can be found
+<a href="https://caleb-huo.github.io/teaching/finalProject//finalProject_all.html">here</a></b>.
+<br>
+-->
+ 
+Here is the estimated class schedule. It is subject to change, depending on
+time and class interests. 
+
+<br><br>
+<table id="bord" style="width: 110%;">
+  <tr id="bord">
+    <td id="bord" style="width: 12%;"><b>Date</b></td>
+    <td id="bord" style="width: 34%;"><b>Content</b></td>
+    <td id="bord" style="width: 20%;"><b>Materials</b></td>
+    <td id="bord" style="width: 44%;"><b>Note</b></td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Aug 24</td>
+    <td id="bord">Overview</td>
+    <td id="bord">
+        <!-- 
+        overview: <a href="lectures/Week1_Basic/overview.html">slides</a><br> 
+        -->
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+  
+  <tr id="bord">
+    <td id="bord">Mon Aug 29</td>
+    <td id="bord">Basics of R programming</td>
+    <td id="bord">
+        <!-- 
+        basics: <a href="lectures/Week1_Basic/basic.html">slides</a>; <a href="lectures/Week1_Basic/basic.R">R</a><br>		
+        <a href="lectures/Week1_Basic/RMarkdown.rmd">RMarkdown.Rmd</a>				
+        -->
+  	</td>
+    <td id="bord">
+		HW 1 distributed
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Aug 31</td>
+    <td id="bord">Writing functions in R</td>
+    <td id="bord">
+        <!-- 
+        <a href="lectures/Week1_Basic/functions.html">slides</a>; <a href="lectures/Week1_Basic/functions.R">R</a><br>		
+        -->
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Sep 5</td>
+       <td id="bord">Labor Day, no class!</td>        
+    <td id="bord">
+    </td>		
+    <td id="bord">
+	</td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Sep 7</td>
+    <td id="bord">Vectorized calculations</td>
+    <td id="bord">
+        <!-- 
+        <a href="lectures/Week2_Tidyverse/vectorized.html">slides</a>; <a href="lectures/Week2_Tidyverse/vectorized.R">R</a><br>						
+        -->
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Sep 12</td>
+       <td id="bord">Data manipulation (Tidyverse)</td>        
+    <td id="bord">
+        <!-- 
+        <a href="lectures/Week2_Tidyverse/tidyverse.html">slides</a>; <a href="lectures/Week2_Tidyverse/tidyverse.R">R</a><br>				
+        -->
+    </td>		
+    <td id="bord">
+            HW 1 due, HW 2 distributed    	
+	</td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Sep 14</td>
+    <td id="bord">R graphics (basic)</td>
+    <td id="bord">
+        <!-- 
+        <a href="lectures/Week3_Rgraph/Rgraph_basic.html">slides</a>; <a href="lectures/Week3_Rgraph/Rgraph_basic.R">R</a><br>						
+        -->
+	  </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Sep 19</td>
+    <td id="bord">R graphics (advanced)</td>
+    <td id="bord">
+        <!-- 
+        ggplot2: <a href="lectures/Week4_ggplot2/Rgraph_ggplot2.html">slides</a>; <a href="lectures/Week4_ggplot2/Rgraph_ggplot2.R">R</a>
+				<br>				
+        heatmap.2: <a href="lectures/Week4_ggplot2/Rgraph_heatmap.html">slides</a>; <a href="lectures/Week4_ggplot2/Rgraph_heatmap.R">R</a>
+        -->
+    </td>
+    <td id="bord">    	
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Sep 21</td>
+    <td id="bord">HiPerGator</td>
+    <td id="bord">
+        <!-- 
+        Usage: <a href="lectures/Week4_ggplot2/HiperGator.html">slides</a>
+				<br>				
+        Optional: <a href="https://www.dropbox.com/s/rtrpm9eejpryjv4/RC_Class_Orientation.210817.pdf?dl=0">slides</a>; <a href="https://training.it.ufl.edu/training/items/orientation-materials-for-courses-using-rc.html">video</a>		
+        -->
+    </td>
+    <td id="bord">
+	</td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Sep 26</td>
+    <td id="bord">R Shiny</td>
+    <td id="bord">
+        <!-- 
+        <a href="lectures/Week5_RShiny/RShiny.html">slides</a>
+        -->
+    </td>
+    <td id="bord">    	
+            HW 2 due, Midterm distributed 
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Sep 28</td>
+    <td id="bord">No class, take-home midterm exam</td>
+    <td id="bord">
+    </td>
+    <td id="bord">    			
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Oct 3</td>
+    <td id="bord">R packages</td>
+    <td id="bord">
+        <!-- 
+        <a href="lectures/Week6_RPackage/Rpackage.html">slides</a>
+        -->
+    </td>
+    <td id="bord">
+        Midterm due, <a href="finalProject/finalProject_PHC6068_2021FALL.pdf">Final project distributed</a>		
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Oct 5</td>
+    <td id="bord">Rcpp</td>
+    <td id="bord">
+        <!-- 
+        <a href="lectures/Week6_RPackage/RCPP.html">slides</a>		
+        -->
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Oct 10</td>
+    <td id="bord">Github</td>
+    <td id="bord">
+        <!-- 
+        <a href="lectures/Week7_GitHub/github.html">slides</a>					
+        -->
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Oct 12</td>
+    <td id="bord">Basic statistical inference in R</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Oct 17</td>
+    <td id="bord">Basics of Python programming</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+        HW 3 distributed    	    	
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Oct 19</td>
+    <td id="bord">Advanced string manupulation</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+	</td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Oct 24</td>
+    <td id="bord">Python functions, modules</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Oct 26</td>
+    <td id="bord">Python data structure</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Oct 31</td>
+    <td id="bord">Objective oriented programming</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+        HW 3 due, HW 4 distributed    	
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Nov 2</td>
+    <td id="bord">Python GUI</td>
+    <td id="bord">
+    </td>
+    <td id="bord"></td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Nov 7</td>
+    <td id="bord">Numpy part 1</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Nov 9</td>
+    <td id="bord">Numpy part 2</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Nov 14</td>
+    <td id="bord">Data manipulation part 1 (Pandas)</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+        HW 4 due, HW 5 distributed    	    	
+    </td>
+  </tr>
+
+
+  <tr id="bord">
+    <td id="bord">Wed Nov 16</td>
+    <td id="bord">Data manipulation part 2 (Pandas)</td>
+    <td id="bord">
+    </td>
+    <td id="bord"></td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Nov 21</td>
+    <td id="bord">Python graphics (Matplotlib)</td>	
+    <td id="bord">
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Nov 23</td>
+    <td id="bord">Shanksgiving! Eat food</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+	</td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Nov 28</td>
+    <td id="bord">(TBD) Database (sqlite3) or Machine Learning (scikit-learn)</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Nov 30</td>
+    <td id="bord">Basic statistical inference in Python</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+        HW 5 due
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Dec 5</td>
+    <td id="bord">No class</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+        Final exam released    	
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Dec 7</td>
+    <td id="bord">No class</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+        Final project due
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Mon Dec 12</td>
+    <td id="bord">No class</td>
+    <td id="bord">
+    </td>
+    <td id="bord">
+    	Final exam due    	
+    </td>
+  </tr>
+
+  <tr id="bord">
+    <td id="bord">Wed Dec 14</td>
+    <td id="bord">No class</td>
+    <td id="bord">
+    </td>
+    <td id="bord"></td>
+  </tr>
+
+</table>
+
+
+<script language="Javascript">
+	document.write( 
+	  "This page was updated on " + 
+	  date_lastmodified() );
+</SCRIPT>
+<br>
+<a href="#top">Top</a>
+<br>
+
+</body>
+</html>

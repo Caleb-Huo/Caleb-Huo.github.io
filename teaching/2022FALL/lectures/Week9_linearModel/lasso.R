@@ -1,0 +1,352 @@
+#' ---
+#' title: "Biostatistical Computing, PHC 6068"
+#' author: "Zhiguang Huo (Caleb)"
+#' date: "Wednesday October 20th, 2021"
+#' output:
+#'   slidy_presentation: default
+#'   ioslides_presentation: default
+#'   beamer_presentation: null
+#' subtitle: Ridge regression, Lasso, and elastic net
+#' ---
+#' 
+#' Outlines
+#' ===
+#' - Ridge regression
+#' - Lasso
+#' - Elastic net
+#' 
+#' linear regression model
+#' ===
+#' - $Y = (Y_1, \ldots, Y_n)^\top \in \mathbb{R}^n$
+#' - $X = (1_n, X_1, \ldots,  X_p) \in \mathbb{R}^{n \times (p+1)}$
+#'     - $1_n \in \mathbb{R}^n$, 
+#'     - $X_j \in \mathbb{R}^n$ with $1 \le j \le p$
+#' - $\beta = (\beta_0, \beta_1, \ldots, \beta_p)^\top \in \mathbb{R}^{p+1}$
+#' - $\varepsilon = (\varepsilon_1, \ldots, \varepsilon_n)^\top \in \mathbb{R}^n$
+#' 
+#' $$Y = X\beta + \varepsilon$$
+#' 
+#' 
+#' 
+#' Solution to linear regression model
+#' ===
+#' 
+#' - least square estimator (LS):
+#' $$\hat{\beta} = \arg \min_\beta \frac{1}{2}\| Y - X\beta\|_2^2$$
+#'     - $\|a\|_2 = \sqrt{a_1^2 + \ldots + a_p^2}$.
+#' 
+#' - Maximum likelihood estimator (MLE):
+#' $$\hat{\beta} = \arg \max_\beta L(\beta; X, Y)$$
+#' 
+#' - For linear regression model, LS estimator is the same as MLE
+#' $$\hat{\beta} = (X^\top X)^{-1} X^\top Y$$
+#' Assuming $X^\top X$ is invertable
+#' 
+#' Problem with linear regression
+#' ===
+#' 
+#' - When $n>p$, number of subjects is larger than number of features (variables), linear model works fine.
+#' - When $n<p$, $\hat{\beta} = (X^\top X)^{-1} X^\top Y$, $X^\top X \in \mathbb{R}^{p \times p}$ is singular.
+#' Thus we cannot estimate $\hat{\beta}$
+#'     - Solution: apply PCA to $X$ and reduce to $X' \in \mathbb{R}^{n \times r}$, where $r<n$. (lack of interpretation)
+#'     - model selection: using backward selection, forward selection with BIC or AIC. (Searching space is large)
+#' - When $n>p$, if two features are highly correlated, the resulting coefficients will have high variance and thus not stable.
+#'     - Solution: PCA
+#'     - Solution: use one one variable among all highly correlated variables as representative (using VIF to detect)
+#' 
+#' Collinearity
+#' ===
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+n <- 100
+set.seed(32611)
+x1 <- rnorm(n,3)
+x2 <- rnorm(n,5)
+x3 <- x2 + rnorm(n,sd=0.1)
+cor(x2, x3)
+x <- data.frame(x1,x2,x3)
+y <- 2*x1 + 3*x2 + 4*x3 + rnorm(n, sd = 3)
+xyData <- cbind(y,x)
+lmFit <- lm(y~x1 + x2 + x3, data=xyData)
+summary(lmFit)
+
+#' 
+#' How to test collinearity
+#' ===
+#' 
+#' - Remove variable with VIF > 10
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+library(car)
+vif(lmFit)
+
+summary(lm(y~x1 + x2, data=xyData))
+
+#' 
+#' 
+#' To solve these problems
+#' ===
+#' Regularization methods provide better solutions to this problem
+#' 
+#' - Ridge regression.
+#' - lasso.
+#' - Elastic net
+#' 
+#' 
+#' Ridge regression
+#' ===
+#' 
+#' $$\hat{\beta} = \arg \min_\beta \frac{1}{2}\| Y - X\beta\|_2^2 + \lambda \| \beta\|^2_2$$
+#'     - $\|a\|_2 = \sqrt{a_1^2 + \ldots + a_p^2}$.
+#'     
+#' - $\lambda \ge 0$ is a tuning parameter, controling the strength of the penalty term.
+#'     - $\lambda =0$, Ridge regression reduces to linear regression $\hat{\beta}^{Ridge} = \hat{\beta}^{LS}$.
+#'     - $\lambda = \infty$, we get $\hat{\beta}^{Ridge} = 0$
+#'     - Given a positive $\lambda$, we both fit a linear model and shrink the coefficients.
+#' 
+#' 
+#' Ridge regression solution
+#' ===
+#' 
+#' $$\hat{\beta} = \arg \min_\beta \frac{1}{2}\| Y - X\beta\|_2^2 + \lambda \| \beta\|^2_2$$
+#' 
+#' - $\hat{\beta} = (X^\top X + \lambda I)^{-1} X^\top Y$
+#' - As $\lambda$ increases, the bias increases and the variance decreases.
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+library(MASS)
+lm.ridge(y~x1 + x2 + x3, data=xyData, lambda = 10)
+
+#' 
+#' 
+#' Prostate cancer data
+#' ===
+#' The data is from the book element of statistical learning
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+library(ElemStatLearn)
+str(prostate)
+prostate$train <- NULL
+
+#' 
+#' 
+#' 
+#' Ridge regression Prostate cancer data example
+#' ===
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+library(MASS)
+lm_ridge <- lm.ridge(lpsa ~ ., data=prostate, lambda=0); lm_ridge
+lm(lpsa ~ ., data=prostate)
+
+#' 
+#' Ridge regression Prostate cancer data example 2
+#' ===
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+lm.ridge(lpsa ~ ., data=prostate, lambda=10)
+lm.ridge(lpsa ~ ., data=prostate, lambda=Inf)
+
+#' 
+#' 
+#' Summary for Ridge regression
+#' ===
+#' 
+#' - Ridge regression will stabilize the varaince of the coefficient estiamtes.
+#' - Ridge regression will increase bias but decrease variance.
+#' - Problem with Ridge regression: coefficient won't be shrinked to exact 0,
+#' unless $\lambda = +\infty$.
+#' 
+#' lasso
+#' ===
+#' 
+#' - The full name of Lasso is least absolute shrinkage and selection operator (Tibshirani, 1996)
+#' - Lasso, the $l_1$ norm penalty will shrink some of the coefficients to exact zero.
+#' $$\hat{\beta}^{lasso} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2 + \lambda \|\beta\|_1$$
+#' - $\|\beta\|_1 = \sum_{j=1}^p |\beta_j|$ is called $l_1$ norm of $\beta$.
+#' - $\lambda \ge 0$ is a tuning parameter, controling the strength of the penalty term.
+#'     - $\lambda =0$, we have original linear regression.
+#'     - $\lambda = \infty$, we get $\hat{\beta}^{lasso} = 0$
+#'     - For $\lambda$, we both fit a linear model and shrink some coefficients to **exact zero**.
+#' 
+#' lasso example (penalty form)
+#' ===
+#' - lasso was implemented in R lars package.
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+library(lars)
+x <- as.matrix(prostate[,1:8])
+y <- prostate[,9]
+lassoFit <- lars(x, y) ## lar for least angle regression
+coef(lassoFit, s=2, mode="lambda") ## get beta estimate when lambda = 2. 
+## Mode="lambda" uses s as the lasso regularization parameter for lambda
+
+#' 
+#' lasso, the penalty form and the constraint form
+#' ===
+#' - lasso regression equivalent forms.
+#'     - in penalty form:
+#' $$\hat{\beta}^{lasso} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2 + \lambda  \|\beta\|_1$$
+#'     - in constraint form:
+#' $$\hat{\beta}^{lasso} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2, s.t,  \|\beta\|_1 \le \mu$$ 
+#'     - When $\mu > \|\hat{\beta}^{LS}\|_1$, the solution will always be $\beta = \hat{\beta}^{LS}$, we could also rewrite as
+#' $$\hat{\beta}^{lasso} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2, s.t,  \|\beta\|_1 \le s\|\hat{\beta}^{LS}\|_1$$ 
+#' where $0 \le s \le 1$
+#' 
+#' lasso example (constraint form)
+#' ===
+#' - lasso was implemented in R lars package.
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+library(lars)
+x <- as.matrix(prostate[,1:8])
+y <- prostate[,9]
+lassoFit <- lars(x, y) ## lar for least angle regression
+coef(lassoFit, s=0.5, mode="fraction") ## get beta estimate when mu = 0.5*||beta_LS||_1
+## If mode="fraction", then s should be a number between 0 and 1, 
+## and it refers to the ratio of the L1 norm of the coefficient vector, 
+## relative to the norm at the full LS solution. 
+
+#' 
+#' 
+#' 
+#' Re-visit AIC and BIC
+#' ===
+#' 
+#' - AIC and BIC will achieve feature selection.
+#'     - $AIC = 2k - 2 \log ( {\hat{L}} )$
+#'     - $BIC = log(n)k - 2 \log ( {\hat{L}} )$
+#' - equivalently:
+#' 
+#' $$\hat{\beta}^{IC} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2 + \lambda \|\beta\|_0$$
+#' 
+#' - $\|\beta\|_0$ equals to $k$ where $k$ is number of non-zero entries of $\beta$.
+#' - $\|y - X\beta\|_2^2$ is equivalent to the likelihood function for Gaussian error.
+#' 
+#' visualize lasso path
+#' ===
+#' - lasso solution (beta estimate is piecewise linear with respect to lambda)
+#'   - $\hat{\beta}^{lasso} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2, s.t,  \|\beta\|_1 \le \mu$
+#'   - When $\mu > \|\hat{\beta}^{LS}\|_1$, $\hat{\beta}^{lasso} = \hat{\beta}^{LS}$
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+plot(lassoFit)
+
+#' 
+#' - x-axis: $\frac{\mu}{\|\hat{\beta}^{LS}\|_1}$
+#' 
+#' Intuition for lasso and Ridge regression
+#' ===
+#' - lasso regression equivalent forms.
+#'     - in penalty form:
+#' $$\hat{\beta}^{lasso} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2 + \lambda  \|\beta\|_1$$
+#'     - in constraint form:
+#' $$\hat{\beta}^{lasso} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2, s.t,  \|\beta\|_1 \le \mu$$ 
+#' 
+#' 
+#' - Ridge regression equivalent forms.
+#'     - in penalty form:
+#' $$\hat{\beta}^{Ridge} = \arg\min_{\beta\in\mathbb{R}^p}
+#' \frac{1}{2} \|y - X\beta\|_2^2 + \lambda\|\beta\|_2^2$$
+#'     - in constraint form:
+#' $$\hat{\beta}^{Ridge} = \arg\min_{\beta\in\mathbb{R}^p}
+#' \frac{1}{2} \|y - X\beta\|_2^2, s.t, \|\beta\|_2^2 \le \mu$$
+#' 
+#' Intuition for lasso and Ridge regression
+#' ===
+#' - Lasso: $\hat{\beta}^{lasso} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2, s.t,  \|\beta\|_1 \le \mu$
+#' - Ridge: $\hat{\beta}^{Ridge} = \arg\min_{\beta\in\mathbb{R}^p}
+#' \frac{1}{2} \|y - X\beta\|_2^2, s.t, \|\beta\|_2^2 \le \mu$
+#' 
+#' ![From book Element of Statistical Learning](../figure/lasso.png)
+#' 
+#' How to choose Tuning parameter
+#' ===
+#' - cross validation, we leave this for future lectures.
+#' 
+#' lasso path
+#' ===
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+plot(lassoFit)
+
+#' 
+#' - lasso solution is piecewise linear.
+#' - The lars package only calculates the solution at the knots
+#' 
+#' 
+#' 
+#' Elastic net
+#' ===
+#' 
+#' $$\hat{\beta}^{elastic} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2 + \lambda_2  \|\beta\|_2^2 + \lambda_1  \|\beta\|_1$$
+#' 
+#' ![](http://scikit-learn.sourceforge.net/0.7/_images/plot_sgd_penalties1.png)
+#' 
+#' - In their paper, they claim elastic net has smaller Mean squared error.
+#' 
+#' 
+#' Elastic net
+#' ===
+#' 
+#' $$\hat{\beta}^{elastic} = \arg\min_{\beta \in \mathbb{R}^P} \frac{1}{2} \|y - X\beta\|_2^2 + \lambda ( (1 - \alpha ) \|\beta\|_2^2 + \alpha  \|\beta\|_1)$$
+#' 
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+library(glmnet)
+
+fit.lasso <- glmnet(x, y, family="gaussian", alpha=1)
+fit.ridge <- glmnet(x, y, family="gaussian", alpha=0)
+fit.elnet <- glmnet(x, y, family="gaussian", alpha=.5)
+
+
+#' 
+#' --- 
+#' 
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+par(mfrow=c(2,2))
+# For plotting options, type '?plot.glmnet' in R console
+plot(fit.lasso, xvar="lambda", main = "LASSO")
+plot(fit.ridge, xvar="lambda", main = "Ridge")
+plot(fit.elnet, xvar="lambda", main = "Elastic Net")
+
+#' 
+#' 
+#' Group lasso
+#' ===
+#' 
+#' $$\min_{\beta=(\beta_{(1)},\dots,\beta_{(G)}) \in \mathbb{R}^p} \frac{1}{2} ||y-X\beta||_2^2 + \lambda \sum_{i=1}^G \sqrt{p_{(i)}} ||\beta_{(i)}||_2,$$
+#' 
+#' - Where $y \in \mathbb{R}^n$ is outcome and $X \in \mathbb{R}^{n\times p}$ is the design matrix.
+#' - The design matrix can be partitioned in to $G$ groups $X = [X_{(1)}, \ldots, X_{(G)}]$ where $X_{(i)} \in \mathbb{R}^{n \times p_{(i)}}$.
+#' - $\beta \in \mathbb{R}^p$ is the predictor and it is partitioned in to $G$ groups.
+#' 
+#' ![](../figure/groupLasso.png)
+#' 
+#' Fused lasso
+#' ===
+#' 
+#' - $y\in \mathbb{R}^p$, (e.g., stock price change)
+#' - $\beta \in \mathbb{R}^p$, (e.g., underlying stock momentum)
+#' 
+#' $$\min_{\beta \in \mathbb{R}^p} \frac{1}{2} || y - \beta ||_2^2 + \lambda \sum_{i=1}^{p-1} |\beta_i - \beta_{i+1}|$$
+#' 
+#' ![](http://statweb.stanford.edu/~bjk/regreg/_images/fusedlassoapprox.png)
+#' 
+#' 
+#' Generalized lasso
+#' ===
+#' 
+#' Consider a general setting
+#' $$\min_{\beta \in \mathbb{R}^p} f(\beta) + \lambda ||D\beta||_1$$
+#' where $f: \mathbb{R}^n \rightarrow \mathbb{R}$ is a smooth convex function. 
+#' $D \in \mathbb{R}^{m\times n}$ is a penalty matrix.
+#' 
+#' - When $D=I$, the formulation will reduce to the lasso regression problem.
+#' - When $$D= \left( \begin{array}{cccccc}
+#' -1 & 1 & 0 & \ldots & 0 & 0 \\
+#' 1 & -1 & 1 & \ldots & 0 & 0 \\
+#' \vdots  & \vdots  & \vdots  & \ddots & \vdots & \vdots \\
+#'  0 & 0 & 0 & \ldots & -1 & 1
+#'  \end{array} \right),$$
+#'  The penalty will be the fussed lasso penalty.
+#'  
+#' 
