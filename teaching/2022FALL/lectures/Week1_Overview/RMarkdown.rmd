@@ -1,7 +1,7 @@
 ---
-title: "Biostatistical Computing, PHC 6068"
-author: "Zhiguang Huo (Caleb)"
-date: "Mon August 23, 2021"
+title: "Introduction to Biostatistical Computing PHC 6937"
+author: Zhiguang Huo (Caleb)
+date: "Monday August 24, 2022"
 output:
   slidy_presentation: default
   ioslides_presentation: default
@@ -84,7 +84,7 @@ Markdown Next
 
 - How io import an external image: 
 
-![](https://caleb-huo.github.io/teaching/2021FALL/logo.png) 
+![](https://caleb-huo.github.io/teaching/2022FALL/logo.png) 
 
 
 Unordered list
@@ -204,5 +204,3 @@ Try your self
 - pdf report
 - make a slide 
 
-Take a look at the homework example
-===
