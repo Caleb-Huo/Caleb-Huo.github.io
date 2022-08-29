@@ -520,6 +520,7 @@ Zhiguang Huo (Caleb)
 <li>Loops</li>
 <li>Subsetting</li>
 <li>File operation</li>
+<li>R dates</li>
 </ul>
 </div>
 <div id="data-types" class="slide section level1">
@@ -1273,9 +1274,6 @@ Zhiguang Huo (Caleb)
 <div id="metacharacters-2" class="slide section level1">
 <h1>Metacharacters 2</h1>
 <ul>
-<li>“[:alnum]” matches any alphanumeric character, same as “[a-zA-Z0-9]”</li>
-<li>“[:punct:]” matches to any punctuation mark</li>
-<li>“[:space:]” matches to any white space character (tab and line break).</li>
 <li>A caret inside braces matches anything except the followng words.
 <ul>
 <li>“[^0-9]” matches anything but a number between 0 and 9.</li>
@@ -1629,8 +1627,8 @@ while (length(oneLine &lt;- readLines(con, n = 1, warn = FALSE)) &gt; 0) {
 } 
 close(con) ## remember to close files</code></pre>
 </div>
-<div id="save-r-objects" class="slide section level1">
-<h1>Save R objects</h1>
+<div id="save-r-objects-part-1-save" class="slide section level1">
+<h1>Save R objects part 1 (save)</h1>
 <p>If you take a long time to obtain your result. How to save your result so in the future, you won’t bother re-run them again?</p>
 <ul>
 <li>Create a list for these variables</li>
@@ -1647,18 +1645,37 @@ save(result,file=&quot;myResult.rdata&quot;)</code></pre>
 <pre><code>load(&quot;myResult.rdata&quot;)
 result2 &lt;- get(load(&quot;myResult.rdata&quot;))</code></pre>
 </div>
+<div id="save-r-objects-part-1-saverds" class="slide section level1">
+<h1>Save R objects part 1 (saveRDS)</h1>
+<p>If you take a long time to obtain your result. How to save your result so in the future, you won’t bother re-run them again?</p>
+<ul>
+<li>Create a list for these variables</li>
+<li>Save the list by save()</li>
+</ul>
+<pre><code>a &lt;- 1:4
+b &lt;- 2:5
+ans &lt;- a * b
+result &lt;- list(a=a, b=b, ans=ans)
+saveRDS(result,file=&quot;myResult.rdata&quot;)</code></pre>
+<ul>
+<li>load the list by load()</li>
+</ul>
+<pre><code>result2 &lt;- readRDS(&quot;myResult.rdata&quot;)</code></pre>
+</div>
 <div id="date" class="slide section level1">
 <h1>Date</h1>
 <p>Dates are represented as the number of days since 1970-01-01, with negative values for earlier dates.</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1">mydates &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;2017-09-11&quot;</span>, <span class="st">&quot;2012-12-17&quot;</span>, <span class="st">&quot;1970-01-01&quot;</span>))</a>
-<a class="sourceLine" id="cb274-2" data-line-number="2"><span class="co"># number of days in between </span></a>
-<a class="sourceLine" id="cb274-3" data-line-number="3">days &lt;-<span class="st"> </span>mydates[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>mydates[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb274-4" data-line-number="4"><span class="kw">as.numeric</span>(mydates)</a></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1">mydates &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;2017-09-11&quot;</span>, <span class="st">&quot;2012-12-17&quot;</span>, <span class="st">&quot;1970-01-01&quot;</span>))</a>
+<a class="sourceLine" id="cb276-2" data-line-number="2"><span class="co"># number of days in between </span></a>
+<a class="sourceLine" id="cb276-3" data-line-number="3">days &lt;-<span class="st"> </span>mydates[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>mydates[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb276-4" data-line-number="4">days</a></code></pre></div>
+<pre><code>## Time difference of 1729 days</code></pre>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1"><span class="kw">as.numeric</span>(mydates)</a></code></pre></div>
 <pre><code>## [1] 17420 15691     0</code></pre>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">Sys.Date</span>( ) <span class="co">## returns today's date.</span></a></code></pre></div>
-<pre><code>## [1] &quot;2022-08-26&quot;</code></pre>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1"><span class="kw">date</span>() <span class="co">## returns the current date and time.</span></a></code></pre></div>
-<pre><code>## [1] &quot;Fri Aug 26 15:44:03 2022&quot;</code></pre>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1"><span class="kw">Sys.Date</span>( ) <span class="co">## returns today's date.</span></a></code></pre></div>
+<pre><code>## [1] &quot;2022-08-29&quot;</code></pre>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="kw">date</span>() <span class="co">## returns the current date and time.</span></a></code></pre></div>
+<pre><code>## [1] &quot;Mon Aug 29 10:46:08 2022&quot;</code></pre>
 </div>
 <div id="date-format" class="slide section level1">
 <h1>Date format</h1>
@@ -1713,32 +1730,32 @@ result2 &lt;- get(load(&quot;myResult.rdata&quot;))</code></pre>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1">today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()</a>
-<a class="sourceLine" id="cb280-2" data-line-number="2"><span class="kw">format</span>(today, <span class="dt">format=</span><span class="st">&quot;%B %d %Y&quot;</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;August 26 2022&quot;</code></pre>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1">today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()</a>
+<a class="sourceLine" id="cb284-2" data-line-number="2"><span class="kw">format</span>(today, <span class="dt">format=</span><span class="st">&quot;%B %d %Y&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;August 29 2022&quot;</code></pre>
 </div>
 <div id="date-conversion" class="slide section level1">
 <h1>Date Conversion</h1>
 <ul>
 <li>as.Date() function: to convert character data to dates</li>
 </ul>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="co"># convert date info in format 'mm/dd/yyyy'</span></a>
-<a class="sourceLine" id="cb282-2" data-line-number="2">strDates &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;01/05/1995&quot;</span>, <span class="st">&quot;08/16/1995&quot;</span>)</a>
-<a class="sourceLine" id="cb282-3" data-line-number="3">dates &lt;-<span class="st"> </span><span class="kw">as.Date</span>(strDates, <span class="st">&quot;%m/%d/%Y&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="co"># convert date info in format 'mm/dd/yyyy'</span></a>
+<a class="sourceLine" id="cb286-2" data-line-number="2">strDates &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;01/05/1995&quot;</span>, <span class="st">&quot;08/16/1995&quot;</span>)</a>
+<a class="sourceLine" id="cb286-3" data-line-number="3">dates &lt;-<span class="st"> </span><span class="kw">as.Date</span>(strDates, <span class="st">&quot;%m/%d/%Y&quot;</span>)</a></code></pre></div>
 <ul>
 <li>The default format is yyyy-mm-dd</li>
 </ul>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;2007-06-22&quot;</span>, <span class="st">&quot;2004-02-13&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1"><span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;2007-06-22&quot;</span>, <span class="st">&quot;2004-02-13&quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;2007-06-22&quot; &quot;2004-02-13&quot;</code></pre>
 <ul>
 <li>Date to Character</li>
 </ul>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1"><span class="kw">as.character</span>(dates)</a></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1"><span class="kw">as.character</span>(dates)</a></code></pre></div>
 <pre><code>## [1] &quot;1995-01-05&quot; &quot;1995-08-16&quot;</code></pre>
 <ul>
 <li>Date to Numeric (1970-01-01 as 0)</li>
 </ul>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1"><span class="kw">as.numeric</span>(dates)</a></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1"><span class="kw">as.numeric</span>(dates)</a></code></pre></div>
 <pre><code>## [1] 9135 9358</code></pre>
 </div>
 <div id="references" class="slide section level1">
