@@ -275,11 +275,7 @@ result
 x <- 1
 h <- function(){
   y <- 2
-  i <- function(){
-    z <- 3
-    c(x, y, z)
-  }
-  i()
+  return(x + y)
 }
 
 h()
@@ -342,16 +338,12 @@ x <- 1:10; x[3]
 ## --------------------------------------------------------------------------------------------------------------------
 ## %%: Remainder operator
 5 %% 3
+
 ## %/%: Integer division
 5 %/% 3
+
 ## %*% Matrix multiplication
-## to be discussed in the future.
-
-## %o% Outer product
-1:2 %o% 1:3
-
-## %in% Match operator
-c(1,2,3,4,5,6) %in% c(2,6,8)
+matrix(1:6,nrow=2) %*% matrix(1:6,nrow=3)
 
 
 #' 
@@ -382,7 +374,7 @@ str(f(arg=2))
 ## --------------------------------------------------------------------------------------------------------------------
 f <- function(arg, brg=10) 
   list(arg = arg, brg = brg)
-str(f(arg=2, brg=10))
+f(arg=2, brg=10)
 
 #' 
 #' ---
@@ -391,13 +383,13 @@ str(f(arg=2, brg=10))
 ## --------------------------------------------------------------------------------------------------------------------
 f <- function(arg, brg=10) 
   list(arg = arg, brg = brg)
-str(f(b=10, ar=2))
+f(b=10, ar=2)
 
 #'     3. finally by position matching
 ## --------------------------------------------------------------------------------------------------------------------
 f <- function(arg, brg=10) 
   list(arg = arg, brg = brg)
-str(f(2, 10))
+f(2, 10)
 
 #' 
 #' 
@@ -683,7 +675,7 @@ nrow(x) ## A function in a package will always use the utilities within its name
 ## this is how R prevents external/global functions from affecting utilities functions inside a package
 environment(nrow)
 environment(dim)
-environment(base::dim)
+base::dim
 
 #' 
 #' 
