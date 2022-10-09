@@ -118,6 +118,30 @@ ol {
 	font-size: 24px;
 }
 
+.Lab {
+	margin: 15px;
+  text-align:center;
+	font-size: 16px;
+}
+
+.Lab td{
+	margin: 15px;
+  text-align:left;
+	font-size: 20px;
+}
+
+.Lab p{
+	margin: 15px;
+  text-align:left;
+	font-size: 20px;
+}
+
+.Lab h2{
+	margin: 15px;
+  text-align:left;
+	font-size: 24px;
+}
+
 .Teaching h1 {   
   padding-bottom: 20px;
   padding-top: 20px;
