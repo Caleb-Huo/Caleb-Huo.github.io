@@ -191,6 +191,14 @@ bool(0)
 str(False)
 #' 
 #' 
+#' 3 basci python data structure
+#' ===
+#' 
+#' - list
+#' - tuple
+#' - dictionary
+#' 
+#' 
 #' list
 #' ===
 #' 
@@ -235,6 +243,7 @@ sorted(a)
 max(a)
 min(b)
 #' 
+#' 
 #' subsetting of list
 #' ===
 #' 
@@ -248,6 +257,28 @@ data[1][1]
 #' 
 #' 
 #' 
+#' dictionary
+#' ===
+#' 
+#' - create a dictionary
+#' 
+phonebook = {"Alice": 2341, 
+            "Beth": 4971,
+            "Carl": 9401
+}
+phonebook
+phonebook["Alice"]
+#' 
+#' 
+items = [("Name","Smith"), ("Age", 44)]
+d = dict(items)
+d
+#' 
+d = dict(Name="Smith", Age=44)
+d
+#' 
+#' 
+#' 
 #' Basic python operators
 #' ===
 #' 
@@ -257,6 +288,17 @@ data[1][1]
 "Hello" + "World"
 False and True
 False or True
+#' 
+#' ---
+#' 
+a = 10
+a = a * 5
+print(a)
+#' 
+a = 10
+a *= 5
+print(a)
+#' 
 #' 
 #' Basic string operators
 #' ===
@@ -274,13 +316,11 @@ a[4]
 #' Basic string operators
 #' ===
 #' 
-a = 10
-a = a * 5
+#' 
+a = "Hello"
+a = a + "World"
 print(a)
 #' 
-a = 10
-a *= 5
-print(a)
 #' 
 a = "Hello"
 a += "World"
@@ -577,7 +617,7 @@ a.replace("is", "eez")
 #' 
 #' - colon(:) at the end of the if line
 #' - indent (e.g., 2 (or 4) whitespaces) before the chunk of code to be executed
-#' - In Python if control folow, we don't have parentheses. Indentation is used to determine the end of the code chunk.
+#' - In Python if control folow, we don't have parentheses like in R. Indentation is used to determine the end of the code chunk.
 #' 
 #' ```
 #' name = input("What is your name? ")
@@ -817,6 +857,8 @@ while num<10:
 #' file operation (read)
 #' ===
 #' 
+#' https://caleb-huo.github.io/teaching/data/misc/my_file.txt
+#' 
 #' - open file, display, and close (release memory)
 #' 
 file = open("my_file.txt")
@@ -847,7 +889,6 @@ for aline in lines:
 #' 
 #' file operation (write)
 #' ===
-#' 
 #' 
 #' - write to file (overwrite original file) 
 with open("new_file.txt", mode="w") as file:
@@ -950,5 +991,5 @@ print(f'{now:%Y-%m-%d %H:%M}')
 #' ===
 #' 
 #' - https://docs.python.org/3/index.html
-#' 
+#' - https://github.com/Apress/beginning-python-3ed
 #' 
