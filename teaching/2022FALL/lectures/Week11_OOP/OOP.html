@@ -867,49 +867,65 @@ Zhiguang Huo (Caleb)
 <div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb43-1" data-line-number="1">bBird.eat()</a></code></pre></div>
 <pre><code>## No, thanks</code></pre>
 </div>
+<div id="extra-argument-and-keywords-in-the-class-initialization" class="slide section level1">
+<h1>extra argument and keywords in the class initialization</h1>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">class</span> Car:</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="op">**</span>kw):</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4">        <span class="va">self</span>.make <span class="op">=</span> kw[<span class="st">&quot;make&quot;</span>]</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5">        <span class="co"># self.model = kw[&quot;model&quot;]</span></a>
+<a class="sourceLine" id="cb45-6" data-line-number="6">        <span class="va">self</span>.model <span class="op">=</span> kw.get(<span class="st">&quot;model&quot;</span>)</a>
+<a class="sourceLine" id="cb45-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb45-8" data-line-number="8">my_car <span class="op">=</span> Car(make <span class="op">=</span> <span class="st">&quot;Chevo&quot;</span>, model <span class="op">=</span> <span class="st">&quot;Malibu&quot;</span>)</a>
+<a class="sourceLine" id="cb45-9" data-line-number="9"><span class="bu">print</span>(my_car.model)</a></code></pre></div>
+<pre><code>## Malibu</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb47-1" data-line-number="1">my_car <span class="op">=</span> Car(make <span class="op">=</span> <span class="st">&quot;Chevo&quot;</span>)</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="bu">print</span>(my_car.model)</a></code></pre></div>
+<pre><code>## None</code></pre>
+</div>
 <div id="a-class-with-attributes-being-other-classs-objects" class="slide section level1">
 <h1>a Class with attributes being other class’s objects</h1>
 <ul>
 <li>previous Person class</li>
 </ul>
-<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb45-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb45-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname<span class="op">=</span><span class="st">&quot;John&quot;</span>):</a>
-<a class="sourceLine" id="cb45-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb45-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb45-6" data-line-number="6">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb45-7" data-line-number="7">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb45-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb45-9" data-line-number="9">    <span class="kw">def</span> getName(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb45-10" data-line-number="10">        <span class="cf">return</span>(<span class="va">self</span>.name)</a>
-<a class="sourceLine" id="cb45-11" data-line-number="11">    </a>
-<a class="sourceLine" id="cb45-12" data-line-number="12">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb45-13" data-line-number="13">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">class</span> Person:</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2">    </a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname<span class="op">=</span><span class="st">&quot;John&quot;</span>):</a>
+<a class="sourceLine" id="cb49-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
+<a class="sourceLine" id="cb49-5" data-line-number="5">    </a>
+<a class="sourceLine" id="cb49-6" data-line-number="6">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
+<a class="sourceLine" id="cb49-7" data-line-number="7">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
+<a class="sourceLine" id="cb49-8" data-line-number="8">    </a>
+<a class="sourceLine" id="cb49-9" data-line-number="9">    <span class="kw">def</span> getName(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb49-10" data-line-number="10">        <span class="cf">return</span>(<span class="va">self</span>.name)</a>
+<a class="sourceLine" id="cb49-11" data-line-number="11">    </a>
+<a class="sourceLine" id="cb49-12" data-line-number="12">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb49-13" data-line-number="13">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a></code></pre></div>
 <ul>
 <li>Goal: create a Group class, which contain a group of persons.</li>
 </ul>
 </div>
 <div id="a-group-class" class="slide section level1">
 <h1>a Group class</h1>
-<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">class</span> Group:</a>
-<a class="sourceLine" id="cb46-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb46-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb46-4" data-line-number="4">        <span class="va">self</span>.persons <span class="op">=</span> []</a>
-<a class="sourceLine" id="cb46-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb46-6" data-line-number="6">    <span class="kw">def</span> add(<span class="va">self</span>, aperson):</a>
-<a class="sourceLine" id="cb46-7" data-line-number="7">        <span class="va">self</span>.persons.append(aperson)</a>
-<a class="sourceLine" id="cb46-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb46-9" data-line-number="9">    <span class="kw">def</span> getNameAll(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb46-10" data-line-number="10">        res <span class="op">=</span> [aperson.getName() <span class="cf">for</span> aperson <span class="kw">in</span> <span class="va">self</span>.persons]</a>
-<a class="sourceLine" id="cb46-11" data-line-number="11">        <span class="cf">return</span>(res)</a>
-<a class="sourceLine" id="cb46-12" data-line-number="12">        </a>
-<a class="sourceLine" id="cb46-13" data-line-number="13">agroup <span class="op">=</span> Group()</a>
-<a class="sourceLine" id="cb46-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb46-15" data-line-number="15">agroup.add(Person(<span class="st">&quot;Amy&quot;</span>))</a>
-<a class="sourceLine" id="cb46-16" data-line-number="16">agroup.add(Person(<span class="st">&quot;Beth&quot;</span>))</a>
-<a class="sourceLine" id="cb46-17" data-line-number="17">agroup.add(Person(<span class="st">&quot;Carl&quot;</span>))</a>
-<a class="sourceLine" id="cb46-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb46-19" data-line-number="19">agroup.getNameAll()</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">class</span> Group:</a>
+<a class="sourceLine" id="cb50-2" data-line-number="2">    </a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb50-4" data-line-number="4">        <span class="va">self</span>.persons <span class="op">=</span> []</a>
+<a class="sourceLine" id="cb50-5" data-line-number="5">    </a>
+<a class="sourceLine" id="cb50-6" data-line-number="6">    <span class="kw">def</span> add(<span class="va">self</span>, aperson):</a>
+<a class="sourceLine" id="cb50-7" data-line-number="7">        <span class="va">self</span>.persons.append(aperson)</a>
+<a class="sourceLine" id="cb50-8" data-line-number="8">    </a>
+<a class="sourceLine" id="cb50-9" data-line-number="9">    <span class="kw">def</span> getNameAll(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb50-10" data-line-number="10">        res <span class="op">=</span> [aperson.getName() <span class="cf">for</span> aperson <span class="kw">in</span> <span class="va">self</span>.persons]</a>
+<a class="sourceLine" id="cb50-11" data-line-number="11">        <span class="cf">return</span>(res)</a>
+<a class="sourceLine" id="cb50-12" data-line-number="12">        </a>
+<a class="sourceLine" id="cb50-13" data-line-number="13">agroup <span class="op">=</span> Group()</a>
+<a class="sourceLine" id="cb50-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb50-15" data-line-number="15">agroup.add(Person(<span class="st">&quot;Amy&quot;</span>))</a>
+<a class="sourceLine" id="cb50-16" data-line-number="16">agroup.add(Person(<span class="st">&quot;Beth&quot;</span>))</a>
+<a class="sourceLine" id="cb50-17" data-line-number="17">agroup.add(Person(<span class="st">&quot;Carl&quot;</span>))</a>
+<a class="sourceLine" id="cb50-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb50-19" data-line-number="19">agroup.getNameAll()</a></code></pre></div>
 <pre><code>## ['Amy', 'Beth', 'Carl']</code></pre>
 </div>
 <div id="class-inheritance" class="slide section level1">
@@ -929,23 +945,23 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>parent class</li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb49-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb49-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> <span class="st">&quot;John&quot;</span></a>
-<a class="sourceLine" id="cb49-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb49-6" data-line-number="6">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb49-7" data-line-number="7">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb49-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb49-9" data-line-number="9">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb49-10" data-line-number="10">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">class</span> Person:</a>
+<a class="sourceLine" id="cb53-2" data-line-number="2">    </a>
+<a class="sourceLine" id="cb53-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb53-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> <span class="st">&quot;John&quot;</span></a>
+<a class="sourceLine" id="cb53-5" data-line-number="5">    </a>
+<a class="sourceLine" id="cb53-6" data-line-number="6">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
+<a class="sourceLine" id="cb53-7" data-line-number="7">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
+<a class="sourceLine" id="cb53-8" data-line-number="8">    </a>
+<a class="sourceLine" id="cb53-9" data-line-number="9">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb53-10" data-line-number="10">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a></code></pre></div>
 <ul>
 <li>child class</li>
 </ul>
-<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">class</span> Student(Person):</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">    <span class="cf">pass</span></a></code></pre></div>
-<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb51-1" data-line-number="1">astudent <span class="op">=</span> Student()</a>
-<a class="sourceLine" id="cb51-2" data-line-number="2">astudent.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">class</span> Student(Person):</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">    <span class="cf">pass</span></a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb55-1" data-line-number="1">astudent <span class="op">=</span> Student()</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">astudent.greet()</a></code></pre></div>
 <pre><code>## Hi there, my name is John</code></pre>
 </div>
 <div id="class-inheritance-1" class="slide section level1">
@@ -954,13 +970,13 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>parent class</li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">class</span> Filter:</a>
-<a class="sourceLine" id="cb53-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb53-3" data-line-number="3">        <span class="va">self</span>.blocked <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">    <span class="kw">def</span> <span class="bu">filter</span>(<span class="va">self</span>, sequence):</a>
-<a class="sourceLine" id="cb53-5" data-line-number="5">        <span class="cf">return</span> [x <span class="cf">for</span> x <span class="kw">in</span> sequence <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.blocked]</a></code></pre></div>
-<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb54-1" data-line-number="1">f <span class="op">=</span> Filter()</a>
-<a class="sourceLine" id="cb54-2" data-line-number="2">f.<span class="bu">filter</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">class</span> Filter:</a>
+<a class="sourceLine" id="cb57-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb57-3" data-line-number="3">        <span class="va">self</span>.blocked <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb57-4" data-line-number="4">    <span class="kw">def</span> <span class="bu">filter</span>(<span class="va">self</span>, sequence):</a>
+<a class="sourceLine" id="cb57-5" data-line-number="5">        <span class="cf">return</span> [x <span class="cf">for</span> x <span class="kw">in</span> sequence <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.blocked]</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb58-1" data-line-number="1">f <span class="op">=</span> Filter()</a>
+<a class="sourceLine" id="cb58-2" data-line-number="2">f.<span class="bu">filter</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</a></code></pre></div>
 <pre><code>## [2, 3]</code></pre>
 </div>
 <div class="slide section level1">
@@ -971,15 +987,15 @@ Zhiguang Huo (Caleb)
 <li>it inherits the methods.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">class</span> SPAMFilter(Filter):</a>
-<a class="sourceLine" id="cb56-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb56-3" data-line-number="3">        <span class="va">self</span>.blocked <span class="op">=</span> [<span class="st">'SPAM'</span>]</a></code></pre></div>
-<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb57-1" data-line-number="1">s <span class="op">=</span> SPAMFilter()</a>
-<a class="sourceLine" id="cb57-2" data-line-number="2">s.<span class="bu">filter</span>([<span class="st">&quot;SPAM&quot;</span>,<span class="st">&quot;bacan&quot;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">class</span> SPAMFilter(Filter):</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3">        <span class="va">self</span>.blocked <span class="op">=</span> [<span class="st">'SPAM'</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb61-1" data-line-number="1">s <span class="op">=</span> SPAMFilter()</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2">s.<span class="bu">filter</span>([<span class="st">&quot;SPAM&quot;</span>,<span class="st">&quot;bacan&quot;</span>])</a></code></pre></div>
 <pre><code>## ['bacan']</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="bu">issubclass</span>(SPAMFilter, Filter)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="bu">issubclass</span>(SPAMFilter, Filter)</a></code></pre></div>
 <pre><code>## True</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="bu">issubclass</span>(Filter, SPAMFilter)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="bu">issubclass</span>(Filter, SPAMFilter)</a></code></pre></div>
 <pre><code>## False</code></pre>
 </div>
 <div class="slide section level1">
@@ -990,10 +1006,10 @@ Zhiguang Huo (Caleb)
 <li>it inherits the parental attributes.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">class</span> SPAMFilter2(Filter):</a>
-<a class="sourceLine" id="cb63-2" data-line-number="2">    <span class="cf">pass</span></a></code></pre></div>
-<div class="sourceCode" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb64-1" data-line-number="1">s2 <span class="op">=</span> SPAMFilter2()</a>
-<a class="sourceLine" id="cb64-2" data-line-number="2">s2.<span class="bu">filter</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">class</span> SPAMFilter2(Filter):</a>
+<a class="sourceLine" id="cb67-2" data-line-number="2">    <span class="cf">pass</span></a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb68-1" data-line-number="1">s2 <span class="op">=</span> SPAMFilter2()</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2">s2.<span class="bu">filter</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</a></code></pre></div>
 <pre><code>## [2, 3]</code></pre>
 <ul>
 <li>child class
@@ -1012,35 +1028,35 @@ s3.filter([1, 2, &quot;SPAM&quot;])</code></pre>
 <ul>
 <li>super() allows to access methods of the parental class.</li>
 </ul>
-<div class="sourceCode" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">class</span> Animal(<span class="bu">object</span>):</a>
-<a class="sourceLine" id="cb68-2" data-line-number="2">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, animal_type):</a>
-<a class="sourceLine" id="cb68-3" data-line-number="3">    <span class="bu">print</span>(<span class="st">'Animal Type:'</span>, animal_type)</a>
-<a class="sourceLine" id="cb68-4" data-line-number="4">    </a>
-<a class="sourceLine" id="cb68-5" data-line-number="5"><span class="kw">class</span> Mammal(Animal):</a>
-<a class="sourceLine" id="cb68-6" data-line-number="6">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb68-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb68-8" data-line-number="8">    <span class="co"># call superclass</span></a>
-<a class="sourceLine" id="cb68-9" data-line-number="9">    <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'Mammal'</span>)</a>
-<a class="sourceLine" id="cb68-10" data-line-number="10">    <span class="co">## super(Mammal, self).__init__('Mammal') ## alternatively</span></a>
-<a class="sourceLine" id="cb68-11" data-line-number="11">    <span class="bu">print</span>(<span class="st">'Mammals give birth directly'</span>)</a>
-<a class="sourceLine" id="cb68-12" data-line-number="12">    </a>
-<a class="sourceLine" id="cb68-13" data-line-number="13">dog <span class="op">=</span> Mammal()</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">class</span> Animal(<span class="bu">object</span>):</a>
+<a class="sourceLine" id="cb72-2" data-line-number="2">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, animal_type):</a>
+<a class="sourceLine" id="cb72-3" data-line-number="3">    <span class="bu">print</span>(<span class="st">'Animal Type:'</span>, animal_type)</a>
+<a class="sourceLine" id="cb72-4" data-line-number="4">    </a>
+<a class="sourceLine" id="cb72-5" data-line-number="5"><span class="kw">class</span> Mammal(Animal):</a>
+<a class="sourceLine" id="cb72-6" data-line-number="6">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb72-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb72-8" data-line-number="8">    <span class="co"># call superclass</span></a>
+<a class="sourceLine" id="cb72-9" data-line-number="9">    <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'Mammal'</span>)</a>
+<a class="sourceLine" id="cb72-10" data-line-number="10">    <span class="co">## super(Mammal, self).__init__('Mammal') ## alternatively</span></a>
+<a class="sourceLine" id="cb72-11" data-line-number="11">    <span class="bu">print</span>(<span class="st">'Mammals give birth directly'</span>)</a>
+<a class="sourceLine" id="cb72-12" data-line-number="12">    </a>
+<a class="sourceLine" id="cb72-13" data-line-number="13">dog <span class="op">=</span> Mammal()</a></code></pre></div>
 <pre><code>## Animal Type: Mammal
 ## Mammals give birth directly</code></pre>
 </div>
 <div id="super-method-for-python-class-1" class="slide section level1">
 <h1>Super method for python class</h1>
-<div class="sourceCode" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">class</span> Filter:</a>
-<a class="sourceLine" id="cb70-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb70-3" data-line-number="3">        <span class="va">self</span>.blocked <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb70-4" data-line-number="4">    <span class="kw">def</span> <span class="bu">filter</span>(<span class="va">self</span>, sequence):</a>
-<a class="sourceLine" id="cb70-5" data-line-number="5">        <span class="cf">return</span> [x <span class="cf">for</span> x <span class="kw">in</span> sequence <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.blocked]</a></code></pre></div>
-<div class="sourceCode" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">class</span> SPAMFilter4(Filter):</a>
-<a class="sourceLine" id="cb71-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb71-3" data-line-number="3">        <span class="bu">super</span>(SPAMFilter4, <span class="va">self</span>).<span class="fu">__init__</span>()</a>
-<a class="sourceLine" id="cb71-4" data-line-number="4">        <span class="va">self</span>.blocked.append(<span class="st">'SPAM'</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb72-1" data-line-number="1">s4 <span class="op">=</span> SPAMFilter4()</a>
-<a class="sourceLine" id="cb72-2" data-line-number="2">s4.<span class="bu">filter</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&quot;SPAM&quot;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">class</span> Filter:</a>
+<a class="sourceLine" id="cb74-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb74-3" data-line-number="3">        <span class="va">self</span>.blocked <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb74-4" data-line-number="4">    <span class="kw">def</span> <span class="bu">filter</span>(<span class="va">self</span>, sequence):</a>
+<a class="sourceLine" id="cb74-5" data-line-number="5">        <span class="cf">return</span> [x <span class="cf">for</span> x <span class="kw">in</span> sequence <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.blocked]</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">class</span> SPAMFilter4(Filter):</a>
+<a class="sourceLine" id="cb75-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb75-3" data-line-number="3">        <span class="bu">super</span>(SPAMFilter4, <span class="va">self</span>).<span class="fu">__init__</span>()</a>
+<a class="sourceLine" id="cb75-4" data-line-number="4">        <span class="va">self</span>.blocked.append(<span class="st">'SPAM'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb76-1" data-line-number="1">s4 <span class="op">=</span> SPAMFilter4()</a>
+<a class="sourceLine" id="cb76-2" data-line-number="2">s4.<span class="bu">filter</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&quot;SPAM&quot;</span>])</a></code></pre></div>
 <pre><code>## [2]</code></pre>
 </div>
 <div id="in-class-exercise-3" class="slide section level1">
@@ -1058,41 +1074,41 @@ s3.filter([1, 2, &quot;SPAM&quot;])</code></pre>
 </div>
 <div id="songbird-class" class="slide section level1">
 <h1>SongBird Class</h1>
-<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">class</span> Bird:</a>
-<a class="sourceLine" id="cb75-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb75-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb75-4" data-line-number="4">        <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">True</span></a>
-<a class="sourceLine" id="cb75-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb75-6" data-line-number="6">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb75-7" data-line-number="7">        <span class="cf">if</span> <span class="va">self</span>.hungry:</a>
-<a class="sourceLine" id="cb75-8" data-line-number="8">            <span class="bu">print</span>(<span class="st">&quot;Aaah&quot;</span>)</a>
-<a class="sourceLine" id="cb75-9" data-line-number="9">            <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">False</span></a>
-<a class="sourceLine" id="cb75-10" data-line-number="10">        <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb75-11" data-line-number="11">            <span class="bu">print</span>(<span class="st">&quot;No, thanks&quot;</span>)    </a>
-<a class="sourceLine" id="cb75-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb75-13" data-line-number="13"><span class="kw">class</span> SongBird(Bird):</a>
-<a class="sourceLine" id="cb75-14" data-line-number="14">    </a>
-<a class="sourceLine" id="cb75-15" data-line-number="15">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb75-16" data-line-number="16">        <span class="bu">super</span>(SongBird, <span class="va">self</span>).<span class="fu">__init__</span>() <span class="co">## need this to initialize the parental class</span></a>
-<a class="sourceLine" id="cb75-17" data-line-number="17">        <span class="va">self</span>.sound <span class="op">=</span> <span class="st">&quot;tweet&quot;</span></a>
-<a class="sourceLine" id="cb75-18" data-line-number="18">    </a>
-<a class="sourceLine" id="cb75-19" data-line-number="19">    <span class="kw">def</span> sing(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb75-20" data-line-number="20">        <span class="bu">print</span>(<span class="va">self</span>.sound <span class="op">*</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="kw">class</span> Bird:</a>
+<a class="sourceLine" id="cb79-2" data-line-number="2">    </a>
+<a class="sourceLine" id="cb79-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb79-4" data-line-number="4">        <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb79-5" data-line-number="5">    </a>
+<a class="sourceLine" id="cb79-6" data-line-number="6">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb79-7" data-line-number="7">        <span class="cf">if</span> <span class="va">self</span>.hungry:</a>
+<a class="sourceLine" id="cb79-8" data-line-number="8">            <span class="bu">print</span>(<span class="st">&quot;Aaah&quot;</span>)</a>
+<a class="sourceLine" id="cb79-9" data-line-number="9">            <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">False</span></a>
+<a class="sourceLine" id="cb79-10" data-line-number="10">        <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb79-11" data-line-number="11">            <span class="bu">print</span>(<span class="st">&quot;No, thanks&quot;</span>)    </a>
+<a class="sourceLine" id="cb79-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb79-13" data-line-number="13"><span class="kw">class</span> SongBird(Bird):</a>
+<a class="sourceLine" id="cb79-14" data-line-number="14">    </a>
+<a class="sourceLine" id="cb79-15" data-line-number="15">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb79-16" data-line-number="16">        <span class="bu">super</span>(SongBird, <span class="va">self</span>).<span class="fu">__init__</span>() <span class="co">## need this to initialize the parental class</span></a>
+<a class="sourceLine" id="cb79-17" data-line-number="17">        <span class="va">self</span>.sound <span class="op">=</span> <span class="st">&quot;tweet&quot;</span></a>
+<a class="sourceLine" id="cb79-18" data-line-number="18">    </a>
+<a class="sourceLine" id="cb79-19" data-line-number="19">    <span class="kw">def</span> sing(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb79-20" data-line-number="20">        <span class="bu">print</span>(<span class="va">self</span>.sound <span class="op">*</span> <span class="dv">3</span>)</a></code></pre></div>
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb76-1" data-line-number="1">aSongBird <span class="op">=</span> SongBird()</a>
-<a class="sourceLine" id="cb76-2" data-line-number="2">aSongBird.hungry</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb80-1" data-line-number="1">aSongBird <span class="op">=</span> SongBird()</a>
+<a class="sourceLine" id="cb80-2" data-line-number="2">aSongBird.hungry</a></code></pre></div>
 <pre><code>## True</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb78-1" data-line-number="1">aSongBird.sound</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb82-1" data-line-number="1">aSongBird.sound</a></code></pre></div>
 <pre><code>## 'tweet'</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb80-1" data-line-number="1">aSongBird.sing()</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb84-1" data-line-number="1">aSongBird.sing()</a></code></pre></div>
 <pre><code>## tweettweettweet</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb82-1" data-line-number="1">aSongBird.eat()</a></code></pre></div>
-<pre><code>## Aaah</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb84-1" data-line-number="1">aSongBird.hungry</a></code></pre></div>
-<pre><code>## False</code></pre>
 <div class="sourceCode" id="cb86"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb86-1" data-line-number="1">aSongBird.eat()</a></code></pre></div>
+<pre><code>## Aaah</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb88-1" data-line-number="1">aSongBird.hungry</a></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb90-1" data-line-number="1">aSongBird.eat()</a></code></pre></div>
 <pre><code>## No, thanks</code></pre>
 </div>
 <div id="multiple-inheritance" class="slide section level1">
@@ -1100,19 +1116,19 @@ s3.filter([1, 2, &quot;SPAM&quot;])</code></pre>
 <ul>
 <li>inherit the attribtues and methods from multiple classes</li>
 </ul>
-<div class="sourceCode" id="cb88"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="kw">class</span> Calculator:</a>
-<a class="sourceLine" id="cb88-2" data-line-number="2">    <span class="kw">def</span> calculate(<span class="va">self</span>, expression):</a>
-<a class="sourceLine" id="cb88-3" data-line-number="3">        <span class="va">self</span>.value <span class="op">=</span> <span class="bu">eval</span>(expression) <span class="co">## eval is to evaluate some expression in python</span></a>
-<a class="sourceLine" id="cb88-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb88-5" data-line-number="5"><span class="kw">class</span> Talker:</a>
-<a class="sourceLine" id="cb88-6" data-line-number="6">    <span class="kw">def</span> talk(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb88-7" data-line-number="7">        <span class="bu">print</span>(<span class="st">&quot;Hi, my value is&quot;</span>, <span class="va">self</span>.value)</a>
-<a class="sourceLine" id="cb88-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb88-9" data-line-number="9"><span class="kw">class</span> TalkingCalculator(Calculator, Talker):</a>
-<a class="sourceLine" id="cb88-10" data-line-number="10">    <span class="cf">pass</span></a></code></pre></div>
-<div class="sourceCode" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb89-1" data-line-number="1">a <span class="op">=</span> TalkingCalculator()</a>
-<a class="sourceLine" id="cb89-2" data-line-number="2">a.calculate(<span class="st">&quot;1+1&quot;</span>)</a>
-<a class="sourceLine" id="cb89-3" data-line-number="3">a.talk()</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="kw">class</span> Calculator:</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2">    <span class="kw">def</span> calculate(<span class="va">self</span>, expression):</a>
+<a class="sourceLine" id="cb92-3" data-line-number="3">        <span class="va">self</span>.value <span class="op">=</span> <span class="bu">eval</span>(expression) <span class="co">## eval is to evaluate some expression in python</span></a>
+<a class="sourceLine" id="cb92-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb92-5" data-line-number="5"><span class="kw">class</span> Talker:</a>
+<a class="sourceLine" id="cb92-6" data-line-number="6">    <span class="kw">def</span> talk(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb92-7" data-line-number="7">        <span class="bu">print</span>(<span class="st">&quot;Hi, my value is&quot;</span>, <span class="va">self</span>.value)</a>
+<a class="sourceLine" id="cb92-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb92-9" data-line-number="9"><span class="kw">class</span> TalkingCalculator(Calculator, Talker):</a>
+<a class="sourceLine" id="cb92-10" data-line-number="10">    <span class="cf">pass</span></a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb93-1" data-line-number="1">a <span class="op">=</span> TalkingCalculator()</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">a.calculate(<span class="st">&quot;1+1&quot;</span>)</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3">a.talk()</a></code></pre></div>
 <pre><code>## Hi, my value is 2</code></pre>
 </div>
 <div id="in-class-exercise-4" class="slide section level1">
@@ -1132,59 +1148,59 @@ s3.filter([1, 2, &quot;SPAM&quot;])</code></pre>
 </div>
 <div id="songbird-class-1" class="slide section level1">
 <h1>SongBird Class</h1>
-<div class="sourceCode" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">class</span> Bird2:</a>
-<a class="sourceLine" id="cb93-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb93-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, color<span class="op">=</span><span class="st">&quot;yellow&quot;</span>, hungry<span class="op">=</span><span class="va">True</span>):</a>
-<a class="sourceLine" id="cb93-4" data-line-number="4">        <span class="va">self</span>.color <span class="op">=</span> color</a>
-<a class="sourceLine" id="cb93-5" data-line-number="5">        <span class="va">self</span>.hungry <span class="op">=</span> hungry</a>
-<a class="sourceLine" id="cb93-6" data-line-number="6">    </a>
-<a class="sourceLine" id="cb93-7" data-line-number="7">    <span class="kw">def</span> getColor(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb93-8" data-line-number="8">        <span class="cf">return</span>(<span class="va">self</span>.color)</a>
-<a class="sourceLine" id="cb93-9" data-line-number="9">    </a>
-<a class="sourceLine" id="cb93-10" data-line-number="10">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb93-11" data-line-number="11">        <span class="cf">if</span> <span class="va">self</span>.hungry:</a>
-<a class="sourceLine" id="cb93-12" data-line-number="12">            <span class="bu">print</span>(<span class="st">&quot;Aaah&quot;</span>)</a>
-<a class="sourceLine" id="cb93-13" data-line-number="13">            <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">False</span></a>
-<a class="sourceLine" id="cb93-14" data-line-number="14">        <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb93-15" data-line-number="15">            <span class="bu">print</span>(<span class="st">&quot;No, thanks&quot;</span>)    </a>
-<a class="sourceLine" id="cb93-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb93-17" data-line-number="17"><span class="co">## bBird = Bird2(&quot;red&quot;)</span></a>
-<a class="sourceLine" id="cb93-18" data-line-number="18"><span class="co">## bBird.getColor()</span></a>
-<a class="sourceLine" id="cb93-19" data-line-number="19"><span class="co">## bBird.eat()</span></a>
-<a class="sourceLine" id="cb93-20" data-line-number="20"><span class="co">## bBird.eat()</span></a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">class</span> Bird2:</a>
+<a class="sourceLine" id="cb97-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb97-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, color<span class="op">=</span><span class="st">&quot;yellow&quot;</span>, hungry<span class="op">=</span><span class="va">True</span>):</a>
+<a class="sourceLine" id="cb97-4" data-line-number="4">        <span class="va">self</span>.color <span class="op">=</span> color</a>
+<a class="sourceLine" id="cb97-5" data-line-number="5">        <span class="va">self</span>.hungry <span class="op">=</span> hungry</a>
+<a class="sourceLine" id="cb97-6" data-line-number="6">    </a>
+<a class="sourceLine" id="cb97-7" data-line-number="7">    <span class="kw">def</span> getColor(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb97-8" data-line-number="8">        <span class="cf">return</span>(<span class="va">self</span>.color)</a>
+<a class="sourceLine" id="cb97-9" data-line-number="9">    </a>
+<a class="sourceLine" id="cb97-10" data-line-number="10">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb97-11" data-line-number="11">        <span class="cf">if</span> <span class="va">self</span>.hungry:</a>
+<a class="sourceLine" id="cb97-12" data-line-number="12">            <span class="bu">print</span>(<span class="st">&quot;Aaah&quot;</span>)</a>
+<a class="sourceLine" id="cb97-13" data-line-number="13">            <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">False</span></a>
+<a class="sourceLine" id="cb97-14" data-line-number="14">        <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb97-15" data-line-number="15">            <span class="bu">print</span>(<span class="st">&quot;No, thanks&quot;</span>)    </a>
+<a class="sourceLine" id="cb97-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb97-17" data-line-number="17"><span class="co">## bBird = Bird2(&quot;red&quot;)</span></a>
+<a class="sourceLine" id="cb97-18" data-line-number="18"><span class="co">## bBird.getColor()</span></a>
+<a class="sourceLine" id="cb97-19" data-line-number="19"><span class="co">## bBird.eat()</span></a>
+<a class="sourceLine" id="cb97-20" data-line-number="20"><span class="co">## bBird.eat()</span></a></code></pre></div>
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">class</span> SongBird2(Bird2):</a>
-<a class="sourceLine" id="cb94-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb94-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, color<span class="op">=</span><span class="st">&quot;yellow&quot;</span>, hungry<span class="op">=</span><span class="va">True</span>, sound<span class="op">=</span><span class="st">&quot;TWEET&quot;</span>):</a>
-<a class="sourceLine" id="cb94-4" data-line-number="4">        <span class="bu">super</span>(SongBird2, <span class="va">self</span>).<span class="fu">__init__</span>(color<span class="op">=</span>color, hungry<span class="op">=</span>hungry)</a>
-<a class="sourceLine" id="cb94-5" data-line-number="5">        <span class="va">self</span>.sound <span class="op">=</span> sound</a>
-<a class="sourceLine" id="cb94-6" data-line-number="6">    </a>
-<a class="sourceLine" id="cb94-7" data-line-number="7">    <span class="kw">def</span> sing(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb94-8" data-line-number="8">        <span class="bu">print</span>(<span class="va">self</span>.sound <span class="op">*</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">class</span> SongBird2(Bird2):</a>
+<a class="sourceLine" id="cb98-2" data-line-number="2">    </a>
+<a class="sourceLine" id="cb98-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, color<span class="op">=</span><span class="st">&quot;yellow&quot;</span>, hungry<span class="op">=</span><span class="va">True</span>, sound<span class="op">=</span><span class="st">&quot;TWEET&quot;</span>):</a>
+<a class="sourceLine" id="cb98-4" data-line-number="4">        <span class="bu">super</span>(SongBird2, <span class="va">self</span>).<span class="fu">__init__</span>(color<span class="op">=</span>color, hungry<span class="op">=</span>hungry)</a>
+<a class="sourceLine" id="cb98-5" data-line-number="5">        <span class="va">self</span>.sound <span class="op">=</span> sound</a>
+<a class="sourceLine" id="cb98-6" data-line-number="6">    </a>
+<a class="sourceLine" id="cb98-7" data-line-number="7">    <span class="kw">def</span> sing(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb98-8" data-line-number="8">        <span class="bu">print</span>(<span class="va">self</span>.sound <span class="op">*</span> <span class="dv">3</span>)</a></code></pre></div>
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb95-1" data-line-number="1">bSongBird <span class="op">=</span> SongBird2(color<span class="op">=</span><span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb95-2" data-line-number="2">bSongBird.sing()</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb99-1" data-line-number="1">bSongBird <span class="op">=</span> SongBird2(color<span class="op">=</span><span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2">bSongBird.sing()</a></code></pre></div>
 <pre><code>## TWEETTWEETTWEET</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="bu">print</span>(bSongBird.getColor())</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="bu">print</span>(bSongBird.getColor())</a></code></pre></div>
 <pre><code>## red</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb99-1" data-line-number="1">bSongBird.eat()</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb103-1" data-line-number="1">bSongBird.eat()</a></code></pre></div>
 <pre><code>## Aaah</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb101-1" data-line-number="1">bSongBird.eat()</a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb105-1" data-line-number="1">bSongBird.eat()</a></code></pre></div>
 <pre><code>## No, thanks</code></pre>
 </div>
 <div id="verify-inheritance" class="slide section level1">
 <h1>verify inheritance</h1>
-<div class="sourceCode" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="bu">issubclass</span>(Bird, SongBird)</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="bu">issubclass</span>(Bird, SongBird)</a></code></pre></div>
 <pre><code>## False</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="bu">issubclass</span>(SongBird, Bird)</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="bu">issubclass</span>(SongBird, Bird)</a></code></pre></div>
 <pre><code>## True</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="bu">issubclass</span>(SongBird2, Bird)</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="bu">issubclass</span>(SongBird2, Bird)</a></code></pre></div>
 <pre><code>## False</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="bu">issubclass</span>(SongBird2, Bird2)</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="bu">issubclass</span>(SongBird2, Bird2)</a></code></pre></div>
 <pre><code>## True</code></pre>
 </div>
 <div id="exercise-will-be-part-of-hw4" class="slide section level1">

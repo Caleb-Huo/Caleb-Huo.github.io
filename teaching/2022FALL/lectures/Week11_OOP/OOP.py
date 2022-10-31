@@ -338,6 +338,24 @@ bBird.getColor()
 bBird.eat()
 bBird.eat()
 #' 
+#' 
+#' 
+#' extra argument and keywords in the class initialization
+#' ===
+#' 
+class Car:
+
+    def __init__(self, **kw):
+        self.make = kw["make"]
+        # self.model = kw["model"]
+        self.model = kw.get("model")
+
+my_car = Car(make = "Chevo", model = "Malibu")
+print(my_car.model)
+
+my_car = Car(make = "Chevo")
+print(my_car.model)
+#' 
 #' a Class with attributes being other class's objects
 #' ===
 #' 
