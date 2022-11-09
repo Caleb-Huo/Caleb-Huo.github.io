@@ -811,7 +811,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>broadcast the 1d array to the 2d array
 <ul>
-<li>the staring dimension (e.g., 3) of the 2d array match the length of the 1d array (e.g., shape=(3,1))</li>
+<li>the staring dimension (e.g., 3) of the 2d array (3,2) match the length of the 1d array (e.g., shape=(3,1))</li>
 <li>the 1d array should be shaped as of dimension (n, <strong>1</strong>)</li>
 </ul></li>
 </ul>
@@ -902,7 +902,7 @@ data2d + vec1d</code></pre>
 <a class="sourceLine" id="cb102-2" data-line-number="2">data3d <span class="op">=</span> rng.standard_normal((<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</a>
 <a class="sourceLine" id="cb102-3" data-line-number="3">data3d.shape</a></code></pre></div>
 <pre><code>## (2, 3, 4)</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb104-1" data-line-number="1">depth_means <span class="op">=</span> data3d.mean(axis<span class="op">=</span><span class="dv">2</span>) <span class="co">## width, height, depth</span></a>
+<div class="sourceCode" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb104-1" data-line-number="1">depth_means <span class="op">=</span> data3d.mean(axis<span class="op">=</span><span class="dv">2</span>) <span class="co">## row, column, depth</span></a>
 <a class="sourceLine" id="cb104-2" data-line-number="2">depth_means</a></code></pre></div>
 <pre><code>## array([[ 0.2766035 , -0.76656096, -0.01555895],
 ##        [-0.7650591 ,  0.12205003,  0.13344552]])</code></pre>
@@ -928,6 +928,9 @@ data2d + vec1d</code></pre>
 <pre><code>## array([ 1,  3,  6, 10])</code></pre>
 <div class="sourceCode" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb114-1" data-line-number="1">np.cumsum(data)</a></code></pre></div>
 <pre><code>## array([ 1,  3,  6, 10])</code></pre>
+</div>
+<div class="slide section level1">
+
 <div class="sourceCode" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb116-1" data-line-number="1">np.multiply.<span class="bu">reduce</span>(data)</a></code></pre></div>
 <pre><code>## 24</code></pre>
 <div class="sourceCode" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb118-1" data-line-number="1">np.multiply.accumulate(data)</a></code></pre></div>
