@@ -1,7 +1,7 @@
 ---
-title: "Introduction to Biostatistical Computing PHC 6937"
+title: "Programming basics for Biostatistics 6099"
 author: Zhiguang Huo (Caleb)
-date: "Monday August 24, 2022"
+date: "Thursday August 24, 2023"
 output:
   slidy_presentation: default
   ioslides_presentation: default
@@ -84,7 +84,7 @@ Markdown Next
 
 - How io import an external image: 
 
-![](https://caleb-huo.github.io/teaching/2022FALL/logo.png) 
+![](https://caleb-huo.github.io/teaching/2022FALL/logo.png){width=70%}
 
 
 Unordered list
