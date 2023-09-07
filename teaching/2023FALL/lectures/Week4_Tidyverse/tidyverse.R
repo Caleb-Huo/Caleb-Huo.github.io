@@ -1,7 +1,7 @@
 #' ---
-#' title: "Introduction to Biostatistical Computing PHC 6937"
+#' title: "Programming basics for Biostatistics 6099"
 #' author: Zhiguang Huo (Caleb)
-#' date: "Monday September 12, 2022"
+#' date: "Thursday September 7, 2023"
 #' output:
 #'   slidy_presentation: default
 #'   ioslides_presentation: default
@@ -28,7 +28,7 @@
 #' 
 #' - load these packages individually
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 library(readr)
 library(dplyr)
 library(tidyr)
@@ -40,7 +40,7 @@ library(ggplot2)
 #' 
 #' - alternatively, you can do library(tidyverse) to include all of them
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 library(tidyverse)
 
 #' 
@@ -51,14 +51,14 @@ library(tidyverse)
 #' - data source: sleepstudy.csv (also available in R lme4 package)
 #' 
 #' - Original way to read in data
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 asleepfile <- "https:///Caleb-Huo.github.io/teaching/data/sleep/sleepstudy.csv"
 data0 <- read.csv(asleepfile)
 
 #' 
 #' - Use read_csv
 #'   - Much faster than read.csv, especially for large datasets
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 <- read_csv(asleepfile)
 
 #' 
@@ -68,7 +68,7 @@ data1 <- read_csv(asleepfile)
 #' 
 #' - read.csv
 #'   - You may want to use head, otherwise it will print out everyting
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 head(data0)
 class(data0)
 
@@ -77,7 +77,7 @@ class(data0)
 #' 
 #' - read_csv
 #'   - smartly print out the first few rows
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1
 class(data1)
 
@@ -92,7 +92,7 @@ class(data1)
 #'     - "\\t": tab delimited (usually for .txt)
 #'     - " ": space delimited
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data2 <- read_delim("sleepstudy.csv", delim=",")
 
 #' 
@@ -103,7 +103,7 @@ data2 <- read_delim("sleepstudy.csv", delim=",")
 #' - readxl will be included as part of tidyverse
 #' - It seems we need to download the dataset to local first
 #' 
-## ---- eval = FALSE----------------------------------
+## ---- eval = FALSE----------------------------------------------------------------------------
 ## library(readxl)
 ## ## bsleepfile <- "https:///Caleb-Huo.github.io/teaching/data/sleep/sleepstudy.xlsx"
 ## data0 <- read_excel("sleepstudy.xlsx")
@@ -112,7 +112,7 @@ data2 <- read_delim("sleepstudy.csv", delim=",")
 #' 
 #' - xlsx package
 #' 
-## ---- eval = FALSE----------------------------------
+## ---- eval = FALSE----------------------------------------------------------------------------
 ## library(xlsx)
 ## ## bsleepfile <- "https:///Caleb-Huo.github.io/teaching/data/sleep/sleepstudy.xlsx"
 ## data0 <- read.xlsx("sleepstudy.xlsx", sheetIndex = 1)
@@ -123,7 +123,7 @@ data2 <- read_delim("sleepstudy.csv", delim=",")
 #' Write excel
 #' ===
 #' 
-## ---- eval = FALSE----------------------------------
+## ---- eval = FALSE----------------------------------------------------------------------------
 ## library(xlsx)
 ## ## bsleepfile <- "https:///Caleb-Huo.github.io/teaching/data/sleep/sleepstudy.xlsx"
 ## data_iris <- iris
@@ -139,7 +139,7 @@ data2 <- read_delim("sleepstudy.csv", delim=",")
 #' - haven package
 #' - haven will be included as part of tidyverse
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 library(haven)
 salesfile <- "https:///Caleb-Huo.github.io/teaching/data/sleep/sales.sas7bdat"
 data0 <- read_sas(salesfile)
@@ -152,7 +152,7 @@ data0
 #' Inspection on data1
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1_sub <- data1[1:3,]
 data1_sub$Reaction
 as.matrix(data1_sub)
@@ -196,7 +196,7 @@ as.data.frame(data1_sub)
 #' select
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 select(data1, Days, Subject)
 
 #' 
@@ -204,7 +204,7 @@ select(data1, Days, Subject)
 #' 
 #' - Use pipe
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% select(Days, Subject)
 
 #' 
@@ -219,7 +219,7 @@ data1 %>% select(Days, Subject)
 #'   - cmd + shift + M: MAC
 #'   - ctrl + shift + M: Windows
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 exp(1)
 1 %>% exp()
 1 %>% exp() %>% log ## () can be omitted if the data is the only argument
@@ -230,7 +230,7 @@ exp(1)
 #' 
 #' - Do not select
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% select(-Reaction)
 
 #' 
@@ -241,7 +241,7 @@ data1 %>% select(-Reaction)
 #' filter
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   select(Days, Subject) %>%
   filter(Subject == 308)
@@ -249,7 +249,7 @@ data1 %>%
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   filter(Reaction >= 300) %>%
   select(Days, Subject) %>%
@@ -260,7 +260,7 @@ data1 %>%
 #' 
 #' - multiple filtering criteria
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   filter(Reaction >= 300, Subject == 308) 
 
@@ -270,7 +270,7 @@ data1 %>%
 #' 
 #' pull
 #' ===
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 (data1 %>% 
   filter(Reaction >= 300, Subject == 308))$Reaction
 
@@ -283,7 +283,7 @@ data1 %>%
 #' slice
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   slice(1:8) 
 
@@ -293,7 +293,7 @@ data1 %>%
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 which(data1$Reaction >= 300 & data1$Subject == 308)
 with(data1, which(Reaction >= 300 & Subject == 308)) ## works for data.frame
 
@@ -307,20 +307,20 @@ data1 %>%
 #' - arrange() is similar to sort() and order()
 #' - assending order by default
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% arrange(Reaction) %>% head
 
 #' 
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   arrange(Days, Reaction) %>% 
   head
 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   arrange(Days, Reaction) %>% 
   head %>%
@@ -329,7 +329,7 @@ data1 %>%
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   arrange(desc(Days), Reaction) %>% 
   head
@@ -339,7 +339,7 @@ data1 %>%
 #' mutate
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   mutate(Reaction_binary = Reaction<250) %>%
   head
@@ -347,7 +347,7 @@ data1 %>%
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   mutate(Reaction_binary = Reaction<250,
         Reaction_sec = Reaction/1000) %>% 
@@ -357,7 +357,7 @@ data1 %>%
 #' mutate at (apply a function to one or several columns)
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   head
 
@@ -369,7 +369,7 @@ data1 %>%
 #' 
 #' rename
 #' ===
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
   rename(ID = Subject)
 
@@ -377,7 +377,7 @@ data1 %>%
 #' summarise
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1 %>% 
     summarise(avg_reaction = mean(Reaction), 
               min_reaction = min(Reaction),
@@ -386,7 +386,7 @@ data1 %>%
 
 #' 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 adata <- data1 %>% 
     summarise(avg_reaction = mean(Reaction), 
               min_reaction = min(Reaction),
@@ -399,7 +399,7 @@ adata <- data1 %>%
 #' 
 #' - seems to be more powerful than tapply
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 tt <- data1 %>% 
       group_by(Subject) %>%
       summarise(avg_reaction = mean(Reaction), 
@@ -415,7 +415,7 @@ tt %>% head
 #' 
 #' - Select a range
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 tt %>% 
   head %>% 
   select(avg_reaction:max_reaction)
@@ -426,7 +426,7 @@ tt %>%
 #' 
 #' - contains
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 tt %>% 
   head %>% 
   select(contains("reaction"))
@@ -443,7 +443,7 @@ tt %>%
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 tt %>% 
   head %>% 
   select(ends_with("reaction"))
@@ -459,14 +459,14 @@ tt %>%
 #' 
 #' - all_of() is for strict selection. 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 avar <- c("Reaction", "Days")
 data1 %>% select(all_of(avar))
 
 #' 
 #' - any_of() doesn't check for missing variables. 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 bvar <- c("Reaction", "Days", "Months")
 data1 %>% select(any_of(bvar))
 
@@ -477,20 +477,20 @@ data1 %>% select(any_of(bvar))
 #' 
 #' - tibble is similar to a dataframe, but tibble is better designed
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 atibble <- tibble(A = 4:6, B = c("A", "B", "C"))
 atibble
 
 #' 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 adataframe <- data.frame(A = 4:6, B = c("A", "B", "C"))
 as_tibble(adataframe)
 
 #' 
 #' 
 #' - add a index column
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 btibble <- atibble %>% rowid_to_column()
 btibble
 
@@ -505,7 +505,7 @@ btibble
 #' the data for merge
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 superheroes <- "
     name, alignment, gender,         publisher
  Magneto,       bad,   male,            Marvel
@@ -533,14 +533,14 @@ publishers <- read_csv(publishers, skip = 1)
 #' - inner_join(x, y): Return all rows from x where there are matching values in y, and all columns from x and y.
 #' - If there are multiple matches between x and y, all combination of the matches are returned.
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 inner_join(superheroes, publishers)
 
 #' 
 #' ---
 #' 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 inner_join(publishers, superheroes)
 
 #' 
@@ -551,13 +551,13 @@ inner_join(publishers, superheroes)
 #' - left_join(x, y): Return all rows from x, and all columns from x and y. 
 #' - If there are multiple matches between x and y, all combination of the matches are returned. 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 left_join(superheroes, publishers)
 
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 left_join(publishers, superheroes)
 
 #' 
@@ -567,13 +567,13 @@ left_join(publishers, superheroes)
 #' - right_join(x, y): Return all rows from y, and all columns from x and y. 
 #' - If there are multiple matches between x and y, all combination of the matches are returned. 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 right_join(superheroes, publishers)
 
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 right_join(publishers, superheroes)
 
 #' 
@@ -583,13 +583,13 @@ right_join(publishers, superheroes)
 #' 
 #' - anti_join(x, y): Return all rows from x where there are not matching values in y, keeping just columns from x. 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 anti_join(superheroes, publishers)
 
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 anti_join(publishers, superheroes)
 
 #' 
@@ -599,13 +599,13 @@ anti_join(publishers, superheroes)
 #' - full_join(x, y): Return all rows and all columns from both x and y. 
 #' - Where there are not matching values, returns NA for the one missing. 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 full_join(superheroes, publishers)
 
 #' 
 #' ---
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 full_join(publishers, superheroes)
 
 #' 
@@ -637,7 +637,7 @@ full_join(publishers, superheroes)
 #' spread example
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1_wide <- data1 %>% spread(Days, Reaction)
 head(data1_wide)
 
@@ -659,7 +659,7 @@ head(data1_wide)
 #' gather example
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1_long <- data1_wide %>% gather(ddays, rreaction, "0":"9")
 head(data1_long)
 
@@ -681,12 +681,12 @@ head(data1_long)
 #' unite example
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1_unite<- data1 %>% unite(Subject_Days, Subject, Days, sep="_")
 head(data1_unite)
 
 #' 
-## ---- eval = FALSE----------------------------------
+## ---- eval = FALSE----------------------------------------------------------------------------
 ## data1_unite<- data1 %>% unite(Subject_Days, Subject, Days, sep="_", remove = FALSE) ## if you want to keep a copy of the original data
 ## head(data1_unite)
 
@@ -708,12 +708,12 @@ head(data1_unite)
 #' separate example
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 data1_separate<- data1_unite %>% separate(Subject_Days, c("subjects", "days"), sep="_")
 head(data1_separate)
 
 #'  
-## ---- eval = FALSE----------------------------------
+## ---- eval = FALSE----------------------------------------------------------------------------
 ## data1_separate<- data1_unite %>% separate(Subject_Days, c("subjects", "days"), sep="_", remove = FALSE)
 ## head(data1_separate)
 
@@ -741,11 +741,11 @@ head(data1_separate)
 #' 
 #' - str_detect: return a logical vector to indicate match position
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 str_detect(colorVec, "e") ## contains e
 str_detect(colorVec, "e$") ## ends with e
 str_detect(colorVec, "^e") ## starts with e
@@ -757,11 +757,11 @@ str_detect(colorVec, "^e") ## starts with e
 #' 
 #' - str_which: return a index vector to indicate match position
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 str_which(colorVec, "e") ## contains e
 str_which(colorVec, "e$") ## ends with e
 str_which(colorVec, "^e") ## starts with e
@@ -773,11 +773,11 @@ str_which(colorVec, "^e") ## starts with e
 #' 
 #' - str_count: count frequency of match
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 str_count(colorVec, "e") ## contains e
 str_count(colorVec, "e$") ## ends with e
 str_count(colorVec, "^e") ## starts with e
@@ -789,11 +789,11 @@ str_count(colorVec, "^e") ## starts with e
 #' 
 #' - str_sub(string, start = 1L, end = -1L): subset of a string
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 str_sub(colorVec,2,2)
 str_sub(colorVec,start = 1, end=-2)
 str_sub(colorVec,end=-2)
@@ -807,11 +807,11 @@ str_sub(colorVec,start = 2)
 #' 
 #' - str_subset(string, pattern), return the matched string
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 str_subset(colorVec,"e")
 
 str_subset(colorVec,"e$")
@@ -825,11 +825,11 @@ str_subset(colorVec,"^e")
 #' 
 #' - str_extract(string, pattern), extract matching patterns from a string
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 str_extract(colorVec,"e")
 str_extract(colorVec,"[aeiou]") ## the first match
 str_extract_all(colorVec,"[aeiou]") ## all matches
@@ -840,7 +840,7 @@ str_extract_all(colorVec,"[aeiou]") ## all matches
 #' Manage lengths 
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 
 str_length(colorVec)
@@ -852,13 +852,13 @@ matrix(str_pad(colorVec, width = 7),ncol=1)
 #' Mutate Strings
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 str_sub(colorVec,1,1) <- "Z" ## will change the original string vector
 colorVec
 
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 str_replace(colorVec, "e", "E") 
 str_replace_all(colorVec, "e", "E")
@@ -873,7 +873,7 @@ str_to_title(colorVec) ## like a sentence
 #' Join and split
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 
 
@@ -885,7 +885,7 @@ str_c(colorVec, collapse = "::")
 #' Order Strings
 #' ===
 #' 
-## ---------------------------------------------------
+## ---------------------------------------------------------------------------------------------
 colorVec <- c("red", "blue", "green", "yellow", "black", "orange", "purple", "white")
 
 str_order(colorVec) ## same as order(colorVec)
