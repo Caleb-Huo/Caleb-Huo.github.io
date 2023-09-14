@@ -1,7 +1,7 @@
 #' ---
-#' title: "Introduction to Biostatistical Computing PHC 6937"
+#' title: "Programming basics for Biostatistics 6099"
 #' author: Zhiguang Huo (Caleb)
-#' date: "Monday September 19, 2022"
+#' date: "Thursday September 14, 2023"
 #' output:
 #'   slidy_presentation: default
 #'   ioslides_presentation: default
@@ -430,7 +430,7 @@ mpgSummary <- mpg %>%
 
 ggplot(data = mpgSummary) + 
   aes(x=class, y=meanDispl, fill=class) + 
-  geom_bar(position=position_dodge(), stat="identity",
+  geom_bar(stat="identity",
            colour="black", # Use black outlines,
            size=.3)       # Thinner lines
 
@@ -441,13 +441,13 @@ ggplot(data = mpgSummary) +
 ## -----------------------------------------------------------------------------
 ggplot(data = mpgSummary) + 
   aes(x=class, y=meanDispl, fill=class) + 
-  geom_bar(position=position_dodge(), stat="identity",
+  geom_bar(stat="identity",
            colour="black", # Use black outlines,
            size=.3) +      # Thinner lines
   geom_errorbar(aes(ymin=meanDispl-sdDispl, ymax=meanDispl+sdDispl),
                 size=.3,    # Thinner lines
-                width=.2,
-                position=position_dodge(.9))
+                width=.2
+                )
 
 #' 
 #' ggplot() histogram simple example
