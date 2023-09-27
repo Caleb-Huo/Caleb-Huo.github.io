@@ -6,139 +6,156 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Zhiguang Huo (Caleb)" />
-  <title>Introduction to Biostatistical Computing PHC 6937</title>
+  <title>Programming basics for Biostatistics 6099</title>
   <style type="text/css">
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-            a.sourceLine { display: inline-block; line-height: 1.25; }
-    a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-    a.sourceLine:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode { white-space: pre; position: relative; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    code.sourceCode { white-space: pre-wrap; }
-    a.sourceLine { text-indent: -1em; padding-left: 1em; }
-    }
-    pre.numberSource a.sourceLine
-      { position: relative; left: -4em; }
-    pre.numberSource a.sourceLine::before
-      { content: attr(data-line-number);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; pointer-events: all; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {  }
-    @media screen {
-    a.sourceLine::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-          </style>
-  <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {  }
+{ }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
   <style type="text/css">
 body
 {
@@ -504,49 +521,51 @@ list-style-type: none;
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Introduction to Biostatistical Computing PHC 6937</h1>
+  <h1 class="title">Programming basics for Biostatistics 6099</h1>
   <h1 class="subtitle">R package</h1>
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Monday Oct 3rd, 2022</p>
+  <p class="date">Thursday Sep 27th, 2023</p>
 </div>
 <div id="install-r-packages" class="slide section level1">
 <h1>Install R packages</h1>
 <ul>
-<li>from CRAN, 14,925 packages, up to 9/17/2019.</li>
+<li>from CRAN, 19,930 packages, up to 9/27/2023.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;pwr&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pwr&quot;</span>)</span></code></pre></div>
 <ul>
-<li>from Bioconductor: 1,741 packages, 9/17/2019.</li>
+<li>from Bioconductor: 2,230 packages, 4/26/2023.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">## try http:// if https:// URLs are not supported</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;impute&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="do">## try http:// if https:// URLs are not supported</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;impute&quot;</span>)</span></code></pre></div>
 <ul>
 <li>.gz.tar zipped file.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;pwr_1.3-0.tar&quot;</span>,<span class="dt">repos=</span><span class="ot">NULL</span>,<span class="dt">type=</span><span class="st">&quot;source&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pwr_1.3-0.tar&quot;</span>,<span class="at">repos=</span><span class="cn">NULL</span>,<span class="at">type=</span><span class="st">&quot;source&quot;</span>)</span></code></pre></div>
 <ul>
 <li>package folder.</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># in R: </span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">system</span>(<span class="st">&quot;R CMD INSTALL pwr&quot;</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#command line: R CMD INSTALL mclust</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># in R: </span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">system</span>(<span class="st">&quot;R CMD INSTALL pwr&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#command line: R CMD INSTALL mclust</span></span></code></pre></div>
 <ul>
 <li>github.</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(devtools)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">install_github</span>(<span class="st">&quot;cran/pwr&quot;</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">install_github</span>(<span class="st">&quot;https://github.com/cran/pwr&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;cran/pwr&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;https://github.com/cran/pwr&quot;</span>)</span></code></pre></div>
 </div>
 <div id="why-r-package" class="slide section level1">
 <h1>Why R package</h1>
 <ul>
-<li>Share with others, if your code is in a package, any R user can easily download it, install it and learn how to use it.</li>
-<li>It is about saving yourself time. Organizing code in a package makes your life easier because packages come with conventions.</li>
+<li>Share with others, if your code is in a package, any R user can
+easily download it, install it and learn how to use it.</li>
+<li>It is about saving yourself time. Organizing code in a package makes
+your life easier because packages come with conventions.</li>
 </ul>
 </div>
 <div id="basic-structure-of-an-r-package" class="slide section level1">
@@ -555,8 +574,10 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Using R survival package as an example:
 <ul>
-<li><span style="color:blue">DESCRIPTION</span>: metadata, basic information, dependency…</li>
-<li><span style="color:blue">NAMESPACE</span>: control the imported and exported objects.</li>
+<li><span style="color:blue">DESCRIPTION</span>: metadata, basic
+information, dependency…</li>
+<li><span style="color:blue">NAMESPACE</span>: control the imported and
+exported objects.</li>
 <li><span style="color:blue">R</span>: R code</li>
 <li><span style="color:blue">man</span>: manual</li>
 <li>src: other language (c, java…)</li>
@@ -571,38 +592,51 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>library a package</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(survival)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(survival)</span></code></pre></div>
 <ul>
 <li>help file about the package</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">help</span>(<span class="dt">package =</span> <span class="st">'survival'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package =</span> <span class="st">&#39;survival&#39;</span>)</span></code></pre></div>
 <ul>
 <li>help file about one function</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">?coxph</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>?coxph</span></code></pre></div>
 <ul>
-<li>check out vignettes</li>
+<li>check out vignettes: the vignette is a tutorial on how to use the
+package</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">browseVignettes</span>(<span class="st">&quot;survival&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">browseVignettes</span>(<span class="st">&quot;survival&quot;</span>)</span></code></pre></div>
 </div>
 <div id="structure-of-r-package" class="slide section level1">
 <h1>Structure of R package</h1>
 <ul>
 <li>R/: the most important directory is R/</li>
 <li>DESCRIPTION: basic information, dependency.</li>
-<li>Documentation: if you want other people (including future-you!) to understand how to use the functions in your package, you’ll need to document them.</li>
-<li>Vignettes: function documentation describes the nit-picky details of every function in your package.They’re long-form documents that show how to combine multiple parts of your package to solve real problems.</li>
-<li>Tests: to ensure your package works as designed (and continues to work as you make changes), it’s essential to write unit tests which define correct behaviour, and alert you when functions break.</li>
-<li>Namespace: to play nicely with others, your package needs to define what functions it makes available to other packages and what functions it requires from other packages.</li>
-<li>data/: this directory allows you to include data with your package.</li>
+<li>Documentation: if you want other people (including future-you!) to
+understand how to use the functions in your package, you’ll need to
+document them.</li>
+<li>Vignettes: function documentation describes the nit-picky details of
+every function in your package.They’re long-form documents that show how
+to combine multiple parts of your package to solve real problems.</li>
+<li>Tests: to ensure your package works as designed (and continues to
+work as you make changes), it’s essential to write unit tests which
+define correct behaviour, and alert you when functions break.</li>
+<li>Namespace: to play nicely with others, your package needs to define
+what functions it makes available to other packages and what functions
+it requires from other packages.</li>
+<li>data/: this directory allows you to include data with your
+package.</li>
 <li>src/: other programming languages.</li>
 </ul>
 </div>
 <div id="description" class="slide section level1">
 <h1>DESCRIPTION</h1>
-<p>The job of the DESCRIPTION file is to store important metadata about your package. Every package must have a DESCRIPTION. In fact, it’s the defining feature of a package.</p>
+<p>The job of the DESCRIPTION file is to store important metadata about
+your package. Every package must have a DESCRIPTION. In fact, it’s the
+defining feature of a package.</p>
 <ul>
-<li>LazyLoad, if yes delays the loading of functions until they are required.</li>
+<li>LazyLoad, if yes delays the loading of functions until they are
+required.</li>
 <li>Title and description.</li>
 <li>Author: who are you.</li>
 <li>Dependencies.</li>
@@ -613,40 +647,56 @@ Zhiguang Huo (Caleb)
 <div id="description-license" class="slide section level1">
 <h1>DESCRIPTION License</h1>
 <ul>
-<li>GPL-2/GPL-3: anyone who distributes modified versions of your code (derivative works) must also make the source code
+<li>GPL-2/GPL-3: anyone who distributes modified versions of your code
+(derivative works) must also make the source code
 <ul>
 <li>open source,</li>
 <li>GPL-compatible.</li>
 </ul></li>
 <li>MIT: This is a simple and permissive license.
 <ul>
-<li>They are extremely short and essentially say “do whatever you want with this, just don’t sue me.”</li>
+<li>They are extremely short and essentially say “do whatever you want
+with this, just don’t sue me.”</li>
 </ul></li>
-<li>CC0. It relinquishes all your rights on the code and data so that it can be freely used by anyone for any purpose.</li>
+<li>CC0. It relinquishes all your rights on the code and data so that it
+can be freely used by anyone for any purpose.</li>
 <li>Apache:
 <ul>
-<li>“do whatever you want with this, just don’t sue me” but does so with many more words</li>
-<li>Contains patent license and retaliation clause to prevent patents from encumbering the software project</li>
+<li>“do whatever you want with this, just don’t sue me” but does so with
+many more words</li>
+<li>Contains patent license and retaliation clause to prevent patents
+from encumbering the software project</li>
 </ul></li>
 <li>Many others</li>
 </ul>
 </div>
 <div id="description-version" class="slide section level1">
 <h1>DESCRIPTION Version</h1>
-<p>Formally, an R package version is a sequence of at least two integers separated by either . or -. For example, 1.0 and 0.9.1-10 are valid versions, but 1 or 1.0-devel are not.</p>
+<p>Formally, an R package version is a sequence of at least two integers
+separated by either . or -. For example, 1.0 and 0.9.1-10 are valid
+versions, but 1 or 1.0-devel are not.</p>
 <ul>
-<li><p>A released version number consists of three numbers, <major>.<minor>.<patch>. For version number 1.9.2, 1 is the major number, 9 is the minor number, and 2 is the patch number. Never use versions like 1.0, instead always spell out the three components, 1.0.0.</p></li>
-<li><p>An in-development package has a fourth component: the development version. This should start at 9000. For example, the first version of the package should be 0.0.0.9000.</p></li>
+<li><p>A released version number consists of three numbers,
+<major>.<minor>.<patch>. For version number 1.9.2, 1 is the major
+number, 9 is the minor number, and 2 is the patch number. Never use
+versions like 1.0, instead always spell out the three components,
+1.0.0.</p></li>
+<li><p>An in-development package has a fourth component: the development
+version. This should start at 9000. For example, the first version of
+the package should be 0.0.0.9000.</p></li>
 </ul>
 </div>
 <div id="the-namespace-file-in-r-package" class="slide section level1">
 <h1>The namespace file in R package</h1>
 <ul>
 <li>Specifies which functions will be visible to users.</li>
-<li>Specifies which functions are internal funciton, for which you don’t want the users to see and use.</li>
-<li>Specifies how to interaction with other programming language (e.g., c++)</li>
+<li>Specifies which functions are internal funciton, for which you don’t
+want the users to see and use.</li>
+<li>Specifies how to interaction with other programming language (e.g.,
+c++)</li>
 <li>Specifies how to your package depends on other packages</li>
-<li>Don’t need to revise the namespace file, will be managed by devtools.</li>
+<li>Don’t need to revise the namespace file, will be managed by
+devtools.</li>
 </ul>
 </div>
 <div id="namespace" class="slide section level1">
@@ -656,7 +706,8 @@ Zhiguang Huo (Caleb)
 </ul>
 <pre><code>base::dim</code></pre>
 <ul>
-<li>Namespace protect the internal functions being overwritten by functions from other packages/global environment.</li>
+<li>Namespace protect the internal functions being overwritten by
+functions from other packages/global environment.</li>
 </ul>
 <pre><code>nrow
 dim(mtcars)
@@ -667,157 +718,171 @@ nrow(mtcars)</code></pre>
 <div id="man-for-manual" class="slide section level1">
 <h1>Man (for manual)</h1>
 <ul>
-<li>Documentation is one of the most important aspects of a good package. Without it, users won’t know how to use your package.</li>
-<li>Documentation is also useful for future-you (so you remember what your functions were supposed to do), and for developers extending your package.</li>
-<li>R provides a standard way of documenting the objects in a package: you write .Rd files in the man/ directory. These files use a custom syntax, loosely based on LaTeX, and are rendered to HTML, plain text and pdf for viewing.</li>
+<li>Documentation is one of the most important aspects of a good
+package. Without it, users won’t know how to use your package.</li>
+<li>Documentation is also useful for future-you (so you remember what
+your functions were supposed to do), and for developers extending your
+package.</li>
+<li>R provides a standard way of documenting the objects in a package:
+you write .Rd files in the man/ directory. These files use a custom
+syntax, loosely based on LaTeX, and are rendered to HTML, plain text and
+pdf for viewing.</li>
 </ul>
 </div>
 <div id="devtools-starting-from-sketches." class="slide section level1">
 <h1>Devtools, starting from sketches.</h1>
-<p><span style="color:red">Red color indicates essential steps</span></p>
+<p><span style="color:red">Red color indicates essential
+steps</span></p>
 <ol style="list-style-type: decimal">
-<li><span style="color:red">usethis::create_package() create an new R package</span></li>
-<li><span style="color:red">Copy your R code in inside R folder</span></li>
+<li><span style="color:red">usethis::create_package() create an new R
+package</span></li>
+<li><span style="color:red">Copy your R code in inside R
+folder</span></li>
 <li>formatR::tidy_dir() clean up the code</li>
 <li><span style="color:blue">Add documentation in R code</span></li>
-<li><span style="color:red">devtools::document() generate R documentation</span></li>
+<li><span style="color:red">devtools::document() generate R
+documentation</span></li>
 <li>usethis::use_data() prepare external data</li>
 <li>usethis::use_testthat() prepare test functions</li>
 <li>devtools::test() preform test</li>
 <li>usethis::use_vignette() generate vignettes</li>
 <li>devtools::check() check the package</li>
 <li>devtools::build() build the package</li>
-<li><span style="color:red">devtools::install() install the package</span></li>
+<li><span style="color:red">devtools::install() install the
+package</span></li>
 <li>others</li>
 </ol>
 </div>
 <div id="devtoolscreate-create-an-new-r-package" class="slide section level1">
-<h1><span style="color:red">1. devtools::create() create an new R package</span></h1>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">## set working directory to be Desktop</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">WD &lt;-<span class="st"> '~/Desktop'</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="kw">setwd</span>(WD)</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">usethis<span class="op">::</span><span class="kw">create_package</span>(<span class="st">&quot;GatorPKG&quot;</span>, <span class="dt">open =</span> <span class="ot">FALSE</span>) <span class="co">## open = FALSE will prevent R open a new R studio session.</span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">WD2 &lt;-<span class="st"> '~/Desktop/GatorPKG'</span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="kw">setwd</span>(WD2)</a></code></pre></div>
+<h1><span style="color:red">1. devtools::create() create an new R
+package</span></h1>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="do">## set working directory to be Desktop</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>WD <span class="ot">&lt;-</span> <span class="st">&#39;~/Desktop&#39;</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">setwd</span>(WD)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">&quot;GatorPKG&quot;</span>, <span class="at">open =</span> <span class="cn">FALSE</span>) <span class="do">## open = FALSE will prevent R open a new R studio session.</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>WD2 <span class="ot">&lt;-</span> <span class="st">&#39;~/Desktop/GatorPKG&#39;</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="fu">setwd</span>(WD2)</span></code></pre></div>
 </div>
 <div id="copy-your-r-code-in-inside-r-folder" class="slide section level1">
-<h1><span style="color:red">2. Copy your R code in inside R folder</span></h1>
+<h1><span style="color:red">2. Copy your R code in inside R
+folder</span></h1>
 <ul>
 <li>f.R</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) x <span class="op">+</span><span class="st"> </span>y</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span></code></pre></div>
 <ul>
 <li>g.R</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">g &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) x <span class="op">-</span><span class="st"> </span>y</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">-</span> y</span></code></pre></div>
 <ul>
 <li>h.R</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">h &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) <span class="kw">f</span>(x,y) <span class="op">*</span><span class="st"> </span><span class="kw">g</span>(x,y)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) <span class="fu">f</span>(x,y) <span class="sc">*</span> <span class="fu">g</span>(x,y)</span></code></pre></div>
 <ul>
 <li>all.R</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2">all &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){</a>
-<a class="sourceLine" id="cb16-3" data-line-number="3">  f0 &lt;-<span class="st"> </span><span class="kw">f</span>(x,y)</a>
-<a class="sourceLine" id="cb16-4" data-line-number="4">  g0 &lt;-<span class="st"> </span><span class="kw">g</span>(x,y)</a>
-<a class="sourceLine" id="cb16-5" data-line-number="5">  h0 &lt;-<span class="st"> </span><span class="kw">h</span>(x,y)</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6">  <span class="kw">list</span>(<span class="dt">f=</span>f0, <span class="dt">g=</span>g0, <span class="dt">h=</span>h0)</a>
-<a class="sourceLine" id="cb16-7" data-line-number="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  f0 <span class="ot">&lt;-</span> <span class="fu">f</span>(x,y)</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  g0 <span class="ot">&lt;-</span> <span class="fu">g</span>(x,y)</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>  h0 <span class="ot">&lt;-</span> <span class="fu">h</span>(x,y)</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">f=</span>f0, <span class="at">g=</span>g0, <span class="at">h=</span>h0)</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="formatrtidy-dir-clean-up-the-code" class="slide section level1">
 <h1>3. formatR::tidy dir() clean up the code</h1>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">setwd</span>(WD2)</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="co">## make the code neat</span></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">formatR<span class="op">::</span><span class="kw">tidy_dir</span>(<span class="st">&quot;R&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">setwd</span>(WD2)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="do">## make the code neat</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>formatR<span class="sc">::</span><span class="fu">tidy_dir</span>(<span class="st">&quot;R&quot;</span>)</span></code></pre></div>
 </div>
 <div id="add-documentation-in-r-code" class="slide section level1">
 <h1><span style="color:blue">4. Add documentation in R code </span></h1>
 <ul>
 <li>f.R</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co">##' Add up two numbers (Description)</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">##'</span></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="co">##' We want to add up two numbers, blalala... (Details)</span></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">##' @title add two numbers</span></a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co">##' @param x first number</span></a>
-<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="co">##' @param y second number</span></a>
-<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="co">##' @return sum of two numbers</span></a>
-<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="co">##' @author Caleb</span></a>
-<a class="sourceLine" id="cb18-9" data-line-number="9"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb18-10" data-line-number="10"><span class="co">##' @examples</span></a>
-<a class="sourceLine" id="cb18-11" data-line-number="11"><span class="co">##' f(1,2)</span></a>
-<a class="sourceLine" id="cb18-12" data-line-number="12">f &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) x <span class="op">+</span><span class="st"> </span>y</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="do">##&#39; Add up two numbers (Description)</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="do">##&#39;</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="do">##&#39; We want to add up two numbers, blalala... (Details)</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="do">##&#39; @title add two numbers</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="do">##&#39; @param x first number</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="do">##&#39; @param y second number</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="do">##&#39; @return sum of two numbers</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="do">##&#39; @author Caleb</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="do">##&#39; @examples</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="do">##&#39; f(1,2)</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span></code></pre></div>
 </div>
 <div class="slide section level1">
 
 <ul>
 <li>g.R</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co">##' Subtract two numbers (Description)</span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="co">##'</span></a>
-<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="co">##' We want to Subtract two numbers, blalala... (Details)</span></a>
-<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="co">##' @title Subtract two numbers</span></a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="co">##' @param x first number</span></a>
-<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="co">##' @param y second number</span></a>
-<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="co">##' @return x - y</span></a>
-<a class="sourceLine" id="cb19-8" data-line-number="8"><span class="co">##' @author Caleb</span></a>
-<a class="sourceLine" id="cb19-9" data-line-number="9"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb19-10" data-line-number="10"><span class="co">##' @examples</span></a>
-<a class="sourceLine" id="cb19-11" data-line-number="11"><span class="co">##' g(2,1)</span></a>
-<a class="sourceLine" id="cb19-12" data-line-number="12">g &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) x <span class="op">-</span><span class="st"> </span>y</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="do">##&#39; Subtract two numbers (Description)</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="do">##&#39;</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="do">##&#39; We want to Subtract two numbers, blalala... (Details)</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="do">##&#39; @title Subtract two numbers</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="do">##&#39; @param x first number</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="do">##&#39; @param y second number</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="do">##&#39; @return x - y</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="do">##&#39; @author Caleb</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="do">##&#39; @examples</span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="do">##&#39; g(2,1)</span></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">-</span> y</span></code></pre></div>
 </div>
 <div class="slide section level1">
 
 <ul>
 <li>h.R</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co">##' Complex operations on two numbers (Description)</span></a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="co">##'</span></a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="co">##' We want to do some complex operations on two numbers, blalala... (Details)</span></a>
-<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="co">##' @title Very complex operation of two numbers</span></a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co">##' @param x first number</span></a>
-<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="co">##' @param y second number</span></a>
-<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="co">##' @return (x - y)(x + y)</span></a>
-<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="co">##' @author Caleb</span></a>
-<a class="sourceLine" id="cb20-9" data-line-number="9"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb20-10" data-line-number="10"><span class="co">##' @examples</span></a>
-<a class="sourceLine" id="cb20-11" data-line-number="11"><span class="co">##' h(3,2)</span></a>
-<a class="sourceLine" id="cb20-12" data-line-number="12">h &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) <span class="kw">f</span>(x,y) <span class="op">*</span><span class="st"> </span><span class="kw">g</span>(x,y)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="do">##&#39; Complex operations on two numbers (Description)</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="do">##&#39;</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="do">##&#39; We want to do some complex operations on two numbers, blalala... (Details)</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="do">##&#39; @title Very complex operation of two numbers</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="do">##&#39; @param x first number</span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="do">##&#39; @param y second number</span></span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="do">##&#39; @return (x - y)(x + y)</span></span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="do">##&#39; @author Caleb</span></span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="do">##&#39; @examples</span></span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="do">##&#39; h(3,2)</span></span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) <span class="fu">f</span>(x,y) <span class="sc">*</span> <span class="fu">g</span>(x,y)</span></code></pre></div>
 </div>
 <div class="slide section level1">
 
 <ul>
 <li>all.R</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co">##' Return f,g,h (Description)</span></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="co">##'</span></a>
-<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="co">##' We want to return f,g,h , blalala... (Details)</span></a>
-<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="co">##' @title return all</span></a>
-<a class="sourceLine" id="cb21-5" data-line-number="5"><span class="co">##' @param x first number</span></a>
-<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="co">##' @param y second number</span></a>
-<a class="sourceLine" id="cb21-7" data-line-number="7"><span class="co">##' @return A list of f, g, and h.</span></a>
-<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="co">##' \item{f}{Results for adding}</span></a>
-<a class="sourceLine" id="cb21-9" data-line-number="9"><span class="co">##' \item{g}{Results for subtracting}</span></a>
-<a class="sourceLine" id="cb21-10" data-line-number="10"><span class="co">##' \item{h}{Complex Result}</span></a>
-<a class="sourceLine" id="cb21-11" data-line-number="11"><span class="co">##' @author Caleb</span></a>
-<a class="sourceLine" id="cb21-12" data-line-number="12"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb21-13" data-line-number="13"><span class="co">##' @examples</span></a>
-<a class="sourceLine" id="cb21-14" data-line-number="14"><span class="co">##' all(3,2)</span></a>
-<a class="sourceLine" id="cb21-15" data-line-number="15">all &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){</a>
-<a class="sourceLine" id="cb21-16" data-line-number="16">  f0 &lt;-<span class="st"> </span><span class="kw">f</span>(x,y)</a>
-<a class="sourceLine" id="cb21-17" data-line-number="17">  g0 &lt;-<span class="st"> </span><span class="kw">g</span>(x,y)</a>
-<a class="sourceLine" id="cb21-18" data-line-number="18">  h0 &lt;-<span class="st"> </span><span class="kw">h</span>(x,y)</a>
-<a class="sourceLine" id="cb21-19" data-line-number="19">  <span class="kw">list</span>(<span class="dt">f=</span>f0, <span class="dt">g=</span>g0, <span class="dt">h=</span>h0)</a>
-<a class="sourceLine" id="cb21-20" data-line-number="20">}</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="do">##&#39; Return f,g,h (Description)</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="do">##&#39;</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="do">##&#39; We want to return f,g,h , blalala... (Details)</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="do">##&#39; @title return all</span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="do">##&#39; @param x first number</span></span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="do">##&#39; @param y second number</span></span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="do">##&#39; @return A list of f, g, and h.</span></span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a><span class="do">##&#39; \item{f}{Results for adding}</span></span>
+<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a><span class="do">##&#39; \item{g}{Results for subtracting}</span></span>
+<span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a><span class="do">##&#39; \item{h}{Complex Result}</span></span>
+<span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a><span class="do">##&#39; @author Caleb</span></span>
+<span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb21-13"><a href="#cb21-13" tabindex="-1"></a><span class="do">##&#39; @examples</span></span>
+<span id="cb21-14"><a href="#cb21-14" tabindex="-1"></a><span class="do">##&#39; all(3,2)</span></span>
+<span id="cb21-15"><a href="#cb21-15" tabindex="-1"></a>all <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb21-16"><a href="#cb21-16" tabindex="-1"></a>  f0 <span class="ot">&lt;-</span> <span class="fu">f</span>(x,y)</span>
+<span id="cb21-17"><a href="#cb21-17" tabindex="-1"></a>  g0 <span class="ot">&lt;-</span> <span class="fu">g</span>(x,y)</span>
+<span id="cb21-18"><a href="#cb21-18" tabindex="-1"></a>  h0 <span class="ot">&lt;-</span> <span class="fu">h</span>(x,y)</span>
+<span id="cb21-19"><a href="#cb21-19" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">f=</span>f0, <span class="at">g=</span>g0, <span class="at">h=</span>h0)</span>
+<span id="cb21-20"><a href="#cb21-20" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="devtoolsdocument-generate-r-documentation" class="slide section level1">
-<h1><span style="color:red">5. devtools::document() generate R documentation</span></h1>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">document</span>() <span class="co">## default argument is pkg = &quot;.&quot;, current working directory</span></a></code></pre></div>
+<h1><span style="color:red">5. devtools::document() generate R
+documentation</span></h1>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>() <span class="do">## default argument is pkg = &quot;.&quot;, current working directory</span></span></code></pre></div>
 <p>Change:</p>
 <ul>
 <li>NAMESPACE is updated</li>
@@ -826,8 +891,8 @@ nrow(mtcars)</code></pre>
 </div>
 <div id="usethisuse_data-prepare-external-data" class="slide section level1">
 <h1>6. usethis::use_data() prepare external data</h1>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">xxxx &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2">usethis<span class="op">::</span><span class="kw">use_data</span>(xxxx)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>xxxx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1000</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(xxxx)</span></code></pre></div>
 <p>Change:</p>
 <ul>
 <li>data folder</li>
@@ -841,132 +906,137 @@ nrow(mtcars)</code></pre>
 <li>no need to export external data</li>
 </ul>
 <p>xxxx.R</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="co">#' Prices of 50,000 round cut diamonds.</span></a>
-<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="co">#'</span></a>
-<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="co">#' A dataset containing the prices and other attributes of almost 54,000</span></a>
-<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co">#' diamonds.</span></a>
-<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co">#'</span></a>
-<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="co">#' @format A data frame with 53940 rows and 10 variables:</span></a>
-<a class="sourceLine" id="cb25-7" data-line-number="7"><span class="co">#' \describe{</span></a>
-<a class="sourceLine" id="cb25-8" data-line-number="8"><span class="co">#'   \item{price}{price, in US dollars}</span></a>
-<a class="sourceLine" id="cb25-9" data-line-number="9"><span class="co">#'   \item{carat}{weight of the diamond, in carats}</span></a>
-<a class="sourceLine" id="cb25-10" data-line-number="10"><span class="co">#'   ...</span></a>
-<a class="sourceLine" id="cb25-11" data-line-number="11"><span class="co">#' }</span></a>
-<a class="sourceLine" id="cb25-12" data-line-number="12"><span class="co">#' @source \url{http://www.diamondse.info/}</span></a>
-<a class="sourceLine" id="cb25-13" data-line-number="13"><span class="st">&quot;xxxx&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co">#&#39; Prices of 50,000 round cut diamonds.</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="co">#&#39; A dataset containing the prices and other attributes of almost 54,000</span></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="co">#&#39; diamonds.</span></span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a><span class="co">#&#39; @format A data frame with 53940 rows and 10 variables:</span></span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a><span class="co">#&#39; \describe{</span></span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a><span class="co">#&#39;   \item{price}{price, in US dollars}</span></span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a><span class="co">#&#39;   \item{carat}{weight of the diamond, in carats}</span></span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a><span class="co">#&#39;   ...</span></span>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a><span class="co">#&#39; }</span></span>
+<span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a><span class="co">#&#39; @source \url{http://www.diamondse.info/}</span></span>
+<span id="cb25-13"><a href="#cb25-13" tabindex="-1"></a><span class="st">&quot;xxxx&quot;</span></span></code></pre></div>
 </div>
 <div id="internal-data" class="slide section level1">
 <h1>6. internal data</h1>
 <ul>
-<li>Internal data: These objects are only available within the package namespace.</li>
+<li>Internal data: These objects are only available within the package
+namespace.</li>
 <li>Will be saved as sysdata.rda in R/</li>
 <li>No documentation</li>
-<li>Good to put the raw code in data-raw/ for reproducibility purpose</li>
+<li>Good to put the raw code in data-raw/ for reproducibility
+purpose</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">yyyy &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb26-2" data-line-number="2">usethis<span class="op">::</span><span class="kw">use_data</span>(yyyy, <span class="dt">internal =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>yyyy <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1000</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(yyyy, <span class="at">internal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div class="slide section level1">
 
 <ul>
 <li>printY.R</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2">printY &lt;-<span class="st"> </span><span class="cf">function</span>(){</a>
-<a class="sourceLine" id="cb27-3" data-line-number="3">  <span class="kw">print</span>(yyyy)</a>
-<a class="sourceLine" id="cb27-4" data-line-number="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>printY <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="fu">print</span>(yyyy)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="usethisuse_testthat-prepare-test-functions" class="slide section level1">
 <h1>7. usethis::use_testthat() prepare test functions</h1>
 <ul>
 <li>create test functions</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_testthat</span>() <span class="co">## default argument is pkg = &quot;.&quot;, current working directory</span></a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_testthat</span>() <span class="do">## default argument is pkg = &quot;.&quot;, current working directory</span></span></code></pre></div>
 <ul>
 <li>actual test function (e.g. testthat/testf.R)</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">test_that</span>(<span class="st">&quot;test if f function is correct&quot;</span>, {</a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">    <span class="kw">expect_equal</span>(<span class="kw">f</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb29-3" data-line-number="3">  }</a>
-<a class="sourceLine" id="cb29-4" data-line-number="4">)</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="kw">test_that</span>(<span class="st">&quot;test if f function is correct&quot;</span>, {</a>
-<a class="sourceLine" id="cb29-7" data-line-number="7">    <span class="kw">expect_equal</span>(<span class="kw">f</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb29-8" data-line-number="8">  }</a>
-<a class="sourceLine" id="cb29-9" data-line-number="9">)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;test if f function is correct&quot;</span>, {</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>    <span class="fu">expect_equal</span>(<span class="fu">f</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">2</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>  }</span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>)</span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;test if f function is correct&quot;</span>, {</span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>    <span class="fu">expect_equal</span>(<span class="fu">f</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dv">2</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>  }</span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="devtoolstest-preform-test" class="slide section level1">
 <h1>8. devtools::test() preform test</h1>
 <ul>
 <li>perform test</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">test</span>() <span class="co">## default argument is pkg = &quot;.&quot;, current working directory</span></a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>() <span class="do">## default argument is pkg = &quot;.&quot;, current working directory</span></span></code></pre></div>
 </div>
 <div id="usethisuse_vignette-generate-vignettes" class="slide section level1">
 <h1>9. usethis::use_vignette() generate vignettes</h1>
 <ul>
 <li>browse all Vignettes</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">browseVignettes</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">browseVignettes</span>()</span></code></pre></div>
 <ul>
 <li>create our own Vignettes</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">setwd</span>(WD2)</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2">usethis<span class="op">::</span><span class="kw">use_vignette</span>(<span class="st">&quot;Gators&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">setwd</span>(WD2)</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_vignette</span>(<span class="st">&quot;Gators&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Turn build_vignettes on when install the package</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install</span>(<span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install</span>(<span class="at">build_vignettes =</span> <span class="cn">TRUE</span>) </span></code></pre></div>
 </div>
 <div id="devtoolscheck-check-the-package" class="slide section level1">
 <h1>10. devtools::check() check the package</h1>
 <ul>
 <li>check the package</li>
 </ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">setwd</span>(WD2)</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">check</span>() <span class="co">## default argument is pkg = &quot;.&quot;, current working directory</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">setwd</span>(WD2)</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>() <span class="do">## default argument is pkg = &quot;.&quot;, current working directory</span></span></code></pre></div>
 </div>
 <div id="devtoolsbuild-build-the-package" class="slide section level1">
 <h1>11. devtools::build() build the package</h1>
 <ul>
 <li>build() will generate .tar.gz package</li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co">## build the package</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">build</span>() <span class="co">## default argument is pkg = &quot;.&quot;, current working directory</span></a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="do">## build the package</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">build</span>() <span class="do">## default argument is pkg = &quot;.&quot;, current working directory</span></span></code></pre></div>
 <ul>
 <li>an inst folder will be created, which contains your vignettes.</li>
 </ul>
 </div>
 <div id="devtoolsinstall-install-the-package" class="slide section level1">
-<h1><span style="color:red">12. devtools::install() install the package</span></h1>
+<h1><span style="color:red">12. devtools::install() install the
+package</span></h1>
 <ul>
 <li>install the package</li>
 </ul>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install</span>() <span class="co">## default argument is pkg = &quot;.&quot;, current working directory</span></a>
-<a class="sourceLine" id="cb36-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install</span>(<span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>) <span class="co">## also build the vignettes</span></a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install</span>() <span class="do">## default argument is pkg = &quot;.&quot;, current working directory</span></span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install</span>(<span class="at">build_vignettes =</span> <span class="cn">TRUE</span>) <span class="do">## also build the vignettes</span></span></code></pre></div>
 <ul>
 <li>remove the package</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">remove.packages</span>(<span class="st">&quot;GatorPKG&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">remove.packages</span>(<span class="st">&quot;GatorPKG&quot;</span>)</span></code></pre></div>
 <ul>
 <li>install the pacakge again</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">file.path</span>(<span class="st">&quot;~/Desktop&quot;</span>,<span class="st">&quot;GatorPKG_0.0.0.9000.tar.gz&quot;</span>),<span class="dt">repos=</span><span class="ot">NULL</span>,<span class="dt">type=</span><span class="st">&quot;source&quot;</span>) <span class="co">## directly with vignettes</span></a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">file.path</span>(<span class="st">&quot;~/Desktop&quot;</span>,<span class="st">&quot;GatorPKG_0.0.0.9000.tar.gz&quot;</span>),<span class="at">repos=</span><span class="cn">NULL</span>,<span class="at">type=</span><span class="st">&quot;source&quot;</span>) <span class="do">## directly with vignettes</span></span></code></pre></div>
 </div>
 <div id="package-checks" class="slide section level1">
 <h1>13, Package checks</h1>
 <ul>
 <li>R CMD check</li>
 </ul>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">system</span>(<span class="st">&quot;R CMD check ~/Desktop/GatorPKG_0.0.0.9000.tar.gz&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">system</span>(<span class="st">&quot;R CMD check ~/Desktop/GatorPKG_0.0.0.9000.tar.gz&quot;</span>)</span></code></pre></div>
 <p>This is equivalent to running the following in linux.</p>
 <pre><code>R CMD check ~/Desktop/GatorPKG_0.0.0.9000.tar.gz</code></pre>
 </div>
 <div id="others-internal-function" class="slide section level1">
 <h1>14, others (internal function)</h1>
 <ul>
-<li>internal function: you want to use internally but don’t want other people to see it.</li>
-<li>If we do not use ##` <span class="citation">@export</span>, the function will become a internal function</li>
+<li>internal function: you want to use internally but don’t want other
+people to see it.</li>
+<li>If we do not use ##` <span class="citation">@export</span>, the
+function will become a internal function</li>
 </ul>
 </div>
 <div id="a-others-depend-on-other-packages" class="slide section level1">
@@ -990,59 +1060,62 @@ RoxygenNote: 6.1.1</code></pre>
 <ul>
 <li>change your function f.R to depend on coxph</li>
 </ul>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="co">##' Add up two numbers (Description)</span></a>
-<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="co">##'</span></a>
-<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="co">##' We want to add up two numbers, blalala... (Details)</span></a>
-<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="co">##' @title add two numbers</span></a>
-<a class="sourceLine" id="cb42-5" data-line-number="5"><span class="co">##' @param x first number</span></a>
-<a class="sourceLine" id="cb42-6" data-line-number="6"><span class="co">##' @param y second number</span></a>
-<a class="sourceLine" id="cb42-7" data-line-number="7"><span class="co">##' @return sum of two numbers</span></a>
-<a class="sourceLine" id="cb42-8" data-line-number="8"><span class="co">##' @author Caleb</span></a>
-<a class="sourceLine" id="cb42-9" data-line-number="9"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb42-10" data-line-number="10"><span class="co">##' @examples</span></a>
-<a class="sourceLine" id="cb42-11" data-line-number="11"><span class="co">##' f(1,2)</span></a>
-<a class="sourceLine" id="cb42-12" data-line-number="12">f &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){</a>
-<a class="sourceLine" id="cb42-13" data-line-number="13">  <span class="kw">print</span>(<span class="kw">head</span>(coxph))    </a>
-<a class="sourceLine" id="cb42-14" data-line-number="14">  x <span class="op">+</span><span class="st"> </span>y </a>
-<a class="sourceLine" id="cb42-15" data-line-number="15">} </a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="do">##&#39; Add up two numbers (Description)</span></span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a><span class="do">##&#39;</span></span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="do">##&#39; We want to add up two numbers, blalala... (Details)</span></span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a><span class="do">##&#39; @title add two numbers</span></span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a><span class="do">##&#39; @param x first number</span></span>
+<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="do">##&#39; @param y second number</span></span>
+<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a><span class="do">##&#39; @return sum of two numbers</span></span>
+<span id="cb42-8"><a href="#cb42-8" tabindex="-1"></a><span class="do">##&#39; @author Caleb</span></span>
+<span id="cb42-9"><a href="#cb42-9" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb42-10"><a href="#cb42-10" tabindex="-1"></a><span class="do">##&#39; @examples</span></span>
+<span id="cb42-11"><a href="#cb42-11" tabindex="-1"></a><span class="do">##&#39; f(1,2)</span></span>
+<span id="cb42-12"><a href="#cb42-12" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb42-13"><a href="#cb42-13" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">head</span>(coxph))    </span>
+<span id="cb42-14"><a href="#cb42-14" tabindex="-1"></a>  x <span class="sc">+</span> y </span>
+<span id="cb42-15"><a href="#cb42-15" tabindex="-1"></a>} </span></code></pre></div>
 <ul>
-<li>all visible functions in the survival package will be exported in your package.</li>
+<li>all visible functions in the survival package will be exported in
+your package.</li>
 </ul>
 </div>
 <div id="b-others-depend-on-other-packages" class="slide section level1">
 <h1>15b, others (depend on other packages)</h1>
-<p>What if you do not want to load the entire dependent package, but only certain functions</p>
+<p>What if you do not want to load the entire dependent package, but
+only certain functions</p>
 <ul>
 <li>Use <span class="citation">@import</span> in your function</li>
 <li>Don’t need to declare dependency in DESCRIPTION</li>
 </ul>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="co">##' Add up two numbers (Description)</span></a>
-<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="co">##'</span></a>
-<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="co">##' We want to add up two numbers, blalala... (Details)</span></a>
-<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="co">##' @title add two numbers</span></a>
-<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="co">##' @param x first number</span></a>
-<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="co">##' @param y second number</span></a>
-<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="co">##' @return sum of two numbers</span></a>
-<a class="sourceLine" id="cb43-8" data-line-number="8"><span class="co">##' @author Caleb</span></a>
-<a class="sourceLine" id="cb43-9" data-line-number="9"><span class="co">##' @import survival</span></a>
-<a class="sourceLine" id="cb43-10" data-line-number="10"><span class="co">##' @export</span></a>
-<a class="sourceLine" id="cb43-11" data-line-number="11"><span class="co">##' @examples</span></a>
-<a class="sourceLine" id="cb43-12" data-line-number="12"><span class="co">##' f(1,2)</span></a>
-<a class="sourceLine" id="cb43-13" data-line-number="13">f &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){</a>
-<a class="sourceLine" id="cb43-14" data-line-number="14">  <span class="kw">print</span>(<span class="kw">head</span>(coxph))    </a>
-<a class="sourceLine" id="cb43-15" data-line-number="15">  x <span class="op">+</span><span class="st"> </span>y </a>
-<a class="sourceLine" id="cb43-16" data-line-number="16">} </a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="do">##&#39; Add up two numbers (Description)</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a><span class="do">##&#39;</span></span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a><span class="do">##&#39; We want to add up two numbers, blalala... (Details)</span></span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a><span class="do">##&#39; @title add two numbers</span></span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a><span class="do">##&#39; @param x first number</span></span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a><span class="do">##&#39; @param y second number</span></span>
+<span id="cb43-7"><a href="#cb43-7" tabindex="-1"></a><span class="do">##&#39; @return sum of two numbers</span></span>
+<span id="cb43-8"><a href="#cb43-8" tabindex="-1"></a><span class="do">##&#39; @author Caleb</span></span>
+<span id="cb43-9"><a href="#cb43-9" tabindex="-1"></a><span class="do">##&#39; @import survival</span></span>
+<span id="cb43-10"><a href="#cb43-10" tabindex="-1"></a><span class="do">##&#39; @export</span></span>
+<span id="cb43-11"><a href="#cb43-11" tabindex="-1"></a><span class="do">##&#39; @examples</span></span>
+<span id="cb43-12"><a href="#cb43-12" tabindex="-1"></a><span class="do">##&#39; f(1,2)</span></span>
+<span id="cb43-13"><a href="#cb43-13" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb43-14"><a href="#cb43-14" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">head</span>(coxph))    </span>
+<span id="cb43-15"><a href="#cb43-15" tabindex="-1"></a>  x <span class="sc">+</span> y </span>
+<span id="cb43-16"><a href="#cb43-16" tabindex="-1"></a>} </span></code></pre></div>
 </div>
 <div class="slide section level1">
 
 <ul>
 <li>update namespace</li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">document</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>()</span></code></pre></div>
 <ul>
 <li>reinstall the package</li>
 </ul>
-<p>Your function depends on the external package, but the external package is not loaded.</p>
+<p>Your function depends on the external package, but the external
+package is not loaded.</p>
 </div>
 <div id="others-r-package-and-github" class="slide section level1">
 <h1>16, others (R package and GitHub)</h1>
@@ -1051,7 +1124,8 @@ RoxygenNote: 6.1.1</code></pre>
 <ul>
 <li>Apply for a github acccount</li>
 <li><a href="https://github.com" class="uri">https://github.com</a></li>
-<li>Free GitHub pro account (GitHub Education): requires scanning of the UF ID card.</li>
+<li>Free GitHub pro account (GitHub Education): requires scanning of the
+UF ID card.</li>
 </ul></li>
 <li>Play with the following git tutorials (HW)
 <ul>
