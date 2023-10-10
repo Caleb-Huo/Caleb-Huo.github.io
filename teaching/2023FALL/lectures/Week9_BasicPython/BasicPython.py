@@ -1,7 +1,7 @@
 #' ---
-#' title: "Introduction to Biostatistical Computing PHC 6937"
+#' title: "Programming basics for Biostatistics 6099"
 #' author: Zhiguang Huo (Caleb)
-#' date: "Monday Oct 17th, 2022"
+#' date: "Tuesday Oct 10th, 2023"
 #' output:
 #'   slidy_presentation: default
 #'   ioslides_presentation: default
@@ -48,6 +48,7 @@
 #' 
 #' - Install Anaconda https://www.anaconda.com
 #' - Open Anaconda
+#' - create an environment for the first time
 #' - Select JupyterLab
 #' 
 #' ![](../figure/anaconda.png){width=60%}
@@ -72,7 +73,7 @@
 #'     - on the left hand side
 #' 
 #' 
-#' Jupyter Notebook markdown (1)
+#' Review Jupyter Notebook markdown (1)
 #' ===
 #' 
 #' - header
@@ -100,13 +101,13 @@
 #' [link](www.rstudio.com)   
 #' ```
 #' 
-#' Jupyter Notebook markdown (2)
+#' Review Jupyter Notebook markdown (2)
 #' ===
 #' 
 #' - import an external image: 
 #' 
 #' ```
-#' ![](https://caleb-huo.github.io/teaching/2022FALL/logo.png){width=50%}
+#' ![](https://caleb-huo.github.io/teaching/2023FALL/logo.png){width=50%}
 #' ```
 #' 
 #' - inline equation, following latex format [http://www.codecogs.com/latex/eqneditor.php](http://www.codecogs.com/latex/eqneditor.php)
@@ -120,7 +121,7 @@
 #' ***
 #' ```
 #' 
-#' Jupyter Notebook markdown (3)
+#' Review Jupyter Notebook markdown (3)
 #' ===
 #' 
 #' - Unordered list
@@ -368,7 +369,7 @@ print(res)
 #' ```
 #' 
 #' - This is also used for comments with more than 1 lines.
-#' - print will convert "\n" to a new line
+#' - print will convert "\\n" to a new line
 #' 
 #' 
 #' 
@@ -733,19 +734,17 @@ a < c > b
 #' 
 #' - To select one cases from multiple choices
 #' 
-#' ```reticulate{python}
-#' status = 400    
-#' 
-#' match status:
-#'     case 400:
-#'         print("Bad request")
-#'     case 404:
-#'         print("Not found")
-#'     case 418:
-#'         print("I'm a teapot")
-#'     case _:
-#'         print("Something's wrong with the internet")
-#' ```
+status = 400    
+
+match status:
+    case 400:
+        print("Bad request")
+    case 404:
+        print("Not found")
+    case 418:
+        print("I'm a teapot")
+    case _:
+        print("Something's wrong with the internet")
 #' 
 #' 
 #' 
