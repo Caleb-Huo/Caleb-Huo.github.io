@@ -135,6 +135,28 @@ use_python("/usr/local/bin/python3.11")
 #' - re.split can handle regex, while the regular split method cannot.
 #' 
 #' 
+#' sub
+#' ===
+#' 
+#' - substitution
+#' 
+## text = "Alex works diligently. Alex gets good grades. Our student Alex is successful"
+
+## 
+
+## re.sub("Alex", "Amy", text) ## regular expression
+
+## 
+
+## text.replace("Alex", "Amy") ## traditional method
+
+## 
+
+## 
+
+#' 
+#' 
+#' 
 #' findall
 #' ===
 #' 
@@ -219,6 +241,9 @@ use_python("/usr/local/bin/python3.11")
 #' - \\w: any letter or word
 #' - \\d: any digits
 #' - \\s: Matches Unicode whitespace characters, which includes white space, \\t, \\n, etc.
+#' - a single . : anything.
+#' 
+#' 
 #' 
 ## content = "A1B2C3 D4\n E5\t"
 
@@ -544,10 +569,6 @@ use_python("/usr/local/bin/python3.11")
 ## m.group()
 
 #' 
-## m = re.search('(?=abc)def', 'abcdef')
-
-## m
-
 #' 
 #' 
 #' Example, Twitter data
@@ -602,7 +623,8 @@ use_python("/usr/local/bin/python3.11")
 ## re.findall("(?:DOI|doi):\d+", text_doi)
 
 #' 
-#' how to match the entire doi pattern?
+#' how to match the entire doi pattern? (in class exercise)
+#' Only the first three doi are wanted.
 #' 
 #' 
 ## question_doi = "doi:10.1038/nphys1170,doi:10.1002/0470841559.ch1,DOI:10.1093/bib/bbab224,www.google.com,ufl:100/edu,doi:12334,doi:3421/biostatistics"
