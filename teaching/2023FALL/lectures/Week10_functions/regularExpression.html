@@ -6,139 +6,156 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Zhiguang Huo (Caleb)" />
-  <title>Introduction to Biostatistical Computing PHC 6937</title>
+  <title>Programming basics for Biostatistics 6099</title>
   <style type="text/css">
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-            a.sourceLine { display: inline-block; line-height: 1.25; }
-    a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-    a.sourceLine:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode { white-space: pre; position: relative; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    code.sourceCode { white-space: pre-wrap; }
-    a.sourceLine { text-indent: -1em; padding-left: 1em; }
-    }
-    pre.numberSource a.sourceLine
-      { position: relative; left: -4em; }
-    pre.numberSource a.sourceLine::before
-      { content: attr(data-line-number);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; pointer-events: all; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {  }
-    @media screen {
-    a.sourceLine::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-          </style>
-  <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {  }
+{ }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
   <style type="text/css">
 body
 {
@@ -504,578 +521,597 @@ list-style-type: none;
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Introduction to Biostatistical Computing PHC 6937</h1>
-  <h1 class="subtitle">Python data structure</h1>
+  <h1 class="title">Programming basics for Biostatistics 6099</h1>
+  <h1 class="subtitle">Regular expression</h1>
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Wednesday Oct 26th, 2022</p>
+  <p class="date">Tuesday Oct 17th, 2023</p>
 </div>
 <div id="outlines" class="slide section level1">
 <h1>Outlines</h1>
 <ul>
-<li>list</li>
-<li>dictionary</li>
-<li>tuple</li>
-<li>set</li>
+<li>Regular expressions</li>
+<li>Goal: Using a single regex to identify complex patterns like
+<ul>
+<li><a href="doi:10.1038/nphys1170" class="uri">doi:10.1038/nphys1170</a></li>
+<li><a href="doi:10.1002/0470841559.ch1" class="uri">doi:10.1002/0470841559.ch1</a></li>
+<li><a href="DOI:10.1093/bib/bbab224" class="uri">DOI:10.1093/bib/bbab224</a></li>
+</ul></li>
 </ul>
 </div>
-<div id="list-creation-and-assignment" class="slide section level1">
-<h1>list: creation and assignment</h1>
-<ul>
-<li>create a list from a string</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="bu">list</span>(<span class="st">&quot;Hello&quot;</span>)</a></code></pre></div>
-<pre><code>## ['H', 'e', 'l', 'l', 'o']</code></pre>
-<ul>
-<li>create a list directly</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">x</a></code></pre></div>
-<pre><code>## [1, 1, 1]</code></pre>
-<ul>
-<li>change element</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">x[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">x</a></code></pre></div>
-<pre><code>## [1, 0, 3]</code></pre>
+<div id="review-of-basic-string-operation" class="slide section level1">
+<h1>Review of basic string operation</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>title <span class="op">=</span> <span class="st">&quot;I love Programming Basics for Biostatistics!&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>title.find(<span class="st">&quot;love&quot;</span>)</span></code></pre></div>
+<pre><code>## 2</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>title.find(<span class="st">&quot;XX&quot;</span>)</span></code></pre></div>
+<pre><code>## -1</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>title.index(<span class="st">&quot;love&quot;</span>)</span></code></pre></div>
+<pre><code>## 2</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>title.replace(<span class="st">&quot;love&quot;</span>, <span class="st">&quot;like&quot;</span>)</span></code></pre></div>
+<pre><code>## &#39;I like Programming Basics for Biostatistics!&#39;</code></pre>
 </div>
-<div id="list-deletion-and-slice-assignment" class="slide section level1">
-<h1>list: deletion and slice assignment</h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" data-line-number="1">names <span class="op">=</span> [<span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;Beth&quot;</span>, <span class="st">&quot;Carl&quot;</span>, <span class="st">&quot;Dan&quot;</span>, <span class="st">&quot;Emily&quot;</span>]</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">names</a></code></pre></div>
-<pre><code>## ['Alice', 'Beth', 'Carl', 'Dan', 'Emily']</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">del</span> names[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">names</a></code></pre></div>
-<pre><code>## ['Alice', 'Beth', 'Dan', 'Emily']</code></pre>
+<div id="regular-expression-regex" class="slide section level1">
+<h1>Regular expression (regex)</h1>
 <ul>
-<li>slice assignment</li>
+<li>Regular expressions
+<ul>
+<li>called REs, or regexes, or regex patterns</li>
+<li>available in python through re module</li>
+<li>specify the rules for the set of possible strings that you want to
+match;</li>
+</ul></li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" data-line-number="1">names <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;Lucas&quot;</span>)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">names[<span class="dv">3</span>:] <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;ky&quot;</span>)</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">names</a></code></pre></div>
-<pre><code>## ['L', 'u', 'c', 'k', 'y']</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">&quot;&quot;</span>.join(names)</a></code></pre></div>
-<pre><code>## 'Lucky'</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="im">import</span> re <span class="co">## import the python regular expression module</span></span></code></pre></div>
+<ul>
+<li>re module methods
+<ul>
+<li>search</li>
+<li>split</li>
+<li><em>findall</em></li>
+<li>sub</li>
+</ul></li>
+</ul>
+</div>
+<div id="re.search" class="slide section level1">
+<h1>re.search</h1>
+<ul>
+<li>the re.search method looks for some pattern and returns a
+Boolean</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>title <span class="op">=</span> <span class="st">&quot;I love Programming Basics for Biostatistics!&quot;</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>amatch <span class="op">=</span> re.search(<span class="st">&quot;Biostatistics&quot;</span>, title)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>amatch</span></code></pre></div>
+<pre><code>## &lt;re.Match object; span=(30, 43), match=&#39;Biostatistics&#39;&gt;</code></pre>
+<ul>
+<li>the re.search result is a Boolean</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="cf">if</span> amatch:</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Wonderful!&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Oops&quot;</span>)</span></code></pre></div>
+<pre><code>## Wonderful!</code></pre>
 </div>
 <div class="slide section level1">
 
 <ul>
-<li>slice assignment can be unequal length</li>
+<li>the span method will return the match index</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" data-line-number="1">names <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;Lucas&quot;</span>)</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">names[<span class="dv">1</span>:] <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;emonade&quot;</span>)</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">&quot;&quot;</span>.join(names)</a></code></pre></div>
-<pre><code>## 'Lemonade'</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>title <span class="op">=</span> <span class="st">&quot;I love Programming Basics for Biostatistics!&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>amatch <span class="op">=</span> re.search(<span class="st">&quot;Biostatistics&quot;</span>, title)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="bu">print</span>(amatch.span())</span></code></pre></div>
+<pre><code>## (30, 43)</code></pre>
 <ul>
-<li>slice assignment can be used as insertion or deletion</li>
+<li>the group method will return the content</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" data-line-number="1">numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">numbers[<span class="dv">1</span>:<span class="dv">1</span>] <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">numbers</a></code></pre></div>
-<pre><code>## [1, 2, 3, 4, 5]</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb19-1" data-line-number="1">numbers <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">6</span>))</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">numbers</a></code></pre></div>
-<pre><code>## [1, 2, 3, 4, 5]</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb21-1" data-line-number="1">numbers[<span class="dv">1</span>:<span class="dv">4</span>] <span class="op">=</span> []</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">numbers</a></code></pre></div>
-<pre><code>## [1, 5]</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>amatch <span class="op">=</span> re.search(<span class="st">&quot;Biostatistics&quot;</span>, title)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="bu">print</span>(amatch.group())</span></code></pre></div>
+<pre><code>## Biostatistics</code></pre>
+<ul>
+<li>traditional method</li>
+</ul>
+<pre><code>title.find(&quot;Biostatistics&quot;)
+title.index(&quot;Biostatistics&quot;)</code></pre>
 </div>
-<div id="list-append-and-count" class="slide section level1">
-<h1>list: append and count</h1>
+<div id="split" class="slide section level1">
+<h1>split</h1>
 <ul>
-<li>append</li>
+<li>the split method will use a pattern for creating a list of
+substrings</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb23-1" data-line-number="1">alist <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2">alist.append(<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">alist</a></code></pre></div>
-<pre><code>## [0, 1, 2, 3]</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>text <span class="op">=</span> <span class="st">&quot;Alex works diligently. Alex gets good grades. Our student Alex is successful&quot;</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>re.split(<span class="st">&quot;Alex&quot;</span>, text) <span class="co">## regular expression</span></span></code></pre></div>
+<pre><code>## [&#39;&#39;, &#39; works diligently. &#39;, &#39; gets good grades. Our student &#39;, &#39; is successful&#39;]</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>text.split(<span class="st">&quot;Alex&quot;</span>) <span class="co">## traditional method</span></span></code></pre></div>
+<pre><code>## [&#39;&#39;, &#39; works diligently. &#39;, &#39; gets good grades. Our student &#39;, &#39; is successful&#39;]</code></pre>
 <ul>
-<li>count</li>
+<li>So far, their behaviours are the same.</li>
+<li>re.split can handle regex, while the regular split method
+cannot.</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb25-1" data-line-number="1">asentence <span class="op">=</span> <span class="st">&quot;to be or not to be&quot;</span></a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">alist <span class="op">=</span> asentence.split()</a>
-<a class="sourceLine" id="cb25-3" data-line-number="3">alist.count(<span class="st">&quot;to&quot;</span>)</a></code></pre></div>
-<pre><code>## 2</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb27-1" data-line-number="1">x <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>], <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, [<span class="dv">2</span>, <span class="dv">1</span>, [<span class="dv">1</span>,<span class="dv">2</span>]]]</a>
-<a class="sourceLine" id="cb27-2" data-line-number="2">x.count(<span class="dv">1</span>)</a></code></pre></div>
-<pre><code>## 2</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb29-1" data-line-number="1">x.count([<span class="dv">1</span>,<span class="dv">2</span>])</a></code></pre></div>
-<pre><code>## 1</code></pre>
 </div>
-<div id="list-extend" class="slide section level1">
-<h1>list: extend</h1>
+<div id="findall" class="slide section level1">
+<h1>findall</h1>
 <ul>
-<li>extend (recommended for efficiency and readibility)</li>
+<li>The findall methods will look for a pattern and pull out all
+occurences.</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb31-1" data-line-number="1">a <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]<span class="op">;</span> b <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2">a.extend(b)</a>
-<a class="sourceLine" id="cb31-3" data-line-number="3">a</a></code></pre></div>
-<pre><code>## [0, 1, 2, 3, 4, 5]</code></pre>
-<ul>
-<li>direct +</li>
-</ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb33-1" data-line-number="1">a <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]<span class="op">;</span> b <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb33-2" data-line-number="2">a <span class="op">+</span> b</a></code></pre></div>
-<pre><code>## [0, 1, 2, 3, 4, 5]</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb35-1" data-line-number="1">a</a></code></pre></div>
-<pre><code>## [0, 1, 2]</code></pre>
-<ul>
-<li>slice assignment</li>
-</ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb37-1" data-line-number="1">a <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]<span class="op">;</span> b <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb37-2" data-line-number="2">a[<span class="bu">len</span>(a):] <span class="op">=</span> b</a>
-<a class="sourceLine" id="cb37-3" data-line-number="3">a</a></code></pre></div>
-<pre><code>## [0, 1, 2, 3, 4, 5]</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>text <span class="op">=</span> <span class="st">&quot;Alex works diligently. Alex gets good grades. Our student Alex is successful&quot;</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>re.findall(<span class="st">&quot;Alex&quot;</span>, text)</span></code></pre></div>
+<pre><code>## [&#39;Alex&#39;, &#39;Alex&#39;, &#39;Alex&#39;]</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>re.findall(<span class="st">&quot;student&quot;</span>, text)</span></code></pre></div>
+<pre><code>## [&#39;student&#39;]</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>re.findall(<span class="st">&quot; s&quot;</span>, text)</span></code></pre></div>
+<pre><code>## [&#39; s&#39;, &#39; s&#39;]</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>re.findall(<span class="st">&quot;s &quot;</span>, text)</span></code></pre></div>
+<pre><code>## [&#39;s &#39;, &#39;s &#39;, &#39;s &#39;]</code></pre>
 </div>
-<div id="list-index" class="slide section level1">
-<h1>list: index</h1>
+<div id="complex-patterns" class="slide section level1">
+<h1>Complex patterns</h1>
 <ul>
-<li>index: will return the first match</li>
-</ul>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb39-1" data-line-number="1">asentence <span class="op">=</span> <span class="st">&quot;to be or not to be&quot;</span></a>
-<a class="sourceLine" id="cb39-2" data-line-number="2">alist <span class="op">=</span> asentence.split()</a>
-<a class="sourceLine" id="cb39-3" data-line-number="3">alist</a></code></pre></div>
-<pre><code>## ['to', 'be', 'or', 'not', 'to', 'be']</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb41-1" data-line-number="1">alist.index(<span class="st">&quot;to&quot;</span>)</a></code></pre></div>
-<pre><code>## 0</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb43-1" data-line-number="1">alist.index(<span class="st">&quot;not&quot;</span>)</a></code></pre></div>
-<pre><code>## 3</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb45-1" data-line-number="1">alist[<span class="dv">3</span>]</a></code></pre></div>
-<pre><code>## 'not'</code></pre>
-<pre><code>alist.index(&quot;XX&quot;)</code></pre>
-</div>
-<div id="list-insert" class="slide section level1">
-<h1>list: insert</h1>
+<li>Anchors
 <ul>
-<li>insert</li>
-</ul>
-<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb48-1" data-line-number="1">alist <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>]</a>
-<a class="sourceLine" id="cb48-2" data-line-number="2">alist.insert(<span class="dv">3</span>, <span class="st">&quot;four&quot;</span>)</a>
-<a class="sourceLine" id="cb48-3" data-line-number="3">alist</a></code></pre></div>
-<pre><code>## [1, 2, 3, 'four', 5, 6]</code></pre>
-<ul>
-<li>insert with slice assignment</li>
-</ul>
-<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb50-1" data-line-number="1">alist <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>]</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">alist[<span class="dv">3</span>:<span class="dv">3</span>] <span class="op">=</span> [<span class="st">&quot;four&quot;</span>]</a>
-<a class="sourceLine" id="cb50-3" data-line-number="3">alist</a></code></pre></div>
-<pre><code>## [1, 2, 3, 'four', 5, 6]</code></pre>
-</div>
-<div id="list-pop" class="slide section level1">
-<h1>list: pop</h1>
-<ul>
-<li>pop: return the last element of a list
-<ul>
-<li>opposite of append</li>
+<li>start: ^</li>
+<li>end: $</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb52-1" data-line-number="1">x <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb52-2" data-line-number="2">x.pop()</a></code></pre></div>
-<pre><code>## 9</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb54-1" data-line-number="1">x</a></code></pre></div>
-<pre><code>## [0, 1, 2, 3, 4, 5, 6, 7, 8]</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb56-1" data-line-number="1">x.pop()</a></code></pre></div>
-<pre><code>## 8</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb58-1" data-line-number="1">x</a></code></pre></div>
-<pre><code>## [0, 1, 2, 3, 4, 5, 6, 7]</code></pre>
-</div>
-<div id="list-remove" class="slide section level1">
-<h1>list: remove</h1>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>re.findall(<span class="st">&quot;A&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;]</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>re.findall(<span class="st">&quot;^A&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;A&#39;]</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>re.findall(<span class="st">&quot;A$&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;A&#39;]</code></pre>
 <ul>
-<li>remove</li>
-</ul>
-<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb60-1" data-line-number="1">asentence <span class="op">=</span> <span class="st">&quot;to be or not to be&quot;</span></a>
-<a class="sourceLine" id="cb60-2" data-line-number="2">alist <span class="op">=</span> asentence.split()</a>
-<a class="sourceLine" id="cb60-3" data-line-number="3">alist</a></code></pre></div>
-<pre><code>## ['to', 'be', 'or', 'not', 'to', 'be']</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb62-1" data-line-number="1">alist.remove(<span class="st">&quot;to&quot;</span>)</a>
-<a class="sourceLine" id="cb62-2" data-line-number="2">alist</a></code></pre></div>
-<pre><code>## ['be', 'or', 'not', 'to', 'be']</code></pre>
-<pre><code>alist.remove(&quot;XX&quot;)</code></pre>
-<ul>
-<li>compare pop and remove
-<ul>
-<li>remove has no return value, and remove the first appearance of certain value</li>
-<li>pop has return value, and pop up the last element of a list</li>
-</ul></li>
+<li>Will use findall to demonstrate.</li>
+<li>The pattern rule works for other RE methods.</li>
 </ul>
 </div>
-<div id="list-reverse-and-sort" class="slide section level1">
-<h1>list: reverse and sort</h1>
+<div id="complex-patterns-1" class="slide section level1">
+<h1>Complex patterns</h1>
 <ul>
-<li>reverse</li>
+<li><p><code>[]</code> is called set operator. A range of
+character.</p></li>
+<li><p><code>[AB]</code>: A or B</p></li>
 </ul>
-<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb65-1" data-line-number="1">x <span class="op">=</span> [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>]</a>
-<a class="sourceLine" id="cb65-2" data-line-number="2">x.reverse()</a>
-<a class="sourceLine" id="cb65-3" data-line-number="3">x</a></code></pre></div>
-<pre><code>## ['c', 'b', 'a']</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>re.findall(<span class="st">&quot;[AB]&quot;</span>, grades) <span class="co">## A or B</span></span></code></pre></div>
+<pre><code>## [&#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;B&#39;, &#39;A&#39;, &#39;A&#39;]</code></pre>
 <ul>
-<li>sort: sort method has no return value (in-place operator)</li>
+<li>any upper case letter</li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb67-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb67-2" data-line-number="2">x.sort() </a>
-<a class="sourceLine" id="cb67-3" data-line-number="3">x</a></code></pre></div>
-<pre><code>## [3, 4, 5]</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb69-1" data-line-number="1">y <span class="op">=</span> [<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;a&quot;</span>]</a>
-<a class="sourceLine" id="cb69-2" data-line-number="2">y.sort()</a>
-<a class="sourceLine" id="cb69-3" data-line-number="3">y</a></code></pre></div>
-<pre><code>## ['a', 'b', 'c']</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>content <span class="op">=</span> <span class="st">&quot;I love programming basics for Biostatistics&quot;</span></span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>re.findall(<span class="st">&quot;[A-Z]&quot;</span>, content) </span></code></pre></div>
+<pre><code>## [&#39;I&#39;, &#39;B&#39;]</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>re.findall(<span class="st">&quot;[A-Z]&quot;</span>, content.title()) </span></code></pre></div>
+<pre><code>## [&#39;I&#39;, &#39;L&#39;, &#39;P&#39;, &#39;B&#39;, &#39;F&#39;, &#39;B&#39;]</code></pre>
+</div>
+<div id="complex-patterns-2" class="slide section level1">
+<h1>Complex patterns</h1>
+<ul>
+<li>any lower case letter</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>content <span class="op">=</span> <span class="st">&quot;I love programming basics for Biostatistics&quot;</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>re.findall(<span class="st">&quot;[a-z]&quot;</span>, content.title()) </span></code></pre></div>
+<pre><code>## [&#39;o&#39;, &#39;v&#39;, &#39;e&#39;, &#39;r&#39;, &#39;o&#39;, &#39;g&#39;, &#39;r&#39;, &#39;a&#39;, &#39;m&#39;, &#39;m&#39;, &#39;i&#39;, &#39;n&#39;, &#39;g&#39;, &#39;a&#39;, &#39;s&#39;, &#39;i&#39;, &#39;c&#39;, &#39;s&#39;, &#39;o&#39;, &#39;r&#39;, &#39;i&#39;, &#39;o&#39;, &#39;s&#39;, &#39;t&#39;, &#39;a&#39;, &#39;t&#39;, &#39;i&#39;, &#39;s&#39;, &#39;t&#39;, &#39;i&#39;, &#39;c&#39;, &#39;s&#39;]</code></pre>
+<ul>
+<li>any digits</li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>content <span class="op">=</span> <span class="st">&quot;A1B2C3D4&quot;</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>re.findall(<span class="st">&quot;[0-9]&quot;</span>, content) </span></code></pre></div>
+<pre><code>## [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]</code></pre>
+</div>
+<div id="complex-patterns-3" class="slide section level1">
+<h1>Complex patterns</h1>
+<ul>
+<li>\w: any letter or word</li>
+<li>\d: any digits</li>
+<li>\s: Matches Unicode whitespace characters, which includes white
+space, \t, \n, etc.</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>content <span class="op">=</span> <span class="st">&quot;A1B2C3 D4</span><span class="ch">\n</span><span class="st"> E5</span><span class="ch">\t</span><span class="st">&quot;</span></span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>re.findall(<span class="st">&quot;\w&quot;</span>, content) </span></code></pre></div>
+<pre><code>## [&#39;A&#39;, &#39;1&#39;, &#39;B&#39;, &#39;2&#39;, &#39;C&#39;, &#39;3&#39;, &#39;D&#39;, &#39;4&#39;, &#39;E&#39;, &#39;5&#39;]</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>re.findall(<span class="st">&quot;\d&quot;</span>, content) </span></code></pre></div>
+<pre><code>## [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;]</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>re.findall(<span class="st">&quot;\s&quot;</span>, content) </span></code></pre></div>
+<pre><code>## [&#39; &#39;, &#39;\n&#39;, &#39; &#39;, &#39;\t&#39;]</code></pre>
+</div>
+<div id="complex-patterns-4" class="slide section level1">
+<h1>Complex patterns</h1>
+<ul>
+<li>|: or pattern</li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a>re.findall(<span class="st">&quot;A|B&quot;</span>, grades) <span class="co">## A or B</span></span></code></pre></div>
+<pre><code>## [&#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;B&#39;, &#39;B&#39;, &#39;B&#39;, &#39;A&#39;, &#39;A&#39;]</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>re.findall(<span class="st">&quot;[A][B-C]&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;AC&#39;, &#39;AB&#39;]</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a><span class="co">### [A][B-C] pattern denoted two sets of characters which must have been matched back to back.</span></span></code></pre></div>
+<ul>
+<li>Equivalent as AB|AC</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>re.findall(<span class="st">&quot;AB|AC&quot;</span>, grades) <span class="co">## AB or AC</span></span></code></pre></div>
+<pre><code>## [&#39;AC&#39;, &#39;AB&#39;]</code></pre>
+</div>
+<div id="complex-patterns-do-not-match" class="slide section level1">
+<h1>Complex patterns: do not match [^]</h1>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb60-2"><a href="#cb60-2" tabindex="-1"></a>re.findall(<span class="st">&quot;[^A]&quot;</span>, grades) <span class="co">## in the [], not A</span></span></code></pre></div>
+<pre><code>## [&#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;, &#39;C&#39;, &#39;B&#39;]</code></pre>
+<ul>
+<li>The starting letter is not A</li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb62-2"><a href="#cb62-2" tabindex="-1"></a>re.findall(<span class="st">&quot;^[^A]&quot;</span>, grades) <span class="co">## first ^: starts with; second ^: something that is not A.</span></span></code></pre></div>
+<pre><code>## []</code></pre>
+<ul>
+<li>The starting letter is not B</li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb64-2"><a href="#cb64-2" tabindex="-1"></a>re.findall(<span class="st">&quot;^[^B]&quot;</span>, grades) </span></code></pre></div>
+<pre><code>## [&#39;A&#39;]</code></pre>
+</div>
+<div id="quantifiers" class="slide section level1">
+<h1>Quantifiers</h1>
+<ul>
+<li>Quantifiers are the number of times you want a pattern to be matched
+in order to match.</li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb66-2"><a href="#cb66-2" tabindex="-1"></a>re.findall(<span class="st">&quot;A{2,10}&quot;</span>, grades) <span class="co">## 2: minimum number of A; 10: maximum number of A</span></span></code></pre></div>
+<pre><code>## [&#39;AAAA&#39;, &#39;AA&#39;]</code></pre>
+<ul>
+<li><p>how many times has this student been on a back to back A’s
+streak?</p></li>
+<li><p>two A’s back to back</p></li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb68-2"><a href="#cb68-2" tabindex="-1"></a>re.findall(<span class="st">&quot;A{1,1}A{1,1}&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;AA&#39;, &#39;AA&#39;, &#39;AA&#39;]</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a>re.findall(<span class="st">&quot;A{2,2}&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;AA&#39;, &#39;AA&#39;, &#39;AA&#39;]</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a>re.findall(<span class="st">&quot;AA&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;AA&#39;, &#39;AA&#39;, &#39;AA&#39;]</code></pre>
 </div>
 <div class="slide section level1">
 
 <ul>
-<li>don’t do this:</li>
+<li>Regex quantifier syntax does not allow you to deviate from
+{m,n}.</li>
+<li>In particular, in you have an extra whitespece, you’ll get an empty
+result</li>
 </ul>
-<div class="sourceCode" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb71-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb71-2" data-line-number="2">y <span class="op">=</span> x.sort() </a>
-<a class="sourceLine" id="cb71-3" data-line-number="3"><span class="bu">print</span>(y)</a></code></pre></div>
-<pre><code>## None</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb74-2"><a href="#cb74-2" tabindex="-1"></a>re.findall(<span class="st">&quot;A{2, 2}&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## []</code></pre>
 <ul>
-<li>try this way</li>
+<li>if have one number in the braces, it’s considered to be both m and
+n.</li>
 </ul>
-<div class="sourceCode" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb73-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb73-2" data-line-number="2">y <span class="op">=</span> <span class="bu">sorted</span>(x) </a>
-<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="bu">print</span>(y)</a></code></pre></div>
-<pre><code>## [3, 4, 5]</code></pre>
-</div>
-<div id="list-sort" class="slide section level1">
-<h1>list: sort</h1>
+<div class="sourceCode" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb76-2"><a href="#cb76-2" tabindex="-1"></a>re.findall(<span class="st">&quot;A</span><span class="sc">{2}</span><span class="st">&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;AA&#39;, &#39;AA&#39;, &#39;AA&#39;]</code></pre>
 <ul>
-<li>sort</li>
+<li>find a decreasing trend in a student’s grades</li>
 </ul>
-<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb75-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb75-2" data-line-number="2">y <span class="op">=</span> x <span class="co">## x and y are pointing to the same list</span></a>
-<a class="sourceLine" id="cb75-3" data-line-number="3">y.sort() </a>
-<a class="sourceLine" id="cb75-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb75-5" data-line-number="5"><span class="bu">print</span>(x)</a></code></pre></div>
-<pre><code>## [3, 4, 5]</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="bu">print</span>(y)</a></code></pre></div>
-<pre><code>## [3, 4, 5]</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb79-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb79-2" data-line-number="2">y <span class="op">=</span> x[:] <span class="co">## y is a slice assignment of x, thus a new variable</span></a>
-<a class="sourceLine" id="cb79-3" data-line-number="3">y.sort() </a>
-<a class="sourceLine" id="cb79-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb79-5" data-line-number="5"><span class="bu">print</span>(x)</a></code></pre></div>
-<pre><code>## [5, 3, 4]</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="bu">print</span>(y)</a></code></pre></div>
-<pre><code>## [3, 4, 5]</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" tabindex="-1"></a>re.findall(<span class="st">&quot;A{1,10}B{1,10}C{1,10}&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;AAAABC&#39;]</code></pre>
 </div>
-<div id="list-sort-1" class="slide section level1">
-<h1>list: sort</h1>
+<div id="match-telephone-numbers-in-class-practice" class="slide section level1">
+<h1>Match telephone numbers, in class practice</h1>
+<div class="sourceCode" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" tabindex="-1"></a>cell_numbers <span class="op">=</span> <span class="st">&quot;123 456-7890, 321-654-7890, (213)456-7980, (123)-456-0987, 1254367890, 123-4587690&quot;</span></span></code></pre></div>
 <ul>
-<li>sort</li>
-</ul>
-<div class="sourceCode" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb83-1" data-line-number="1">x <span class="op">=</span> [<span class="st">&quot;aaa&quot;</span>, <span class="st">&quot;bb&quot;</span>, <span class="st">&quot;cccc&quot;</span>]</a>
-<a class="sourceLine" id="cb83-2" data-line-number="2">x.sort(key <span class="op">=</span> <span class="bu">len</span>) </a>
-<a class="sourceLine" id="cb83-3" data-line-number="3">x</a></code></pre></div>
-<pre><code>## ['bb', 'aaa', 'cccc']</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb85-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb85-2" data-line-number="2">x.sort(reverse <span class="op">=</span> <span class="va">True</span>) </a>
-<a class="sourceLine" id="cb85-3" data-line-number="3"><span class="bu">print</span>(x)</a></code></pre></div>
-<pre><code>## [5, 4, 3]</code></pre>
-</div>
-<div id="dictionary-basic-operator" class="slide section level1">
-<h1>dictionary: basic operator</h1>
+<li>We only want to select <strong>one</strong> of the following
+patterns
+<ol style="list-style-type: decimal">
+<li>321-654-7890</li>
+<li>(213)456-7980</li>
+</ol></li>
+<li>Hint:
 <ul>
-<li>basic operator</li>
-</ul>
-<div class="sourceCode" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb87-1" data-line-number="1">phonebook <span class="op">=</span> {<span class="st">&quot;Alice&quot;</span>: <span class="dv">2341</span>, </a>
-<a class="sourceLine" id="cb87-2" data-line-number="2">            <span class="st">&quot;Beth&quot;</span>: <span class="dv">4971</span>,</a>
-<a class="sourceLine" id="cb87-3" data-line-number="3">            <span class="st">&quot;Carl&quot;</span>: <span class="dv">9401</span></a>
-<a class="sourceLine" id="cb87-4" data-line-number="4">}</a>
-<a class="sourceLine" id="cb87-5" data-line-number="5">phonebook</a></code></pre></div>
-<pre><code>## {'Alice': 2341, 'Beth': 4971, 'Carl': 9401}</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="bu">len</span>(phonebook)</a></code></pre></div>
-<pre><code>## 3</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb91-1" data-line-number="1">phonebook[<span class="st">&quot;Beth&quot;</span>]</a></code></pre></div>
-<pre><code>## 4971</code></pre>
-</div>
-<div id="dictionary-update-and-delete" class="slide section level1">
-<h1>dictionary: update and delete</h1>
-<ul>
-<li>update and delete</li>
-</ul>
-<div class="sourceCode" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb93-1" data-line-number="1">phonebook[<span class="st">&quot;Alice&quot;</span>] <span class="op">=</span> <span class="dv">1358</span></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2">phonebook</a></code></pre></div>
-<pre><code>## {'Alice': 1358, 'Beth': 4971, 'Carl': 9401}</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb95-1" data-line-number="1">adict <span class="op">=</span> {<span class="st">&quot;Alice&quot;</span>: <span class="dv">9572</span>}</a>
-<a class="sourceLine" id="cb95-2" data-line-number="2">phonebook.update(adict)</a>
-<a class="sourceLine" id="cb95-3" data-line-number="3">phonebook</a></code></pre></div>
-<pre><code>## {'Alice': 9572, 'Beth': 4971, 'Carl': 9401}</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">del</span> phonebook[<span class="st">&quot;Carl&quot;</span>]</a>
-<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="co">&quot;Beth&quot;</span> <span class="kw">in</span> phonebook</a></code></pre></div>
-<pre><code>## True</code></pre>
-</div>
-<div id="dictionary-clear" class="slide section level1">
-<h1>dictionary: clear</h1>
-<ul>
-<li>clear</li>
-</ul>
-<div class="sourceCode" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb99-1" data-line-number="1">d <span class="op">=</span> {}</a>
-<a class="sourceLine" id="cb99-2" data-line-number="2">d[<span class="st">'name'</span>] <span class="op">=</span> <span class="st">&quot;Amy&quot;</span></a>
-<a class="sourceLine" id="cb99-3" data-line-number="3">d[<span class="st">'age'</span>] <span class="op">=</span> <span class="dv">24</span></a>
-<a class="sourceLine" id="cb99-4" data-line-number="4">d</a></code></pre></div>
-<pre><code>## {'name': 'Amy', 'age': 24}</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb101-1" data-line-number="1">d.clear()</a>
-<a class="sourceLine" id="cb101-2" data-line-number="2">d</a></code></pre></div>
-<pre><code>## {}</code></pre>
-</div>
-<div id="why-clear-is-useful" class="slide section level1">
-<h1>why clear is useful</h1>
-<div class="sourceCode" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb103-1" data-line-number="1">x <span class="op">=</span> {}</a>
-<a class="sourceLine" id="cb103-2" data-line-number="2">y <span class="op">=</span> x</a>
-<a class="sourceLine" id="cb103-3" data-line-number="3">x[<span class="st">'key'</span>] <span class="op">=</span> <span class="st">'value'</span></a>
-<a class="sourceLine" id="cb103-4" data-line-number="4">y</a></code></pre></div>
-<pre><code>## {'key': 'value'}</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb105-1" data-line-number="1">x <span class="op">=</span> {} <span class="co">## associate x with an empty dictionary</span></a>
-<a class="sourceLine" id="cb105-2" data-line-number="2">y <span class="co">## y points to the original dictionary</span></a></code></pre></div>
-<pre><code>## {'key': 'value'}</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb107-1" data-line-number="1">x <span class="op">=</span> {}</a>
-<a class="sourceLine" id="cb107-2" data-line-number="2">y <span class="op">=</span> x</a>
-<a class="sourceLine" id="cb107-3" data-line-number="3">x[<span class="st">'key'</span>] <span class="op">=</span> <span class="st">'value'</span></a>
-<a class="sourceLine" id="cb107-4" data-line-number="4">y</a></code></pre></div>
-<pre><code>## {'key': 'value'}</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb109-1" data-line-number="1">x.clear() <span class="co">## clear the original dictionary</span></a>
-<a class="sourceLine" id="cb109-2" data-line-number="2">y <span class="co">## y still points to the original dictionary</span></a></code></pre></div>
-<pre><code>## {}</code></pre>
-</div>
-<div id="copy" class="slide section level1">
-<h1>copy</h1>
-<ul>
-<li>shallow copy
-<ul>
-<li>only the reference address of the object is copied</li>
+<li>We can do match one patterns at a time.</li>
+<li>Since ( has special meaning in regex, need to use \ ( to indicate
+the literal (</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb111"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb111-1" data-line-number="1">d <span class="op">=</span> {}</a>
-<a class="sourceLine" id="cb111-2" data-line-number="2">d[<span class="st">'username'</span>] <span class="op">=</span> <span class="st">&quot;admin&quot;</span></a>
-<a class="sourceLine" id="cb111-3" data-line-number="3">d[<span class="st">'machines'</span>] <span class="op">=</span> [<span class="st">&quot;foo&quot;</span>, <span class="st">&quot;bar&quot;</span>]</a>
-<a class="sourceLine" id="cb111-4" data-line-number="4">d</a></code></pre></div>
-<pre><code>## {'username': 'admin', 'machines': ['foo', 'bar']}</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb113-1" data-line-number="1">c <span class="op">=</span> d.copy()</a>
-<a class="sourceLine" id="cb113-2" data-line-number="2">c[<span class="st">'username'</span>] <span class="op">=</span> <span class="st">&quot;Alex&quot;</span> <span class="co">## replacement will not change the original dictionary</span></a>
-<a class="sourceLine" id="cb113-3" data-line-number="3"><span class="bu">print</span>(c)</a></code></pre></div>
-<pre><code>## {'username': 'Alex', 'machines': ['foo', 'bar']}</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="bu">print</span>(d)</a></code></pre></div>
-<pre><code>## {'username': 'admin', 'machines': ['foo', 'bar']}</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb117-1" data-line-number="1">c[<span class="st">'machines'</span>].remove(<span class="st">&quot;bar&quot;</span>) <span class="co">## modification will change the original dictionary</span></a>
-<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="bu">print</span>(c)</a></code></pre></div>
-<pre><code>## {'username': 'Alex', 'machines': ['foo']}</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb119-1" data-line-number="1"><span class="bu">print</span>(d)</a></code></pre></div>
-<pre><code>## {'username': 'admin', 'machines': ['foo']}</code></pre>
 </div>
-<div id="copy-1" class="slide section level1">
-<h1>copy</h1>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a>re.findall(<span class="st">&quot;\(\d</span><span class="sc">{3}</span><span class="st">\)\d</span><span class="sc">{3}</span><span class="st">-\d</span><span class="sc">{4}</span><span class="st">&quot;</span>, cell_numbers)</span></code></pre></div>
+<pre><code>## [&#39;(213)456-7980&#39;]</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" tabindex="-1"></a>re.findall(<span class="st">&quot;\d</span><span class="sc">{3}</span><span class="st">-\d</span><span class="sc">{3}</span><span class="st">-\d</span><span class="sc">{4}</span><span class="st">&quot;</span>, cell_numbers)</span></code></pre></div>
+<pre><code>## [&#39;321-654-7890&#39;]</code></pre>
 <ul>
-<li>deep copy:
+<li>How to combine them together as one RE?</li>
+</ul>
+</div>
+<div id="make-the-maximum-arbitrarily-large" class="slide section level1">
+<h1>Make the maximum arbitrarily large</h1>
 <ul>
-<li>will make a new copy of everything.</li>
+<li>* to match 0 or more times of the preceding RE,</li>
+<li>+ to match one or more times of the preceding RE.</li>
+<li>? to match 0 or 1 repetitions of the preceding RE</li>
+</ul>
+<div class="sourceCode" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" tabindex="-1"></a>grades <span class="op">=</span> <span class="st">&quot;ACAAAABCBCBAA&quot;</span></span>
+<span id="cb85-2"><a href="#cb85-2" tabindex="-1"></a>re.findall(<span class="st">&quot;A+B+C+&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;AAAABC&#39;]</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" tabindex="-1"></a>re.findall(<span class="st">&quot;A?B?C?&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;AC&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;ABC&#39;, &#39;BC&#39;, &#39;B&#39;, &#39;A&#39;, &#39;A&#39;, &#39;&#39;]</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" tabindex="-1"></a>re.findall(<span class="st">&quot;A*B+&quot;</span>, grades)</span></code></pre></div>
+<pre><code>## [&#39;AAAAB&#39;, &#39;B&#39;, &#39;B&#39;]</code></pre>
+</div>
+<div id="remove-extra-whitespaes-in-class-exercise" class="slide section level1">
+<h1>Remove extra whitespaes, in class exercise</h1>
+<ul>
+<li>How to remove the extra \n and whitespace?
+<ul>
+<li>no whitespace (or \n) at the head or the end</li>
+<li>single space between two words</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb121"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="im">from</span> copy <span class="im">import</span> deepcopy</a>
-<a class="sourceLine" id="cb121-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb121-3" data-line-number="3">d <span class="op">=</span> {}</a>
-<a class="sourceLine" id="cb121-4" data-line-number="4">d[<span class="st">'username'</span>] <span class="op">=</span> <span class="st">&quot;admin&quot;</span></a>
-<a class="sourceLine" id="cb121-5" data-line-number="5">d[<span class="st">'machines'</span>] <span class="op">=</span> [<span class="st">&quot;foo&quot;</span>, <span class="st">&quot;bar&quot;</span>]</a>
-<a class="sourceLine" id="cb121-6" data-line-number="6">d</a></code></pre></div>
-<pre><code>## {'username': 'admin', 'machines': ['foo', 'bar']}</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb123-1" data-line-number="1">c <span class="op">=</span> d.copy()</a>
-<a class="sourceLine" id="cb123-2" data-line-number="2">dc <span class="op">=</span> deepcopy(d)</a>
-<a class="sourceLine" id="cb123-3" data-line-number="3">d[<span class="st">'machines'</span>].remove(<span class="st">&quot;bar&quot;</span>) </a>
-<a class="sourceLine" id="cb123-4" data-line-number="4"><span class="bu">print</span>(c)</a></code></pre></div>
-<pre><code>## {'username': 'admin', 'machines': ['foo']}</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="bu">print</span>(dc)</a></code></pre></div>
-<pre><code>## {'username': 'admin', 'machines': ['foo', 'bar']}</code></pre>
-</div>
-<div id="dictionary-initialization-fromkeys" class="slide section level1">
-<h1>dictionary initialization: fromkeys</h1>
-<ul>
-<li>create keys for an empty dictionary.</li>
-</ul>
-<div class="sourceCode" id="cb127"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb127-1" data-line-number="1">{}.fromkeys([<span class="st">&quot;name&quot;</span>, <span class="st">&quot;age&quot;</span>])</a></code></pre></div>
-<pre><code>## {'name': None, 'age': None}</code></pre>
-<ul>
-<li>create keys for a dictionary</li>
-</ul>
-<div class="sourceCode" id="cb129"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="bu">dict</span>.fromkeys([<span class="st">&quot;name&quot;</span>, <span class="st">&quot;age&quot;</span>])</a></code></pre></div>
-<pre><code>## {'name': None, 'age': None}</code></pre>
-<ul>
-<li>set default values</li>
-</ul>
-<div class="sourceCode" id="cb131"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="bu">dict</span>.fromkeys([<span class="st">&quot;name&quot;</span>, <span class="st">&quot;age&quot;</span>], <span class="st">&quot;unknown&quot;</span>)</a></code></pre></div>
-<pre><code>## {'name': 'unknown', 'age': 'unknown'}</code></pre>
-</div>
-<div id="dictionary-get" class="slide section level1">
-<h1>dictionary: get</h1>
-<ul>
-<li>get method is more flexible</li>
-<li>get is the same as indexing by keys when the key exists</li>
-</ul>
-<div class="sourceCode" id="cb133"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb133-1" data-line-number="1">d <span class="op">=</span> {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Amy&quot;</span>, <span class="st">&quot;age&quot;</span>: <span class="dv">24</span>}</a>
-<a class="sourceLine" id="cb133-2" data-line-number="2">d[<span class="st">&quot;name&quot;</span>]</a></code></pre></div>
-<pre><code>## 'Amy'</code></pre>
-<div class="sourceCode" id="cb135"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb135-1" data-line-number="1">d.get(<span class="st">&quot;name&quot;</span>)</a></code></pre></div>
-<pre><code>## 'Amy'</code></pre>
-<ul>
-<li>get will return None when the key doesn’t exist</li>
-</ul>
-<pre><code>d[&quot;XX&quot;]
-d.get(&quot;XX&quot;)
-d.get(&quot;XX&quot;, &quot;No exist&quot;) ## set your own return value for get</code></pre>
-</div>
-<div id="dictionary-items" class="slide section level1">
-<h1>dictionary: items</h1>
-<ul>
-<li>items() return all items of the dictionary</li>
-</ul>
-<div class="sourceCode" id="cb138"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb138-1" data-line-number="1">phonebook <span class="op">=</span> {<span class="st">&quot;Alice&quot;</span>: <span class="dv">2341</span>, </a>
-<a class="sourceLine" id="cb138-2" data-line-number="2">            <span class="st">&quot;Beth&quot;</span>: <span class="dv">4971</span>,</a>
-<a class="sourceLine" id="cb138-3" data-line-number="3">            <span class="st">&quot;Carl&quot;</span>: <span class="dv">9401</span></a>
-<a class="sourceLine" id="cb138-4" data-line-number="4">}</a>
-<a class="sourceLine" id="cb138-5" data-line-number="5">phonebook</a></code></pre></div>
-<pre><code>## {'Alice': 2341, 'Beth': 4971, 'Carl': 9401}</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb140-1" data-line-number="1">phonebook.items()</a></code></pre></div>
-<pre><code>## dict_items([('Alice', 2341), ('Beth', 4971), ('Carl', 9401)])</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="bu">list</span>(phonebook.items())</a></code></pre></div>
-<pre><code>## [('Alice', 2341), ('Beth', 4971), ('Carl', 9401)]</code></pre>
-</div>
-<div id="dictionary-loops" class="slide section level1">
-<h1>dictionary: loops</h1>
-<ul>
-<li>can be used for looping a dictionary</li>
-</ul>
-<div class="sourceCode" id="cb144"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb144-1" data-line-number="1">it <span class="op">=</span> phonebook.items()</a>
-<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="cf">for</span> key, value <span class="kw">in</span> it:</a>
-<a class="sourceLine" id="cb144-3" data-line-number="3">    <span class="bu">print</span>(key <span class="op">+</span>  <span class="st">&quot;--&gt; &quot;</span> <span class="op">+</span> <span class="bu">str</span>(value))</a></code></pre></div>
-<pre><code>## Alice--&gt; 2341
-## Beth--&gt; 4971
-## Carl--&gt; 9401</code></pre>
-<ul>
-<li>if you only want the value, not the keys</li>
-</ul>
-<div class="sourceCode" id="cb146"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb146-1" data-line-number="1">it <span class="op">=</span> phonebook.items()</a>
-<a class="sourceLine" id="cb146-2" data-line-number="2"><span class="cf">for</span> _, value <span class="kw">in</span> it:</a>
-<a class="sourceLine" id="cb146-3" data-line-number="3">    <span class="bu">print</span>(<span class="bu">str</span>(value))</a></code></pre></div>
-<pre><code>## 2341
-## 4971
-## 9401</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" tabindex="-1"></a>text <span class="op">=</span> <span class="st">&quot; Alex    works diligently.  </span><span class="ch">\n\n</span><span class="st">  Alex   gets   good grades. Our student   Alex is successful  </span><span class="ch">\n</span><span class="st">&quot;</span></span></code></pre></div>
 </div>
 <div class="slide section level1">
 
 <ul>
-<li>use key to iterate a dictionary for a loop</li>
+<li>solution</li>
 </ul>
-<div class="sourceCode" id="cb148"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="cf">for</span> key <span class="kw">in</span> phonebook:</a>
-<a class="sourceLine" id="cb148-2" data-line-number="2">    <span class="bu">print</span>(key <span class="op">+</span>  <span class="st">&quot;--&gt; &quot;</span> <span class="op">+</span> <span class="bu">str</span>(phonebook[key]))</a></code></pre></div>
-<pre><code>## Alice--&gt; 2341
-## Beth--&gt; 4971
-## Carl--&gt; 9401</code></pre>
-<ul>
-<li>use values() method</li>
-</ul>
-<div class="sourceCode" id="cb150"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb150-1" data-line-number="1">phonebook.values()</a></code></pre></div>
-<pre><code>## dict_values([2341, 4971, 9401])</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="bu">list</span>(phonebook.values())</a></code></pre></div>
-<pre><code>## [2341, 4971, 9401]</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="cf">for</span> i <span class="kw">in</span> phonebook.values():</a>
-<a class="sourceLine" id="cb154-2" data-line-number="2">    <span class="bu">print</span>(i)</a></code></pre></div>
-<pre><code>## 2341
-## 4971
-## 9401</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" tabindex="-1"></a>re.sub(<span class="st">&quot;\s+&quot;</span>, <span class="st">&quot; &quot;</span>, text.strip())</span></code></pre></div>
+<pre><code>## &#39;Alex works diligently. Alex gets good grades. Our student Alex is successful&#39;</code></pre>
 </div>
-<div id="dictionary-list-comprehension" class="slide section level1">
-<h1>dictionary: list comprehension</h1>
-<div class="sourceCode" id="cb156"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb156-1" data-line-number="1">names <span class="op">=</span> [<span class="st">&quot;Amy&quot;</span>, <span class="st">&quot;Beth&quot;</span>, <span class="st">&quot;Carl&quot;</span>, <span class="st">&quot;Dan&quot;</span>, <span class="st">&quot;Emily&quot;</span>, <span class="st">&quot;Frank&quot;</span>]</a>
-<a class="sourceLine" id="cb156-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb156-3" data-line-number="3"><span class="im">import</span> random</a>
-<a class="sourceLine" id="cb156-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb156-5" data-line-number="5">students_scores <span class="op">=</span> {name: random.randint(<span class="dv">0</span>, <span class="dv">100</span>) <span class="cf">for</span> name <span class="kw">in</span> names}</a>
-<a class="sourceLine" id="cb156-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb156-7" data-line-number="7">passed_students <span class="op">=</span> {key: value <span class="cf">for</span> (key, value) <span class="kw">in</span> students_scores.items() <span class="cf">if</span> value <span class="op">&gt;</span> <span class="dv">60</span>}</a>
-<a class="sourceLine" id="cb156-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb156-9" data-line-number="9">passed_students</a></code></pre></div>
-<pre><code>## {'Frank': 93}</code></pre>
-</div>
-<div id="dictionary-pop-and-popitem" class="slide section level1">
-<h1>dictionary: pop and popitem</h1>
+<div id="examples" class="slide section level1">
+<h1>Examples</h1>
 <ul>
-<li>pop</li>
+<li><a href="https://en.wikipedia.org/wiki/Family_Educational_Rights_and_Privacy_Act" class="uri">https://en.wikipedia.org/wiki/Family_Educational_Rights_and_Privacy_Act</a></li>
+<li><a href="https://caleb-huo.github.io/teaching/data/Python/ferpa.txt" class="uri">https://caleb-huo.github.io/teaching/data/Python/ferpa.txt</a></li>
 </ul>
-<div class="sourceCode" id="cb158"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb158-1" data-line-number="1">phonebook <span class="op">=</span> {<span class="st">&quot;Alice&quot;</span>: <span class="dv">2341</span>, </a>
-<a class="sourceLine" id="cb158-2" data-line-number="2">            <span class="st">&quot;Beth&quot;</span>: <span class="dv">4971</span>,</a>
-<a class="sourceLine" id="cb158-3" data-line-number="3">            <span class="st">&quot;Carl&quot;</span>: <span class="dv">9401</span></a>
-<a class="sourceLine" id="cb158-4" data-line-number="4">}</a>
-<a class="sourceLine" id="cb158-5" data-line-number="5">phonebook.pop(<span class="st">&quot;Alice&quot;</span>)</a></code></pre></div>
-<pre><code>## 2341</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb160-1" data-line-number="1">phonebook</a></code></pre></div>
-<pre><code>## {'Beth': 4971, 'Carl': 9401}</code></pre>
-<ul>
-<li>popitem(): pop up the last item</li>
-</ul>
-<div class="sourceCode" id="cb162"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb162-1" data-line-number="1">phonebook <span class="op">=</span> {<span class="st">&quot;Alice&quot;</span>: <span class="dv">2341</span>, </a>
-<a class="sourceLine" id="cb162-2" data-line-number="2">            <span class="st">&quot;Beth&quot;</span>: <span class="dv">4971</span>,</a>
-<a class="sourceLine" id="cb162-3" data-line-number="3">            <span class="st">&quot;Carl&quot;</span>: <span class="dv">9401</span></a>
-<a class="sourceLine" id="cb162-4" data-line-number="4">}</a>
-<a class="sourceLine" id="cb162-5" data-line-number="5">phonebook.popitem()</a></code></pre></div>
-<pre><code>## ('Carl', 9401)</code></pre>
-<div class="sourceCode" id="cb164"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb164-1" data-line-number="1">phonebook</a></code></pre></div>
-<pre><code>## {'Alice': 2341, 'Beth': 4971}</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;ferpa.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb94-2"><a href="#cb94-2" tabindex="-1"></a>    wiki <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb94-3"><a href="#cb94-3" tabindex="-1"></a></span>
+<span id="cb94-4"><a href="#cb94-4" tabindex="-1"></a><span class="bu">print</span>(wiki)</span></code></pre></div>
+<pre><code>## Overview[edit]
+## FERPA gives parents access to their child&#39;s education records, an opportunity to seek to have the records amended, and some control over the disclosure of information from the records. With several exceptions, schools must have a student&#39;s consent prior to the disclosure of education records after that student is 18 years old. The law applies only to educational agencies and institutions that receive funds under a program administered by the U.S. Department of Education.
+## 
+## Other regulations under this act, effective starting January 3, 2012, allow for greater disclosures of personal and directory student identifying information and regulate student IDs and e-mail addresses.[2] For example, schools may provide external companies with a student&#39;s personally identifiable information without the student&#39;s consent.[2]
+## 
+## Examples of situations affected by FERPA include school employees divulging information to anyone other than the student about the student&#39;s grades or behavior, and school work posted on a bulletin board with a grade. Generally, schools must have written permission from the parent or eligible student in order to release any information from a student&#39;s education record.
+## 
+## This privacy policy also governs how state agencies transmit testing data to federal agencies, such as the Education Data Exchange Network.
+## 
+## This U.S. federal law also gave students 18 years of age or older, or students of any age if enrolled in any post-secondary educational institution, the right of privacy regarding grades, enrollment, and even billing information unless the school has specific permission from the student to share that specific type of information.
+## 
+## FERPA also permits a school to disclose personally identifiable information from education records of an &quot;eligible student&quot; (a student age 18 or older or enrolled in a postsecondary institution at any age) to his or her parents if the student is a &quot;dependent student&quot; as that term is defined in Section 152 of the Internal Revenue Code. Generally, if either parent has claimed the student as a dependent on the parent&#39;s most recent income tax statement, the school may non-consensually disclose the student&#39;s education records to both parents.[3]
+## 
+## The law allowed students who apply to an educational institution such as graduate school permission to view recommendations submitted by others as part of the application. However, on standard application forms, students are given the option to waive this right.
+## 
+## FERPA specifically excludes employees of an educational institution if they are not students.
+## 
+## The act is also referred to as the Buckley Amendment, for one of its proponents, Senator James L. Buckley of New York.
+## 
+## Access to public records[edit]
+## The citing of FERPA to conceal public records that are not &quot;educational&quot; in nature has been widely criticized, including by the act&#39;s primary Senate sponsor.[4] For example, in the Owasso Independent School District v. Falvo case, an important part of the debate was determining the relationship between peer-grading and &quot;education records&quot; as defined in FERPA. In the Court of Appeals, it was ruled that students placing grades on the work of other students made such work into an &quot;education record.&quot; Thus, peer-grading was determined as a violation of FERPA privacy policies because students had access to other students&#39; academic performance without full consent.[5] However, when the case went to the Supreme Court, it was officially ruled that peer-grading was not a violation of FERPA. This is because a grade written on a student&#39;s work does not become an &quot;education record&quot; until the teacher writes the final grade into a grade book.[6]
+## 
+## Student medical records[edit]
+## Legal experts have debated the issue of whether student medical records (for example records of therapy sessions with a therapist at an on-campus counseling center) might be released to the school administration under certain triggering events, such as when a student sued his college or university.[7][8]
+## 
+## Usually, student medical treatment records will remain under the protection of FERPA, not the Health Insurance Portability and Accountability Act (HIPAA). This is due to the &quot;FERPA Exception&quot; written within HIPAA.[9]</code></pre>
 </div>
-<div id="tuple-review-basics" class="slide section level1">
-<h1>tuple: review basics</h1>
-<div class="sourceCode" id="cb166"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb166-1" data-line-number="1">atuple <span class="op">=</span> (<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb166-2" data-line-number="2">atuple <span class="op">+=</span> (<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb166-3" data-line-number="3">atuple</a></code></pre></div>
-<pre><code>## (0, 1, 2, 3, 4, 5)</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb168-1" data-line-number="1">btuple <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, [<span class="st">'I'</span>, <span class="st">'like'</span>,  <span class="st">'python'</span>])</a>
-<a class="sourceLine" id="cb168-2" data-line-number="2">btuple[<span class="dv">3</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="st">'You'</span></a>
-<a class="sourceLine" id="cb168-3" data-line-number="3"><span class="bu">print</span>(btuple)</a></code></pre></div>
-<pre><code>## (0, 1, 1, ['You', 'like', 'python'])</code></pre>
-<div class="sourceCode" id="cb170"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb170-1" data-line-number="1"><span class="bu">print</span>(btuple.count(<span class="dv">1</span>))</a></code></pre></div>
-<pre><code>## 2</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="bu">print</span>(btuple.index([<span class="st">'You'</span>, <span class="st">&quot;like&quot;</span>, <span class="st">'python'</span>]))</a></code></pre></div>
-<pre><code>## 3</code></pre>
-</div>
-<div id="set-create-and-add" class="slide section level1">
-<h1>set: create and add</h1>
+<div class="slide section level1">
+
+<p>Goal: to extract section headers.</p>
 <ul>
-<li><p>sets are a collection of unordered unique elements</p></li>
-<li><p>create</p></li>
+<li>to identify section header:</li>
 </ul>
-<div class="sourceCode" id="cb174"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb174-1" data-line-number="1">this_set <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>} <span class="co">#create set</span></a>
-<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="bu">print</span>(this_set)</a></code></pre></div>
-<pre><code>## {1, 2, 3, 4}</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" tabindex="-1"></a>re.findall(<span class="st">&quot;[a-zA-Z]{1,100}\[edit\]&quot;</span>, wiki)</span></code></pre></div>
+<pre><code>## [&#39;Overview[edit]&#39;, &#39;records[edit]&#39;, &#39;records[edit]&#39;]</code></pre>
 <ul>
-<li>add</li>
+<li><p>Since [ has special meaning, need to use \ [ to indicate the
+literal [</p></li>
+<li><p>\w to match any letter or digit</p></li>
 </ul>
-<div class="sourceCode" id="cb176"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb176-1" data-line-number="1">this_set <span class="op">=</span> {<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>} <span class="co">#create set</span></a>
-<a class="sourceLine" id="cb176-2" data-line-number="2">this_set.add(<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb176-3" data-line-number="3">this_set</a></code></pre></div>
-<pre><code>## {0, 1, 2, 3}</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" tabindex="-1"></a>re.findall(<span class="st">&quot;[\w]{1,100}\[edit\]&quot;</span>, wiki)</span></code></pre></div>
+<pre><code>## [&#39;Overview[edit]&#39;, &#39;records[edit]&#39;, &#39;records[edit]&#39;]</code></pre>
+<ul>
+<li>alternatively</li>
+</ul>
+<div class="sourceCode" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" tabindex="-1"></a>re.findall(<span class="st">&quot;[\w]+\[edit\]&quot;</span>, wiki)</span></code></pre></div>
+<pre><code>## [&#39;Overview[edit]&#39;, &#39;records[edit]&#39;, &#39;records[edit]&#39;]</code></pre>
 </div>
-<div id="set-operators" class="slide section level1">
-<h1>set: operators</h1>
-<div class="sourceCode" id="cb178"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb178-1" data-line-number="1">set_a <span class="op">=</span> {<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>}</a>
-<a class="sourceLine" id="cb178-2" data-line-number="2">set_b <span class="op">=</span> {<span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>}</a>
-<a class="sourceLine" id="cb178-3" data-line-number="3"><span class="bu">print</span>(set_a.union(set_b), <span class="st">'----------'</span>, set_a <span class="op">|</span> set_b)</a></code></pre></div>
-<pre><code>## {'e', 'd', 'b', 'c', 'a', 'f'} ---------- {'e', 'd', 'b', 'c', 'a', 'f'}</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="bu">print</span>(set_a.intersection(set_b), <span class="st">'----------'</span>, set_a <span class="op">&amp;</span> set_b)</a></code></pre></div>
-<pre><code>## {'d', 'c'} ---------- {'d', 'c'}</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="bu">print</span>(set_a.difference(set_b), <span class="st">'----------'</span>, set_a <span class="op">-</span> set_b)</a></code></pre></div>
-<pre><code>## {'a', 'b'} ---------- {'a', 'b'}</code></pre>
-<div class="sourceCode" id="cb184"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="bu">print</span>(set_a.symmetric_difference(set_b), <span class="st">'----------'</span>, set_a <span class="op">^</span> set_b)</a></code></pre></div>
-<pre><code>## {'e', 'b', 'a', 'f'} ---------- {'e', 'b', 'a', 'f'}</code></pre>
-<div class="sourceCode" id="cb186"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb186-1" data-line-number="1">set_a.clear()</a>
-<a class="sourceLine" id="cb186-2" data-line-number="2">set_a</a></code></pre></div>
-<pre><code>## set()</code></pre>
+<div class="slide section level1">
+
+<ul>
+<li>to have the entire title with edit:</li>
+</ul>
+<div class="sourceCode" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" tabindex="-1"></a>re.findall(<span class="st">&quot;[\w ]*\[edit\]&quot;</span>, wiki)</span></code></pre></div>
+<pre><code>## [&#39;Overview[edit]&#39;, &#39;Access to public records[edit]&#39;, &#39;Student medical records[edit]&#39;]</code></pre>
+<ul>
+<li>To print the real title line by line:</li>
+</ul>
+<div class="sourceCode" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" tabindex="-1"></a><span class="cf">for</span> title <span class="kw">in</span> re.findall(<span class="st">&quot;[\w ]*\[edit\]&quot;</span>, wiki):</span>
+<span id="cb104-2"><a href="#cb104-2" tabindex="-1"></a>    <span class="bu">print</span>(re.split(<span class="st">&quot;[\[]&quot;</span>, title)[<span class="dv">0</span>])</span></code></pre></div>
+<pre><code>## Overview
+## Access to public records
+## Student medical records</code></pre>
+<ul>
+<li>Is there a simple way to do this?</li>
+</ul>
+</div>
+<div id="group" class="slide section level1">
+<h1>Group</h1>
+<ul>
+<li>in regex, we could specify groups by ()</li>
+<li>return multiple groups in tuple.</li>
+</ul>
+<div class="sourceCode" id="cb106"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" tabindex="-1"></a>re.findall(<span class="st">&quot;([\w ]*)(\[edit\])&quot;</span>, wiki)</span></code></pre></div>
+<pre><code>## [(&#39;Overview&#39;, &#39;[edit]&#39;), (&#39;Access to public records&#39;, &#39;[edit]&#39;), (&#39;Student medical records&#39;, &#39;[edit]&#39;)]</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" tabindex="-1"></a><span class="cf">for</span> title <span class="kw">in</span> re.findall(<span class="st">&quot;([\w ]*)(\[edit\])&quot;</span>, wiki):</span>
+<span id="cb108-2"><a href="#cb108-2" tabindex="-1"></a>    <span class="bu">print</span>(title[<span class="dv">0</span>])</span></code></pre></div>
+<pre><code>## Overview
+## Access to public records
+## Student medical records</code></pre>
+</div>
+<div id="iterator" class="slide section level1">
+<h1>iterator</h1>
+<div class="sourceCode" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" tabindex="-1"></a>mytuple <span class="op">=</span> (<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</span>
+<span id="cb110-2"><a href="#cb110-2" tabindex="-1"></a>myit <span class="op">=</span> <span class="bu">iter</span>(mytuple) <span class="co">## iterable object.</span></span>
+<span id="cb110-3"><a href="#cb110-3" tabindex="-1"></a></span>
+<span id="cb110-4"><a href="#cb110-4" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(myit))</span></code></pre></div>
+<pre><code>## apple</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(myit))</span></code></pre></div>
+<pre><code>## banana</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(myit))</span></code></pre></div>
+<pre><code>## cherry</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" tabindex="-1"></a>mytuple <span class="op">=</span> (<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</span>
+<span id="cb116-2"><a href="#cb116-2" tabindex="-1"></a>myit <span class="op">=</span> <span class="bu">iter</span>(mytuple)</span>
+<span id="cb116-3"><a href="#cb116-3" tabindex="-1"></a></span>
+<span id="cb116-4"><a href="#cb116-4" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> myit:</span>
+<span id="cb116-5"><a href="#cb116-5" tabindex="-1"></a>  <span class="bu">print</span>(i)</span></code></pre></div>
+<pre><code>## apple
+## banana
+## cherry</code></pre>
+</div>
+<div id="create-a-iterator-for-re" class="slide section level1">
+<h1>create a iterator for RE</h1>
+<div class="sourceCode" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> re.finditer(<span class="st">&quot;([\w ]*)(\[edit\])&quot;</span>, wiki):</span>
+<span id="cb118-2"><a href="#cb118-2" tabindex="-1"></a>    <span class="bu">print</span>(item.groups())</span></code></pre></div>
+<pre><code>## (&#39;Overview&#39;, &#39;[edit]&#39;)
+## (&#39;Access to public records&#39;, &#39;[edit]&#39;)
+## (&#39;Student medical records&#39;, &#39;[edit]&#39;)</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" tabindex="-1"></a>item</span></code></pre></div>
+<pre><code>## &lt;re.Match object; span=(3692, 3721), match=&#39;Student medical records[edit]&#39;&gt;</code></pre>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb122"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" tabindex="-1"></a>item.span()</span></code></pre></div>
+<pre><code>## (3692, 3721)</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" tabindex="-1"></a>item.group()</span></code></pre></div>
+<pre><code>## &#39;Student medical records[edit]&#39;</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" tabindex="-1"></a>item.group(<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## &#39;Student medical records[edit]&#39;</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" tabindex="-1"></a>item.group(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;Student medical records&#39;</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" tabindex="-1"></a>item.group(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## &#39;[edit]&#39;</code></pre>
+</div>
+<div id="add-title-to-groups" class="slide section level1">
+<h1>Add title to groups</h1>
+<ul>
+<li>?P&lt;&gt;: group labels</li>
+</ul>
+<div class="sourceCode" id="cb132"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> re.finditer(<span class="st">&quot;(?P&lt;title&gt;[\w ]*)(?P&lt;edit_link&gt;\[edit\])&quot;</span>, wiki):</span>
+<span id="cb132-2"><a href="#cb132-2" tabindex="-1"></a>    <span class="bu">print</span>(item.groupdict()[<span class="st">&#39;title&#39;</span>])</span></code></pre></div>
+<pre><code>## Overview
+## Access to public records
+## Student medical records</code></pre>
+<ul>
+<li>With labels, the resulting item can be converted to a
+dictionary</li>
+</ul>
+<div class="sourceCode" id="cb134"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" tabindex="-1"></a>item.groupdict()</span></code></pre></div>
+<pre><code>## {&#39;title&#39;: &#39;Student medical records&#39;, &#39;edit_link&#39;: &#39;[edit]&#39;}</code></pre>
+</div>
+<div id="look-ahead-and-look-behind" class="slide section level1">
+<h1>Look-ahead and look-behind</h1>
+<ul>
+<li>lookahead ?=:
+<ul>
+<li>(a)(?=b), will match the pattern ab, but only print a (ahead).</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb136"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" tabindex="-1"></a>text <span class="op">=</span> <span class="st">&quot;Amy works diligently. Alex gets good grades. Our student Aaron is successful&quot;</span></span>
+<span id="cb136-2"><a href="#cb136-2" tabindex="-1"></a>re.findall(<span class="st">&quot;(\w+ )(?=works)&quot;</span>, text)</span></code></pre></div>
+<pre><code>## [&#39;Amy &#39;]</code></pre>
+<ul>
+<li>lookbehind ?&lt;=:
+<ul>
+<li>(?&lt;=a)(b), will match the pattern ab, but only print b
+(behind).</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb138"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" tabindex="-1"></a>m <span class="op">=</span> re.search(<span class="st">&#39;(?&lt;=abc)def&#39;</span>, <span class="st">&#39;abcdef&#39;</span>)</span>
+<span id="cb138-2"><a href="#cb138-2" tabindex="-1"></a>m.group()</span></code></pre></div>
+<pre><code>## &#39;def&#39;</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" tabindex="-1"></a>m <span class="op">=</span> re.search(<span class="st">&#39;(?=abc)def&#39;</span>, <span class="st">&#39;abcdef&#39;</span>)</span>
+<span id="cb140-2"><a href="#cb140-2" tabindex="-1"></a>m</span></code></pre></div>
+</div>
+<div id="example-twitter-data" class="slide section level1">
+<h1>Example, Twitter data</h1>
+<ul>
+<li><a href="https://caleb-huo.github.io/teaching/data/Python/nytimeshealth.txt" class="uri">https://caleb-huo.github.io/teaching/data/Python/nytimeshealth.txt</a></li>
+</ul>
+<div class="sourceCode" id="cb141"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;nytimeshealth.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb141-2"><a href="#cb141-2" tabindex="-1"></a>    health<span class="op">=</span><span class="bu">file</span>.read()</span>
+<span id="cb141-3"><a href="#cb141-3" tabindex="-1"></a><span class="bu">print</span>(health[:<span class="dv">600</span>])</span></code></pre></div>
+<pre><code>## 548662191340421120|Sat Dec 27 02:10:34 +0000 2014|Risks in Using Social Media to Spot Signs of Mental Distress http://nyti.ms/1rqi9I1
+## 548579831169163265|Fri Dec 26 20:43:18 +0000 2014|RT @paula_span: The most effective nationwide diabetes prevention program you&#39;ve probably never heard of:  http://newoldage.blogs.nytimes.com/2014/12/26/diabetes-prevention-that-works/
+## 548579045269852161|Fri Dec 26 20:40:11 +0000 2014|The New Old Age Blog: Diabetes Prevention That Works http://nyti.ms/1xm7fTi
+## 548444679529041920|Fri Dec 26 11:46:15 +0000 2014|Well: Comfort Casseroles for Winter Dinners http://nyti</code></pre>
+<ul>
+<li>how to find all users? (i.e., @)</li>
+<li>how to find all dates (where a <span class="citation">@user</span>
+appears)
+<ul>
+<li>only print the dates (e.g., ‘Fri Dec 26’)</li>
+</ul></li>
+</ul>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb143"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" tabindex="-1"></a>re.findall(<span class="st">&quot;@\w+&quot;</span>, health)</span></code></pre></div>
+<pre><code>## [&#39;@paula_span&#39;, &#39;@nytimes&#39;, &#39;@cslnyt&#39;, &#39;@CDCgov&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@celiadugger&#39;, &#39;@sangerkatz&#39;, &#39;@stavernise&#39;, &#39;@KJDellAntonia&#39;, &#39;@NYTMotherlode&#39;, &#39;@BethBDaley&#39;, &#39;@bencareynyt&#39;, &#39;@bencareynyt&#39;, &#39;@cslnyt&#39;, &#39;@susandominus&#39;, &#39;@paula_span&#39;, &#39;@bstrauch&#39;, &#39;@bencareynyt&#39;, &#39;@UpshotNYT&#39;, &#39;@deborahblum&#39;, &#39;@cslnyt&#39;, &#39;@acognews&#39;, &#39;@Preeclampsia&#39;, &#39;@MySMFM&#39;, &#39;@randyNYT&#39;, &#39;@paula_span&#39;, &#39;@UpshotNYT&#39;, &#39;@nycscribe&#39;, &#39;@GardinerHarris&#39;, &#39;@nytimesbooks&#39;, &#39;@nytimesbooks&#39;, &#39;@UpshotNYT&#39;, &#39;@jswatz&#39;, &#39;@AlexVadukul&#39;, &#39;@michaelpollan&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@bstrauch&#39;, &#39;@ginakolata&#39;, &#39;@cslnyt&#39;, &#39;@stavernise&#39;, &#39;@deborahblum&#39;, &#39;@nytimes&#39;, &#39;@nytimeswell&#39;, &#39;@bstrauch&#39;, &#39;@ginakolata&#39;, &#39;@UpshotNYT&#39;, &#39;@sangerkatz&#39;, &#39;@palafo&#39;, &#39;@nytimes&#39;, &#39;@UpshotNYT&#39;, &#39;@paula_span&#39;, &#39;@bstrauch&#39;, &#39;@bstrauch&#39;, &#39;@GardinerHarris&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@UpshotNYT&#39;, &#39;@paula_span&#39;, &#39;@janegross&#39;, &#39;@sangerkatz&#39;, &#39;@amand&#39;, &#39;@abbygoodnough&#39;, &#39;@abbygoodnough&#39;, &#39;@SominiSengupta&#39;, &#39;@nycscribe&#39;, &#39;@celiadugger&#39;, &#39;@pfizer&#39;, &#39;@gatesfoundation&#39;, &#39;@usaid&#39;, &#39;@EllenBarryNYT&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@camaldarelli&#39;, &#39;@paula_span&#39;, &#39;@katiehafner&#39;, &#39;@AARP&#39;, &#39;@camaldarelli&#39;, &#39;@paula_span&#39;, &#39;@ginakolata&#39;, &#39;@HealthStudent&#39;, &#39;@grynbaum&#39;, &#39;@nytimeswell&#39;, &#39;@paula_span&#39;, &#39;@bstrauch&#39;, &#39;@mattfleg&#39;, &#39;@NYTMetro&#39;, &#39;@BilldeBlasio&#39;, &#39;@nytimeswell&#39;, &#39;@nytimeswell&#39;, &#39;@nytimeswell&#39;, &#39;@NYTMetro&#39;, &#39;@nytimes&#39;, &#39;@NYTMetro&#39;, &#39;@NYGovCuomo&#39;, &#39;@GovChristie&#39;, &#39;@NYTMetro&#39;, &#39;@BilldeBlasio&#39;, &#39;@joshhaner&#39;, &#39;@NYTMetro&#39;, &#39;@RamRajuMD&#39;, &#39;@nytgraphics&#39;, &#39;@NYTMetro&#39;, &#39;@mattfleg&#39;, &#39;@mattfleg&#39;, &#39;@NYTMetro&#39;, &#39;@DrMaryTBassett&#39;, &#39;@peterbakernyt&#39;, &#39;@nytDeniseGrady&#39;, &#39;@grynbaum&#39;, &#39;@FrancesRobles&#39;, &#39;@DrMaryTBassett&#39;, &#39;@carlzimmer&#39;, &#39;@BilldeBlasio&#39;, &#39;@grynbaum&#39;, &#39;@BilldeBlasio&#39;, &#39;@deBlasioNYC&#39;, &#39;@deBlasioNYC&#39;, &#39;@mattfleg&#39;, &#39;@mattfleg&#39;, &#39;@NYTMetro&#39;, &#39;@SarahMaslinNir&#39;, &#39;@deBlasioNYC&#39;, &#39;@mattfleg&#39;, &#39;@FrancesRobles&#39;, &#39;@carlzimmer&#39;, &#39;@NYTMetro&#39;, &#39;@heathertal&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@susannecraig&#39;, &#39;@DrMaryTBassett&#39;, &#39;@thomaskaplan&#39;, &#39;@cslnyt&#39;, &#39;@DrMaryTBassett&#39;, &#39;@thomaskaplan&#39;, &#39;@thomaskaplan&#39;, &#39;@grynbaum&#39;, &#39;@BilldeBlasio&#39;, &#39;@archietse&#39;, &#39;@nytDeniseGrady&#39;, &#39;@BilldeBlasio&#39;, &#39;@NYGovCuomo&#39;, &#39;@jswatz&#39;, &#39;@lpolgreen&#39;, &#39;@jswatz&#39;, &#39;@denisegrady&#39;, &#39;@tminsberg&#39;, &#39;@jswatz&#39;, &#39;@carlzimmer&#39;, &#39;@nytimes&#39;, &#39;@HirokoTabuchi&#39;, &#39;@cslnyt&#39;, &#39;@nytimesscience&#39;, &#39;@Stitcher&#39;, &#39;@SeniorsLaw&#39;, &#39;@paula_span&#39;, &#39;@TheNewOldAge&#39;, &#39;@UpshotNYT&#39;, &#39;@vikasbajaj&#39;, &#39;@helenecooper&#39;, &#39;@nytvideo&#39;, &#39;@HannaIngber&#39;, &#39;@ssstrom&#39;, &#39;@motokorich&#39;, &#39;@ssstrom&#39;, &#39;@sangerkatz&#39;, &#39;@aaronecarroll&#39;, &#39;@lpolgreen&#39;, &#39;@MonkovicNYT&#39;, &#39;@bstrauch&#39;, &#39;@jimdao&#39;, &#39;@helenecooper&#39;, &#39;@picardonhealth&#39;, &#39;@aaronecarroll&#39;, &#39;@nytimes&#39;, &#39;@sangerkatz&#39;, &#39;@helenecooper&#39;, &#39;@helenecooper&#39;, &#39;@mannyNYT&#39;, &#39;@nytimes&#39;, &#39;@mannyNYT&#39;, &#39;@paula_span&#39;, &#39;@Atul_Gawande&#39;, &#39;@camaldarelli&#39;, &#39;@CDCgov&#39;, &#39;@CDCgov&#39;, &#39;@carlzimmer&#39;, &#39;@palafo&#39;, &#39;@nytimes&#39;, &#39;@DavidFurstNYT&#39;, &#39;@meslackman&#39;, &#39;@nycscribe&#39;, &#39;@nytpolitics&#39;, &#39;@cslnyt&#39;, &#39;@nytDeniseGrady&#39;, &#39;@bcsolomon&#39;, &#39;@nytimes&#39;, &#39;@rickgladstone&#39;, &#39;@meslackman&#39;, &#39;@celiadugger&#39;, &#39;@ReedAbelson&#39;, &#39;@stavernise&#39;, &#39;@mannyNYT&#39;, &#39;@celiadugger&#39;, &#39;@bcsolomon&#39;, &#39;@BK4theINYT&#39;, &#39;@ksacknyt&#39;, &#39;@ksacknyt&#39;, &#39;@ksacknyt&#39;, &#39;@liamstack&#39;, &#39;@HannaIngber&#39;, &#39;@CDCFound&#39;, &#39;@AndrewScrivani&#39;, &#39;@AndrewScrivani&#39;, &#39;@AndrewScrivani&#39;, &#39;@DavidFurstNYT&#39;, &#39;@berehulak&#39;, &#39;@ksacknyt&#39;, &#39;@Jeffdelviscio&#39;, &#39;@jimdao&#39;, &#39;@ksacknyt&#39;, &#39;@katie_thomas&#39;, &#39;@bstrauch&#39;, &#39;@jimdao&#39;, &#39;@lpolgreen&#39;, &#39;@rcallimachi&#39;, &#39;@sherifink&#39;, &#39;@nickconfessore&#39;, &#39;@jimdao&#39;, &#39;@judith_graham&#39;, &#39;@Jeffdelviscio&#39;, &#39;@MayBrittMoser&#39;, &#39;@jimgorman&#39;, &#39;@sangerkatz&#39;, &#39;@katie_thomas&#39;, &#39;@ksacknyt&#39;, &#39;@cslnyt&#39;, &#39;@MarthaRShulman&#39;, &#39;@bcsolomon&#39;, &#39;@nytimesscience&#39;, &#39;@MayBrittMoser&#39;, &#39;@jimdao&#39;, &#39;@NobelPrize&#39;, &#39;@damiencave&#39;, &#39;@helenecooper&#39;, &#39;@bstrauch&#39;, &#39;@ksacknyt&#39;, &#39;@bcsolomon&#39;, &#39;@bstrauch&#39;, &#39;@NIAIDNews&#39;, &#39;@jeromedelay&#39;, &#39;@lpolgreen&#39;, &#39;@paula_span&#39;, &#39;@abbygoodnough&#39;, &#39;@bstrauch&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@nytimeswell&#39;, &#39;@sangerkatz&#39;, &#39;@judith_graham&#39;, &#39;@heathertal&#39;, &#39;@nytDeniseGrady&#39;, &#39;@PamBelluck&#39;, &#39;@bstrauch&#39;, &#39;@nycscribe&#39;, &#39;@CDCgov&#39;, &#39;@DrFriedenCDC&#39;, &#39;@nytDeniseGrady&#39;, &#39;@carlzimmer&#39;, &#39;@DrFri&#39;, &#39;@sangerkatz&#39;, &#39;@roseperson&#39;, &#39;@martinenserink&#39;, &#39;@lpolgreen&#39;, &#39;@bcsolomon&#39;, &#39;@bstrauch&#39;, &#39;@bcsolomon&#39;, &#39;@MSF&#39;, &#39;@bcsolomon&#39;, &#39;@MSF&#39;, &#39;@paula_span&#39;, &#39;@carlzimmer&#39;, &#39;@nytimeswell&#39;, &#39;@dacorc&#39;, &#39;@yoshaylaharris&#39;, &#39;@dacorc&#39;, &#39;@carlzimmer&#39;, &#39;@JustinHGillis&#39;, &#39;@NYTmag&#39;, &#39;@Samuel_Aranda&#39;, &#39;@berehulak&#39;, &#39;@heathertal&#39;, &#39;@berehulak&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@kchangnyt&#39;, &#39;@MarthaRShulman&#39;, &#39;@sangerkatz&#39;, &#39;@nytimes&#39;, &#39;@ReedAbelson&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@natashanyt&#39;, &#39;@cslnyt&#39;, &#39;@kchangnyt&#39;, &#39;@tminsberg&#39;, &#39;@PamBelluck&#39;, &#39;@celiadugger&#39;, &#39;@bcsolomon&#39;, &#39;@MSF&#39;, &#39;@bcsolomon&#39;, &#39;@MSF&#39;, &#39;@nytvideo&#39;, &#39;@sangerkatz&#39;, &#39;@JeffGordinier&#39;, &#39;@GretchenReynold&#39;, &#39;@nytimeswell&#39;, &#39;@bstrauch&#39;, &#39;@nytopinion&#39;, &#39;@paula_span&#39;, &#39;@judith_graham&#39;, &#39;@bcsolomon&#39;, &#39;@nytimes&#39;, &#39;@lpolgreen&#39;, &#39;@bcsolomon&#39;, &#39;@MarthaRShulman&#39;, &#39;@Sulliview&#39;, &#39;@gatesfoundation&#39;, &#39;@michaelluo&#39;, &#39;@bstrauch&#39;, &#39;@MarthaRShulman&#39;, &#39;@cslnyt&#39;, &#39;@anemonanyc&#39;, &#39;@j&#39;, &#39;@ReedAbelson&#39;, &#39;@UpshotNYT&#39;, &#39;@bcsolomon&#39;, &#39;@MSF&#39;, &#39;@cslnyt&#39;, &#39;@bencareynyt&#39;, &#39;@bencareynyt&#39;, &#39;@paula_span&#39;, &#39;@ginakolata&#39;, &#39;@nytimeswell&#39;, &#39;@carlzimmer&#39;, &#39;@heathertal&#39;, &#39;@anahadoconnor&#39;, &#39;@anahadoconnor&#39;, &#39;@nycscribe&#39;, &#39;@carlzimmer&#39;, &#39;@cslnyt&#39;, &#39;@FordhamLawNYC&#39;, &#39;@nytDeniseGrady&#39;, &#39;@DanBilefsky&#39;, &#39;@cslnyt&#39;, &#39;@iglovett&#39;, &#39;@ReedAbelson&#39;, &#39;@bstrauch&#39;, &#39;@jimdao&#39;, &#39;@anahadoconnor&#39;, &#39;@cslnyt&#39;, &#39;@bstrauch&#39;, &#39;@cslnyt&#39;, &#39;@AmerAcadPeds&#39;, &#39;@cslnyt&#39;, &#39;@jimdao&#39;, &#39;@paula_span&#39;, &#39;@PamBelluck&#39;, &#39;@nytopinion&#39;, &#39;@heathertal&#39;, &#39;@bstrauch&#39;, &#39;@nytDeniseGrady&#39;, &#39;@carlzimmer&#39;, &#39;@nytimes&#39;, &#39;@Jeffdelviscio&#39;, &#39;@jimdao&#39;, &#39;@nytopinion&#39;, &#39;@dacorc&#39;, &#39;@nytDeniseGrady&#39;, &#39;@ABC&#39;, &#39;@nytDeniseGrady&#39;, &#39;@WSJ&#39;, &#39;@nytDeniseGrady&#39;, &#39;@cslnyt&#39;, &#39;@katie_thomas&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@sangerkatz&#39;, &#39;@aaronecarroll&#39;, &#39;@bstrauch&#39;, &#39;@nytrosenthal&#39;, &#39;@MattWaldNYT&#39;, &#39;@bstrauch&#39;, &#39;@bstrauch&#39;, &#39;@paula_span&#39;, &#39;@WilliamJBroad&#39;, &#39;@UpshotNYT&#39;, &#39;@cslnyt&#39;, &#39;@sangerkatz&#39;, &#39;@DrPaulOffit&#39;, &#39;@cslnyt&#39;, &#39;@kchangnyt&#39;, &#39;@sangerkatz&#39;, &#39;@ProfEmilyOster&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@nytDeniseGrady&#39;, &#39;@emoryhealthcare&#39;, &#39;@_nicolaclark&#39;, &#39;@rcallimachi&#39;, &#39;@UpshotNYT&#39;, &#39;@celiadugger&#39;, &#39;@nytDeniseGrady&#39;, &#39;@tminsberg&#39;, &#39;@nytopinion&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@ksacknyt&#39;, &#39;@nytimes&#39;, &#39;@sangerkatz&#39;, &#39;@ReedAbelson&#39;, &#39;@EricLichtblau&#39;, &#39;@ksacknyt&#39;, &#39;@nytimes&#39;, &#39;@jimgorman&#39;, &#39;@cslnyt&#39;, &#39;@RebeccaRotert&#39;, &#39;@paula_span&#39;, &#39;@NYTmag&#39;, &#39;@celiadugger&#39;, &#39;@sangerkatz&#39;, &#39;@CDCgov&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@nytopinion&#39;, &#39;@celiadugger&#39;, &#39;@bcsolomon&#39;, &#39;@reddit&#39;, &#39;@nytDeniseGrady&#39;, &#39;@cslnyt&#39;, &#39;@nytDeniseGrady&#39;, &#39;@celiadugger&#39;, &#39;@nytDeniseGrady&#39;, &#39;@ginakolata&#39;, &#39;@sbkaufman&#39;, &#39;@jonathanweisman&#39;, &#39;@paula_span&#39;, &#39;@PamBelluck&#39;, &#39;@bcsolomon&#39;, &#39;@jswatz&#39;, &#39;@nytrosenthal&#39;, &#39;@nytimeswell&#39;, &#39;@rickgladstone&#39;, &#39;@UNICEF&#39;, &#39;@nytimesscience&#39;, &#39;@carlzimmer&#39;, &#39;@NYTNow&#39;, &#39;@sangerkatz&#39;, &#39;@UpshotNYT&#39;, &#39;@celiadugger&#39;, &#39;@Jeffdelviscio&#39;, &#39;@nytDeniseGrady&#39;, &#39;@sherifink&#39;, &#39;@jimdao&#39;, &#39;@lpolgreen&#39;, &#39;@kerrimac&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@nytDeniseGrady&#39;, &#39;@Jeffdelviscio&#39;, &#39;@nytimes&#39;, &#39;@bcsolomon&#39;, &#39;@lpolgreen&#39;, &#39;@nytDeniseGrady&#39;, &#39;@ReedAbelson&#39;, &#39;@RachelAbramsNY&#39;, &#39;@bcsolomon&#39;, &#39;@bcsolomon&#39;, &#39;@nytimesscience&#39;, &#39;@fedira&#39;, &#39;@WHO&#39;, &#39;@jimdao&#39;, &#39;@nytDeniseGrady&#39;, &#39;@celiadugger&#39;, &#39;@carlzimmer&#39;, &#39;@nytimes&#39;, &#39;@bcsolomon&#39;, &#39;@heathertal&#39;, &#39;@bcsolomon&#39;, &#39;@nycscribe&#39;, &#39;@celiadugger&#39;, &#39;@nickconfessore&#39;, &#39;@deanbaquet&#39;, &#39;@davjolly&#39;, &#39;@nytDeniseGrady&#39;, &#39;@cslnyt&#39;, &#39;@DrFriedenCDC&#39;, &#39;@sangerkatz&#39;, &#39;@jswatz&#39;, &#39;@eckholm&#39;, &#39;@celiadugger&#39;, &#39;@jimdao&#39;, &#39;@cslnyt&#39;, &#39;@UpshotNYT&#39;, &#39;@nytDeniseGrady&#39;, &#39;@GretchenReynold&#39;, &#39;@rickgladstone&#39;, &#39;@stavernise&#39;, &#39;@UpshotNYT&#39;, &#39;@MonkovicNYT&#39;, &#39;@ReedAbelson&#39;, &#39;@UpshotNYT&#39;, &#39;@sangerkatz&#39;, &#39;@ReedAbelson&#39;, &#39;@nytrosenthal&#39;, &#39;@paula_span&#39;, &#39;@PamBelluck&#39;, &#39;@charlesornstein&#39;, &#39;@celiadugger&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@MarthaRShulman&#39;, &#39;@_Waterwhispers_&#39;, &#39;@GentleWhisperin&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@MarthaRShulman&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@StateDept&#39;, &#39;@cslnyt&#39;, &#39;@anemonanyc&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@anemonanyc&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@judith_graham&#39;, &#39;@celiadugger&#39;, &#39;@deborahblum&#39;, &#39;@theleechguy&#39;, &#39;@nytimeshealth&#39;, &#39;@celiadugger&#39;, &#39;@blaineharden&#39;, &#39;@deborahblum&#39;, &#39;@paula_span&#39;, &#39;@nytopinion&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@NitaLowey&#39;, &#39;@paula_span&#39;, &#39;@MartinSmithEdit&#39;, &#39;@damiencave&#39;, &#39;@sherylstolberg&#39;, &#39;@celiadugger&#39;, &#39;@abbygoodnough&#39;, &#39;@jtaylornyt&#39;, &#39;@celiadugger&#39;, &#39;@nytdenisegrady&#39;, &#39;@GretchenReynold&#39;, &#39;@MarthaRShulman&#39;, &#39;@JanHoffmanNYT&#39;, &#39;@MarthaRShulman&#39;, &#39;@nytimesscience&#39;, &#39;@palafo&#39;, &#39;@cslnyt&#39;, &#39;@alanschwarz&#39;, &#39;@jtaylornyt&#39;, &#39;@sargoll&#39;, &#39;@liamstack&#39;, &#39;@Jeffdelviscio&#39;, &#39;@croakeyblog&#39;, &#39;@jo_m_chandler&#39;, &#39;@DoctorYasmin&#39;, &#39;@DoctorYasmin&#39;, &#39;@heathertal&#39;, &#39;@paula_span&#39;, &#39;@deborahblum&#39;, &#39;@nytimeshealth&#39;, &#39;@MarthaRShulman&#39;, &#39;@UpshotNYT&#39;, &#39;@celiadugger&#39;, &#39;@David_Dobbs&#39;, &#39;@albertsun&#39;, &#39;@paula_span&#39;, &#39;@nytimeswell&#39;, &#39;@cslnyt&#39;, &#39;@greenhousenyt&#39;, &#39;@bydanielvictor&#39;, &#39;@cslnyt&#39;, &#39;@GardinerHarris&#39;, &#39;@markoff&#39;, &#39;@nytimes&#39;, &#39;@GardinerHarris&#39;, &#39;@lpolgreen&#39;, &#39;@gardinerharris&#39;, &#39;@lpolgreen&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@Suzannedaley&#39;, &#39;@deborahblum&#39;, &#39;@suleikajaouad&#39;, &#39;@nytimes&#39;, &#39;@celiadugger&#39;, &#39;@nytopinion&#39;, &#39;@paula_span&#39;, &#39;@nytopinion&#39;, &#39;@celiadugger&#39;, &#39;@dacorc&#39;, &#39;@JanHoffmanNYT&#39;, &#39;@nytdining&#39;, &#39;@Bittman&#39;, &#39;@esung&#39;, &#39;@GabrielleGlaser&#39;, &#39;@MarthaRShulman&#39;, &#39;@tamarnyt&#39;, &#39;@celiadugger&#39;, &#39;@nytrosenthal&#39;, &#39;@nytrosenthal&#39;, &#39;@nytrosenthal&#39;, &#39;@cslnyt&#39;, &#39;@gabrielleglaser&#39;, &#39;@paula_span&#39;, &#39;@heathertal&#39;, &#39;@nytrosenthal&#39;, &#39;@nytrosenthal&#39;, &#39;@nytrosenthal&#39;, &#39;@celiadugger&#39;, &#39;@ReedAbelson&#39;, &#39;@BarryMeier&#39;, &#39;@PamBelluck&#39;, &#39;@cslnyt&#39;, &#39;@aaronecarroll&#39;, &#39;@paula_span&#39;, &#39;@nytimes&#39;, &#39;@nytDeniseGrady&#39;, &#39;@deborahblum&#39;, &#39;@nytimes&#39;, &#39;@nytvideo&#39;, &#39;@cslnyt&#39;, &#39;@adamliptak&#39;, &#39;@dacorc&#39;, &#39;@Angier58&#39;, &#39;@aaroncarroll&#39;, &#39;@UpshotNYT&#39;, &#39;@jessbidgood&#39;, &#39;@PPact&#39;, &#39;@celiadugger&#39;, &#39;@PamBelluck&#39;, &#39;@eckholm&#39;, &#39;@WilliamJBroad&#39;, &#39;@jswatz&#39;, &#39;@cslnyt&#39;, &#39;@David_Dobbs&#39;, &#39;@nytimes&#39;, &#39;@NYTmag&#39;, &#39;@anahadoconnor&#39;, &#39;@cslnyt&#39;, &#39;@michaelroston&#39;, &#39;@WilliamJBroad&#39;, &#39;@PamBelluck&#39;, &#39;@PamBelluck&#39;, &#39;@wnyc&#39;, &#39;@LeonardLopate&#39;, &#39;@WilliamJBroad&#39;, &#39;@paula_span&#39;, &#39;@anahadoconnor&#39;, &#39;@JanHoffmanNYT&#39;, &#39;@grynbaum&#39;, &#39;@JulietMacur&#39;, &#39;@celiadugger&#39;, &#39;@PatcohenNYT&#39;, &#39;@hellofromcath&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@TheNewOldAge&#39;, &#39;@ginakolata&#39;, &#39;@WilliamJBroad&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@jessemckinley&#39;, &#39;@PamBelluck&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@JessicaZitter&#39;, &#39;@halbfinger&#39;, &#39;@jessemckinley&#39;, &#39;@albertsun&#39;, &#39;@mollywood&#39;, &#39;@celiadugger&#39;, &#39;@ronicaryn&#39;, &#39;@anahadoconnor&#39;, &#39;@paula_span&#39;, &#39;@PamBelluck&#39;, &#39;@NYTMotherlode&#39;, &#39;@celiadugger&#39;, &#39;@SophieEganNYT&#39;, &#39;@nytimeswell&#39;, &#39;@anahadoconnor&#39;, &#39;@SophieEganNYT&#39;, &#39;@PamBelluck&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@realjohngreen&#39;, &#39;@ReedAbelson&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@anahadoconnor&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@ReedAbelson&#39;, &#39;@nytDeniseGrady&#39;, &#39;@paula_span&#39;, &#39;@janegross&#39;, &#39;@nytDeniseGrady&#39;, &#39;@paula_span&#39;, &#39;@nytDeniseGrady&#39;, &#39;@celiadugger&#39;, &#39;@nytimes&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@ReedAbelson&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@PerriKlass&#39;, &#39;@ReedAbelson&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@DoctorpaulMD&#39;, &#39;@nytDeniseGrady&#39;, &#39;@cslnyt&#39;, &#39;@jimgorman&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@KarenBBarrow&#39;, &#39;@nytimes&#39;, &#39;@celiadugger&#39;, &#39;@bencareynyt&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@nytdenisegra&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@NIH&#39;, &#39;@ronicaryn&#39;, &#39;@celiadugger&#39;, &#39;@anahadoconnor&#39;, &#39;@cslnyt&#39;, &#39;@anahadoconnor&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@nytDeniseGrady&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@UMNews&#39;, &#39;@GretchenReynold&#39;, &#39;@cslnyt&#39;, &#39;@GretchenReynold&#39;, &#39;@albertsun&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@ronicaryn&#39;, &#39;@cslnyt&#39;, &#39;@stavernise&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@WHO&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@amy_harmon&#39;, &#39;@cslnyt&#39;, &#39;@RenskevanWijk&#39;, &#39;@celiadugger&#39;, &#39;@taraparkerpope&#39;, &#39;@anahadoconnor&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@nytrosenthal&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@taraparkerpope&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@nytd&#39;, &#39;@paula_span&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@cslnyt&#39;, &#39;@TheLancet&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@bencareynyt&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@GretchenReynold&#39;, &#39;@cslnyt&#39;, &#39;@sarahcnyt&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@NIH&#39;, &#39;@nytDeniseGrady&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@stavernise&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@ronicaryn&#39;, &#39;@UPenn&#39;, &#39;@Princeton&#39;, &#39;@ronicaryn&#39;, &#39;@nytimes&#39;, &#39;@kesselheim&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@AmerAcadPeds&#39;, &#39;@TobaccoFreeKids&#39;, &#39;@cslnyt&#39;, &#39;@abbyellin&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@stavernise&#39;, &#39;@anahadoconnor&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@susanjaffe&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@nytDeniseGrady&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@mrichtel&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@ronicaryn&#39;, &#39;@cslnyt&#39;, &#39;@PamBelluck&#39;, &#39;@GretchenReynold&#39;, &#39;@ronicaryn&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@JanHoffmanNYT&#39;, &#39;@StevenPetrow&#39;, &#39;@paula_span&#39;, &#39;@paulinechen&#39;, &#39;@nytimeswell&#39;, &#39;@SophieEganNYT&#39;, &#39;@nytimeswell&#39;, &#39;@GretchenReynold&#39;, &#39;@albertsun&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@amy_harmon&#39;, &#39;@KassieBracken&#39;, &#39;@KassieBracken&#39;, &#39;@amy_harmon&#39;, &#39;@cslnyt&#39;, &#39;@GretchenReynold&#39;, &#39;@albertsun&#39;, &#39;@cslnyt&#39;, &#39;@anahadoconnor&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@ginakolata&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@nytDeniseGrady&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@stavernise&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@nejm&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@Jeffdelviscio&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@cslnyt&#39;, &#39;@ASPCA&#39;, &#39;@cslnyt&#39;, &#39;@jshenkin&#39;, &#39;@ADANews&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@ADANews&#39;, &#39;@celiadugger&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@paula_span&#39;, &#39;@nytDeniseGrady&#39;, &#39;@paula_span&#39;, &#39;@pewresearch&#39;, &#39;@nytDeniseGrady&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@nytDeniseGrady&#39;, &#39;@ginakolata&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@nytDeniseGrady&#39;, &#39;@paula_span&#39;, &#39;@nytimes&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@nytDeniseGrady&#39;, &#39;@cslnyt&#39;, &#39;@bencareynyt&#39;, &#39;@nytDeniseGrady&#39;, &#39;@PamBelluck&#39;, &#39;@cslnyt&#39;, &#39;@anahadoconnor&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@newoldage&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@nytdining&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@PamBelluck&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@PerriKlass&#39;, &#39;@nytDeniseGrady&#39;, &#39;@paula_span&#39;, &#39;@judith_graham&#39;, &#39;@anahadoconnor&#39;, &#39;@anahadoconnor&#39;, &#39;@taraparkerpope&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@taraparkerpo&#39;, &#39;@ginakolata&#39;, &#39;@cslnyt&#39;, &#39;@anahadoconnor&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@anahadoconnor&#39;, &#39;@cslnyt&#39;, &#39;@stavernise&#39;, &#39;@anahadoconnor&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@nytdenisegrady&#39;, &#39;@cslnyt&#39;, &#39;@car&#39;, &#39;@celiadugger&#39;, &#39;@Jeffdelviscio&#39;, &#39;@carlzimmer&#39;, &#39;@celiadugger&#39;, &#39;@JaneBrody&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@tirosenberg&#39;, &#39;@GretchenReynold&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@nytimeswell&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@ronicaryn&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@PamBelluck&#39;, &#39;@cslnyt&#39;, &#39;@nytrosenthal&#39;, &#39;@paula_span&#39;, &#39;@ginakolata&#39;, &#39;@DQuenqua&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@nytimeswell&#39;, &#39;@celiadugger&#39;, &#39;@ronicaryn&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@PamBelluck&#39;, &#39;@anahadoconnor&#39;, &#39;@cslnyt&#39;, &#39;@bencareynyt&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@judith_graham&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@judith_graham&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@PamBelluck&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@PamBelluck&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@janegross&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytDeniseGrady&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@abbygoodnough&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@stavernise&#39;, &#39;@nytimes&#39;, &#39;@verizon&#39;, &#39;@nytimeswell&#39;, &#39;@verizon&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@verizon&#39;, &#39;@celiadugger&#39;, &#39;@BarryMeier&#39;, &#39;@celiadugger&#39;, &#39;@ginakolata&#39;, &#39;@nytimes&#39;, &#39;@dacorc&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytimes&#39;, &#39;@dacorc&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@ginakolata&#39;, &#39;@cslnyt&#39;, &#39;@KJDellAntonia&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@abbygoodnough&#39;, &#39;@paula_span&#39;, &#39;@nytimeswell&#39;, &#39;@cslnyt&#39;, &#39;@nytDeniseGrady&#39;, &#39;@GretchenReynold&#39;, &#39;@celiadugger&#39;, &#39;@paula_span&#39;, &#39;@magiorNYT&#39;, &#39;@nytdenisegrady&#39;, &#39;@celiadugger&#39;, &#39;@nytimes&#39;, &#39;@suleikajaouad&#39;, &#39;@ginakolata&#39;, &#39;@cslnyt&#39;, &#39;@ginakolata&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@susanjaffe&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@suleikajaouad&#39;, &#39;@PamBelluck&#39;, &#39;@PamBelluck&#39;, &#39;@nytimeswell&#39;, &#39;@nytimeswell&#39;, &#39;@nytimeswell&#39;, &#39;@newsemmys&#39;, &#39;@ApothecaCanada&#39;, &#39;@nytimeshealth&#39;, &#39;@bstrauch&#39;, &#39;@SophieEganNYT&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@nytrosenthal&#39;, &#39;@paula_span&#39;, &#39;@PamBelluck&#39;, &#39;@paula_span&#39;, &#39;@PerriKlass&#39;, &#39;@taraparkerpope&#39;, &#39;@PerriKlass&#39;, &#39;@cslnyt&#39;, &#39;@bstrauch&#39;, &#39;@GretchenReynold&#39;, &#39;@Got_Next&#39;, &#39;@nytimes&#39;, &#39;@nyvinnie&#39;, &#39;@nytimes&#39;, &#39;@bstrauch&#39;, &#39;@nytimes&#39;, &#39;@brewcitypaul&#39;, &#39;@nytimeswell&#39;, &#39;@KarenBBarrow&#39;, &#39;@nytimeswell&#39;, &#39;@paula_span&#39;, &#39;@bstrauch&#39;, &#39;@nytimeswell&#39;, &#39;@cslnyt&#39;, &#39;@AAEnews&#39;, &#39;@ADANews&#39;, &#39;@Smile4Health&#39;, &#39;@nytimeswell&#39;, &#39;@cslnyt&#39;, &#39;@nytimeswell&#39;, &#39;@bstrauch&#39;, &#39;@carlzimmer&#39;, &#39;@paula_span&#39;, &#39;@bstrauch&#39;, &#39;@gardinerharris&#39;, &#39;@bstrauch&#39;, &#39;@cslnyt&#39;, &#39;@bstrauch&#39;, &#39;@bstrauch&#39;, &#39;@gretchenreynolds&#39;, &#39;@suleikajaouad&#39;, &#39;@cslnyt&#39;, &#39;@GretchenReynold&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@ADHADOTORG&#39;, &#39;@theNCI&#39;, &#39;@UTHealth&#39;, &#39;@PerriKlass&#39;, &#39;@paula_span&#39;, &#39;@PerriKlass&#39;, &#39;@cslnyt&#39;, &#39;@ProfEmilyOster&#39;, &#39;@nytimesscience&#39;, &#39;@cslnyt&#39;, &#39;@anahadoconnor&#39;, &#39;@bstrauch&#39;, &#39;@bstrauch&#39;, &#39;@henryfountain&#39;, &#39;@cslnyt&#39;, &#39;@patinamiller&#39;, &#39;@PippinMusical&#39;, &#39;@deborahblum&#39;, &#39;@patinamiller&#39;, &#39;@mfisherfitness&#39;, &#39;@paula_span&#39;, &#39;@danielleofri&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@SophieEganNYT&#39;, &#39;@bstrauch&#39;, &#39;@bstrauch&#39;, &#39;@joyce_wadler&#39;, &#39;@cslnyt&#39;, &#39;@anahadoconnor&#39;, &#39;@Dermdoc&#39;, &#39;@nytimeshealth&#39;, &#39;@paula_span&#39;, &#39;@bstrauch&#39;, &#39;@cslnyt&#39;, &#39;@bstrauch&#39;, &#39;@jmgorman&#39;, &#39;@cslnyt&#39;, &#39;@stavernise&#39;, &#39;@JaneBrody&#39;, &#39;@cslnyt&#39;, &#39;@paula_span&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@SophieEganNYT&#39;, &#39;@cslnyt&#39;, &#39;@StevenPetrow&#39;, &#39;@nytimeswell&#39;, &#39;@cslnyt&#39;, &#39;@taraparkerpope&#39;, &#39;@celiadugger&#39;, &#39;@stavernise&#39;, &#39;@cslnyt&#39;, &#39;@HannaIngber&#39;, &#39;@nytimeshealth&#39;, &#39;@cslnyt&#39;, &#39;@PamelaPaulNYT&#39;, &#39;@KarenBBarrow&#39;, &#39;@cslnyt&#39;, &#39;@taraparker&#39;, &#39;@paula_span&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@celiadugger&#39;, &#39;@danielleofri&#39;, &#39;@SophieEganNYT&#39;, &#39;@stavernise&#39;, &#39;@RoniCaryn&#39;, &#39;@ronicaryn&#39;, &#39;@paula_span&#39;, &#39;@PamBelluck&#39;, &#39;@GretchenReynold&#39;, &#39;@RoniCaryn&#39;, &#39;@paula_span&#39;, &#39;@ronicaryn&#39;, &#39;@anahadoconnor&#39;, &#39;@ginakolata&#39;, &#39;@paula_span&#39;, &#39;@SophieEganNYT&#39;, &#39;@emilymbadger&#39;, &#39;@MarthaRShulman&#39;, &#39;@JaneBrody&#39;, &#39;@nytimeswell&#39;, &#39;@ginakolata&#39;, &#39;@celiadugger&#39;, &#39;@DiscoverMag&#39;, &#39;@paula_span&#39;, &#39;@judith_graham&#39;, &#39;@bstrauch&#39;, &#39;@ginakolata&#39;, &#39;@ginakolata&#39;, &#39;@bstrauch&#39;, &#39;@ginakolata&#39;, &#39;@paula_span&#39;, &#39;@JaneBrody&#39;, &#39;@cslnyt&#39;, &#39;@anahadoconnor&#39;, &#39;@cslnyt&#39;, &#39;@ShirleySWangWSJ&#39;, &#39;@stavernise&#39;, &#39;@cslnyt&#39;, &#39;@nytimeswell&#39;, &#39;@nytimeswell&#39;, &#39;@JaneBrody&#39;, &#39;@cslnyt&#39;, &#39;@BarryMeier&#39;, &#39;@taraparkerpope&#39;, &#39;@suleikajaouad&#39;, &#39;@NatGeo&#39;, &#39;@bstrauch&#39;, &#39;@GretchenReynolds&#39;, &#39;@Pogue&#39;, &#39;@JaneBrody&#39;, &#39;@DQuenqua&#39;, &#39;@PamBelluck&#39;, &#39;@PamBelluck&#39;, &#39;@celiadugger&#39;, &#39;@MarthaRShulman&#39;, &#39;@cslnyt&#39;, &#39;@TorontoStar&#39;, &#39;@nytimesscience&#39;, &#39;@andrewscrivani&#39;, &#39;@WSJ&#39;, &#39;@WSJ&#39;, &#39;@KomenfortheCure&#39;, &#39;@bstrauch&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@ginakolata&#39;, &#39;@dawnlerman&#39;, &#39;@GretchenReynold&#39;, &#39;@BarryMeier&#39;, &#39;@ginakolata&#39;, &#39;@PerriKlass&#39;, &#39;@cslnyt&#39;, &#39;@celiadugger&#39;, &#39;@ginakolata&#39;, &#39;@nytimeswell&#39;, &#39;@nytimeswell&#39;, &#39;@nytimeswell&#39;, &#39;@nyti&#39;, &#39;@ginakolata&#39;, &#39;@KarenBBarrow&#39;, &#39;@nytimeswell&#39;, &#39;@BarryMeier&#39;, &#39;@nytimeswell&#39;, &#39;@RobertSturman&#39;, &#39;@celiadugger&#39;, &#39;@suleikajaouad&#39;, &#39;@yoshaylaharris&#39;, &#39;@celiadugger&#39;, &#39;@cslnyt&#39;, &#39;@JanHoffmanNYT&#39;, &#39;@todayshow&#39;, &#39;@cslnyt&#39;, &#39;@brianfidelman&#39;, &#39;@beccanalia&#39;, &#39;@celiadugger&#39;, &#39;@GretchenReynold&#39;, &#39;@celiadugger&#39;, &#39;@ronicaryn&#39;, &#39;@cslnyt&#39;, &#39;@AADskin&#39;, &#39;@KarenBBarrow&#39;, &#39;@anahadoconnor&#39;, &#39;@suleikajaouad&#39;, &#39;@byJenAMiller&#39;, &#39;@nytDeniseGrady&#39;, &#39;@taraparkerpope&#39;, &#39;@taraparkerpope&#39;, &#39;@zabmaria&#39;, &#39;@amy_harmon&#39;, &#39;@MarthaRShulman&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@nytimeswell&#39;, &#39;@GretchenReynold&#39;, &#39;@GretchenReynold&#39;, &#39;@brianfidelman&#39;, &#39;@NYBG&#39;, &#39;@PamBelluck&#39;, &#39;@UNCDentistry&#39;, &#39;@nytimeshealth&#39;, &#39;@paulinechen&#39;, &#39;@cslnyt&#39;, &#39;@cslnyt&#39;, &#39;@taraparkerpope&#39;, &#39;@KarenBBarrow&#39;, &#39;@suleikajaouad&#39;, &#39;@nytimeswell&#39;, &#39;@GretchenReynold&#39;, &#39;@PamBelluck&#39;, &#39;@nytimesscience&#39;, &#39;@cslnyt&#39;, &#39;@henryfountain&#39;, &#39;@GretchenReynold&#39;, &#39;@MikkaelSekeres&#39;, &#39;@GretchenReynold&#39;, &#39;@ginakolata&#39;, &#39;@GretchenReynold&#39;, &#39;@GretchenReynold&#39;, &#39;@nytimesscience&#39;, &#39;@nytimes&#39;, &#39;@KarenBBarrow&#39;, &#39;@taraparkerpope&#39;, &#39;@suleikajaouad&#39;, &#39;@suleikajaouad&#39;, &#39;@taraparkerpope&#39;, &#39;@PaulineChen&#39;, &#39;@GretchenReynold&#39;, &#39;@DiscoverMag&#39;, &#39;@nytDeniseGrady&#39;, &#39;@nytimes&#39;, &#39;@stavernise&#39;, &#39;@GretchenReynold&#39;, &#39;@nytimes&#39;, &#39;@GretchenReynold&#39;, &#39;@perriklass&#39;, &#39;@PamBelluck&#39;, &#39;@PamBelluck&#39;, &#39;@cslnyt&#39;, &#39;@PamBelluck&#39;, &#39;@NY4P&#39;, &#39;@highlinenyc&#39;, &#39;@nytimeswell&#39;, &#39;@brianfidelman&#39;, &#39;@GretchenReynold&#39;, &#39;@dacorc&#39;, &#39;@mary_roach&#39;, &#39;@mary_roach&#39;, &#39;@TheDailyShow&#39;, &#39;@nytimesvideo&#39;]</code></pre>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb145"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" tabindex="-1"></a><span class="co"># multiple experiments</span></span>
+<span id="cb145-2"><a href="#cb145-2" tabindex="-1"></a><span class="co"># re.findall(&quot;(\w+ \w+ \d+)(.*@\w+)&quot;, health)</span></span>
+<span id="cb145-3"><a href="#cb145-3" tabindex="-1"></a><span class="co"># re.findall(&quot;(\w+ \w+ \d+)(?=.*@\w+)&quot;, health)</span></span>
+<span id="cb145-4"><a href="#cb145-4" tabindex="-1"></a><span class="co"># re.findall(&quot;(\w{3} \w{3} \d+)(?=.*@\w+)&quot;, health)</span></span>
+<span id="cb145-5"><a href="#cb145-5" tabindex="-1"></a>re.findall(<span class="st">&quot;(?&lt;=\|)(\w</span><span class="sc">{3}</span><span class="st"> \w</span><span class="sc">{3}</span><span class="st"> \d+)(?=.*@\w+)&quot;</span>, health)</span></code></pre></div>
+<pre><code>## [&#39;Fri Dec 26&#39;, &#39;Wed Dec 24&#39;, &#39;Wed Dec 24&#39;, &#39;Tue Dec 23&#39;, &#39;Mon Dec 22&#39;, &#39;Tue Dec 16&#39;, &#39;Mon Dec 15&#39;, &#39;Thu Dec 11&#39;, &#39;Thu Dec 11&#39;, &#39;Thu Dec 11&#39;, &#39;Thu Dec 11&#39;, &#39;Wed Dec 10&#39;, &#39;Wed Dec 10&#39;, &#39;Tue Dec 09&#39;, &#39;Tue Dec 09&#39;, &#39;Tue Dec 09&#39;, &#39;Mon Dec 08&#39;, &#39;Thu Dec 04&#39;, &#39;Thu Dec 04&#39;, &#39;Thu Dec 04&#39;, &#39;Tue Dec 02&#39;, &#39;Tue Dec 02&#39;, &#39;Mon Dec 01&#39;, &#39;Mon Dec 01&#39;, &#39;Mon Dec 01&#39;, &#39;Fri Nov 28&#39;, &#39;Wed Nov 26&#39;, &#39;Wed Nov 26&#39;, &#39;Wed Nov 26&#39;, &#39;Wed Nov 26&#39;, &#39;Tue Nov 25&#39;, &#39;Mon Nov 24&#39;, &#39;Mon Nov 24&#39;, &#39;Mon Nov 24&#39;, &#39;Fri Nov 21&#39;, &#39;Fri Nov 21&#39;, &#39;Thu Nov 20&#39;, &#39;Thu Nov 20&#39;, &#39;Thu Nov 20&#39;, &#39;Wed Nov 19&#39;, &#39;Wed Nov 19&#39;, &#39;Tue Nov 18&#39;, &#39;Tue Nov 18&#39;, &#39;Tue Nov 18&#39;, &#39;Mon Nov 17&#39;, &#39;Mon Nov 17&#39;, &#39;Mon Nov 17&#39;, &#39;Mon Nov 17&#39;, &#39;Mon Nov 17&#39;, &#39;Fri Nov 14&#39;, &#39;Fri Nov 14&#39;, &#39;Tue Nov 11&#39;, &#39;Fri Nov 07&#39;, &#39;Fri Nov 07&#39;, &#39;Thu Nov 06&#39;, &#39;Tue Nov 04&#39;, &#39;Fri Oct 31&#39;, &#39;Thu Oct 30&#39;, &#39;Thu Oct 30&#39;, &#39;Wed Oct 29&#39;, &#39;Mon Oct 27&#39;, &#39;Mon Oct 27&#39;, &#39;Mon Oct 27&#39;, &#39;Mon Oct 27&#39;, &#39;Mon Oct 27&#39;, &#39;Mon Oct 27&#39;, &#39;Mon Oct 27&#39;, &#39;Sun Oct 26&#39;, &#39;Sat Oct 25&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Fri Oct 24&#39;, &#39;Thu Oct 23&#39;, &#39;Wed Oct 22&#39;, &#39;Wed Oct 22&#39;, &#39;Wed Oct 22&#39;, &#39;Wed Oct 22&#39;, &#39;Wed Oct 22&#39;, &#39;Wed Oct 22&#39;, &#39;Wed Oct 22&#39;, &#39;Tue Oct 21&#39;, &#39;Tue Oct 21&#39;, &#39;Tue Oct 21&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Mon Oct 20&#39;, &#39;Sat Oct 18&#39;, &#39;Fri Oct 17&#39;, &#39;Fri Oct 17&#39;, &#39;Fri Oct 17&#39;, &#39;Fri Oct 17&#39;, &#39;Fri Oct 17&#39;, &#39;Fri Oct 17&#39;, &#39;Fri Oct 17&#39;, &#39;Fri Oct 17&#39;, &#39;Fri Oct 17&#39;, &#39;Thu Oct 16&#39;, &#39;Thu Oct 16&#39;, &#39;Thu Oct 16&#39;, &#39;Thu Oct 16&#39;, &#39;Thu Oct 16&#39;, &#39;Thu Oct 16&#39;, &#39;Thu Oct 16&#39;, &#39;Thu Oct 16&#39;, &#39;Thu Oct 16&#39;, &#39;Thu Oct 16&#39;, &#39;Wed Oct 15&#39;, &#39;Wed Oct 15&#39;, &#39;Wed Oct 15&#39;, &#39;Wed Oct 15&#39;, &#39;Wed Oct 15&#39;, &#39;Tue Oct 14&#39;, &#39;Tue Oct 14&#39;, &#39;Sun Oct 12&#39;, &#39;Sat Oct 11&#39;, &#39;Fri Oct 10&#39;, &#39;Wed Oct 08&#39;, &#39;Wed Oct 08&#39;, &#39;Wed Oct 08&#39;, &#39;Wed Oct 08&#39;, &#39;Wed Oct 08&#39;, &#39;Wed Oct 08&#39;, &#39;Wed Oct 08&#39;, &#39;Wed Oct 08&#39;, &#39;Wed Oct 08&#39;, &#39;Wed Oct 08&#39;, &#39;Tue Oct 07&#39;, &#39;Tue Oct 07&#39;, &#39;Tue Oct 07&#39;, &#39;Tue Oct 07&#39;, &#39;Mon Oct 06&#39;, &#39;Mon Oct 06&#39;, &#39;Mon Oct 06&#39;, &#39;Mon Oct 06&#39;, &#39;Mon Oct 06&#39;, &#39;Mon Oct 06&#39;, &#39;Mon Oct 06&#39;, &#39;Mon Oct 06&#39;, &#39;Mon Oct 06&#39;, &#39;Mon Oct 06&#39;, &#39;Fri Oct 03&#39;, &#39;Fri Oct 03&#39;, &#39;Fri Oct 03&#39;, &#39;Fri Oct 03&#39;, &#39;Fri Oct 03&#39;, &#39;Fri Oct 03&#39;, &#39;Fri Oct 03&#39;, &#39;Fri Oct 03&#39;, &#39;Fri Oct 03&#39;, &#39;Thu Oct 02&#39;, &#39;Thu Oct 02&#39;, &#39;Thu Oct 02&#39;, &#39;Thu Oct 02&#39;, &#39;Thu Oct 02&#39;, &#39;Wed Oct 01&#39;, &#39;Wed Oct 01&#39;, &#39;Wed Oct 01&#39;, &#39;Tue Sep 30&#39;, &#39;Tue Sep 30&#39;, &#39;Tue Sep 30&#39;, &#39;Tue Sep 30&#39;, &#39;Tue Sep 30&#39;, &#39;Tue Sep 30&#39;, &#39;Tue Sep 30&#39;, &#39;Sun Sep 28&#39;, &#39;Fri Sep 26&#39;, &#39;Fri Sep 26&#39;, &#39;Fri Sep 26&#39;, &#39;Thu Sep 25&#39;, &#39;Thu Sep 25&#39;, &#39;Thu Sep 25&#39;, &#39;Wed Sep 24&#39;, &#39;Tue Sep 23&#39;, &#39;Mon Sep 22&#39;, &#39;Mon Sep 22&#39;, &#39;Fri Sep 19&#39;, &#39;Fri Sep 19&#39;, &#39;Fri Sep 19&#39;, &#39;Fri Sep 19&#39;, &#39;Fri Sep 19&#39;, &#39;Fri Sep 19&#39;, &#39;Thu Sep 18&#39;, &#39;Thu Sep 18&#39;, &#39;Thu Sep 18&#39;, &#39;Wed Sep 17&#39;, &#39;Wed Sep 17&#39;, &#39;Wed Sep 17&#39;, &#39;Wed Sep 17&#39;, &#39;Wed Sep 17&#39;, &#39;Wed Sep 17&#39;, &#39;Wed Sep 17&#39;, &#39;Wed Sep 17&#39;, &#39;Tue Sep 16&#39;, &#39;Tue Sep 16&#39;, &#39;Tue Sep 16&#39;, &#39;Tue Sep 16&#39;, &#39;Tue Sep 16&#39;, &#39;Fri Sep 12&#39;, &#39;Thu Sep 11&#39;, &#39;Thu Sep 11&#39;, &#39;Thu Sep 11&#39;, &#39;Thu Sep 11&#39;, &#39;Thu Sep 11&#39;, &#39;Thu Sep 11&#39;, &#39;Wed Sep 10&#39;, &#39;Wed Sep 10&#39;, &#39;Wed Sep 10&#39;, &#39;Wed Sep 10&#39;, &#39;Wed Sep 10&#39;, &#39;Tue Sep 09&#39;, &#39;Tue Sep 09&#39;, &#39;Tue Sep 09&#39;, &#39;Tue Sep 09&#39;, &#39;Tue Sep 09&#39;, &#39;Tue Sep 09&#39;, &#39;Mon Sep 08&#39;, &#39;Fri Sep 05&#39;, &#39;Fri Sep 05&#39;, &#39;Fri Sep 05&#39;, &#39;Fri Sep 05&#39;, &#39;Thu Sep 04&#39;, &#39;Thu Sep 04&#39;, &#39;Thu Sep 04&#39;, &#39;Wed Sep 03&#39;, &#39;Wed Sep 03&#39;, &#39;Wed Sep 03&#39;, &#39;Wed Sep 03&#39;, &#39;Wed Sep 03&#39;, &#39;Tue Sep 02&#39;, &#39;Tue Sep 02&#39;, &#39;Tue Sep 02&#39;, &#39;Tue Sep 02&#39;, &#39;Tue Sep 02&#39;, &#39;Tue Sep 02&#39;, &#39;Mon Sep 01&#39;, &#39;Fri Aug 29&#39;, &#39;Thu Aug 28&#39;, &#39;Thu Aug 28&#39;, &#39;Thu Aug 28&#39;, &#39;Thu Aug 28&#39;, &#39;Thu Aug 28&#39;, &#39;Thu Aug 28&#39;, &#39;Thu Aug 28&#39;, &#39;Wed Aug 27&#39;, &#39;Wed Aug 27&#39;, &#39;Wed Aug 27&#39;, &#39;Wed Aug 27&#39;, &#39;Tue Aug 26&#39;, &#39;Mon Aug 25&#39;, &#39;Mon Aug 25&#39;, &#39;Mon Aug 25&#39;, &#39;Sun Aug 24&#39;, &#39;Sat Aug 23&#39;, &#39;Sat Aug 23&#39;, &#39;Fri Aug 22&#39;, &#39;Fri Aug 22&#39;, &#39;Thu Aug 21&#39;, &#39;Thu Aug 21&#39;, &#39;Thu Aug 21&#39;, &#39;Thu Aug 21&#39;, &#39;Wed Aug 20&#39;, &#39;Tue Aug 19&#39;, &#39;Tue Aug 19&#39;, &#39;Tue Aug 19&#39;, &#39;Tue Aug 19&#39;, &#39;Mon Aug 18&#39;, &#39;Mon Aug 18&#39;, &#39;Mon Aug 18&#39;, &#39;Mon Aug 18&#39;, &#39;Mon Aug 18&#39;, &#39;Mon Aug 18&#39;, &#39;Sun Aug 17&#39;, &#39;Sat Aug 16&#39;, &#39;Sat Aug 16&#39;, &#39;Sat Aug 16&#39;, &#39;Fri Aug 15&#39;, &#39;Fri Aug 15&#39;, &#39;Fri Aug 15&#39;, &#39;Fri Aug 15&#39;, &#39;Fri Aug 15&#39;, &#39;Thu Aug 14&#39;, &#39;Thu Aug 14&#39;, &#39;Thu Aug 14&#39;, &#39;Thu Aug 14&#39;, &#39;Thu Aug 14&#39;, &#39;Thu Aug 14&#39;, &#39;Wed Aug 13&#39;, &#39;Wed Aug 13&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Tue Aug 12&#39;, &#39;Mon Aug 11&#39;, &#39;Mon Aug 11&#39;, &#39;Mon Aug 11&#39;, &#39;Mon Aug 11&#39;, &#39;Mon Aug 11&#39;, &#39;Mon Aug 11&#39;, &#39;Mon Aug 11&#39;, &#39;Sun Aug 10&#39;, &#39;Sun Aug 10&#39;, &#39;Sun Aug 10&#39;, &#39;Sat Aug 09&#39;, &#39;Sat Aug 09&#39;, &#39;Sat Aug 09&#39;, &#39;Sat Aug 09&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Fri Aug 08&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Thu Aug 07&#39;, &#39;Wed Aug 06&#39;, &#39;Wed Aug 06&#39;, &#39;Wed Aug 06&#39;, &#39;Wed Aug 06&#39;, &#39;Wed Aug 06&#39;, &#39;Tue Aug 05&#39;, &#39;Tue Aug 05&#39;, &#39;Tue Aug 05&#39;, &#39;Tue Aug 05&#39;, &#39;Mon Aug 04&#39;, &#39;Mon Aug 04&#39;, &#39;Mon Aug 04&#39;, &#39;Mon Aug 04&#39;, &#39;Mon Aug 04&#39;, &#39;Sun Aug 03&#39;, &#39;Sat Aug 02&#39;, &#39;Sat Aug 02&#39;, &#39;Sat Aug 02&#39;, &#39;Fri Aug 01&#39;, &#39;Fri Aug 01&#39;, &#39;Fri Aug 01&#39;, &#39;Fri Aug 01&#39;, &#39;Fri Aug 01&#39;, &#39;Fri Aug 01&#39;, &#39;Fri Aug 01&#39;, &#39;Thu Jul 31&#39;, &#39;Thu Jul 31&#39;, &#39;Thu Jul 31&#39;, &#39;Wed Jul 30&#39;, &#39;Tue Jul 29&#39;, &#39;Tue Jul 29&#39;, &#39;Tue Jul 29&#39;, &#39;Fri Jul 25&#39;, &#39;Fri Jul 25&#39;, &#39;Fri Jul 25&#39;, &#39;Fri Jul 25&#39;, &#39;Thu Jul 24&#39;, &#39;Thu Jul 24&#39;, &#39;Thu Jul 24&#39;, &#39;Wed Jul 23&#39;, &#39;Tue Jul 22&#39;, &#39;Mon Jul 21&#39;, &#39;Mon Jul 21&#39;, &#39;Mon Jul 21&#39;, &#39;Mon Jul 21&#39;, &#39;Mon Jul 21&#39;, &#39;Fri Jul 18&#39;, &#39;Fri Jul 18&#39;, &#39;Fri Jul 18&#39;, &#39;Fri Jul 18&#39;, &#39;Fri Jul 18&#39;, &#39;Fri Jul 18&#39;, &#39;Fri Jul 18&#39;, &#39;Fri Jul 18&#39;, &#39;Thu Jul 17&#39;, &#39;Thu Jul 17&#39;, &#39;Thu Jul 17&#39;, &#39;Thu Jul 17&#39;, &#39;Thu Jul 17&#39;, &#39;Wed Jul 16&#39;, &#39;Wed Jul 16&#39;, &#39;Wed Jul 16&#39;, &#39;Wed Jul 16&#39;, &#39;Wed Jul 16&#39;, &#39;Mon Jul 14&#39;, &#39;Mon Jul 14&#39;, &#39;Mon Jul 14&#39;, &#39;Mon Jul 14&#39;, &#39;Mon Jul 14&#39;, &#39;Mon Jul 14&#39;, &#39;Sun Jul 13&#39;, &#39;Sun Jul 13&#39;, &#39;Sun Jul 13&#39;, &#39;Sun Jul 13&#39;, &#39;Sun Jul 13&#39;, &#39;Thu Jul 10&#39;, &#39;Thu Jul 10&#39;, &#39;Tue Jul 08&#39;, &#39;Tue Jul 08&#39;, &#39;Tue Jul 08&#39;, &#39;Tue Jul 08&#39;, &#39;Mon Jul 07&#39;, &#39;Mon Jul 07&#39;, &#39;Mon Jul 07&#39;, &#39;Mon Jul 07&#39;, &#39;Mon Jul 07&#39;, &#39;Mon Jul 07&#39;, &#39;Mon Jul 07&#39;, &#39;Mon Jul 07&#39;, &#39;Thu Jul 03&#39;, &#39;Thu Jul 03&#39;, &#39;Thu Jul 03&#39;, &#39;Thu Jul 03&#39;, &#39;Thu Jul 03&#39;, &#39;Thu Jul 03&#39;, &#39;Wed Jul 02&#39;, &#39;Wed Jul 02&#39;, &#39;Wed Jul 02&#39;, &#39;Wed Jul 02&#39;, &#39;Wed Jul 02&#39;, &#39;Tue Jul 01&#39;, &#39;Tue Jul 01&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Mon Jun 30&#39;, &#39;Fri Jun 27&#39;, &#39;Fri Jun 27&#39;, &#39;Fri Jun 27&#39;, &#39;Fri Jun 27&#39;, &#39;Fri Jun 27&#39;, &#39;Fri Jun 27&#39;, &#39;Thu Jun 26&#39;, &#39;Thu Jun 26&#39;, &#39;Thu Jun 26&#39;, &#39;Thu Jun 26&#39;, &#39;Wed Jun 25&#39;, &#39;Tue Jun 24&#39;, &#39;Tue Jun 24&#39;, &#39;Tue Jun 24&#39;, &#39;Tue Jun 24&#39;, &#39;Tue Jun 24&#39;, &#39;Tue Jun 24&#39;, &#39;Mon Jun 23&#39;, &#39;Mon Jun 23&#39;, &#39;Fri Jun 20&#39;, &#39;Fri Jun 20&#39;, &#39;Fri Jun 20&#39;, &#39;Fri Jun 20&#39;, &#39;Fri Jun 20&#39;, &#39;Thu Jun 19&#39;, &#39;Thu Jun 19&#39;, &#39;Wed Jun 18&#39;, &#39;Wed Jun 18&#39;, &#39;Tue Jun 17&#39;, &#39;Tue Jun 17&#39;, &#39;Tue Jun 17&#39;, &#39;Tue Jun 17&#39;, &#39;Mon Jun 16&#39;, &#39;Mon Jun 16&#39;, &#39;Mon Jun 16&#39;, &#39;Mon Jun 16&#39;, &#39;Mon Jun 16&#39;, &#39;Fri Jun 13&#39;, &#39;Thu Jun 12&#39;, &#39;Thu Jun 12&#39;, &#39;Wed Jun 11&#39;, &#39;Wed Jun 11&#39;, &#39;Wed Jun 11&#39;, &#39;Wed Jun 11&#39;, &#39;Tue Jun 10&#39;, &#39;Tue Jun 10&#39;, &#39;Mon Jun 09&#39;, &#39;Fri Jun 06&#39;, &#39;Fri Jun 06&#39;, &#39;Tue Jun 03&#39;, &#39;Tue Jun 03&#39;, &#39;Tue Jun 03&#39;, &#39;Tue Jun 03&#39;, &#39;Tue Jun 03&#39;, &#39;Mon Jun 02&#39;, &#39;Fri May 30&#39;, &#39;Fri May 30&#39;, &#39;Thu May 29&#39;, &#39;Tue May 27&#39;, &#39;Tue May 27&#39;, &#39;Tue May 27&#39;, &#39;Fri May 23&#39;, &#39;Thu May 22&#39;, &#39;Thu May 22&#39;, &#39;Thu May 22&#39;, &#39;Wed May 21&#39;, &#39;Wed May 21&#39;, &#39;Tue May 20&#39;, &#39;Tue May 20&#39;, &#39;Tue May 20&#39;, &#39;Tue May 20&#39;, &#39;Mon May 19&#39;, &#39;Mon May 19&#39;, &#39;Fri May 16&#39;, &#39;Thu May 15&#39;, &#39;Thu May 15&#39;, &#39;Wed May 14&#39;, &#39;Tue May 13&#39;, &#39;Tue May 13&#39;, &#39;Mon May 12&#39;, &#39;Mon May 12&#39;, &#39;Fri May 09&#39;, &#39;Fri May 09&#39;, &#39;Wed May 07&#39;, &#39;Wed May 07&#39;, &#39;Wed May 07&#39;, &#39;Tue May 06&#39;, &#39;Tue May 06&#39;, &#39;Tue May 06&#39;, &#39;Tue May 06&#39;, &#39;Mon May 05&#39;, &#39;Mon May 05&#39;, &#39;Mon May 05&#39;, &#39;Mon May 05&#39;, &#39;Mon May 05&#39;, &#39;Sun May 04&#39;, &#39;Fri May 02&#39;, &#39;Thu May 01&#39;, &#39;Wed Apr 30&#39;, &#39;Wed Apr 30&#39;, &#39;Tue Apr 29&#39;, &#39;Tue Apr 29&#39;, &#39;Mon Apr 28&#39;, &#39;Mon Apr 28&#39;, &#39;Fri Apr 25&#39;, &#39;Thu Apr 24&#39;, &#39;Thu Apr 24&#39;, &#39;Wed Apr 23&#39;, &#39;Wed Apr 23&#39;, &#39;Wed Apr 23&#39;, &#39;Wed Apr 23&#39;, &#39;Fri Apr 18&#39;, &#39;Fri Apr 18&#39;, &#39;Fri Apr 18&#39;, &#39;Thu Apr 17&#39;, &#39;Thu Apr 17&#39;, &#39;Mon Apr 14&#39;, &#39;Mon Apr 14&#39;, &#39;Fri Apr 11&#39;, &#39;Thu Apr 10&#39;, &#39;Thu Apr 10&#39;, &#39;Thu Apr 10&#39;, &#39;Wed Apr 09&#39;, &#39;Wed Apr 09&#39;, &#39;Tue Apr 08&#39;, &#39;Tue Apr 08&#39;, &#39;Tue Apr 08&#39;, &#39;Tue Apr 08&#39;, &#39;Tue Apr 08&#39;, &#39;Fri Apr 04&#39;, &#39;Thu Apr 03&#39;, &#39;Thu Apr 03&#39;, &#39;Tue Apr 01&#39;, &#39;Tue Apr 01&#39;, &#39;Tue Apr 01&#39;, &#39;Tue Apr 01&#39;, &#39;Tue Apr 01&#39;, &#39;Mon Mar 31&#39;, &#39;Mon Mar 31&#39;, &#39;Mon Mar 31&#39;, &#39;Fri Mar 28&#39;, &#39;Thu Mar 27&#39;, &#39;Wed Mar 26&#39;, &#39;Wed Mar 26&#39;, &#39;Wed Mar 26&#39;, &#39;Wed Mar 26&#39;, &#39;Tue Mar 25&#39;, &#39;Tue Mar 25&#39;, &#39;Tue Mar 25&#39;, &#39;Mon Mar 24&#39;, &#39;Mon Mar 24&#39;, &#39;Mon Mar 24&#39;, &#39;Fri Mar 21&#39;, &#39;Thu Mar 20&#39;, &#39;Thu Mar 20&#39;, &#39;Wed Mar 19&#39;, &#39;Mon Mar 17&#39;, &#39;Mon Mar 17&#39;, &#39;Fri Mar 14&#39;, &#39;Fri Mar 14&#39;, &#39;Thu Mar 13&#39;, &#39;Thu Mar 13&#39;, &#39;Wed Mar 12&#39;, &#39;Wed Mar 12&#39;, &#39;Wed Mar 12&#39;, &#39;Wed Mar 12&#39;, &#39;Wed Mar 12&#39;, &#39;Wed Mar 12&#39;, &#39;Tue Mar 11&#39;, &#39;Tue Mar 11&#39;, &#39;Tue Mar 11&#39;, &#39;Tue Mar 11&#39;, &#39;Tue Mar 11&#39;, &#39;Tue Mar 11&#39;, &#39;Tue Mar 11&#39;, &#39;Tue Mar 11&#39;, &#39;Mon Mar 10&#39;, &#39;Thu Mar 06&#39;, &#39;Thu Mar 06&#39;, &#39;Tue Mar 04&#39;, &#39;Tue Mar 04&#39;, &#39;Mon Mar 03&#39;, &#39;Mon Mar 03&#39;, &#39;Mon Mar 03&#39;, &#39;Fri Feb 28&#39;, &#39;Thu Feb 27&#39;, &#39;Wed Feb 26&#39;, &#39;Wed Feb 26&#39;, &#39;Tue Feb 25&#39;, &#39;Tue Feb 25&#39;, &#39;Mon Feb 24&#39;, &#39;Mon Feb 24&#39;, &#39;Mon Feb 24&#39;, &#39;Mon Feb 24&#39;, &#39;Fri Feb 21&#39;, &#39;Fri Feb 21&#39;, &#39;Thu Feb 20&#39;, &#39;Thu Feb 20&#39;, &#39;Thu Feb 20&#39;, &#39;Wed Feb 19&#39;, &#39;Tue Feb 18&#39;, &#39;Mon Feb 17&#39;, &#39;Fri Feb 14&#39;, &#39;Thu Feb 13&#39;, &#39;Thu Feb 13&#39;, &#39;Wed Feb 12&#39;, &#39;Wed Feb 12&#39;, &#39;Tue Feb 11&#39;, &#39;Mon Feb 10&#39;, &#39;Mon Feb 10&#39;, &#39;Fri Feb 07&#39;, &#39;Fri Feb 07&#39;, &#39;Thu Feb 06&#39;, &#39;Tue Feb 04&#39;, &#39;Tue Feb 04&#39;, &#39;Tue Feb 04&#39;, &#39;Tue Feb 04&#39;, &#39;Mon Feb 03&#39;, &#39;Mon Feb 03&#39;, &#39;Mon Feb 03&#39;, &#39;Mon Feb 03&#39;, &#39;Fri Jan 31&#39;, &#39;Tue Jan 14&#39;, &#39;Tue Jan 14&#39;, &#39;Tue Jan 14&#39;, &#39;Mon Jan 13&#39;, &#39;Mon Jan 13&#39;, &#39;Fri Jan 10&#39;, &#39;Fri Jan 10&#39;, &#39;Thu Jan 09&#39;, &#39;Thu Jan 09&#39;, &#39;Thu Jan 09&#39;, &#39;Thu Jan 09&#39;, &#39;Wed Jan 08&#39;, &#39;Wed Jan 08&#39;, &#39;Tue Jan 07&#39;, &#39;Tue Jan 07&#39;, &#39;Thu Jan 02&#39;, &#39;Thu Jan 02&#39;, &#39;Thu Dec 26&#39;, &#39;Tue Dec 24&#39;, &#39;Tue Dec 24&#39;, &#39;Mon Dec 23&#39;, &#39;Mon Dec 23&#39;, &#39;Mon Dec 23&#39;, &#39;Fri Dec 20&#39;, &#39;Fri Dec 20&#39;, &#39;Fri Dec 20&#39;, &#39;Thu Dec 19&#39;, &#39;Wed Dec 18&#39;, &#39;Wed Dec 18&#39;, &#39;Tue Dec 17&#39;, &#39;Mon Dec 16&#39;, &#39;Mon Dec 16&#39;, &#39;Fri Dec 13&#39;, &#39;Fri Dec 13&#39;, &#39;Thu Dec 12&#39;, &#39;Thu Dec 12&#39;, &#39;Wed Dec 11&#39;, &#39;Wed Dec 11&#39;, &#39;Wed Dec 11&#39;, &#39;Tue Dec 10&#39;, &#39;Tue Dec 10&#39;, &#39;Tue Dec 10&#39;, &#39;Mon Dec 09&#39;, &#39;Mon Dec 09&#39;, &#39;Mon Dec 09&#39;, &#39;Fri Dec 06&#39;, &#39;Thu Dec 05&#39;, &#39;Thu Dec 05&#39;, &#39;Thu Dec 05&#39;, &#39;Wed Dec 04&#39;, &#39;Wed Dec 04&#39;, &#39;Wed Dec 04&#39;, &#39;Tue Dec 03&#39;, &#39;Tue Dec 03&#39;, &#39;Tue Dec 03&#39;, &#39;Tue Dec 03&#39;, &#39;Tue Dec 03&#39;, &#39;Mon Dec 02&#39;, &#39;Mon Dec 02&#39;, &#39;Mon Dec 02&#39;, &#39;Mon Dec 02&#39;, &#39;Mon Dec 02&#39;, &#39;Fri Nov 29&#39;, &#39;Wed Nov 27&#39;, &#39;Wed Nov 27&#39;, &#39;Wed Nov 27&#39;, &#39;Wed Nov 27&#39;, &#39;Mon Nov 25&#39;, &#39;Thu Nov 21&#39;, &#39;Thu Nov 21&#39;, &#39;Thu Nov 21&#39;, &#39;Thu Nov 21&#39;, &#39;Thu Nov 21&#39;, &#39;Wed Nov 20&#39;, &#39;Tue Nov 19&#39;, &#39;Tue Nov 19&#39;, &#39;Tue Nov 19&#39;, &#39;Mon Nov 18&#39;, &#39;Fri Nov 15&#39;, &#39;Fri Nov 15&#39;, &#39;Thu Nov 14&#39;, &#39;Thu Nov 14&#39;, &#39;Thu Nov 14&#39;, &#39;Wed Nov 13&#39;, &#39;Tue Nov 12&#39;, &#39;Tue Nov 12&#39;, &#39;Mon Nov 11&#39;, &#39;Mon Nov 11&#39;, &#39;Mon Nov 11&#39;, &#39;Mon Nov 11&#39;, &#39;Thu Nov 07&#39;, &#39;Thu Nov 07&#39;, &#39;Wed Nov 06&#39;, &#39;Wed Nov 06&#39;, &#39;Tue Nov 05&#39;, &#39;Tue Nov 05&#39;, &#39;Tue Nov 05&#39;, &#39;Tue Nov 05&#39;, &#39;Mon Nov 04&#39;, &#39;Mon Nov 04&#39;, &#39;Fri Nov 01&#39;, &#39;Fri Nov 01&#39;, &#39;Thu Oct 31&#39;, &#39;Wed Oct 30&#39;, &#39;Tue Oct 29&#39;, &#39;Tue Oct 29&#39;, &#39;Tue Oct 29&#39;, &#39;Tue Oct 29&#39;, &#39;Mon Oct 28&#39;, &#39;Mon Oct 28&#39;, &#39;Mon Oct 28&#39;, &#39;Fri Oct 25&#39;, &#39;Fri Oct 25&#39;, &#39;Thu Oct 24&#39;, &#39;Thu Oct 24&#39;, &#39;Wed Oct 23&#39;, &#39;Tue Oct 22&#39;, &#39;Tue Oct 22&#39;, &#39;Tue Oct 22&#39;, &#39;Mon Oct 21&#39;, &#39;Mon Oct 21&#39;, &#39;Mon Oct 21&#39;, &#39;Fri Oct 18&#39;, &#39;Fri Oct 18&#39;, &#39;Thu Oct 17&#39;, &#39;Thu Oct 17&#39;, &#39;Wed Oct 16&#39;, &#39;Wed Oct 16&#39;, &#39;Wed Oct 16&#39;, &#39;Wed Oct 16&#39;, &#39;Wed Oct 16&#39;, &#39;Wed Oct 16&#39;, &#39;Wed Oct 16&#39;, &#39;Tue Oct 15&#39;, &#39;Tue Oct 15&#39;, &#39;Tue Oct 15&#39;, &#39;Tue Oct 15&#39;, &#39;Mon Oct 14&#39;, &#39;Mon Oct 14&#39;, &#39;Sun Oct 13&#39;, &#39;Wed Oct 09&#39;, &#39;Wed Oct 09&#39;, &#39;Tue Oct 08&#39;, &#39;Tue Oct 08&#39;, &#39;Thu Oct 03&#39;, &#39;Thu Oct 03&#39;, &#39;Thu Oct 03&#39;, &#39;Wed Oct 02&#39;, &#39;Wed Oct 02&#39;, &#39;Wed Oct 02&#39;, &#39;Tue Oct 01&#39;, &#39;Tue Oct 01&#39;, &#39;Mon Sep 30&#39;, &#39;Mon Sep 30&#39;, &#39;Mon Sep 23&#39;, &#39;Mon Sep 23&#39;, &#39;Wed Sep 18&#39;, &#39;Wed Sep 18&#39;, &#39;Tue Sep 17&#39;, &#39;Tue Sep 17&#39;, &#39;Tue Sep 17&#39;, &#39;Wed Sep 11&#39;, &#39;Wed Sep 11&#39;, &#39;Wed Sep 11&#39;, &#39;Wed Sep 11&#39;, &#39;Tue Sep 10&#39;, &#39;Tue Sep 10&#39;, &#39;Tue Sep 10&#39;, &#39;Tue Sep 10&#39;, &#39;Wed Sep 04&#39;, &#39;Tue Sep 03&#39;, &#39;Tue Sep 03&#39;, &#39;Fri Aug 30&#39;, &#39;Fri Aug 30&#39;, &#39;Fri Aug 30&#39;, &#39;Fri Aug 30&#39;, &#39;Fri Aug 30&#39;, &#39;Thu Aug 29&#39;, &#39;Wed Aug 28&#39;, &#39;Wed Aug 28&#39;, &#39;Tue Aug 27&#39;, &#39;Mon Aug 26&#39;, &#39;Mon Aug 26&#39;, &#39;Mon Aug 26&#39;, &#39;Fri Aug 23&#39;, &#39;Fri Aug 23&#39;, &#39;Fri Aug 23&#39;, &#39;Wed Aug 21&#39;, &#39;Wed Aug 21&#39;, &#39;Wed Aug 21&#39;, &#39;Tue Aug 20&#39;, &#39;Tue Aug 20&#39;, &#39;Mon Aug 19&#39;, &#39;Mon Aug 19&#39;, &#39;Mon Aug 19&#39;, &#39;Mon Aug 19&#39;, &#39;Sat Aug 17&#39;, &#39;Fri Aug 16&#39;, &#39;Fri Aug 16&#39;, &#39;Fri Aug 16&#39;, &#39;Thu Aug 15&#39;, &#39;Tue Aug 13&#39;, &#39;Mon Aug 12&#39;, &#39;Fri Aug 09&#39;, &#39;Thu Aug 08&#39;, &#39;Thu Aug 08&#39;, &#39;Thu Aug 08&#39;, &#39;Wed Aug 07&#39;, &#39;Wed Aug 07&#39;, &#39;Wed Aug 07&#39;, &#39;Wed Aug 07&#39;, &#39;Wed Aug 07&#39;, &#39;Tue Aug 06&#39;, &#39;Tue Aug 06&#39;, &#39;Tue Aug 06&#39;, &#39;Mon Aug 05&#39;, &#39;Mon Aug 05&#39;, &#39;Mon Aug 05&#39;, &#39;Fri Aug 02&#39;, &#39;Fri Aug 02&#39;, &#39;Thu Aug 01&#39;, &#39;Thu Aug 01&#39;, &#39;Thu Aug 01&#39;, &#39;Thu Aug 01&#39;, &#39;Wed Jul 31&#39;, &#39;Tue Jul 30&#39;, &#39;Tue Jul 30&#39;, &#39;Fri Jul 26&#39;, &#39;Thu Jul 25&#39;, &#39;Thu Jul 25&#39;, &#39;Thu Jul 25&#39;, &#39;Wed Jul 24&#39;, &#39;Wed Jul 24&#39;, &#39;Tue Jul 23&#39;, &#39;Tue Jul 23&#39;, &#39;Mon Jul 22&#39;, &#39;Fri Jul 19&#39;, &#39;Thu Jul 18&#39;, &#39;Thu Jul 18&#39;, &#39;Wed Jul 17&#39;, &#39;Wed Jul 17&#39;, &#39;Wed Jul 17&#39;, &#39;Wed Jul 17&#39;, &#39;Wed Jul 17&#39;, &#39;Tue Jul 16&#39;, &#39;Tue Jul 16&#39;, &#39;Tue Jul 16&#39;, &#39;Tue Jul 16&#39;, &#39;Tue Jul 16&#39;, &#39;Mon Jul 15&#39;, &#39;Mon Jul 15&#39;, &#39;Mon Jul 15&#39;, &#39;Mon Jul 15&#39;, &#39;Fri Jul 12&#39;, &#39;Thu Jul 11&#39;, &#39;Thu Jul 11&#39;, &#39;Wed Jul 10&#39;, &#39;Wed Jul 10&#39;, &#39;Wed Jul 10&#39;, &#39;Wed Jul 10&#39;, &#39;Wed Jul 10&#39;, &#39;Tue Jul 09&#39;, &#39;Tue Jul 09&#39;, &#39;Tue Jul 09&#39;, &#39;Mon Jul 08&#39;, &#39;Mon Jul 08&#39;, &#39;Tue Jul 02&#39;, &#39;Tue Jul 02&#39;, &#39;Tue Jul 02&#39;, &#39;Tue Jul 02&#39;, &#39;Tue Jul 02&#39;, &#39;Tue Jul 02&#39;, &#39;Mon Jul 01&#39;, &#39;Fri Jun 28&#39;, &#39;Thu Jun 27&#39;, &#39;Thu Jun 27&#39;, &#39;Wed Jun 26&#39;, &#39;Wed Jun 26&#39;, &#39;Tue Jun 25&#39;, &#39;Tue Jun 25&#39;, &#39;Tue Jun 25&#39;, &#39;Tue Jun 25&#39;, &#39;Thu Jun 20&#39;, &#39;Wed Jun 19&#39;, &#39;Tue Jun 18&#39;, &#39;Tue Jun 18&#39;, &#39;Tue Jun 18&#39;, &#39;Tue Jun 18&#39;, &#39;Tue Jun 18&#39;, &#39;Tue Jun 18&#39;, &#39;Tue Jun 18&#39;, &#39;Tue Jun 18&#39;, &#39;Fri Jun 14&#39;, &#39;Fri Jun 14&#39;, &#39;Wed Jun 12&#39;, &#39;Wed Jun 12&#39;, &#39;Tue Jun 11&#39;, &#39;Tue Jun 11&#39;, &#39;Tue Jun 11&#39;, &#39;Thu Jun 06&#39;, &#39;Wed Jun 05&#39;, &#39;Wed Jun 05&#39;, &#39;Tue Jun 04&#39;, &#39;Tue Jun 04&#39;, &#39;Mon Jun 03&#39;, &#39;Mon Jun 03&#39;, &#39;Fri May 31&#39;, &#39;Fri May 31&#39;, &#39;Thu May 30&#39;, &#39;Thu May 30&#39;, &#39;Wed May 29&#39;, &#39;Wed May 29&#39;, &#39;Wed May 29&#39;, &#39;Tue May 28&#39;, &#39;Tue May 28&#39;, &#39;Wed May 22&#39;, &#39;Wed May 22&#39;, &#39;Tue May 21&#39;, &#39;Tue May 21&#39;, &#39;Tue May 21&#39;, &#39;Tue May 21&#39;, &#39;Fri May 17&#39;, &#39;Fri May 17&#39;, &#39;Tue May 14&#39;, &#39;Tue May 14&#39;, &#39;Tue May 14&#39;, &#39;Tue May 14&#39;, &#39;Tue May 14&#39;, &#39;Sat May 11&#39;, &#39;Fri May 10&#39;, &#39;Fri May 10&#39;, &#39;Fri May 10&#39;, &#39;Thu May 09&#39;, &#39;Wed May 08&#39;, &#39;Wed May 08&#39;, &#39;Tue May 07&#39;, &#39;Tue May 07&#39;, &#39;Tue May 07&#39;, &#39;Mon May 06&#39;, &#39;Mon May 06&#39;, &#39;Sat May 04&#39;, &#39;Thu May 02&#39;, &#39;Wed May 01&#39;, &#39;Wed May 01&#39;, &#39;Wed May 01&#39;, &#39;Wed May 01&#39;, &#39;Tue Apr 30&#39;, &#39;Fri Apr 26&#39;, &#39;Fri Apr 26&#39;, &#39;Thu Apr 25&#39;, &#39;Thu Apr 25&#39;, &#39;Wed Apr 24&#39;, &#39;Tue Apr 23&#39;, &#39;Tue Apr 23&#39;, &#39;Tue Apr 23&#39;, &#39;Mon Apr 22&#39;, &#39;Fri Apr 19&#39;, &#39;Thu Apr 18&#39;, &#39;Thu Apr 18&#39;, &#39;Wed Apr 17&#39;, &#39;Wed Apr 17&#39;, &#39;Tue Apr 16&#39;, &#39;Thu Apr 11&#39;, &#39;Wed Apr 10&#39;, &#39;Wed Apr 10&#39;, &#39;Mon Apr 08&#39;, &#39;Mon Apr 08&#39;, &#39;Fri Apr 05&#39;, &#39;Fri Apr 05&#39;, &#39;Thu Apr 04&#39;, &#39;Wed Apr 03&#39;, &#39;Wed Apr 03&#39;, &#39;Wed Apr 03&#39;, &#39;Wed Apr 03&#39;, &#39;Tue Apr 02&#39;, &#39;Tue Apr 02&#39;]</code></pre>
+</div>
+<div id="nested-repetition-quantifiers" class="slide section level1">
+<h1>Nested Repetition Quantifiers</h1>
+<ul>
+<li>?: will treat as a group internally, won’t print as a group.
+<ul>
+<li>If you want to repeat a quantifier, you have to use ?:</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb147"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" tabindex="-1"></a>text_doi <span class="op">=</span> <span class="st">&quot;doi:10.1038/nphys1170,doi:10.1002/0470841559.ch1,DOI:10.1093/bib/bbab224&quot;</span></span>
+<span id="cb147-2"><a href="#cb147-2" tabindex="-1"></a></span>
+<span id="cb147-3"><a href="#cb147-3" tabindex="-1"></a>re.findall(<span class="st">&quot;DOI|doi&quot;</span>, text_doi)</span></code></pre></div>
+<pre><code>## [&#39;doi&#39;, &#39;doi&#39;, &#39;DOI&#39;]</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" tabindex="-1"></a>re.findall(<span class="st">&quot;[Dd][Oo][Ii]:\d+&quot;</span>, text_doi)</span></code></pre></div>
+<pre><code>## [&#39;doi:10&#39;, &#39;doi:10&#39;, &#39;DOI:10&#39;]</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" tabindex="-1"></a>re.findall(<span class="st">&quot;(?:DOI|doi):\d+&quot;</span>, text_doi)</span></code></pre></div>
+<pre><code>## [&#39;doi:10&#39;, &#39;doi:10&#39;, &#39;DOI:10&#39;]</code></pre>
+<p>how to match the entire doi pattern?</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" tabindex="-1"></a>question_doi <span class="op">=</span> <span class="st">&quot;doi:10.1038/nphys1170,doi:10.1002/0470841559.ch1,DOI:10.1093/bib/bbab224,www.google.com,ufl:100/edu,doi:12334,doi:3421/biostatistics&quot;</span></span>
+<span id="cb153-2"><a href="#cb153-2" tabindex="-1"></a>question_doi.split(<span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<pre><code>## [&#39;doi:10.1038/nphys1170&#39;, &#39;doi:10.1002/0470841559.ch1&#39;, &#39;DOI:10.1093/bib/bbab224&#39;, &#39;www.google.com&#39;, &#39;ufl:100/edu&#39;, &#39;doi:12334&#39;, &#39;doi:3421/biostatistics&#39;]</code></pre>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb155"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" tabindex="-1"></a>text_doi <span class="op">=</span> <span class="st">&quot;doi:10.1038/nphys1170, doi:10.1002/0470841559.ch1, DOI:10.1093/bib/bbab224&quot;</span></span>
+<span id="cb155-2"><a href="#cb155-2" tabindex="-1"></a></span>
+<span id="cb155-3"><a href="#cb155-3" tabindex="-1"></a>re.findall(<span class="st">&quot;(?:DOI|doi):\d+&quot;</span>, text_doi)</span></code></pre></div>
+<pre><code>## [&#39;doi:10&#39;, &#39;doi:10&#39;, &#39;DOI:10&#39;]</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" tabindex="-1"></a>re.findall(<span class="st">&quot;(?:DOI|doi):\d+\.\d+/(?:\w+\.?)+&quot;</span>, text_doi)</span></code></pre></div>
+<pre><code>## [&#39;doi:10.1038/nphys1170&#39;, &#39;doi:10.1002/0470841559.ch1&#39;, &#39;DOI:10.1093/bib&#39;]</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" tabindex="-1"></a>re.findall(<span class="st">&quot;(?:DOI|doi):\d+\.\d+(?:/(?:\w+\.?)+)+&quot;</span>, text_doi)</span></code></pre></div>
+<pre><code>## [&#39;doi:10.1038/nphys1170&#39;, &#39;doi:10.1002/0470841559.ch1&#39;, &#39;DOI:10.1093/bib/bbab224&#39;]</code></pre>
 </div>
 <div id="reference" class="slide section level1">
 <h1>Reference</h1>
 <ul>
 <li><a href="https://docs.python.org/3/index.html" class="uri">https://docs.python.org/3/index.html</a></li>
-<li><a href="https://github.com/Apress/beginning-python-3ed" class="uri">https://github.com/Apress/beginning-python-3ed</a></li>
+<li><a href="https://www.coursera.org/learn/python-data-analysis?specialization=data-science-python" class="uri">https://www.coursera.org/learn/python-data-analysis?specialization=data-science-python</a></li>
 </ul>
 </div>
 
