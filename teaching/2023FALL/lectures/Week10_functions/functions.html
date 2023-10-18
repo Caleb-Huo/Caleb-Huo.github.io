@@ -6,139 +6,156 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Zhiguang Huo (Caleb)" />
-  <title>Introduction to Biostatistical Computing PHC 6937</title>
+  <title>Programming basics for Biostatistics 6099</title>
   <style type="text/css">
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-            a.sourceLine { display: inline-block; line-height: 1.25; }
-    a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-    a.sourceLine:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode { white-space: pre; position: relative; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    code.sourceCode { white-space: pre-wrap; }
-    a.sourceLine { text-indent: -1em; padding-left: 1em; }
-    }
-    pre.numberSource a.sourceLine
-      { position: relative; left: -4em; }
-    pre.numberSource a.sourceLine::before
-      { content: attr(data-line-number);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; pointer-events: all; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {  }
-    @media screen {
-    a.sourceLine::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-          </style>
-  <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {  }
+{ }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
   <style type="text/css">
 body
 {
@@ -504,12 +521,12 @@ list-style-type: none;
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Introduction to Biostatistical Computing PHC 6937</h1>
+  <h1 class="title">Programming basics for Biostatistics 6099</h1>
   <h1 class="subtitle">functions and modules</h1>
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Monday Oct 24th, 2022</p>
+  <p class="date">Thursday Oct 19th, 2023</p>
 </div>
 <div id="outlines" class="slide section level1">
 <h1>Outlines</h1>
@@ -531,34 +548,34 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>function without argument</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">def</span> hello():</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">    <span class="bu">print</span>(<span class="st">'Hello World!'</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">hello()</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">def</span> hello():</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Hello World!&#39;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>hello()</span></code></pre></div>
 <pre><code>## Hello World!</code></pre>
 <ul>
 <li>function with an argument</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">def</span> hello(name):</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">    <span class="bu">print</span>(<span class="st">'Hello, '</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">&quot;!&quot;</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">hello(<span class="st">&quot;Lucas&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="kw">def</span> hello(name):</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Hello, &#39;</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">&quot;!&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>hello(<span class="st">&quot;Lucas&quot;</span>)</span></code></pre></div>
 <pre><code>## Hello, Lucas!</code></pre>
 </div>
 <div id="function-descriptions-and-helps" class="slide section level1">
 <h1>Function Descriptions and Helps</h1>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">def</span> inc(x): </a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="co">&quot;&quot;&quot;Increase by one</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">  </span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">  Keyword arguments:</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">  x -- the base number to be increased</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">  &quot;&quot;&quot;</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">inc(<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="kw">def</span> inc(x): </span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="co">&quot;&quot;&quot;Increase by one</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">  Keyword arguments:</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">  x -- the base number to be increased</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">  &quot;&quot;&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>inc(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## 4</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" data-line-number="1">inc.__doc__ <span class="co">## check docstring</span></a></code></pre></div>
-<pre><code>## 'Increase by one\n  \n  Keyword arguments:\n  x -- the base number to be increased\n  '</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>inc.__doc__ <span class="co">## check docstring</span></span></code></pre></div>
+<pre><code>## &#39;Increase by one\n  \n  Keyword arguments:\n  x -- the base number to be increased\n  &#39;</code></pre>
 <ul>
 <li>get help page</li>
 </ul>
@@ -568,12 +585,17 @@ help(inc)</code></pre>
 <div id="function-structure" class="slide section level1">
 <h1>Function structure</h1>
 <ul>
-<li>Keyword &quot;“def”&quot; that marks the start of the function</li>
-<li>(optional) Parameters (arguments) to pass values to a function.</li>
+<li>Keyword ““def”” that marks the start of the function</li>
 <li>A colon (:) to mark the end of the function header.</li>
-<li>(Optional) Documentation string (docstring) to describe what the function does.</li>
-<li>The function body must have same indentation for the same level of code.</li>
-<li>(Optional) Return statement to return a value from the function.</li>
+<li>The function body must have same indentation for the same level of
+code.</li>
+<li>(Optional)
+<ul>
+<li>Documentation string (docstring) to describe what the function
+does.</li>
+<li>Parameters (arguments) to pass values to a function.</li>
+<li>Return statement to return a value from the function.</li>
+</ul></li>
 </ul>
 </div>
 <div id="recursive-function" class="slide section level1">
@@ -581,22 +603,22 @@ help(inc)</code></pre>
 <ul>
 <li><span class="math inline">\(f(n) = n! = n(n-1)\ldots 1\)</span></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">def</span> factorial(n):</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">    result <span class="op">=</span> n</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">        result <span class="op">*=</span> i</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">    <span class="cf">return</span> result</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">factorial(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="kw">def</span> factorial(n):</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    result <span class="op">=</span> n</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>        result <span class="op">*=</span> i</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>factorial(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## 120</code></pre>
 <ul>
 <li>recursive function</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">def</span> factorial(n):</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">    <span class="cf">if</span> n<span class="op">==</span><span class="dv">1</span>: <span class="cf">return</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">    <span class="cf">return</span> n<span class="op">*</span>factorial(n<span class="dv">-1</span>)</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">factorial(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="kw">def</span> factorial(n):</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>    <span class="cf">if</span> n<span class="op">==</span><span class="dv">1</span>: <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>    <span class="cf">return</span> n<span class="op">*</span>factorial(n<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>factorial(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## 120</code></pre>
 </div>
 <div id="in-class-exercise" class="slide section level1">
@@ -616,39 +638,39 @@ help(inc)</code></pre>
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">def</span> fibonacci(n):</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">    <span class="cf">if</span>(n<span class="op">&lt;=</span><span class="dv">1</span>):</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">        <span class="cf">return</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">    <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">        <span class="cf">return</span>(fibonacci(n<span class="dv">-1</span>) <span class="op">+</span> fibonacci(n<span class="dv">-2</span>))</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">fibonacci(<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="kw">def</span> fibonacci(n):</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>    <span class="cf">if</span>(n<span class="op">&lt;=</span><span class="dv">1</span>):</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>        <span class="cf">return</span>(<span class="dv">1</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>        <span class="cf">return</span>(fibonacci(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fibonacci(n<span class="op">-</span><span class="dv">2</span>))</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>fibonacci(<span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## 5</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" data-line-number="1">fibonacci(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>fibonacci(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## 8</code></pre>
 </div>
 <div id="some-built-in-python-functions" class="slide section level1">
 <h1>Some built-in Python functions</h1>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="bu">abs</span>(<span class="op">-</span><span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="bu">abs</span>(<span class="op">-</span><span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## 4</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="bu">pow</span>(<span class="dv">2</span>,<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="bu">pow</span>(<span class="dv">2</span>,<span class="dv">3</span>) <span class="co">## 2**3</span></span></code></pre></div>
 <pre><code>## 8</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="bu">round</span>(<span class="fl">3.14</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="bu">round</span>(<span class="fl">3.14</span>)</span></code></pre></div>
 <pre><code>## 3</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="bu">max</span>(<span class="dv">6</span>,<span class="dv">9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="bu">max</span>(<span class="dv">6</span>,<span class="dv">9</span>)</span></code></pre></div>
 <pre><code>## 9</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="bu">min</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">7</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="bu">min</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">7</span>])</span></code></pre></div>
 <pre><code>## 1</code></pre>
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="bu">sum</span>(<span class="bu">range</span>(<span class="dv">10</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="bu">sum</span>(<span class="bu">range</span>(<span class="dv">10</span>))</span></code></pre></div>
 <pre><code>## 45</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="bu">help</span>(<span class="bu">sum</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="bu">help</span>(<span class="bu">sum</span>)</span></code></pre></div>
 <pre><code>## Help on built-in function sum in module builtins:
 ## 
 ## sum(iterable, /, start=0)
-##     Return the sum of a 'start' value (default: 0) plus an iterable of numbers
+##     Return the sum of a &#39;start&#39; value (default: 0) plus an iterable of numbers
 ##     
 ##     When the iterable is empty, return the start value.
 ##     This function is intended specifically for use with numeric values and may
@@ -668,17 +690,17 @@ help(inc)</code></pre>
 </ul></li>
 </ul>
 <pre><code>def hello(name):
-    print('Hello ' + name + '!')</code></pre>
+    print(&#39;Hello &#39; + name + &#39;!&#39;)</code></pre>
 <pre><code>def myadd(a, b):
     return(a + b)</code></pre>
 <ul>
 <li>In python</li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="im">import</span> mymod</a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb35-3" data-line-number="3">mymod.hello(<span class="st">&quot;Lucas&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="im">import</span> mymod</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>mymod.hello(<span class="st">&quot;Lucas&quot;</span>)</span></code></pre></div>
 <pre><code>## Hello Lucas!</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb37-1" data-line-number="1">mymod.myadd(<span class="dv">1</span>, <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>mymod.myadd(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## 11</code></pre>
 </div>
 <div id="module-1" class="slide section level1">
@@ -697,33 +719,34 @@ help(inc)</code></pre>
 <ul>
 <li>In python</li>
 </ul>
-<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="im">import</span> mymod</a>
-<a class="sourceLine" id="cb40-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb40-3" data-line-number="3">astudent <span class="op">=</span> mymod.Student1</a>
-<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="bu">print</span>(astudent)</a></code></pre></div>
-<pre><code>## {'name': 'Amy', 'age': '23', 'country': 'Canada'}</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="cf">for</span> akey <span class="kw">in</span> astudent:</a>
-<a class="sourceLine" id="cb42-2" data-line-number="2">        <span class="bu">print</span>(akey <span class="op">+</span> <span class="st">&quot;: &quot;</span> <span class="op">+</span> astudent[akey])</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="im">import</span> mymod</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a>astudent <span class="op">=</span> mymod.Student1</span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a><span class="bu">print</span>(astudent)</span></code></pre></div>
+<pre><code>## {&#39;name&#39;: &#39;Amy&#39;, &#39;age&#39;: &#39;23&#39;, &#39;country&#39;: &#39;Canada&#39;}</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="cf">for</span> akey <span class="kw">in</span> astudent:</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>        <span class="bu">print</span>(akey <span class="op">+</span> <span class="st">&quot;: &quot;</span> <span class="op">+</span> astudent[akey])</span></code></pre></div>
 <pre><code>## name: Amy
 ## age: 23
 ## country: Canada</code></pre>
 </div>
 <div id="math-modules" class="slide section level1">
 <h1>math modules</h1>
-<p>After import module, all the objects in the module are available via module.object</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="im">import</span> math</a>
-<a class="sourceLine" id="cb44-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb44-3" data-line-number="3">math.sqrt(<span class="dv">3</span>)</a></code></pre></div>
+<p>After import module, all the objects in the module are available via
+module.object</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>math.sqrt(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## 1.7320508075688772</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb46-1" data-line-number="1">math.floor(<span class="fl">10.4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>math.floor(<span class="fl">10.4</span>)</span></code></pre></div>
 <pre><code>## 10</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb48-1" data-line-number="1">math.ceil(<span class="fl">10.4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>math.ceil(<span class="fl">10.4</span>)</span></code></pre></div>
 <pre><code>## 11</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb50-1" data-line-number="1">math.log(<span class="dv">16</span>,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>math.log(<span class="dv">16</span>,<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## 4.0</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb52-1" data-line-number="1">math.log2(<span class="dv">16</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a>math.log2(<span class="dv">16</span>)</span></code></pre></div>
 <pre><code>## 4.0</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb54-1" data-line-number="1">math.pi</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>math.pi</span></code></pre></div>
 <pre><code>## 3.141592653589793</code></pre>
 </div>
 <div id="math-modules-1" class="slide section level1">
@@ -731,52 +754,53 @@ help(inc)</code></pre>
 <ul>
 <li>create a shortcut name for the module</li>
 </ul>
-<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="im">import</span> math <span class="im">as</span> m</a>
-<a class="sourceLine" id="cb56-2" data-line-number="2">m.pi</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> m</span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a>m.pi</span></code></pre></div>
 <pre><code>## 3.141592653589793</code></pre>
 <ul>
 <li>import a specific object from a module</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="im">from</span> math <span class="im">import</span> pi</a>
-<a class="sourceLine" id="cb58-2" data-line-number="2">pi</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>pi</span></code></pre></div>
 <pre><code>## 3.141592653589793</code></pre>
 <ul>
 <li>import multiple objects from a module</li>
 </ul>
-<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="im">from</span> math <span class="im">import</span> pi, log2</a>
-<a class="sourceLine" id="cb60-2" data-line-number="2">log2(pi)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi, log2</span>
+<span id="cb60-2"><a href="#cb60-2" tabindex="-1"></a>log2(pi)</span></code></pre></div>
 <pre><code>## 1.6514961294723187</code></pre>
 </div>
 <div id="os-module" class="slide section level1">
 <h1>os module</h1>
 <ul>
-<li>os module contains functions to interacting with the operation system</li>
+<li>os module contains functions to interacting with the operation
+system</li>
 </ul>
-<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="im">import</span> os</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a><span class="im">import</span> os</span></code></pre></div>
 <ul>
 <li>get current working directory</li>
 </ul>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb63-1" data-line-number="1">cwd <span class="op">=</span> os.getcwd() <span class="co">## get current working directory</span></a>
-<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="bu">print</span>(<span class="st">&quot;Current working directory is &quot;</span> <span class="op">+</span> cwd)</a></code></pre></div>
-<pre><code>## Current working directory is /Users/zhuo/Dropbox (UFL)/teaching/2022FALL/lectures/Week10_functions/functions</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a>cwd <span class="op">=</span> os.getcwd() <span class="co">## get current working directory</span></span>
+<span id="cb63-2"><a href="#cb63-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Current working directory is &quot;</span> <span class="op">+</span> cwd)</span></code></pre></div>
+<pre><code>## Current working directory is /Users/zhuo/Dropbox (UFL)/teaching/2023FALL/lectures/Week10_functions/functions</code></pre>
 <ul>
 <li>list all files</li>
 </ul>
-<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb65-1" data-line-number="1">os.listdir() </a>
-<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="co">## os.listdir(cwd)  same as this one</span></a></code></pre></div>
-<pre><code>## ['.Rhistory', 'functions.py', 'functions.rmd', 'my_file.txt', 'new_file.txt', 'functions.html', '__pycache__', 'foo', 'functions', '.ipynb_checkpoints', 'mymod.py', 'tmp']</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a>os.listdir() </span>
+<span id="cb65-2"><a href="#cb65-2" tabindex="-1"></a><span class="co">## os.listdir(cwd)  same as this one</span></span></code></pre></div>
+<pre><code>## [&#39;.Rhistory&#39;, &#39;functions.py&#39;, &#39;functions.rmd&#39;, &#39;.DS_Store&#39;, &#39;functions.html&#39;, &#39;__pycache__&#39;, &#39;.ipynb_checkpoints&#39;, &#39;mymod.py&#39;, &#39;tmp&#39;]</code></pre>
 </div>
 <div class="slide section level1">
 
 <ul>
 <li>set working directory</li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb67-1" data-line-number="1">os.chdir(<span class="st">'..'</span>) <span class="co">## go back one folder</span></a>
-<a class="sourceLine" id="cb67-2" data-line-number="2">os.getcwd()</a></code></pre></div>
-<pre><code>## '/Users/zhuo/Dropbox (UFL)/teaching/2022FALL/lectures/Week10_functions'</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb69-1" data-line-number="1">os.chdir(cwd) <span class="co">## go back to cwd</span></a>
-<a class="sourceLine" id="cb69-2" data-line-number="2">os.getcwd()</a></code></pre></div>
-<pre><code>## '/Users/zhuo/Dropbox (UFL)/teaching/2022FALL/lectures/Week10_functions/functions'</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a>os.chdir(<span class="st">&#39;..&#39;</span>) <span class="co">## go back one folder</span></span>
+<span id="cb67-2"><a href="#cb67-2" tabindex="-1"></a>os.getcwd()</span></code></pre></div>
+<pre><code>## &#39;/Users/zhuo/Dropbox (UFL)/teaching/2023FALL/lectures/Week10_functions&#39;</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a>os.chdir(cwd) <span class="co">## go back to cwd</span></span>
+<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>os.getcwd()</span></code></pre></div>
+<pre><code>## &#39;/Users/zhuo/Dropbox (UFL)/teaching/2023FALL/lectures/Week10_functions/functions&#39;</code></pre>
 <ul>
 <li>create folders</li>
 </ul>
@@ -793,16 +817,16 @@ os.rmdir(afolder) ## remove a folder</code></pre>
 <ul>
 <li>join path</li>
 </ul>
-<div class="sourceCode" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="bu">file</span> <span class="op">=</span> <span class="st">'Untitled.ipynb'</span></a>
-<a class="sourceLine" id="cb73-2" data-line-number="2">      </a>
-<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="co"># File location </span></a>
-<a class="sourceLine" id="cb73-4" data-line-number="4">location <span class="op">=</span> <span class="st">&quot;/Users/zhuo/Desktop/&quot;</span> <span class="co">## change this to your own directory</span></a>
-<a class="sourceLine" id="cb73-5" data-line-number="5">os.listdir(location)</a>
-<a class="sourceLine" id="cb73-6" data-line-number="6">      </a>
-<a class="sourceLine" id="cb73-7" data-line-number="7"><span class="co"># Path </span></a></code></pre></div>
-<pre><code>## ['.Rhistory', 's41592-021-01252-x.pdf', '.DS_Store', '.localized', 'sellingPoints.txt', 'shiny-examples', 'others', 'circadianWebsite', 'reference.pdf', 'env', 'bbaa257.pdf', 'test2022', 'update_20220401.txt']</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb75-1" data-line-number="1">path <span class="op">=</span> os.path.join(location, <span class="bu">file</span>) </a>
-<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="bu">print</span>(path)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="st">&#39;Untitled.ipynb&#39;</span></span>
+<span id="cb73-2"><a href="#cb73-2" tabindex="-1"></a>      </span>
+<span id="cb73-3"><a href="#cb73-3" tabindex="-1"></a><span class="co"># File location </span></span>
+<span id="cb73-4"><a href="#cb73-4" tabindex="-1"></a>location <span class="op">=</span> <span class="st">&quot;/Users/zhuo/Desktop/&quot;</span> <span class="co">## change this to your own directory</span></span>
+<span id="cb73-5"><a href="#cb73-5" tabindex="-1"></a>os.listdir(location)</span>
+<span id="cb73-6"><a href="#cb73-6" tabindex="-1"></a>      </span>
+<span id="cb73-7"><a href="#cb73-7" tabindex="-1"></a><span class="co"># Path </span></span></code></pre></div>
+<pre><code>## [&#39;.Rhistory&#39;, &#39;s41592-021-01252-x.pdf&#39;, &#39;fdgth-03-727504.pdf&#39;, &#39;Screen Shot 2023-09-28 at 8.55.01 AM.png&#39;, &#39;~$deed.docx&#39;, &#39;BayesianCircadianSlides.pptx&#39;, &#39;GatorPKG&#39;, &#39;drugs and insurance.txt&#39;, &#39;.DS_Store&#39;, &#39;Jupyter_note.PNG&#39;, &#39;PIIS0092867421003792.pdf&#39;, &#39;LOI.pdf&#39;, &#39;NFWF_Data_Management_and_Access_Plan.pdf&#39;, &#39;GrantApplication.pdf&#39;, &#39;.localized&#39;, &#39;Untitled.ipynb&#39;, &#39;Gator2022&#39;, &#39;example&#39;, &#39;Screen Shot 2023-10-18 at 11.22.40 AM.png&#39;, &#39;Screen Shot 2023-10-02 at 3.55.26 PM.png&#39;, &#39;Ding_GA-Work-Schedule.pdf&#39;, &#39;shiny-examples&#39;, &#39;Screen Shot 2023-10-10 at 11.36.11 AM.png&#39;, &#39;others&#39;, &#39;circadianWebsite&#39;, &#39;wga.pdf&#39;, &#39;2024_Dental_Monthly_Premium_Chart.pdf&#39;, &#39;This manuscript studies the potential causal relationship between sleep behavior and renal outcomes.docx&#39;, &#39;budget_justification_SOMOA_Huo 051823.pdf&#39;, &#39;Screen Shot 2023-09-21 at 1.38.12 PM.png&#39;, &#39;chatGPT.txt&#39;, &#39;budget_justification_SOMOA_Huo 051823 (1).pdf&#39;, &#39;YCR-2021-2022-AcademicSalaryReport.pdf&#39;, &#39;Auto-GPT&#39;, &#39;JEV template (1).pdf&#39;, &#39;Action Required_ Proposal SFI Certification Requested PI_ Esser.eml&#39;, &#39;openAI_key.txt&#39;, &#39;Committee_Change_Form_Dongyuan.pdf&#39;, &#39;Personalized glucose respoinses Naef Cell Reports 08042023.pdf&#39;, &#39;eamm&#39;, &#39;bbaa257.pdf&#39;, &#39;.ipynb_checkpoints&#39;, &#39;Screen Shot 2023-10-04 at 12.50.24 PM.png&#39;, &#39;J American Geriatrics Society - 2018 - Rogers‐Soeder - Rest‐Activity Rhythms and Cognitive Decline in Older Men  The.pdf&#39;, &#39;Mail - Huo,Zhiguang - Outlook_files&#39;, &#39;2024_Dental_Plan_Comparison_(Final).pdf&#39;, &#39;Screen Shot 2023-10-05 at 10.23.28 AM.png&#39;, &#39;Screen Shot 2023-09-21 at 1.38.20 PM.png&#39;, &#39;Screen Shot 2023-10-10 at 11.35.17 AM.png&#39;, &#39;thumbnail_image.png&#39;]</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a>path <span class="op">=</span> os.path.join(location, <span class="bu">file</span>) </span>
+<span id="cb75-2"><a href="#cb75-2" tabindex="-1"></a><span class="bu">print</span>(path)</span></code></pre></div>
 <pre><code>## /Users/zhuo/Desktop/Untitled.ipynb</code></pre>
 </div>
 <div class="slide section level1">
@@ -810,13 +834,13 @@ os.rmdir(afolder) ## remove a folder</code></pre>
 <ul>
 <li>file/folder exists</li>
 </ul>
-<div class="sourceCode" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb77-1" data-line-number="1">os.path.exists(location) </a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a>os.path.exists(location) </span></code></pre></div>
 <pre><code>## True</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb79-1" data-line-number="1">os.path.exists(path) </a></code></pre></div>
-<pre><code>## False</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb81-1" data-line-number="1">os.path.isfile(path) </a></code></pre></div>
-<pre><code>## False</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb83-1" data-line-number="1">os.path.isdir(location) </a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a>os.path.exists(path) </span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a>os.path.isfile(path) </span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" tabindex="-1"></a>os.path.isdir(location) </span></code></pre></div>
 <pre><code>## True</code></pre>
 </div>
 <div id="random-module" class="slide section level1">
@@ -827,31 +851,33 @@ os.rmdir(afolder) ## remove a folder</code></pre>
 <li>random(): random number between 0 and 1</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="im">import</span> random</a>
-<a class="sourceLine" id="cb85-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb85-3" data-line-number="3"><span class="bu">print</span>(random.random())</a></code></pre></div>
-<pre><code>## 0.5228940589963078</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb85-2"><a href="#cb85-2" tabindex="-1"></a></span>
+<span id="cb85-3"><a href="#cb85-3" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code></pre></div>
+<pre><code>## 0.16687382761630964</code></pre>
 <ul>
 <li>same random seed will allow reproducible results</li>
 </ul>
-<div class="sourceCode" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb87-1" data-line-number="1">random.seed(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="bu">print</span>(random.random())</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" tabindex="-1"></a>random.seed(<span class="dv">10</span>)</span>
+<span id="cb87-2"><a href="#cb87-2" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code></pre></div>
 <pre><code>## 0.5714025946899135</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb89-1" data-line-number="1">random.seed(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="bu">print</span>(random.random())</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" tabindex="-1"></a>random.seed(<span class="dv">10</span>)</span>
+<span id="cb89-2"><a href="#cb89-2" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code></pre></div>
 <pre><code>## 0.5714025946899135</code></pre>
 </div>
 <div id="random-integer" class="slide section level1">
 <h1>random integer</h1>
 <ul>
-<li>randomint(a,b): random integer between a (inclusive) and b(inclusive)</li>
+<li>randomint(a,b): random integer between a (inclusive) and
+b(inclusive)</li>
 </ul>
-<div class="sourceCode" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">3</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" tabindex="-1"></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## 2</code></pre>
 <ul>
-<li>randomrange(a,b): random integer between a (inclusive) and b(exclusive)</li>
+<li>randomrange(a,b): random integer between a (inclusive) and
+b(exclusive)</li>
 </ul>
-<div class="sourceCode" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="bu">print</span>(random.randrange(<span class="dv">1</span>, <span class="dv">3</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" tabindex="-1"></a><span class="bu">print</span>(random.randrange(<span class="dv">1</span>, <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## 2</code></pre>
 </div>
 <div id="random-choices-and-shuffle" class="slide section level1">
@@ -859,65 +885,70 @@ os.rmdir(afolder) ## remove a folder</code></pre>
 <ul>
 <li>random.choice: choose one from a list</li>
 </ul>
-<div class="sourceCode" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb95-1" data-line-number="1">mylist <span class="op">=</span> [<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>]</a>
-<a class="sourceLine" id="cb95-2" data-line-number="2">random.choice(mylist)</a></code></pre></div>
-<pre><code>## 'cherry'</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" tabindex="-1"></a>mylist <span class="op">=</span> [<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>]</span>
+<span id="cb95-2"><a href="#cb95-2" tabindex="-1"></a>random.choice(mylist)</span></code></pre></div>
+<pre><code>## &#39;cherry&#39;</code></pre>
 <ul>
 <li>random.choices: choose k from a list</li>
 </ul>
-<div class="sourceCode" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb97-1" data-line-number="1">random.choices(mylist, k <span class="op">=</span> <span class="dv">2</span>)</a></code></pre></div>
-<pre><code>## ['apple', 'banana']</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" tabindex="-1"></a>random.choices(mylist, k <span class="op">=</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [&#39;apple&#39;, &#39;banana&#39;]</code></pre>
 <ul>
 <li>random.shuffle: shuffle the order (inplace operator)</li>
 </ul>
-<div class="sourceCode" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb99-1" data-line-number="1">random.shuffle(mylist)</a>
-<a class="sourceLine" id="cb99-2" data-line-number="2">mylist</a></code></pre></div>
-<pre><code>## ['apple', 'cherry', 'banana']</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" tabindex="-1"></a>random.shuffle(mylist)</span>
+<span id="cb99-2"><a href="#cb99-2" tabindex="-1"></a>mylist</span></code></pre></div>
+<pre><code>## [&#39;apple&#39;, &#39;cherry&#39;, &#39;banana&#39;]</code></pre>
 </div>
 <div id="default-arguments" class="slide section level1">
 <h1>Default arguments</h1>
-<div class="sourceCode" id="cb101"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">def</span> add(arg1 <span class="op">=</span> <span class="dv">1</span>, arg2 <span class="op">=</span> <span class="dv">2</span>):   </a>
-<a class="sourceLine" id="cb101-2" data-line-number="2">    <span class="cf">return</span>(arg1 <span class="op">+</span> arg2)</a>
-<a class="sourceLine" id="cb101-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb101-4" data-line-number="4">add(arg1 <span class="op">=</span> <span class="dv">3</span>, arg2 <span class="op">=</span> <span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" tabindex="-1"></a><span class="kw">def</span> add(arg1 <span class="op">=</span> <span class="dv">1</span>, arg2 <span class="op">=</span> <span class="dv">2</span>):   </span>
+<span id="cb101-2"><a href="#cb101-2" tabindex="-1"></a>    <span class="cf">return</span>(arg1 <span class="op">+</span> arg2)</span>
+<span id="cb101-3"><a href="#cb101-3" tabindex="-1"></a></span>
+<span id="cb101-4"><a href="#cb101-4" tabindex="-1"></a>add(arg1 <span class="op">=</span> <span class="dv">3</span>, arg2 <span class="op">=</span> <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## 7</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb103-1" data-line-number="1">add(arg1 <span class="op">=</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" tabindex="-1"></a>add(arg1 <span class="op">=</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## 5</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb105-1" data-line-number="1">add()</a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" tabindex="-1"></a>add()</span></code></pre></div>
 <pre><code>## 3</code></pre>
 </div>
 <div id="function-arguments-matching-rule" class="slide section level1">
 <h1>Function arguments matching rule</h1>
-<div class="sourceCode" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="kw">def</span> parrot(voltage, state<span class="op">=</span><span class="st">'a stiff'</span>, action<span class="op">=</span><span class="st">'voom'</span>):</a>
-<a class="sourceLine" id="cb107-2" data-line-number="2">    <span class="bu">print</span>(<span class="st">&quot;-- This parrot wouldn't&quot;</span>, action, end<span class="op">=</span><span class="st">' '</span>) <span class="co">## end will switch from a new line to a whitespace</span></a>
-<a class="sourceLine" id="cb107-3" data-line-number="3">    <span class="bu">print</span>(<span class="st">&quot;if you put&quot;</span>, voltage, <span class="st">&quot;volts through it.&quot;</span>)</a>
-<a class="sourceLine" id="cb107-4" data-line-number="4">    <span class="bu">print</span>(<span class="st">&quot;-- It's&quot;</span>, state, <span class="st">&quot;!&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb108-1" data-line-number="1">parrot(<span class="dv">1000</span>)                                          <span class="co"># 1 positional argument</span></a></code></pre></div>
-<pre><code>## -- This parrot wouldn't voom if you put 1000 volts through it.
-## -- It's a stiff !</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb110-1" data-line-number="1">parrot(voltage<span class="op">=</span><span class="dv">1000</span>)                                  <span class="co"># 1 keyword argument</span></a></code></pre></div>
-<pre><code>## -- This parrot wouldn't voom if you put 1000 volts through it.
-## -- It's a stiff !</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb112-1" data-line-number="1">parrot(voltage<span class="op">=</span><span class="dv">1000000</span>, action<span class="op">=</span><span class="st">'VOOOOOM'</span>)             <span class="co"># 2 keyword arguments</span></a></code></pre></div>
-<pre><code>## -- This parrot wouldn't VOOOOOM if you put 1000000 volts through it.
-## -- It's a stiff !</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" tabindex="-1"></a><span class="kw">def</span> parrot(arg, brg<span class="op">=</span>[<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>], crg<span class="op">=</span><span class="st">&#39;python&#39;</span>):</span>
+<span id="cb107-2"><a href="#cb107-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;arg: &quot;</span> <span class="op">+</span> <span class="bu">str</span>(arg))</span>
+<span id="cb107-3"><a href="#cb107-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;brg: &quot;</span> <span class="op">+</span> <span class="bu">str</span>(brg))</span>
+<span id="cb107-4"><a href="#cb107-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;crg: &quot;</span> <span class="op">+</span> <span class="bu">str</span>(crg))</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" tabindex="-1"></a>parrot(<span class="dv">1000</span>)                             <span class="co"># 1 positional argument</span></span></code></pre></div>
+<pre><code>## arg: 1000
+## brg: [&#39;a&#39;, &#39;b&#39;]
+## crg: python</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" tabindex="-1"></a>parrot(arg<span class="op">=</span><span class="dv">1000</span>)                         <span class="co"># 1 keyword argument</span></span></code></pre></div>
+<pre><code>## arg: 1000
+## brg: [&#39;a&#39;, &#39;b&#39;]
+## crg: python</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" tabindex="-1"></a>parrot(arg<span class="op">=</span><span class="dv">1000000</span>, crg<span class="op">=</span><span class="st">&#39;R&#39;</span>)             <span class="co"># 2 keyword arguments</span></span></code></pre></div>
+<pre><code>## arg: 1000000
+## brg: [&#39;a&#39;, &#39;b&#39;]
+## crg: R</code></pre>
 </div>
 <div class="slide section level1">
 
-<p>additional matching rules</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">def</span> parrot(voltage, state<span class="op">=</span><span class="st">'a stiff'</span>, action<span class="op">=</span><span class="st">'voom'</span>):</a>
-<a class="sourceLine" id="cb114-2" data-line-number="2">    <span class="bu">print</span>(<span class="st">&quot;-- This parrot wouldn't&quot;</span>, action, end<span class="op">=</span><span class="st">' '</span>) <span class="co">## end will switch from a new line to a whitespace</span></a>
-<a class="sourceLine" id="cb114-3" data-line-number="3">    <span class="bu">print</span>(<span class="st">&quot;if you put&quot;</span>, voltage, <span class="st">&quot;volts through it.&quot;</span>)</a>
-<a class="sourceLine" id="cb114-4" data-line-number="4">    <span class="bu">print</span>(<span class="st">&quot;-- It's&quot;</span>, state, <span class="st">&quot;!&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb115"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb115-1" data-line-number="1">parrot(action<span class="op">=</span><span class="st">'VOOOOOM'</span>, voltage<span class="op">=</span><span class="dv">1000000</span>)             <span class="co"># 2 keyword arguments</span></a></code></pre></div>
-<pre><code>## -- This parrot wouldn't VOOOOOM if you put 1000000 volts through it.
-## -- It's a stiff !</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb117-1" data-line-number="1">parrot(<span class="st">'a million'</span>, <span class="st">'bereft of life'</span>, <span class="st">'jump'</span>)         <span class="co"># 3 positional arguments</span></a></code></pre></div>
-<pre><code>## -- This parrot wouldn't jump if you put a million volts through it.
-## -- It's bereft of life !</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb119-1" data-line-number="1">parrot(<span class="st">'a thousand'</span>, state<span class="op">=</span><span class="st">'pushing up the daisies'</span>)  <span class="co"># 1 positional, 1 keyword</span></a></code></pre></div>
-<pre><code>## -- This parrot wouldn't voom if you put a thousand volts through it.
-## -- It's pushing up the daisies !</code></pre>
+<ul>
+<li>additional matching rules</li>
+</ul>
+<div class="sourceCode" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" tabindex="-1"></a>parrot(crg<span class="op">=</span><span class="st">&#39;JAVA&#39;</span>, arg<span class="op">=</span><span class="dv">1000000</span>)             <span class="co"># 2 keyword arguments</span></span></code></pre></div>
+<pre><code>## arg: 1000000
+## brg: [&#39;a&#39;, &#39;b&#39;]
+## crg: JAVA</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" tabindex="-1"></a>parrot(<span class="dv">32611</span>, [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], <span class="st">&quot;C++&quot;</span>)         <span class="co"># 3 positional arguments</span></span></code></pre></div>
+<pre><code>## arg: 32611
+## brg: [1, 2, 3]
+## crg: C++</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" tabindex="-1"></a>parrot(<span class="dv">567</span>, brg<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>))  <span class="co"># 1 positional, 1 keyword</span></span>
+<span id="cb118-2"><a href="#cb118-2" tabindex="-1"></a><span class="co"># parrot(brg=list(&quot;abc&quot;), 567)  # 1 positional, 1 keyword, doesn&#39;t work</span></span></code></pre></div>
+<pre><code>## arg: 567
+## brg: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+## crg: python</code></pre>
 </div>
 <div id="extra-arguments" class="slide section level1">
 <h1>Extra arguments</h1>
@@ -944,28 +975,29 @@ os.rmdir(afolder) ## remove a folder</code></pre>
 <li>pass as tuple</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb123"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">def</span> print_args(<span class="op">*</span>args):</a>
-<a class="sourceLine" id="cb123-2" data-line-number="2">    <span class="bu">print</span>(args)</a>
-<a class="sourceLine" id="cb123-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb123-4" data-line-number="4">print_args(<span class="st">'Testing'</span>) <span class="co">## tuple of length 1</span></a></code></pre></div>
-<pre><code>## ('Testing',)</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb125-1" data-line-number="1">print_args(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" tabindex="-1"></a><span class="kw">def</span> print_args(<span class="op">*</span>args):</span>
+<span id="cb122-2"><a href="#cb122-2" tabindex="-1"></a>    <span class="bu">print</span>(args)</span>
+<span id="cb122-3"><a href="#cb122-3" tabindex="-1"></a></span>
+<span id="cb122-4"><a href="#cb122-4" tabindex="-1"></a>print_args(<span class="st">&#39;Testing&#39;</span>) <span class="co">## tuple of length 1</span></span></code></pre></div>
+<pre><code>## (&#39;Testing&#39;,)</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" tabindex="-1"></a>print_args(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## (1, 2, 3)</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="kw">def</span> print_args_2(title, <span class="op">*</span>args):</a>
-<a class="sourceLine" id="cb127-2" data-line-number="2">    <span class="bu">print</span>(title)</a>
-<a class="sourceLine" id="cb127-3" data-line-number="3">    <span class="bu">print</span>(args)</a>
-<a class="sourceLine" id="cb127-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb127-5" data-line-number="5">print_args_2(<span class="st">&quot;Args:&quot;</span>, <span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" tabindex="-1"></a><span class="kw">def</span> print_args_2(title, <span class="op">*</span>args):</span>
+<span id="cb126-2"><a href="#cb126-2" tabindex="-1"></a>    <span class="bu">print</span>(title)</span>
+<span id="cb126-3"><a href="#cb126-3" tabindex="-1"></a>    <span class="bu">print</span>(args)</span>
+<span id="cb126-4"><a href="#cb126-4" tabindex="-1"></a></span>
+<span id="cb126-5"><a href="#cb126-5" tabindex="-1"></a>print_args_2(<span class="st">&quot;Args:&quot;</span>, <span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## Args:
 ## (1, 2, 3)</code></pre>
-<div class="sourceCode" id="cb129"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb129-1" data-line-number="1">print_args_2(<span class="st">&quot;Nothing:&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" tabindex="-1"></a>print_args_2(<span class="st">&quot;Nothing:&quot;</span>)</span></code></pre></div>
 <pre><code>## Nothing:
 ## ()</code></pre>
 </div>
 <div id="in-class-exercise-1" class="slide section level1">
 <h1>In class exercise</h1>
 <ul>
-<li>Write a function add(), which can take an arbitrary number of argument input,</li>
+<li>Write a function add(), which can take an arbitrary number of
+argument input,</li>
 <li>The function will return the sum of these argument</li>
 <li>The result we would expect:</li>
 </ul>
@@ -974,18 +1006,18 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb132"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw">def</span> add(<span class="op">*</span>args):</a>
-<a class="sourceLine" id="cb132-2" data-line-number="2">    <span class="bu">print</span>(<span class="bu">type</span>(args)) <span class="co">## the input args forms a tuple</span></a>
-<a class="sourceLine" id="cb132-3" data-line-number="3">    <span class="bu">sum</span> <span class="op">=</span> <span class="dv">0</span></a>
-<a class="sourceLine" id="cb132-4" data-line-number="4">    <span class="cf">for</span> n <span class="kw">in</span> args:</a>
-<a class="sourceLine" id="cb132-5" data-line-number="5">        <span class="bu">sum</span> <span class="op">+=</span> n</a>
-<a class="sourceLine" id="cb132-6" data-line-number="6">    <span class="cf">return</span> <span class="bu">sum</span></a>
-<a class="sourceLine" id="cb132-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb132-8" data-line-number="8">add(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="co"># 15</span></a></code></pre></div>
-<pre><code>## &lt;class 'tuple'&gt;
+<div class="sourceCode" id="cb131"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" tabindex="-1"></a><span class="kw">def</span> add(<span class="op">*</span>args):</span>
+<span id="cb131-2"><a href="#cb131-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">type</span>(args)) <span class="co">## the input args forms a tuple</span></span>
+<span id="cb131-3"><a href="#cb131-3" tabindex="-1"></a>    <span class="bu">sum</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb131-4"><a href="#cb131-4" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> args:</span>
+<span id="cb131-5"><a href="#cb131-5" tabindex="-1"></a>        <span class="bu">sum</span> <span class="op">+=</span> n</span>
+<span id="cb131-6"><a href="#cb131-6" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span></span>
+<span id="cb131-7"><a href="#cb131-7" tabindex="-1"></a></span>
+<span id="cb131-8"><a href="#cb131-8" tabindex="-1"></a>add(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="co"># 15</span></span></code></pre></div>
+<pre><code>## &lt;class &#39;tuple&#39;&gt;
 ## 15</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb134-1" data-line-number="1">add(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="co"># 55</span></a></code></pre></div>
-<pre><code>## &lt;class 'tuple'&gt;
+<div class="sourceCode" id="cb133"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" tabindex="-1"></a>add(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="co"># 55</span></span></code></pre></div>
+<pre><code>## &lt;class &#39;tuple&#39;&gt;
 ## 55</code></pre>
 </div>
 <div id="extra-keywords" class="slide section level1">
@@ -996,34 +1028,34 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 <li>pass as dict</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb136"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">def</span> print_keywords_3(<span class="op">**</span>keywords):</a>
-<a class="sourceLine" id="cb136-2" data-line-number="2">    <span class="bu">print</span>(keywords)</a>
-<a class="sourceLine" id="cb136-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb136-4" data-line-number="4">print_keywords_3(x<span class="op">=</span><span class="dv">1</span>,y<span class="op">=</span><span class="dv">2</span>,z<span class="op">=</span><span class="dv">3</span>)</a></code></pre></div>
-<pre><code>## {'x': 1, 'y': 2, 'z': 3}</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">def</span> print_keywords_4(<span class="op">**</span>keywords):</a>
-<a class="sourceLine" id="cb138-2" data-line-number="2">    <span class="cf">for</span> kw <span class="kw">in</span> keywords:</a>
-<a class="sourceLine" id="cb138-3" data-line-number="3">        <span class="bu">print</span>(kw, <span class="st">&quot;:&quot;</span>, keywords[kw])</a>
-<a class="sourceLine" id="cb138-4" data-line-number="4">print_keywords_4(x<span class="op">=</span><span class="dv">1</span>,y<span class="op">=</span><span class="dv">2</span>,z<span class="op">=</span><span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" tabindex="-1"></a><span class="kw">def</span> print_keywords_3(<span class="op">**</span>keywords):</span>
+<span id="cb135-2"><a href="#cb135-2" tabindex="-1"></a>    <span class="bu">print</span>(keywords)</span>
+<span id="cb135-3"><a href="#cb135-3" tabindex="-1"></a></span>
+<span id="cb135-4"><a href="#cb135-4" tabindex="-1"></a>print_keywords_3(x<span class="op">=</span><span class="dv">1</span>,y<span class="op">=</span><span class="dv">2</span>,z<span class="op">=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## {&#39;x&#39;: 1, &#39;y&#39;: 2, &#39;z&#39;: 3}</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" tabindex="-1"></a><span class="kw">def</span> print_keywords_4(<span class="op">**</span>keywords):</span>
+<span id="cb137-2"><a href="#cb137-2" tabindex="-1"></a>    <span class="cf">for</span> kw <span class="kw">in</span> keywords:</span>
+<span id="cb137-3"><a href="#cb137-3" tabindex="-1"></a>        <span class="bu">print</span>(kw, <span class="st">&quot;:&quot;</span>, keywords[kw])</span>
+<span id="cb137-4"><a href="#cb137-4" tabindex="-1"></a>print_keywords_4(x<span class="op">=</span><span class="dv">1</span>,y<span class="op">=</span><span class="dv">2</span>,z<span class="op">=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## x : 1
 ## y : 2
 ## z : 3</code></pre>
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb140"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">def</span> print_params_4(x,y,z<span class="op">=</span><span class="dv">3</span>,<span class="op">*</span>pospar, <span class="op">**</span>keypar):</a>
-<a class="sourceLine" id="cb140-2" data-line-number="2">    <span class="bu">print</span>(x,y,z)</a>
-<a class="sourceLine" id="cb140-3" data-line-number="3">    <span class="bu">print</span>(pospar)</a>
-<a class="sourceLine" id="cb140-4" data-line-number="4">    <span class="bu">print</span>(keypar)</a>
-<a class="sourceLine" id="cb140-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb140-6" data-line-number="6">print_params_4(x<span class="op">=</span><span class="dv">1</span>,y<span class="op">=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" tabindex="-1"></a><span class="kw">def</span> print_params_4(x,y,z<span class="op">=</span><span class="dv">3</span>,<span class="op">*</span>pospar, <span class="op">**</span>keypar):</span>
+<span id="cb139-2"><a href="#cb139-2" tabindex="-1"></a>    <span class="bu">print</span>(x,y,z)</span>
+<span id="cb139-3"><a href="#cb139-3" tabindex="-1"></a>    <span class="bu">print</span>(pospar)</span>
+<span id="cb139-4"><a href="#cb139-4" tabindex="-1"></a>    <span class="bu">print</span>(keypar)</span>
+<span id="cb139-5"><a href="#cb139-5" tabindex="-1"></a></span>
+<span id="cb139-6"><a href="#cb139-6" tabindex="-1"></a>print_params_4(x<span class="op">=</span><span class="dv">1</span>,y<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## 1 2 3
 ## ()
 ## {}</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb142-1" data-line-number="1">print_params_4(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,foo<span class="op">=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" tabindex="-1"></a>print_params_4(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,foo<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## 1 2 3
 ## (5, 6, 7)
-## {'foo': 1}</code></pre>
+## {&#39;foo&#39;: 1}</code></pre>
 </div>
 <div id="assertion" class="slide section level1">
 <h1>Assertion</h1>
@@ -1033,15 +1065,17 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 <li>the <em>assert</em> keyword</li>
 <li>the expression/condition to test</li>
 <li>an optional message</li>
-<li>put assertion at the beginning of a function to verify arguments</li>
+<li>put assertion at the beginning of a function to verify
+arguments</li>
 </ul></li>
 </ul>
 <pre><code>assert expression[, assertion_message]</code></pre>
-<div class="sourceCode" id="cb145"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb145-1" data-line-number="1">number <span class="op">=</span> <span class="dv">1</span> <span class="co">## try -1 as well</span></a>
-<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="cf">assert</span> number <span class="op">&gt;</span> <span class="dv">0</span></a>
-<a class="sourceLine" id="cb145-3" data-line-number="3"><span class="cf">assert</span> number <span class="op">&gt;</span> <span class="dv">0</span>, <span class="ss">f&quot;number greater than 0 expected, got: </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss">&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">1</span> <span class="co">## try -1 as well</span></span>
+<span id="cb144-2"><a href="#cb144-2" tabindex="-1"></a><span class="cf">assert</span> number <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb144-3"><a href="#cb144-3" tabindex="-1"></a><span class="cf">assert</span> number <span class="op">&gt;</span> <span class="dv">0</span>, <span class="ss">f&quot;number greater than 0 expected, got: </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss">&quot;</span></span></code></pre></div>
 <ul>
-<li>can also integrate with try-expect statement to capture “AssertionError”</li>
+<li>can also integrate with try-expect statement to capture
+“AssertionError”</li>
 </ul>
 </div>
 <div id="lambda-function" class="slide section level1">
@@ -1050,27 +1084,27 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 <li>a small anonymous function.</li>
 <li>can take any number of arguments, but with only one expression.</li>
 </ul>
-<div class="sourceCode" id="cb146"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">def</span> f1(x):</a>
-<a class="sourceLine" id="cb146-2" data-line-number="2">    <span class="cf">return</span>(x <span class="op">+</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb146-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb146-4" data-line-number="4">f1(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" tabindex="-1"></a><span class="kw">def</span> f1(x):</span>
+<span id="cb145-2"><a href="#cb145-2" tabindex="-1"></a>    <span class="cf">return</span>(x <span class="op">+</span> <span class="dv">10</span>)</span>
+<span id="cb145-3"><a href="#cb145-3" tabindex="-1"></a></span>
+<span id="cb145-4"><a href="#cb145-4" tabindex="-1"></a>f1(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## 15</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb148-1" data-line-number="1">f2 <span class="op">=</span> <span class="kw">lambda</span> x : x <span class="op">+</span> <span class="dv">10</span></a>
-<a class="sourceLine" id="cb148-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb148-3" data-line-number="3">f2(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" tabindex="-1"></a>f2 <span class="op">=</span> <span class="kw">lambda</span> x : x <span class="op">+</span> <span class="dv">10</span></span>
+<span id="cb147-2"><a href="#cb147-2" tabindex="-1"></a></span>
+<span id="cb147-3"><a href="#cb147-3" tabindex="-1"></a>f2(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## 15</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb150-1" data-line-number="1">(<span class="kw">lambda</span> x : x <span class="op">+</span> <span class="dv">10</span>)(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" tabindex="-1"></a>(<span class="kw">lambda</span> x : x <span class="op">+</span> <span class="dv">10</span>)(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## 15</code></pre>
 </div>
 <div id="lambda-function-with-more-than-1-argument" class="slide section level1">
 <h1>Lambda function with more than 1 argument</h1>
-<div class="sourceCode" id="cb152"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">def</span> f3(a,b):</a>
-<a class="sourceLine" id="cb152-2" data-line-number="2">  <span class="cf">return</span>(a<span class="op">*</span>b)</a>
-<a class="sourceLine" id="cb152-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb152-4" data-line-number="4">f3(<span class="dv">5</span>,<span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" tabindex="-1"></a><span class="kw">def</span> f3(a,b):</span>
+<span id="cb151-2"><a href="#cb151-2" tabindex="-1"></a>  <span class="cf">return</span>(a<span class="op">*</span>b)</span>
+<span id="cb151-3"><a href="#cb151-3" tabindex="-1"></a></span>
+<span id="cb151-4"><a href="#cb151-4" tabindex="-1"></a>f3(<span class="dv">5</span>,<span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## 30</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb154-1" data-line-number="1">f4 <span class="op">=</span> <span class="kw">lambda</span> a, b : a <span class="op">*</span> b</a>
-<a class="sourceLine" id="cb154-2" data-line-number="2"><span class="bu">print</span>(f4(<span class="dv">5</span>, <span class="dv">6</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" tabindex="-1"></a>f4 <span class="op">=</span> <span class="kw">lambda</span> a, b : a <span class="op">*</span> b</span>
+<span id="cb153-2"><a href="#cb153-2" tabindex="-1"></a><span class="bu">print</span>(f4(<span class="dv">5</span>, <span class="dv">6</span>))</span></code></pre></div>
 <pre><code>## 30</code></pre>
 </div>
 <div id="function-scopes" class="slide section level1">
@@ -1078,18 +1112,19 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 <ul>
 <li>Global Scope
 <ul>
-<li>A variable created in the main Python code belongs to the global scope.</li>
+<li>A variable created in the main Python code belongs to the global
+scope.</li>
 <li>Global variables are available for both global and local.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb156"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb156-1" data-line-number="1">x <span class="op">=</span> <span class="dv">300</span></a>
-<a class="sourceLine" id="cb156-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb156-3" data-line-number="3"><span class="kw">def</span> afun():</a>
-<a class="sourceLine" id="cb156-4" data-line-number="4">  <span class="bu">print</span>(x)</a>
-<a class="sourceLine" id="cb156-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb156-6" data-line-number="6">afun()</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb155-2"><a href="#cb155-2" tabindex="-1"></a></span>
+<span id="cb155-3"><a href="#cb155-3" tabindex="-1"></a><span class="kw">def</span> afun():</span>
+<span id="cb155-4"><a href="#cb155-4" tabindex="-1"></a>  <span class="bu">print</span>(x)</span>
+<span id="cb155-5"><a href="#cb155-5" tabindex="-1"></a></span>
+<span id="cb155-6"><a href="#cb155-6" tabindex="-1"></a>afun()</span></code></pre></div>
 <pre><code>## 300</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="bu">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## 300</code></pre>
 </div>
 <div id="function-scopes-1" class="slide section level1">
@@ -1104,15 +1139,15 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb160"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb160-1" data-line-number="1">x <span class="op">=</span> <span class="dv">300</span></a>
-<a class="sourceLine" id="cb160-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb160-3" data-line-number="3"><span class="kw">def</span> afun():</a>
-<a class="sourceLine" id="cb160-4" data-line-number="4">  x <span class="op">=</span> <span class="dv">200</span></a>
-<a class="sourceLine" id="cb160-5" data-line-number="5">  <span class="bu">print</span>(x)</a>
-<a class="sourceLine" id="cb160-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb160-7" data-line-number="7">afun()</a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb159-2"><a href="#cb159-2" tabindex="-1"></a></span>
+<span id="cb159-3"><a href="#cb159-3" tabindex="-1"></a><span class="kw">def</span> afun():</span>
+<span id="cb159-4"><a href="#cb159-4" tabindex="-1"></a>  x <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb159-5"><a href="#cb159-5" tabindex="-1"></a>  <span class="bu">print</span>(x)</span>
+<span id="cb159-6"><a href="#cb159-6" tabindex="-1"></a></span>
+<span id="cb159-7"><a href="#cb159-7" tabindex="-1"></a>afun()</span></code></pre></div>
 <pre><code>## 200</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="bu">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## 300</code></pre>
 </div>
 <div id="function-scopes-2" class="slide section level1">
@@ -1120,40 +1155,41 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 <ul>
 <li>Global Keyword
 <ul>
-<li>If you want a local variable to be in the global scope, you may want to use the global keyword</li>
+<li>If you want a local variable to be in the global scope, you may want
+to use the global keyword</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb164"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">def</span> bfun():</a>
-<a class="sourceLine" id="cb164-2" data-line-number="2">  <span class="kw">global</span> x</a>
-<a class="sourceLine" id="cb164-3" data-line-number="3">  x <span class="op">=</span> <span class="dv">50</span></a>
-<a class="sourceLine" id="cb164-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb164-5" data-line-number="5">bfun()</a>
-<a class="sourceLine" id="cb164-6" data-line-number="6"><span class="bu">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" tabindex="-1"></a><span class="kw">def</span> bfun():</span>
+<span id="cb163-2"><a href="#cb163-2" tabindex="-1"></a>  <span class="kw">global</span> x</span>
+<span id="cb163-3"><a href="#cb163-3" tabindex="-1"></a>  x <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb163-4"><a href="#cb163-4" tabindex="-1"></a></span>
+<span id="cb163-5"><a href="#cb163-5" tabindex="-1"></a>bfun()</span>
+<span id="cb163-6"><a href="#cb163-6" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## 50</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb166-1" data-line-number="1">x <span class="op">=</span> <span class="dv">50</span></a>
-<a class="sourceLine" id="cb166-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb166-3" data-line-number="3"><span class="kw">def</span> bfun():</a>
-<a class="sourceLine" id="cb166-4" data-line-number="4">  <span class="kw">global</span> x</a>
-<a class="sourceLine" id="cb166-5" data-line-number="5">  x <span class="op">=</span> <span class="dv">60</span></a>
-<a class="sourceLine" id="cb166-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb166-7" data-line-number="7">bfun()</a>
-<a class="sourceLine" id="cb166-8" data-line-number="8"><span class="bu">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb165-1"><a href="#cb165-1" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb165-2"><a href="#cb165-2" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="#cb165-3" tabindex="-1"></a><span class="kw">def</span> bfun():</span>
+<span id="cb165-4"><a href="#cb165-4" tabindex="-1"></a>  <span class="kw">global</span> x</span>
+<span id="cb165-5"><a href="#cb165-5" tabindex="-1"></a>  x <span class="op">=</span> <span class="dv">60</span></span>
+<span id="cb165-6"><a href="#cb165-6" tabindex="-1"></a></span>
+<span id="cb165-7"><a href="#cb165-7" tabindex="-1"></a>bfun()</span>
+<span id="cb165-8"><a href="#cb165-8" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div>
 <pre><code>## 60</code></pre>
 </div>
 <div id="multiple-return-values" class="slide section level1">
 <h1>Multiple return values</h1>
-<div class="sourceCode" id="cb168"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="kw">def</span> f23(x):</a>
-<a class="sourceLine" id="cb168-2" data-line-number="2">    x_square <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb168-3" data-line-number="3">    x_cubic <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb168-4" data-line-number="4">    res_tuple <span class="op">=</span> (x_square, x_cubic)</a>
-<a class="sourceLine" id="cb168-5" data-line-number="5">    <span class="cf">return</span>(res_tuple)</a>
-<a class="sourceLine" id="cb168-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb168-7" data-line-number="7">f23(<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb167-1"><a href="#cb167-1" tabindex="-1"></a><span class="kw">def</span> f23(x):</span>
+<span id="cb167-2"><a href="#cb167-2" tabindex="-1"></a>    x_square <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb167-3"><a href="#cb167-3" tabindex="-1"></a>    x_cubic <span class="op">=</span> x<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb167-4"><a href="#cb167-4" tabindex="-1"></a>    res_tuple <span class="op">=</span> (x_square, x_cubic)</span>
+<span id="cb167-5"><a href="#cb167-5" tabindex="-1"></a>    <span class="cf">return</span>(res_tuple)</span>
+<span id="cb167-6"><a href="#cb167-6" tabindex="-1"></a></span>
+<span id="cb167-7"><a href="#cb167-7" tabindex="-1"></a>f23(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## (9, 27)</code></pre>
-<div class="sourceCode" id="cb170"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb170-1" data-line-number="1">a, b <span class="op">=</span> f23(<span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb170-2" data-line-number="2"><span class="bu">print</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" tabindex="-1"></a>a, b <span class="op">=</span> f23(<span class="dv">5</span>) <span class="co">## to receive multiple return values</span></span>
+<span id="cb169-2"><a href="#cb169-2" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div>
 <pre><code>## 25</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="bu">print</span>(b)</a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb171-1"><a href="#cb171-1" tabindex="-1"></a><span class="bu">print</span>(b)</span></code></pre></div>
 <pre><code>## 125</code></pre>
 </div>
 <div id="other-looping-technique" class="slide section level1">
@@ -1161,45 +1197,57 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 <ul>
 <li>parallel iteration</li>
 </ul>
-<div class="sourceCode" id="cb174"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb174-1" data-line-number="1">d <span class="op">=</span> [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>]</a>
-<a class="sourceLine" id="cb174-2" data-line-number="2">e <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb174-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb174-4" data-line-number="4"><span class="bu">zip</span>(d,e)</a></code></pre></div>
-<pre><code>## &lt;zip object at 0x110958980&gt;</code></pre>
-<div class="sourceCode" id="cb176"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="bu">list</span>(<span class="bu">zip</span>(d,e))</a></code></pre></div>
-<pre><code>## [('a', 1), ('b', 2), ('c', 3)]</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="cf">for</span> i, j <span class="kw">in</span> <span class="bu">zip</span>(d,e):</a>
-<a class="sourceLine" id="cb178-2" data-line-number="2">    <span class="bu">print</span>(i <span class="op">+</span> <span class="bu">str</span>(j))</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb173-1"><a href="#cb173-1" tabindex="-1"></a>d <span class="op">=</span> [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>]</span>
+<span id="cb173-2"><a href="#cb173-2" tabindex="-1"></a>e <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb173-3"><a href="#cb173-3" tabindex="-1"></a></span>
+<span id="cb173-4"><a href="#cb173-4" tabindex="-1"></a><span class="bu">zip</span>(d,e) </span></code></pre></div>
+<pre><code>## &lt;zip object at 0x119aa1e40&gt;</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">zip</span>(d,e))</span></code></pre></div>
+<pre><code>## [(&#39;a&#39;, 1), (&#39;b&#39;, 2), (&#39;c&#39;, 3)]</code></pre>
+<div class="sourceCode" id="cb177"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" tabindex="-1"></a><span class="cf">for</span> i, j <span class="kw">in</span> <span class="bu">zip</span>(d,e):</span>
+<span id="cb177-2"><a href="#cb177-2" tabindex="-1"></a>    <span class="bu">print</span>(i <span class="op">+</span> <span class="bu">str</span>(j))</span></code></pre></div>
 <pre><code>## a1
 ## b2
 ## c3</code></pre>
+<ul>
+<li>iterable object</li>
+</ul>
+<pre><code>a = zip(d,e)
+next(a)</code></pre>
 </div>
 <div class="slide section level1">
 
 <ul>
-<li>enumerated iteration</li>
+<li>enumerated iteration: a tuple of index and the original object</li>
 </ul>
-<div class="sourceCode" id="cb180"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="cf">for</span> index, string <span class="kw">in</span> <span class="bu">enumerate</span>(d):</a>
-<a class="sourceLine" id="cb180-2" data-line-number="2">    <span class="bu">print</span>(string <span class="op">+</span> <span class="bu">str</span>(index))</a></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb180-1"><a href="#cb180-1" tabindex="-1"></a>d <span class="op">=</span> [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>]</span>
+<span id="cb180-2"><a href="#cb180-2" tabindex="-1"></a><span class="cf">for</span> index, string <span class="kw">in</span> <span class="bu">enumerate</span>(d):</span>
+<span id="cb180-3"><a href="#cb180-3" tabindex="-1"></a>    <span class="bu">print</span>(string <span class="op">+</span> <span class="bu">str</span>(index))</span></code></pre></div>
 <pre><code>## a0
 ## b1
 ## c2</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb182-1"><a href="#cb182-1" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">enumerate</span>(d))</span></code></pre></div>
+<pre><code>## [(0, &#39;a&#39;), (1, &#39;b&#39;), (2, &#39;c&#39;)]</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb184-1"><a href="#cb184-1" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">enumerate</span>(d) <span class="co">## iterable object</span></span>
+<span id="cb184-2"><a href="#cb184-2" tabindex="-1"></a><span class="bu">next</span>(x)</span></code></pre></div>
+<pre><code>## (0, &#39;a&#39;)</code></pre>
 </div>
 <div id="list-comprehension" class="slide section level1">
 <h1>list comprehension</h1>
 <ul>
-<li>List comprehension provides a short syntax to create a new list based on an existing list</li>
+<li>List comprehension provides a short syntax to create a new list
+based on an existing list</li>
 </ul>
-<div class="sourceCode" id="cb182"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb182-1" data-line-number="1">squares <span class="op">=</span> []</a>
-<a class="sourceLine" id="cb182-2" data-line-number="2"><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</a>
-<a class="sourceLine" id="cb182-3" data-line-number="3">    squares.append(x<span class="op">**</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb182-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb182-5" data-line-number="5">squares</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb186-1"><a href="#cb186-1" tabindex="-1"></a>squares <span class="op">=</span> []</span>
+<span id="cb186-2"><a href="#cb186-2" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb186-3"><a href="#cb186-3" tabindex="-1"></a>    squares.append(x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb186-4"><a href="#cb186-4" tabindex="-1"></a></span>
+<span id="cb186-5"><a href="#cb186-5" tabindex="-1"></a>squares</span></code></pre></div>
 <pre><code>## [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
 <ul>
 <li>put everything in one line</li>
 </ul>
-<div class="sourceCode" id="cb184"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb184-1" data-line-number="1">[x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb188-1"><a href="#cb188-1" tabindex="-1"></a>[x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span></code></pre></div>
 <pre><code>## [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
 </div>
 <div id="list-comprehension-1" class="slide section level1">
@@ -1207,33 +1255,33 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 <ul>
 <li>two variable list comprehension</li>
 </ul>
-<div class="sourceCode" id="cb186"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb186-1" data-line-number="1">[(i,j) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>) <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb190-1"><a href="#cb190-1" tabindex="-1"></a>[(i,j) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>) <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>)]</span></code></pre></div>
 <pre><code>## [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]</code></pre>
 <ul>
 <li>print even number only</li>
 </ul>
-<div class="sourceCode" id="cb188"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb188-1" data-line-number="1">[i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> ]</a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb192-1"><a href="#cb192-1" tabindex="-1"></a>[i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> ]</span></code></pre></div>
 <pre><code>## [0, 2, 4, 6, 8]</code></pre>
 <ul>
 <li>subsetting</li>
 </ul>
-<div class="sourceCode" id="cb190"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb190-1" data-line-number="1">names <span class="op">=</span> [<span class="st">&quot;Amy&quot;</span>, <span class="st">&quot;Beth&quot;</span>, <span class="st">&quot;Carl&quot;</span>]</a>
-<a class="sourceLine" id="cb190-2" data-line-number="2">[aname[<span class="dv">0</span>] <span class="cf">for</span> aname <span class="kw">in</span> names]</a></code></pre></div>
-<pre><code>## ['A', 'B', 'C']</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb194-1"><a href="#cb194-1" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">&quot;Amy&quot;</span>, <span class="st">&quot;Beth&quot;</span>, <span class="st">&quot;Carl&quot;</span>]</span>
+<span id="cb194-2"><a href="#cb194-2" tabindex="-1"></a>[aname[<span class="dv">0</span>] <span class="cf">for</span> aname <span class="kw">in</span> names]</span></code></pre></div>
+<pre><code>## [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]</code></pre>
 </div>
 <div id="list-comprehension-for-dictionary" class="slide section level1">
 <h1>list comprehension for dictionary</h1>
 <ul>
 <li>list comprehension for dictionary</li>
 </ul>
-<div class="sourceCode" id="cb192"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb192-1" data-line-number="1">names <span class="op">=</span> [<span class="st">&quot;Amy&quot;</span>, <span class="st">&quot;Beth&quot;</span>, <span class="st">&quot;Carl&quot;</span>, <span class="st">&quot;Dan&quot;</span>, <span class="st">&quot;Emily&quot;</span>, <span class="st">&quot;Frank&quot;</span>]</a>
-<a class="sourceLine" id="cb192-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb192-3" data-line-number="3"><span class="im">import</span> random</a>
-<a class="sourceLine" id="cb192-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb192-5" data-line-number="5">students_scores <span class="op">=</span> {name: random.randint(<span class="dv">0</span>, <span class="dv">100</span>) <span class="cf">for</span> name <span class="kw">in</span> names}</a>
-<a class="sourceLine" id="cb192-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb192-7" data-line-number="7">students_scores</a></code></pre></div>
-<pre><code>## {'Amy': 83, 'Beth': 20, 'Carl': 4, 'Dan': 66, 'Emily': 62, 'Frank': 41}</code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb196-1"><a href="#cb196-1" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">&quot;Amy&quot;</span>, <span class="st">&quot;Beth&quot;</span>, <span class="st">&quot;Carl&quot;</span>, <span class="st">&quot;Dan&quot;</span>, <span class="st">&quot;Emily&quot;</span>, <span class="st">&quot;Frank&quot;</span>]</span>
+<span id="cb196-2"><a href="#cb196-2" tabindex="-1"></a></span>
+<span id="cb196-3"><a href="#cb196-3" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb196-4"><a href="#cb196-4" tabindex="-1"></a></span>
+<span id="cb196-5"><a href="#cb196-5" tabindex="-1"></a>students_scores <span class="op">=</span> {name: random.randint(<span class="dv">0</span>, <span class="dv">100</span>) <span class="cf">for</span> name <span class="kw">in</span> names}</span>
+<span id="cb196-6"><a href="#cb196-6" tabindex="-1"></a></span>
+<span id="cb196-7"><a href="#cb196-7" tabindex="-1"></a>students_scores</span></code></pre></div>
+<pre><code>## {&#39;Amy&#39;: 83, &#39;Beth&#39;: 20, &#39;Carl&#39;: 4, &#39;Dan&#39;: 66, &#39;Emily&#39;: 62, &#39;Frank&#39;: 41}</code></pre>
 </div>
 <div id="install-new-packages" class="slide section level1">
 <h1>Install new packages</h1>
@@ -1244,18 +1292,28 @@ add(1,2,3,4,5,6,7,8,9,10) # 55</code></pre>
 </ul></li>
 <li>conda
 <ul>
-<li>alternative way to install packages, Conda lets you easily switch between environment on your local computer</li>
+<li>alternative way to install packages, Conda lets you easily switch
+between environment on your local computer</li>
 </ul></li>
 </ul>
 </div>
 <div id="pip-install-packages" class="slide section level1">
 <h1>pip install packages</h1>
 <ul>
+<li>Install in jupyter notebook (best practice to avoid confusion)</li>
+</ul>
+<pre><code>python -m pip install numpy
+import numpy as np ## test if the package has been installed in python
+python3 -m pip install numpy==1.23 ## specifying a package version
+python3.9 -m pip install --upgrade numpy ## upgrade a package
+pip install numpy --user ## if you are not a admin</code></pre>
+<ul>
 <li>macOS or linux user
 <ul>
 <li>in the terminal</li>
 <li>pip == python -m pip</li>
-<li>python (default python), python3 (default version for python3), python 3.9 (python version 3.9)</li>
+<li>python (default python), python3 (default version for python3),
+python 3.9 (python version 3.9)</li>
 </ul></li>
 </ul>
 <pre><code>python -m pip install numpy
@@ -1283,7 +1341,8 @@ py -3 -m pip install numpy --user ## if you are not a admin</code></pre>
 <ul>
 <li>Anaconda
 <ul>
-<li>with over 1500 scientific packages automatically installed at once</li>
+<li>with over 1500 scientific packages automatically installed at
+once</li>
 </ul></li>
 <li>Miniconda (recommended in this class)
 <ul>
@@ -1300,19 +1359,29 @@ conda install numpy=1.16
 conda list --name numpy conda ## check current installed version
 conda update numpy</code></pre>
 </div>
-<div id="python-environment-using-conda" class="slide section level1">
-<h1>Python environment (using conda)</h1>
+<div id="how-to-prepare-your-own-package-and-make-it-installable-using-pip" class="slide section level1">
+<h1>How to prepare your own package, and make it installable using
+pip</h1>
+<ul>
+<li><a href="https://packaging.python.org/en/latest/tutorials/packaging-projects/" class="uri">https://packaging.python.org/en/latest/tutorials/packaging-projects/</a></li>
+</ul>
+</div>
+<div id="python-environment" class="slide section level1">
+<h1>Python environment</h1>
 <ul>
 <li>With environment,
 <ul>
-<li>you can install different version of Python packages independent of the admin user.</li>
+<li>you can install different version of Python packages independent of
+the admin user.</li>
 </ul></li>
 <li>how to create an environment
 <ul>
-<li>in the terminal</li>
+<li>using anaconda software (user friendly interface)</li>
+<li>in the terminal using conda</li>
 </ul></li>
 </ul>
-<pre><code>conda create -n myenv
+<pre><code>## source ~/opt/miniconda3/bin/activate ## need this for macOS Catalina or later
+conda create -n myenv
 ## conda create -n myenv python=3.9 ## create an environment with a specific Python version.
 conda activate myenv ## activate the environment
 conda info --envs ## list all environment
