@@ -6,139 +6,156 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Zhiguang Huo (Caleb)" />
-  <title>Introduction to Biostatistical Computing PHC 6937</title>
+  <title>Programming basics for Biostatistics 6099</title>
   <style type="text/css">
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-            a.sourceLine { display: inline-block; line-height: 1.25; }
-    a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-    a.sourceLine:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode { white-space: pre; position: relative; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    code.sourceCode { white-space: pre-wrap; }
-    a.sourceLine { text-indent: -1em; padding-left: 1em; }
-    }
-    pre.numberSource a.sourceLine
-      { position: relative; left: -4em; }
-    pre.numberSource a.sourceLine::before
-      { content: attr(data-line-number);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; pointer-events: all; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {  }
-    @media screen {
-    a.sourceLine::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-          </style>
-  <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {  }
+{ }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
   <style type="text/css">
 body
 {
@@ -504,17 +521,18 @@ list-style-type: none;
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Introduction to Biostatistical Computing PHC 6937</h1>
+  <h1 class="title">Programming basics for Biostatistics 6099</h1>
   <h1 class="subtitle">Objective Oriented Programming</h1>
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Monday Oct 31st, 2022</p>
+  <p class="date">Tuesday Oct 24th, 2023</p>
 </div>
 <div id="introduction" class="slide section level1">
 <h1>Introduction</h1>
 <ul>
-<li>Procedural Programming: typically a list of instructions that execute line by line
+<li>Procedural Programming: typically a list of instructions that
+execute line by line
 <ul>
 <li>Advantage:
 <ul>
@@ -533,12 +551,14 @@ Zhiguang Huo (Caleb)
 <div id="introduction-1" class="slide section level1">
 <h1>Introduction</h1>
 <ul>
-<li>Objective Oriented Programming (OOP): to bundle variables and methods into object
+<li>Objective Oriented Programming (OOP): to bundle variables and
+methods into object
 <ul>
 <li>Advantage:
 <ul>
 <li>reusable</li>
-<li>good to capture the complex relationship among different procedures.</li>
+<li>good to capture the complex relationship among different
+procedures.</li>
 <li>readable, easy to maintain</li>
 <li>hide the implementation from the user’s end</li>
 </ul></li>
@@ -551,20 +571,21 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="a-toy-example" class="slide section level1">
 <h1>A toy example</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">a <span class="op">=</span> Person()</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">a.setName(<span class="st">&quot;Lucas&quot;</span>)</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">a.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    </span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="kw">def</span> greet(<span class="va">self</span>):</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>a <span class="op">=</span> Person()</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>a.setName(<span class="st">&quot;Lucas&quot;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>a.greet()</span></code></pre></div>
 <pre><code>## Hi there, my name is Lucas</code></pre>
 <ul>
-<li>Class: Person (usually, the first letter of a class is capitalized)</li>
+<li>Class: Person (usually, the first letter of a class is
+capitalized)</li>
 <li>Object: a: a realization (object) of the class</li>
 <li>Attribute: name</li>
 <li>Method: setName(); greet()</li>
@@ -579,7 +600,8 @@ Zhiguang Huo (Caleb)
 </ul></li>
 <li>Object
 <ul>
-<li>an instance of a class. It can help to think of objects as something in the real world like
+<li>an instance of a class. It can help to think of objects as something
+in the real world like
 <ul>
 <li>a small dog (if class is animal)</li>
 <li>a yellow shoe (if class is Dressing and Wearing) etc.</li>
@@ -588,7 +610,9 @@ Zhiguang Huo (Caleb)
 </ul></li>
 <li>Attribute
 <ul>
-<li>a descriptor or characteristic. Examples would be color, length, size, etc. These attributes can take on specific values like blue, 3 inches, large, etc.</li>
+<li>a descriptor or characteristic. Examples would be color, length,
+size, etc. These attributes can take on specific values like blue, 3
+inches, large, etc.</li>
 </ul></li>
 <li>Method
 <ul>
@@ -598,154 +622,208 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="multiple-objects-from-the-same-class" class="slide section level1">
 <h1>multiple objects from the same class</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">a <span class="op">=</span> Person()</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">a.setName(<span class="st">&quot;Lucas&quot;</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">a.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>a <span class="op">=</span> Person()</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>a.setName(<span class="st">&quot;Lucas&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>a.greet()</span></code></pre></div>
 <pre><code>## Hi there, my name is Lucas</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1">b <span class="op">=</span> Person()</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">b.setName(<span class="st">&quot;Amy&quot;</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">b.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>b <span class="op">=</span> Person()</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>b.setName(<span class="st">&quot;Amy&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>b.greet()</span></code></pre></div>
 <pre><code>## Hi there, my name is Amy</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" data-line-number="1">c <span class="op">=</span> Person()</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">c.setName(<span class="st">&quot;Beth&quot;</span>)</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">c.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>c <span class="op">=</span> Person()</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>c.setName(<span class="st">&quot;Beth&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>c.greet()</span></code></pre></div>
 <pre><code>## Hi there, my name is Beth</code></pre>
-</div>
-<div id="attributes-initialization" class="slide section level1">
-<h1>Attributes initialization</h1>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> <span class="st">&quot;John&quot;</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12">a <span class="op">=</span> Person()</a>
-<a class="sourceLine" id="cb9-13" data-line-number="13">a.setName(<span class="st">&quot;Lucas&quot;</span>)</a>
-<a class="sourceLine" id="cb9-14" data-line-number="14">a.greet()</a></code></pre></div>
-<pre><code>## Hi there, my name is Lucas</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" data-line-number="1">b <span class="op">=</span> Person()</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">b.greet()</a></code></pre></div>
-<pre><code>## Hi there, my name is John</code></pre>
 </div>
 <div id="class-methods" class="slide section level1">
 <h1>Class methods</h1>
 <ul>
-<li>when constructing a method <strong>inside a class</strong>, the first argument should be self
+<li>when constructing a method <strong>inside a class</strong>, the
+first argument should be self
 <ul>
 <li>self refer to the class itself</li>
-<li>with self, all its attributes will be accessible <strong>within the class</strong></li>
+<li>with self, all its attributes will be accessible <strong>within the
+class</strong></li>
 </ul></li>
-<li>to initialize the attributes of a class
-<ul>
-<li>need the __init__() method</li>
-<li>__init__() also needs self as its argument</li>
-</ul></li>
-<li>when <strong>an object</strong> calls the method, we don’t need the self argument</li>
+<li>when <strong>an object</strong> calls the method, we don’t need the
+self argument</li>
 </ul>
 </div>
 <div id="in-class-exercise-1" class="slide section level1">
 <h1>In class exercise (1)</h1>
 <ul>
-<li>construct a class Bird</li>
+<li>construct a class Participant</li>
 <li>attribute:
 <ul>
-<li>hungry: set to be true in the initialization</li>
+<li>name</li>
+<li>sex</li>
+<li>age</li>
 </ul></li>
 <li>method:
 <ul>
-<li>eat:</li>
+<li>display_info():</li>
 </ul></li>
 </ul>
-<pre><code>pseudocode for the eat method:
-    if hungry==True:
-        print(&quot;Aaah&quot;)
-        hungry=False
-    else:
-        print(&quot;No thanks&quot;)</code></pre>
+<pre><code>Create a new participant Amy, who is female and 49 years old.
+When we use the display_info(), we expect to see
+
+&quot;Participant Amy, 49 yrs, female&quot;.
+    </code></pre>
 </div>
-<div id="the-bird-class-1" class="slide section level1">
-<h1>The Bird class (1)</h1>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">class</span> Bird:</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">        <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">True</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">        <span class="cf">if</span> <span class="va">self</span>.hungry:</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">            <span class="bu">print</span>(<span class="st">&quot;Aaah&quot;</span>)</a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">            <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">False</span></a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">        <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb14-11" data-line-number="11">            <span class="bu">print</span>(<span class="st">&quot;No, thanks&quot;</span>)    </a>
-<a class="sourceLine" id="cb14-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb14-13" data-line-number="13">aBird <span class="op">=</span> Bird()</a>
-<a class="sourceLine" id="cb14-14" data-line-number="14">aBird.eat()</a></code></pre></div>
-<pre><code>## Aaah</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" data-line-number="1">aBird.eat()</a></code></pre></div>
-<pre><code>## No, thanks</code></pre>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="kw">class</span> Participant:</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    </span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    <span class="kw">def</span> setName(<span class="va">self</span>,name):</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>      </span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>    <span class="kw">def</span> setAge(<span class="va">self</span>,age):</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>    <span class="kw">def</span> setGender(<span class="va">self</span>,sex):</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>        <span class="va">self</span>.sex <span class="op">=</span> sex</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Participant </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> yrs, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>sex<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>aParticipant <span class="op">=</span> Participant()</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>aParticipant.setName(<span class="st">&quot;Amy&quot;</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>aParticipant.setAge(<span class="dv">49</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>aParticipant.setGender(<span class="st">&quot;Sex&quot;</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a>aParticipant.display_info()</span></code></pre></div>
+<pre><code>## Participant Amy, 49 yrs, Sex</code></pre>
+</div>
+<div id="attributes-initialization" class="slide section level1">
+<h1>Attributes initialization</h1>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>    </span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> <span class="st">&quot;John&quot;</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>    </span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>    </span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>    <span class="kw">def</span> greet(<span class="va">self</span>):</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>a <span class="op">=</span> Person()</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>a.setName(<span class="st">&quot;Lucas&quot;</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>a.greet()</span></code></pre></div>
+<pre><code>## Hi there, my name is Lucas</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>b <span class="op">=</span> Person()</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>b.greet()</span></code></pre></div>
+<pre><code>## Hi there, my name is John</code></pre>
 </div>
 <div id="attributes-initialization-with-a-users-input" class="slide section level1">
 <h1>Attributes initialization with a user’s input</h1>
 <ul>
 <li>this allows to set attributes when constructing an object</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb18-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb18-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb18-6" data-line-number="6">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb18-7" data-line-number="7">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb18-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb18-9" data-line-number="9">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb18-10" data-line-number="10">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a>
-<a class="sourceLine" id="cb18-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb18-12" data-line-number="12">a <span class="op">=</span> Person(<span class="st">&quot;Lucas&quot;</span>)</a>
-<a class="sourceLine" id="cb18-13" data-line-number="13">b <span class="op">=</span> Person(<span class="st">&quot;Amy&quot;</span>)</a>
-<a class="sourceLine" id="cb18-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb18-15" data-line-number="15">a.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>    </span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname):</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>    </span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>    </span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>    <span class="kw">def</span> greet(<span class="va">self</span>):</span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>a <span class="op">=</span> Person(<span class="st">&quot;Lucas&quot;</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a>b <span class="op">=</span> Person(<span class="st">&quot;Amy&quot;</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a>a.greet()</span></code></pre></div>
 <pre><code>## Hi there, my name is Lucas</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb20-1" data-line-number="1">b.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>b.greet()</span></code></pre></div>
 <pre><code>## Hi there, my name is Amy</code></pre>
 </div>
 <div id="default-value-in-the-initialization" class="slide section level1">
 <h1>Default value in the initialization</h1>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb22-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname<span class="op">=</span><span class="st">&quot;John&quot;</span>):</a>
-<a class="sourceLine" id="cb22-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb22-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb22-6" data-line-number="6">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb22-7" data-line-number="7">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb22-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb22-9" data-line-number="9">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb22-10" data-line-number="10">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a>
-<a class="sourceLine" id="cb22-11" data-line-number="11">    </a>
-<a class="sourceLine" id="cb22-12" data-line-number="12">a <span class="op">=</span> Person(<span class="st">&quot;Lucas&quot;</span>)</a>
-<a class="sourceLine" id="cb22-13" data-line-number="13">a.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>    </span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname<span class="op">=</span><span class="st">&quot;John&quot;</span>):</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>    </span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>    </span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a>    <span class="kw">def</span> greet(<span class="va">self</span>):</span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a>    </span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a>a <span class="op">=</span> Person(<span class="st">&quot;Lucas&quot;</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a>a.greet()</span></code></pre></div>
 <pre><code>## Hi there, my name is Lucas</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb24-1" data-line-number="1">b <span class="op">=</span> Person()</a>
-<a class="sourceLine" id="cb24-2" data-line-number="2">b.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>b <span class="op">=</span> Person()</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>b.greet()</span></code></pre></div>
 <pre><code>## Hi there, my name is John</code></pre>
 </div>
-<div id="class-method-what-if-there-is-no-self" class="slide section level1">
-<h1>Class method (what if there is no self)</h1>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">class</span> Bird0:</a>
-<a class="sourceLine" id="cb26-2" data-line-number="2">    song <span class="op">=</span> <span class="st">'Squaawk'</span></a>
-<a class="sourceLine" id="cb26-3" data-line-number="3">    <span class="kw">def</span> sing(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb26-4" data-line-number="4">        <span class="bu">print</span>(<span class="va">self</span>.song)</a>
-<a class="sourceLine" id="cb26-5" data-line-number="5">    <span class="kw">def</span> sing2():</a>
-<a class="sourceLine" id="cb26-6" data-line-number="6">        <span class="bu">print</span>(song)</a>
-<a class="sourceLine" id="cb26-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb26-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb26-9" data-line-number="9">bird <span class="op">=</span> Bird0()</a>
-<a class="sourceLine" id="cb26-10" data-line-number="10">bird.sing()</a>
-<a class="sourceLine" id="cb26-11" data-line-number="11"><span class="co">#bird.sing2()</span></a></code></pre></div>
-<pre><code>## Squaawk</code></pre>
+<div id="class-methods-1" class="slide section level1">
+<h1>Class methods</h1>
+<ul>
+<li>when constructing a method <strong>inside a class</strong>, the
+first argument should be self
+<ul>
+<li>self refer to the class itself</li>
+<li>with self, all its attributes will be accessible <strong>within the
+class</strong></li>
+</ul></li>
+<li>to initialize the attributes of a class
+<ul>
+<li>need the __init__() method</li>
+<li>__init__() also needs self as its argument</li>
+</ul></li>
+<li>when <strong>an object</strong> calls the method, we don’t need the
+self argument</li>
+</ul>
+</div>
+<div id="in-class-exercise-2" class="slide section level1">
+<h1>In class exercise (2)</h1>
+<ul>
+<li>construct a class Participant</li>
+<li>attribute:
+<ul>
+<li>name</li>
+<li>sex</li>
+<li>age</li>
+</ul></li>
+<li><em>initalize these attributes when constructing the
+object</em></li>
+<li>method:
+<ul>
+<li>display_info():</li>
+</ul></li>
+</ul>
+<pre><code>Create a new participant Amy, who is female and 49 years old.
+When we use the display_info(), we expect to see
+
+&quot;Participant Amy, 49 yrs, female&quot;.
+    </code></pre>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="kw">class</span> Participant:</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age, sex):</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>        <span class="va">self</span>.sex <span class="op">=</span> sex</span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>    </span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a>    <span class="kw">def</span> setName(<span class="va">self</span>,name):</span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a>      </span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a>    <span class="kw">def</span> setAge(<span class="va">self</span>,age):</span>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" tabindex="-1"></a>    <span class="kw">def</span> setGender(<span class="va">self</span>,sex):</span>
+<span id="cb25-14"><a href="#cb25-14" tabindex="-1"></a>        <span class="va">self</span>.sex <span class="op">=</span> sex</span>
+<span id="cb25-15"><a href="#cb25-15" tabindex="-1"></a>        </span>
+<span id="cb25-16"><a href="#cb25-16" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb25-17"><a href="#cb25-17" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Participant </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> yrs, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>sex<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" tabindex="-1"></a>aParticipant <span class="op">=</span> Participant(name<span class="op">=</span><span class="st">&quot;Amy&quot;</span>, age<span class="op">=</span><span class="dv">49</span>, sex<span class="op">=</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb25-20"><a href="#cb25-20" tabindex="-1"></a>aParticipant.display_info()</span></code></pre></div>
+<pre><code>## Participant Amy, 49 yrs, female</code></pre>
 </div>
 <div id="private-method" class="slide section level1">
 <h1>private method</h1>
@@ -757,130 +835,123 @@ Zhiguang Huo (Caleb)
 <li>if an object is created, private method is not accessible</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">class</span> Secretive:</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">    <span class="kw">def</span> __inaccessible(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">        <span class="bu">print</span>(<span class="st">&quot;Bet you can't see me...&quot;</span>)</a>
-<a class="sourceLine" id="cb28-4" data-line-number="4">    <span class="kw">def</span> accessible(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb28-5" data-line-number="5">        <span class="bu">print</span>(<span class="st">&quot;The secret message is:&quot;</span>)</a>
-<a class="sourceLine" id="cb28-6" data-line-number="6">        <span class="va">self</span>.__inaccessible()</a>
-<a class="sourceLine" id="cb28-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb28-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb28-9" data-line-number="9">s <span class="op">=</span> Secretive()</a>
-<a class="sourceLine" id="cb28-10" data-line-number="10"><span class="co">#s.__inaccessible() ## does not work</span></a>
-<a class="sourceLine" id="cb28-11" data-line-number="11">s.accessible()</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="kw">class</span> Secretive:</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>    <span class="kw">def</span> __inaccessible(<span class="va">self</span>):</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Bet you can&#39;t see me...&quot;</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>    <span class="kw">def</span> accessible(<span class="va">self</span>):</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;The secret message is:&quot;</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>        <span class="va">self</span>.__inaccessible()</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a>s <span class="op">=</span> Secretive()</span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="co">#s.__inaccessible() ## does not work</span></span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a>s.accessible()</span></code></pre></div>
 <pre><code>## The secret message is:
-## Bet you can't see me...</code></pre>
+## Bet you can&#39;t see me...</code></pre>
 </div>
 <div id="class-attributes" class="slide section level1">
 <h1>Class attributes</h1>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb30-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb30-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb30-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb30-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb30-6" data-line-number="6">    <span class="kw">def</span> getName(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb30-7" data-line-number="7">        <span class="cf">return</span>(<span class="va">self</span>.name)</a>
-<a class="sourceLine" id="cb30-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb30-9" data-line-number="9">a <span class="op">=</span> Person(<span class="st">&quot;Lucas&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>    </span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname):</span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>    </span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>    <span class="kw">def</span> getName(<span class="va">self</span>):</span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>        <span class="cf">return</span>(<span class="va">self</span>.name)</span>
+<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>    </span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a>a <span class="op">=</span> Person(<span class="st">&quot;Lucas&quot;</span>)</span></code></pre></div>
 <ul>
 <li>We can define methods to retrieve attributes.</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb31-1" data-line-number="1">a.getName()</a></code></pre></div>
-<pre><code>## 'Lucas'</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>a.getName()</span></code></pre></div>
+<pre><code>## &#39;Lucas&#39;</code></pre>
 <ul>
-<li>After construct an object (i.e., obj), we can also use obj.attribute to access the object.</li>
+<li>After construct an object (i.e., obj), we can also use obj.attribute
+to access the object.</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb33-1" data-line-number="1">a.name  <span class="co">## alternative way to get attribute</span></a></code></pre></div>
-<pre><code>## 'Lucas'</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>a.name  <span class="co">## alternative way to get attribute</span></span></code></pre></div>
+<pre><code>## &#39;Lucas&#39;</code></pre>
 </div>
 <div id="private-attribute" class="slide section level1">
 <h1>private attribute</h1>
 <ul>
 <li>to set an attribute to be private, use could use __attribute</li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb35-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb35-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb35-4" data-line-number="4">        <span class="va">self</span>.__name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb35-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb35-6" data-line-number="6">    <span class="kw">def</span> getName(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb35-7" data-line-number="7">        <span class="cf">return</span>(<span class="va">self</span>.__name)</a>
-<a class="sourceLine" id="cb35-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb35-9" data-line-number="9">a <span class="op">=</span> Person(<span class="st">&quot;Lucas&quot;</span>)</a>
-<a class="sourceLine" id="cb35-10" data-line-number="10">a.getName()</a>
-<a class="sourceLine" id="cb35-11" data-line-number="11"><span class="co">#a.__name ## does not work</span></a></code></pre></div>
-<pre><code>## 'Lucas'</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>    </span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname):</span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>        <span class="va">self</span>.__name <span class="op">=</span> aname</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>    </span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a>    <span class="kw">def</span> getName(<span class="va">self</span>):</span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>        <span class="cf">return</span>(<span class="va">self</span>.__name)</span>
+<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a>    </span>
+<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a>a <span class="op">=</span> Person(<span class="st">&quot;Lucas&quot;</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a>a.getName()</span></code></pre></div>
+<pre><code>## &#39;Lucas&#39;</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co">#a.__name ## does not work</span></span></code></pre></div>
 </div>
-<div id="in-class-exercise-2" class="slide section level1">
-<h1>In class exercise (2)</h1>
+<div id="in-class-exercise-3" class="slide section level1">
+<h1>In class exercise (3)</h1>
 <ul>
-<li>construct a class Bird2</li>
+<li>construct a class Participant</li>
 <li>attribute:
 <ul>
-<li>color: string</li>
-<li>hungry: Boolean type</li>
+<li>name</li>
+<li>sex</li>
+<li>age</li>
+</ul></li>
+<li>initalize these attributes when constructing the object*</li>
+<li>private attribute:
+<ul>
+<li><em>phone_number (private attribute)</em></li>
 </ul></li>
 <li>method:
 <ul>
-<li>getColor</li>
-<li>eat:</li>
+<li>display_info():</li>
+<li>show_contact_number():</li>
 </ul></li>
-<li>initialization:
-<ul>
-<li>hungry default is True</li>
-<li>color: default is “yellow”</li>
-<li>users are allowed to choose other arguments</li>
 </ul>
-<pre><code>pseudocode for the eat method:
-  if hungry==True:
-      print(&quot;Aaah&quot;)
-      hungry=False
-  else:
-      print(&quot;No thanks&quot;)</code></pre></li>
-</ul>
-</div>
-<div id="the-bird-class-2" class="slide section level1">
-<h1>The Bird class (2)</h1>
-<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">class</span> Bird2:</a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb38-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, color<span class="op">=</span><span class="st">&quot;yellow&quot;</span>, hungry<span class="op">=</span><span class="va">True</span>):</a>
-<a class="sourceLine" id="cb38-4" data-line-number="4">        <span class="va">self</span>.color <span class="op">=</span> color</a>
-<a class="sourceLine" id="cb38-5" data-line-number="5">        <span class="va">self</span>.hungry <span class="op">=</span> hungry</a>
-<a class="sourceLine" id="cb38-6" data-line-number="6">    </a>
-<a class="sourceLine" id="cb38-7" data-line-number="7">    <span class="kw">def</span> getColor(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb38-8" data-line-number="8">        <span class="cf">return</span>(<span class="va">self</span>.color)</a>
-<a class="sourceLine" id="cb38-9" data-line-number="9">    </a>
-<a class="sourceLine" id="cb38-10" data-line-number="10">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb38-11" data-line-number="11">        <span class="cf">if</span> <span class="va">self</span>.hungry:</a>
-<a class="sourceLine" id="cb38-12" data-line-number="12">            <span class="bu">print</span>(<span class="st">&quot;Aaah&quot;</span>)</a>
-<a class="sourceLine" id="cb38-13" data-line-number="13">            <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">False</span></a>
-<a class="sourceLine" id="cb38-14" data-line-number="14">        <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb38-15" data-line-number="15">            <span class="bu">print</span>(<span class="st">&quot;No, thanks&quot;</span>)    </a></code></pre></div>
+<pre><code>Create a new participant Amy, who is female and 49 years old.
+Also create her phone_number (123-456-7890) by using setPhoneNumber() method.
+The phone_number is not directly accessible via class.phone_number.
+It is accessible via class.show_contact_number()</code></pre>
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb39-1" data-line-number="1">bBird <span class="op">=</span> Bird2(<span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb39-2" data-line-number="2">bBird.getColor()</a></code></pre></div>
-<pre><code>## 'red'</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb41-1" data-line-number="1">bBird.eat()</a></code></pre></div>
-<pre><code>## Aaah</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb43-1" data-line-number="1">bBird.eat()</a></code></pre></div>
-<pre><code>## No, thanks</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="kw">class</span> Participant:</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age, sex):</span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a>        <span class="va">self</span>.sex <span class="op">=</span> sex</span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a>    </span>
+<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a>    <span class="kw">def</span> setPhoneNumber(<span class="va">self</span>,anumber):</span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a>        <span class="va">self</span>.__phone_number <span class="op">=</span> anumber</span>
+<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb38-11"><a href="#cb38-11" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Participant </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> yrs, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>sex<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb38-12"><a href="#cb38-12" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="#cb38-13" tabindex="-1"></a>    <span class="kw">def</span> show_contact_number(<span class="va">self</span>):</span>
+<span id="cb38-14"><a href="#cb38-14" tabindex="-1"></a>        <span class="bu">print</span>(<span class="va">self</span>.__phone_number)</span>
+<span id="cb38-15"><a href="#cb38-15" tabindex="-1"></a>      </span>
+<span id="cb38-16"><a href="#cb38-16" tabindex="-1"></a>aParticipant <span class="op">=</span> Participant(name<span class="op">=</span><span class="st">&quot;Amy&quot;</span>, age<span class="op">=</span><span class="dv">49</span>, sex<span class="op">=</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb38-17"><a href="#cb38-17" tabindex="-1"></a>aParticipant.setPhoneNumber(<span class="st">&quot;123-456-7890&quot;</span>)</span>
+<span id="cb38-18"><a href="#cb38-18" tabindex="-1"></a>aParticipant.show_contact_number()</span></code></pre></div>
+<pre><code>## 123-456-7890</code></pre>
 </div>
 <div id="extra-argument-and-keywords-in-the-class-initialization" class="slide section level1">
 <h1>extra argument and keywords in the class initialization</h1>
-<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">class</span> Car:</a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb45-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="op">**</span>kw):</a>
-<a class="sourceLine" id="cb45-4" data-line-number="4">        <span class="va">self</span>.make <span class="op">=</span> kw[<span class="st">&quot;make&quot;</span>]</a>
-<a class="sourceLine" id="cb45-5" data-line-number="5">        <span class="co"># self.model = kw[&quot;model&quot;]</span></a>
-<a class="sourceLine" id="cb45-6" data-line-number="6">        <span class="va">self</span>.model <span class="op">=</span> kw.get(<span class="st">&quot;model&quot;</span>)</a>
-<a class="sourceLine" id="cb45-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb45-8" data-line-number="8">my_car <span class="op">=</span> Car(make <span class="op">=</span> <span class="st">&quot;Chevo&quot;</span>, model <span class="op">=</span> <span class="st">&quot;Malibu&quot;</span>)</a>
-<a class="sourceLine" id="cb45-9" data-line-number="9"><span class="bu">print</span>(my_car.model)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="kw">class</span> Car:</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="op">**</span>kw):</span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a>        <span class="va">self</span>.make <span class="op">=</span> kw[<span class="st">&quot;make&quot;</span>]</span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a>        <span class="co"># self.model = kw[&quot;model&quot;]</span></span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a>        <span class="va">self</span>.model <span class="op">=</span> kw.get(<span class="st">&quot;model&quot;</span>)</span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a>my_car <span class="op">=</span> Car(make <span class="op">=</span> <span class="st">&quot;Chevo&quot;</span>, model <span class="op">=</span> <span class="st">&quot;Malibu&quot;</span>)</span>
+<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a><span class="bu">print</span>(my_car.model)</span></code></pre></div>
 <pre><code>## Malibu</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb47-1" data-line-number="1">my_car <span class="op">=</span> Car(make <span class="op">=</span> <span class="st">&quot;Chevo&quot;</span>)</a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="bu">print</span>(my_car.model)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>my_car <span class="op">=</span> Car(make <span class="op">=</span> <span class="st">&quot;Chevo&quot;</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a><span class="bu">print</span>(my_car.model)</span></code></pre></div>
 <pre><code>## None</code></pre>
 </div>
 <div id="a-class-with-attributes-being-other-classs-objects" class="slide section level1">
@@ -888,55 +959,150 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>previous Person class</li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb49-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname<span class="op">=</span><span class="st">&quot;John&quot;</span>):</a>
-<a class="sourceLine" id="cb49-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb49-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb49-6" data-line-number="6">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb49-7" data-line-number="7">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb49-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb49-9" data-line-number="9">    <span class="kw">def</span> getName(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb49-10" data-line-number="10">        <span class="cf">return</span>(<span class="va">self</span>.name)</a>
-<a class="sourceLine" id="cb49-11" data-line-number="11">    </a>
-<a class="sourceLine" id="cb49-12" data-line-number="12">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb49-13" data-line-number="13">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>    </span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, aname<span class="op">=</span><span class="st">&quot;John&quot;</span>):</span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb44-5"><a href="#cb44-5" tabindex="-1"></a>    </span>
+<span id="cb44-6"><a href="#cb44-6" tabindex="-1"></a>    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</span>
+<span id="cb44-7"><a href="#cb44-7" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb44-8"><a href="#cb44-8" tabindex="-1"></a>    </span>
+<span id="cb44-9"><a href="#cb44-9" tabindex="-1"></a>    <span class="kw">def</span> getName(<span class="va">self</span>):</span>
+<span id="cb44-10"><a href="#cb44-10" tabindex="-1"></a>        <span class="cf">return</span>(<span class="va">self</span>.name)</span>
+<span id="cb44-11"><a href="#cb44-11" tabindex="-1"></a>    </span>
+<span id="cb44-12"><a href="#cb44-12" tabindex="-1"></a>    <span class="kw">def</span> greet(<span class="va">self</span>):</span>
+<span id="cb44-13"><a href="#cb44-13" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</span></code></pre></div>
 <ul>
 <li>Goal: create a Group class, which contain a group of persons.</li>
 </ul>
 </div>
 <div id="a-group-class" class="slide section level1">
 <h1>a Group class</h1>
-<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">class</span> Group:</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb50-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb50-4" data-line-number="4">        <span class="va">self</span>.persons <span class="op">=</span> []</a>
-<a class="sourceLine" id="cb50-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb50-6" data-line-number="6">    <span class="kw">def</span> add(<span class="va">self</span>, aperson):</a>
-<a class="sourceLine" id="cb50-7" data-line-number="7">        <span class="va">self</span>.persons.append(aperson)</a>
-<a class="sourceLine" id="cb50-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb50-9" data-line-number="9">    <span class="kw">def</span> getNameAll(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb50-10" data-line-number="10">        res <span class="op">=</span> [aperson.getName() <span class="cf">for</span> aperson <span class="kw">in</span> <span class="va">self</span>.persons]</a>
-<a class="sourceLine" id="cb50-11" data-line-number="11">        <span class="cf">return</span>(res)</a>
-<a class="sourceLine" id="cb50-12" data-line-number="12">        </a>
-<a class="sourceLine" id="cb50-13" data-line-number="13">agroup <span class="op">=</span> Group()</a>
-<a class="sourceLine" id="cb50-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb50-15" data-line-number="15">agroup.add(Person(<span class="st">&quot;Amy&quot;</span>))</a>
-<a class="sourceLine" id="cb50-16" data-line-number="16">agroup.add(Person(<span class="st">&quot;Beth&quot;</span>))</a>
-<a class="sourceLine" id="cb50-17" data-line-number="17">agroup.add(Person(<span class="st">&quot;Carl&quot;</span>))</a>
-<a class="sourceLine" id="cb50-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb50-19" data-line-number="19">agroup.getNameAll()</a></code></pre></div>
-<pre><code>## ['Amy', 'Beth', 'Carl']</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="kw">class</span> Group:</span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>    </span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>        <span class="va">self</span>.persons <span class="op">=</span> []</span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a>    </span>
+<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a>    <span class="kw">def</span> add(<span class="va">self</span>, aperson):</span>
+<span id="cb45-7"><a href="#cb45-7" tabindex="-1"></a>        <span class="va">self</span>.persons.append(aperson)</span>
+<span id="cb45-8"><a href="#cb45-8" tabindex="-1"></a>    </span>
+<span id="cb45-9"><a href="#cb45-9" tabindex="-1"></a>    <span class="kw">def</span> getNameAll(<span class="va">self</span>):</span>
+<span id="cb45-10"><a href="#cb45-10" tabindex="-1"></a>        res <span class="op">=</span> [aperson.getName() <span class="cf">for</span> aperson <span class="kw">in</span> <span class="va">self</span>.persons]</span>
+<span id="cb45-11"><a href="#cb45-11" tabindex="-1"></a>        <span class="cf">return</span>(res)</span>
+<span id="cb45-12"><a href="#cb45-12" tabindex="-1"></a>        </span>
+<span id="cb45-13"><a href="#cb45-13" tabindex="-1"></a>agroup <span class="op">=</span> Group()</span>
+<span id="cb45-14"><a href="#cb45-14" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="#cb45-15" tabindex="-1"></a>agroup.add(Person(<span class="st">&quot;Amy&quot;</span>))</span>
+<span id="cb45-16"><a href="#cb45-16" tabindex="-1"></a>agroup.add(Person(<span class="st">&quot;Beth&quot;</span>))</span>
+<span id="cb45-17"><a href="#cb45-17" tabindex="-1"></a>agroup.add(Person(<span class="st">&quot;Carl&quot;</span>))</span>
+<span id="cb45-18"><a href="#cb45-18" tabindex="-1"></a></span>
+<span id="cb45-19"><a href="#cb45-19" tabindex="-1"></a>agroup.getNameAll()</span></code></pre></div>
+<pre><code>## [&#39;Amy&#39;, &#39;Beth&#39;, &#39;Carl&#39;]</code></pre>
+</div>
+<div id="in-class-exercise-4" class="slide section level1">
+<h1>In class exercise (4)</h1>
+<ul>
+<li>construct a class Participant
+<ul>
+<li>attribute:
+<ul>
+<li>name</li>
+<li>sex</li>
+<li>age</li>
+</ul></li>
+<li>initalize these attributes when constructing the object*</li>
+<li>method:
+<ul>
+<li>display_info():</li>
+</ul></li>
+</ul></li>
+<li>construct a class Study
+<ul>
+<li>attribute:
+<ul>
+<li>participants: a list of individual participants</li>
+</ul></li>
+<li>methods:
+<ul>
+<li>get_mean_age()</li>
+<li>get_percent_female()</li>
+<li>display the info for all participants (one in each line)</li>
+</ul></li>
+</ul></li>
+</ul>
+<pre><code>Create a study with 5 participants, Amy, Beth, Carl, Dan, Emily.
+Sex are randomly choose from male and female.
+Age are randomly selected from 20-60.
+
+And then show the mean age and percentage of females.
+Also show the info for all participants</code></pre>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a><span class="kw">class</span> Participant:</span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>    </span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age, sex):</span>
+<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb48-5"><a href="#cb48-5" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb48-6"><a href="#cb48-6" tabindex="-1"></a>        <span class="va">self</span>.sex <span class="op">=</span> sex</span>
+<span id="cb48-7"><a href="#cb48-7" tabindex="-1"></a>        </span>
+<span id="cb48-8"><a href="#cb48-8" tabindex="-1"></a>        </span>
+<span id="cb48-9"><a href="#cb48-9" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb48-10"><a href="#cb48-10" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Participant </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> yrs, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>sex<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="kw">class</span> Study:</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>    </span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a>        <span class="va">self</span>.participants <span class="op">=</span> []</span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a>        </span>
+<span id="cb49-6"><a href="#cb49-6" tabindex="-1"></a>    <span class="kw">def</span> enroll(<span class="va">self</span>, aparticipant):</span>
+<span id="cb49-7"><a href="#cb49-7" tabindex="-1"></a>        <span class="va">self</span>.participants.append(aparticipant)</span>
+<span id="cb49-8"><a href="#cb49-8" tabindex="-1"></a>        </span>
+<span id="cb49-9"><a href="#cb49-9" tabindex="-1"></a>    <span class="kw">def</span> get_mean_age(<span class="va">self</span>):</span>
+<span id="cb49-10"><a href="#cb49-10" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb49-11"><a href="#cb49-11" tabindex="-1"></a>      </span>
+<span id="cb49-12"><a href="#cb49-12" tabindex="-1"></a>    <span class="kw">def</span> get_percent_female(<span class="va">self</span>):</span>
+<span id="cb49-13"><a href="#cb49-13" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb49-14"><a href="#cb49-14" tabindex="-1"></a>    </span>
+<span id="cb49-15"><a href="#cb49-15" tabindex="-1"></a>    <span class="kw">def</span> display_all(<span class="va">self</span>):</span>
+<span id="cb49-16"><a href="#cb49-16" tabindex="-1"></a>        <span class="cf">for</span> aparticipant <span class="kw">in</span> <span class="va">self</span>.participants:</span>
+<span id="cb49-17"><a href="#cb49-17" tabindex="-1"></a>            aparticipant.display_info()</span>
+<span id="cb49-18"><a href="#cb49-18" tabindex="-1"></a>    </span></code></pre></div>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>astudy <span class="op">=</span> Study()</span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">&quot;Amy&quot;</span>, <span class="st">&quot;Beth&quot;</span>, <span class="st">&quot;Carl&quot;</span>, <span class="st">&quot;Dan&quot;</span>, <span class="st">&quot;Emily&quot;</span>]</span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a>genders <span class="op">=</span> [<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>]</span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb50-5"><a href="#cb50-5" tabindex="-1"></a><span class="cf">for</span> aname <span class="kw">in</span> names:</span>
+<span id="cb50-6"><a href="#cb50-6" tabindex="-1"></a>  aage <span class="op">=</span> random.randint(<span class="dv">20</span>,<span class="dv">80</span>)</span>
+<span id="cb50-7"><a href="#cb50-7" tabindex="-1"></a>  asex <span class="op">=</span> random.choice(genders)</span>
+<span id="cb50-8"><a href="#cb50-8" tabindex="-1"></a>  aparticipant <span class="op">=</span> Participant(aname, aage, asex)</span>
+<span id="cb50-9"><a href="#cb50-9" tabindex="-1"></a>  astudy.enroll(aparticipant)</span>
+<span id="cb50-10"><a href="#cb50-10" tabindex="-1"></a></span>
+<span id="cb50-11"><a href="#cb50-11" tabindex="-1"></a>astudy.get_mean_age()</span>
+<span id="cb50-12"><a href="#cb50-12" tabindex="-1"></a>astudy.get_percent_female()</span>
+<span id="cb50-13"><a href="#cb50-13" tabindex="-1"></a>astudy.display_all()</span></code></pre></div>
+<pre><code>## Participant Amy, 33 yrs, male
+## Participant Beth, 27 yrs, female
+## Participant Carl, 24 yrs, male
+## Participant Dan, 66 yrs, female
+## Participant Emily, 34 yrs, female</code></pre>
 </div>
 <div id="class-inheritance" class="slide section level1">
 <h1>Class inheritance</h1>
 <ul>
-<li>Inheritance allows us to define a class that inherits all the methods and properties from another class.
+<li>Inheritance allows us to define a class that inherits all the
+methods and properties from another class.
 <ul>
 <li>Parent class is the class being inherited from</li>
 <li>Child class is the class that inherits from another class</li>
 </ul></li>
-<li>to inherit a class, using the parental class as the argument for the child class</li>
+<li>to inherit a class, using the parental class as the argument for the
+child class</li>
 </ul>
 <pre><code>class Child(Parent):</code></pre>
 </div>
@@ -945,58 +1111,39 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>parent class</li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">class</span> Person:</a>
-<a class="sourceLine" id="cb53-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb53-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">        <span class="va">self</span>.name <span class="op">=</span> <span class="st">&quot;John&quot;</span></a>
-<a class="sourceLine" id="cb53-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb53-6" data-line-number="6">    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</a>
-<a class="sourceLine" id="cb53-7" data-line-number="7">        <span class="va">self</span>.name <span class="op">=</span> aname</a>
-<a class="sourceLine" id="cb53-8" data-line-number="8">    </a>
-<a class="sourceLine" id="cb53-9" data-line-number="9">    <span class="kw">def</span> greet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb53-10" data-line-number="10">        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a>    </span>
+<span id="cb53-3"><a href="#cb53-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb53-4"><a href="#cb53-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> <span class="st">&quot;John&quot;</span></span>
+<span id="cb53-5"><a href="#cb53-5" tabindex="-1"></a>    </span>
+<span id="cb53-6"><a href="#cb53-6" tabindex="-1"></a>    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</span>
+<span id="cb53-7"><a href="#cb53-7" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb53-8"><a href="#cb53-8" tabindex="-1"></a>    </span>
+<span id="cb53-9"><a href="#cb53-9" tabindex="-1"></a>    <span class="kw">def</span> greet(<span class="va">self</span>):</span>
+<span id="cb53-10"><a href="#cb53-10" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</span></code></pre></div>
 <ul>
 <li>child class</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">class</span> Student(Person):</a>
-<a class="sourceLine" id="cb54-2" data-line-number="2">    <span class="cf">pass</span></a></code></pre></div>
-<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb55-1" data-line-number="1">astudent <span class="op">=</span> Student()</a>
-<a class="sourceLine" id="cb55-2" data-line-number="2">astudent.greet()</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a><span class="kw">class</span> Student(Person):</span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>    <span class="cf">pass</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>astudent <span class="op">=</span> Student()</span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>astudent.greet()</span></code></pre></div>
 <pre><code>## Hi there, my name is John</code></pre>
 </div>
 <div id="class-inheritance-1" class="slide section level1">
 <h1>Class inheritance</h1>
-<p>The child class can have additional attributes and methods compared to the parent class</p>
-<ul>
-<li>parent class</li>
-</ul>
-<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">class</span> Filter:</a>
-<a class="sourceLine" id="cb57-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb57-3" data-line-number="3">        <span class="va">self</span>.blocked <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb57-4" data-line-number="4">    <span class="kw">def</span> <span class="bu">filter</span>(<span class="va">self</span>, sequence):</a>
-<a class="sourceLine" id="cb57-5" data-line-number="5">        <span class="cf">return</span> [x <span class="cf">for</span> x <span class="kw">in</span> sequence <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.blocked]</a></code></pre></div>
-<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb58-1" data-line-number="1">f <span class="op">=</span> Filter()</a>
-<a class="sourceLine" id="cb58-2" data-line-number="2">f.<span class="bu">filter</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</a></code></pre></div>
-<pre><code>## [2, 3]</code></pre>
-</div>
-<div class="slide section level1">
-
-<ul>
-<li>child class
-<ul>
-<li>it inherits the methods.</li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">class</span> SPAMFilter(Filter):</a>
-<a class="sourceLine" id="cb60-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb60-3" data-line-number="3">        <span class="va">self</span>.blocked <span class="op">=</span> [<span class="st">'SPAM'</span>]</a></code></pre></div>
-<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb61-1" data-line-number="1">s <span class="op">=</span> SPAMFilter()</a>
-<a class="sourceLine" id="cb61-2" data-line-number="2">s.<span class="bu">filter</span>([<span class="st">&quot;SPAM&quot;</span>,<span class="st">&quot;bacan&quot;</span>])</a></code></pre></div>
-<pre><code>## ['bacan']</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="bu">issubclass</span>(SPAMFilter, Filter)</a></code></pre></div>
-<pre><code>## True</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="bu">issubclass</span>(Filter, SPAMFilter)</a></code></pre></div>
-<pre><code>## False</code></pre>
+<p>The child class can have additional attributes and methods compared
+to the parent class</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a>    </span>
+<span id="cb57-3"><a href="#cb57-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb57-4"><a href="#cb57-4" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> <span class="st">&quot;John&quot;</span></span>
+<span id="cb57-5"><a href="#cb57-5" tabindex="-1"></a>    </span>
+<span id="cb57-6"><a href="#cb57-6" tabindex="-1"></a>    <span class="kw">def</span> setName(<span class="va">self</span>, aname):</span>
+<span id="cb57-7"><a href="#cb57-7" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> aname</span>
+<span id="cb57-8"><a href="#cb57-8" tabindex="-1"></a>    </span>
+<span id="cb57-9"><a href="#cb57-9" tabindex="-1"></a>    <span class="kw">def</span> greet(<span class="va">self</span>):</span>
+<span id="cb57-10"><a href="#cb57-10" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Hi there, my name is &quot;</span> <span class="op">+</span> <span class="va">self</span>.name)</span></code></pre></div>
 </div>
 <div class="slide section level1">
 
@@ -1006,202 +1153,133 @@ Zhiguang Huo (Caleb)
 <li>it inherits the parental attributes.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">class</span> SPAMFilter2(Filter):</a>
-<a class="sourceLine" id="cb67-2" data-line-number="2">    <span class="cf">pass</span></a></code></pre></div>
-<div class="sourceCode" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb68-1" data-line-number="1">s2 <span class="op">=</span> SPAMFilter2()</a>
-<a class="sourceLine" id="cb68-2" data-line-number="2">s2.<span class="bu">filter</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</a></code></pre></div>
-<pre><code>## [2, 3]</code></pre>
-<ul>
-<li>child class
-<ul>
-<li>but cannot modify the parental attributes</li>
-</ul></li>
-</ul>
-<pre><code>class SPAMFilter3(Filter):
-    def __init__(self):
-        self.blocked.append('SPAM')</code></pre>
-<pre><code>s3 = SPAMFilter3()
-s3.filter([1, 2, &quot;SPAM&quot;])</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="kw">class</span> Student(Person):</span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>    </span>
+<span id="cb58-3"><a href="#cb58-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb58-4"><a href="#cb58-4" tabindex="-1"></a>        <span class="va">self</span>.courses <span class="op">=</span> {}</span>
+<span id="cb58-5"><a href="#cb58-5" tabindex="-1"></a>    </span>
+<span id="cb58-6"><a href="#cb58-6" tabindex="-1"></a>    <span class="kw">def</span> add_course(<span class="va">self</span>, course, grade):</span>
+<span id="cb58-7"><a href="#cb58-7" tabindex="-1"></a>        <span class="va">self</span>.courses.update({course:grade})</span>
+<span id="cb58-8"><a href="#cb58-8" tabindex="-1"></a>        </span>
+<span id="cb58-9"><a href="#cb58-9" tabindex="-1"></a>    <span class="kw">def</span> get_ave_grade(<span class="va">self</span>):</span>
+<span id="cb58-10"><a href="#cb58-10" tabindex="-1"></a>        ave_grades <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">list</span>(<span class="va">self</span>.courses.values()))<span class="op">/</span><span class="bu">len</span>(<span class="va">self</span>.courses)</span>
+<span id="cb58-11"><a href="#cb58-11" tabindex="-1"></a>        <span class="cf">return</span>(ave_grades)</span></code></pre></div>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a>astudent <span class="op">=</span> Student()</span>
+<span id="cb59-2"><a href="#cb59-2" tabindex="-1"></a>astudent.setName(<span class="st">&quot;Levi&quot;</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" tabindex="-1"></a>astudent.greet()</span></code></pre></div>
+<pre><code>## Hi there, my name is Levi</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a>astudent.add_course(<span class="st">&quot;math&quot;</span>, <span class="fl">4.0</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a>astudent.add_course(<span class="st">&quot;physics&quot;</span>, <span class="fl">3.8</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" tabindex="-1"></a>astudent.add_course(<span class="st">&quot;history&quot;</span>, <span class="fl">3.7</span>)</span>
+<span id="cb61-4"><a href="#cb61-4" tabindex="-1"></a>astudent.get_ave_grade()</span></code></pre></div>
+<pre><code>## 3.8333333333333335</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="bu">issubclass</span>(Person, Student)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="bu">issubclass</span>(Student, Person)</span></code></pre></div>
+<pre><code>## True</code></pre>
 </div>
 <div id="super-method-for-python-class" class="slide section level1">
 <h1>Super method for python class</h1>
 <ul>
 <li>super() allows to access methods of the parental class.</li>
 </ul>
-<div class="sourceCode" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">class</span> Animal(<span class="bu">object</span>):</a>
-<a class="sourceLine" id="cb72-2" data-line-number="2">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, animal_type):</a>
-<a class="sourceLine" id="cb72-3" data-line-number="3">    <span class="bu">print</span>(<span class="st">'Animal Type:'</span>, animal_type)</a>
-<a class="sourceLine" id="cb72-4" data-line-number="4">    </a>
-<a class="sourceLine" id="cb72-5" data-line-number="5"><span class="kw">class</span> Mammal(Animal):</a>
-<a class="sourceLine" id="cb72-6" data-line-number="6">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb72-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb72-8" data-line-number="8">    <span class="co"># call superclass</span></a>
-<a class="sourceLine" id="cb72-9" data-line-number="9">    <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'Mammal'</span>)</a>
-<a class="sourceLine" id="cb72-10" data-line-number="10">    <span class="co">## super(Mammal, self).__init__('Mammal') ## alternatively</span></a>
-<a class="sourceLine" id="cb72-11" data-line-number="11">    <span class="bu">print</span>(<span class="st">'Mammals give birth directly'</span>)</a>
-<a class="sourceLine" id="cb72-12" data-line-number="12">    </a>
-<a class="sourceLine" id="cb72-13" data-line-number="13">dog <span class="op">=</span> Mammal()</a></code></pre></div>
-<pre><code>## Animal Type: Mammal
-## Mammals give birth directly</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a><span class="kw">class</span> Animal():</span>
+<span id="cb67-2"><a href="#cb67-2" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, animal_type):</span>
+<span id="cb67-3"><a href="#cb67-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Animal Type:&#39;</span>, animal_type)</span>
+<span id="cb67-4"><a href="#cb67-4" tabindex="-1"></a>    </span>
+<span id="cb67-5"><a href="#cb67-5" tabindex="-1"></a><span class="kw">class</span> Dog(Animal):</span>
+<span id="cb67-6"><a href="#cb67-6" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb67-7"><a href="#cb67-7" tabindex="-1"></a></span>
+<span id="cb67-8"><a href="#cb67-8" tabindex="-1"></a>    <span class="co"># call superclass</span></span>
+<span id="cb67-9"><a href="#cb67-9" tabindex="-1"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">&#39;dog&#39;</span>)</span>
+<span id="cb67-10"><a href="#cb67-10" tabindex="-1"></a>    <span class="co">## super(Dog, self).__init__(&#39;dog&#39;) ## alternatively</span></span>
+<span id="cb67-11"><a href="#cb67-11" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Wolffff&#39;</span>)</span>
+<span id="cb67-12"><a href="#cb67-12" tabindex="-1"></a>    </span>
+<span id="cb67-13"><a href="#cb67-13" tabindex="-1"></a>adog <span class="op">=</span> Dog()</span></code></pre></div>
+<pre><code>## Animal Type: dog
+## Wolffff</code></pre>
 </div>
-<div id="super-method-for-python-class-1" class="slide section level1">
-<h1>Super method for python class</h1>
-<div class="sourceCode" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">class</span> Filter:</a>
-<a class="sourceLine" id="cb74-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb74-3" data-line-number="3">        <span class="va">self</span>.blocked <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb74-4" data-line-number="4">    <span class="kw">def</span> <span class="bu">filter</span>(<span class="va">self</span>, sequence):</a>
-<a class="sourceLine" id="cb74-5" data-line-number="5">        <span class="cf">return</span> [x <span class="cf">for</span> x <span class="kw">in</span> sequence <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.blocked]</a></code></pre></div>
-<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">class</span> SPAMFilter4(Filter):</a>
-<a class="sourceLine" id="cb75-2" data-line-number="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb75-3" data-line-number="3">        <span class="bu">super</span>(SPAMFilter4, <span class="va">self</span>).<span class="fu">__init__</span>()</a>
-<a class="sourceLine" id="cb75-4" data-line-number="4">        <span class="va">self</span>.blocked.append(<span class="st">'SPAM'</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb76-1" data-line-number="1">s4 <span class="op">=</span> SPAMFilter4()</a>
-<a class="sourceLine" id="cb76-2" data-line-number="2">s4.<span class="bu">filter</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&quot;SPAM&quot;</span>])</a></code></pre></div>
-<pre><code>## [2]</code></pre>
-</div>
-<div id="in-class-exercise-3" class="slide section level1">
-<h1>In class exercise (3)</h1>
+<div id="in-class-exercise-5" class="slide section level1">
+<h1>In class exercise (5)</h1>
 <ul>
-<li>assume the Bird class (in exercise 1) is the parent class, let’s define a child class (i.e., SongBird) with an additional attribute and method.
-<ul>
-<li>attribute: sound (set sound=“tweet” in initialization)</li>
-<li>method: sing</li>
-</ul></li>
-<li>pseudocode for the sing method</li>
+<li>previous exercise (2)</li>
 </ul>
-<pre><code>def sing(self):
-    print(self.sound * 3)</code></pre>
-</div>
-<div id="songbird-class" class="slide section level1">
-<h1>SongBird Class</h1>
-<div class="sourceCode" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="kw">class</span> Bird:</a>
-<a class="sourceLine" id="cb79-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb79-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb79-4" data-line-number="4">        <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">True</span></a>
-<a class="sourceLine" id="cb79-5" data-line-number="5">    </a>
-<a class="sourceLine" id="cb79-6" data-line-number="6">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb79-7" data-line-number="7">        <span class="cf">if</span> <span class="va">self</span>.hungry:</a>
-<a class="sourceLine" id="cb79-8" data-line-number="8">            <span class="bu">print</span>(<span class="st">&quot;Aaah&quot;</span>)</a>
-<a class="sourceLine" id="cb79-9" data-line-number="9">            <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">False</span></a>
-<a class="sourceLine" id="cb79-10" data-line-number="10">        <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb79-11" data-line-number="11">            <span class="bu">print</span>(<span class="st">&quot;No, thanks&quot;</span>)    </a>
-<a class="sourceLine" id="cb79-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb79-13" data-line-number="13"><span class="kw">class</span> SongBird(Bird):</a>
-<a class="sourceLine" id="cb79-14" data-line-number="14">    </a>
-<a class="sourceLine" id="cb79-15" data-line-number="15">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb79-16" data-line-number="16">        <span class="bu">super</span>(SongBird, <span class="va">self</span>).<span class="fu">__init__</span>() <span class="co">## need this to initialize the parental class</span></a>
-<a class="sourceLine" id="cb79-17" data-line-number="17">        <span class="va">self</span>.sound <span class="op">=</span> <span class="st">&quot;tweet&quot;</span></a>
-<a class="sourceLine" id="cb79-18" data-line-number="18">    </a>
-<a class="sourceLine" id="cb79-19" data-line-number="19">    <span class="kw">def</span> sing(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb79-20" data-line-number="20">        <span class="bu">print</span>(<span class="va">self</span>.sound <span class="op">*</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a><span class="kw">class</span> Participant:</span>
+<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age, sex):</span>
+<span id="cb69-3"><a href="#cb69-3" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb69-4"><a href="#cb69-4" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb69-5"><a href="#cb69-5" tabindex="-1"></a>        <span class="va">self</span>.sex <span class="op">=</span> sex</span>
+<span id="cb69-6"><a href="#cb69-6" tabindex="-1"></a>    </span>
+<span id="cb69-7"><a href="#cb69-7" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb69-8"><a href="#cb69-8" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Participant </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> yrs, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>sex<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb69-9"><a href="#cb69-9" tabindex="-1"></a></span>
+<span id="cb69-10"><a href="#cb69-10" tabindex="-1"></a>aParticipant <span class="op">=</span> Participant(name<span class="op">=</span><span class="st">&quot;Amy&quot;</span>, age<span class="op">=</span><span class="dv">49</span>, sex<span class="op">=</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb69-11"><a href="#cb69-11" tabindex="-1"></a>aParticipant.display_info()</span></code></pre></div>
+<pre><code>## Participant Amy, 49 yrs, female</code></pre>
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb80-1" data-line-number="1">aSongBird <span class="op">=</span> SongBird()</a>
-<a class="sourceLine" id="cb80-2" data-line-number="2">aSongBird.hungry</a></code></pre></div>
-<pre><code>## True</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb82-1" data-line-number="1">aSongBird.sound</a></code></pre></div>
-<pre><code>## 'tweet'</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb84-1" data-line-number="1">aSongBird.sing()</a></code></pre></div>
-<pre><code>## tweettweettweet</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb86-1" data-line-number="1">aSongBird.eat()</a></code></pre></div>
-<pre><code>## Aaah</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb88-1" data-line-number="1">aSongBird.hungry</a></code></pre></div>
-<pre><code>## False</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb90-1" data-line-number="1">aSongBird.eat()</a></code></pre></div>
-<pre><code>## No, thanks</code></pre>
+<ul>
+<li>assume the Participant class (in exercise 2) is the parent class,
+let’s define a child class (i.e., Athlete) with an additional attribute
+and method.
+<ul>
+<li>attribute: strength (set strength=100 in initialization)</li>
+<li>method: train (will increase strength by 1)</li>
+</ul></li>
+<li>pseudocode for the train method</li>
+</ul>
+<pre><code>def train(self):
+    strength += 1
+    print(my strength is {strength})</code></pre>
+</div>
+<div id="athlete-class" class="slide section level1">
+<h1>Athlete Class</h1>
+<div class="sourceCode" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a><span class="kw">class</span> Athlete(Participant):</span>
+<span id="cb72-2"><a href="#cb72-2" tabindex="-1"></a>    </span>
+<span id="cb72-3"><a href="#cb72-3" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age, sex):</span>
+<span id="cb72-4"><a href="#cb72-4" tabindex="-1"></a>        <span class="bu">super</span>(Athlete, <span class="va">self</span>).<span class="fu">__init__</span>(name, age, sex) <span class="co">## need this to initialize the parental class</span></span>
+<span id="cb72-5"><a href="#cb72-5" tabindex="-1"></a>        <span class="co">## alternatively, super().__init__(name, age, sex)</span></span>
+<span id="cb72-6"><a href="#cb72-6" tabindex="-1"></a>        <span class="va">self</span>.strength <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb72-7"><a href="#cb72-7" tabindex="-1"></a>    </span>
+<span id="cb72-8"><a href="#cb72-8" tabindex="-1"></a>    <span class="kw">def</span> train(<span class="va">self</span>):</span>
+<span id="cb72-9"><a href="#cb72-9" tabindex="-1"></a>        <span class="va">self</span>.strength <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb72-10"><a href="#cb72-10" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;my strength is </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>strength<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+</div>
+<div class="slide section level1">
+
+<div class="sourceCode" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a>aAthlete <span class="op">=</span> Athlete(name<span class="op">=</span><span class="st">&quot;Amy&quot;</span>, age<span class="op">=</span><span class="dv">49</span>, sex<span class="op">=</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" tabindex="-1"></a>aAthlete.display_info()</span></code></pre></div>
+<pre><code>## Participant Amy, 49 yrs, female</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a>aAthlete.strength</span></code></pre></div>
+<pre><code>## 100</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a>aAthlete.train()</span></code></pre></div>
+<pre><code>## my strength is 101</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a>aAthlete.strength</span></code></pre></div>
+<pre><code>## 101</code></pre>
 </div>
 <div id="multiple-inheritance" class="slide section level1">
 <h1>Multiple inheritance</h1>
 <ul>
 <li>inherit the attribtues and methods from multiple classes</li>
 </ul>
-<div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="kw">class</span> Calculator:</a>
-<a class="sourceLine" id="cb92-2" data-line-number="2">    <span class="kw">def</span> calculate(<span class="va">self</span>, expression):</a>
-<a class="sourceLine" id="cb92-3" data-line-number="3">        <span class="va">self</span>.value <span class="op">=</span> <span class="bu">eval</span>(expression) <span class="co">## eval is to evaluate some expression in python</span></a>
-<a class="sourceLine" id="cb92-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb92-5" data-line-number="5"><span class="kw">class</span> Talker:</a>
-<a class="sourceLine" id="cb92-6" data-line-number="6">    <span class="kw">def</span> talk(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb92-7" data-line-number="7">        <span class="bu">print</span>(<span class="st">&quot;Hi, my value is&quot;</span>, <span class="va">self</span>.value)</a>
-<a class="sourceLine" id="cb92-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb92-9" data-line-number="9"><span class="kw">class</span> TalkingCalculator(Calculator, Talker):</a>
-<a class="sourceLine" id="cb92-10" data-line-number="10">    <span class="cf">pass</span></a></code></pre></div>
-<div class="sourceCode" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb93-1" data-line-number="1">a <span class="op">=</span> TalkingCalculator()</a>
-<a class="sourceLine" id="cb93-2" data-line-number="2">a.calculate(<span class="st">&quot;1+1&quot;</span>)</a>
-<a class="sourceLine" id="cb93-3" data-line-number="3">a.talk()</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a><span class="kw">class</span> Calculator:</span>
+<span id="cb81-2"><a href="#cb81-2" tabindex="-1"></a>    <span class="kw">def</span> calculate(<span class="va">self</span>, expression):</span>
+<span id="cb81-3"><a href="#cb81-3" tabindex="-1"></a>        <span class="va">self</span>.value <span class="op">=</span> <span class="bu">eval</span>(expression) <span class="co">## eval is to evaluate some expression in python</span></span>
+<span id="cb81-4"><a href="#cb81-4" tabindex="-1"></a></span>
+<span id="cb81-5"><a href="#cb81-5" tabindex="-1"></a><span class="kw">class</span> Talker:</span>
+<span id="cb81-6"><a href="#cb81-6" tabindex="-1"></a>    <span class="kw">def</span> talk(<span class="va">self</span>):</span>
+<span id="cb81-7"><a href="#cb81-7" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Hi, my value is&quot;</span>, <span class="va">self</span>.value)</span>
+<span id="cb81-8"><a href="#cb81-8" tabindex="-1"></a></span>
+<span id="cb81-9"><a href="#cb81-9" tabindex="-1"></a><span class="kw">class</span> TalkingCalculator(Calculator, Talker):</span>
+<span id="cb81-10"><a href="#cb81-10" tabindex="-1"></a>    <span class="cf">pass</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" tabindex="-1"></a>a <span class="op">=</span> TalkingCalculator()</span>
+<span id="cb82-2"><a href="#cb82-2" tabindex="-1"></a>a.calculate(<span class="st">&quot;1+1&quot;</span>)</span>
+<span id="cb82-3"><a href="#cb82-3" tabindex="-1"></a>a.talk()</span></code></pre></div>
 <pre><code>## Hi, my value is 2</code></pre>
-</div>
-<div id="in-class-exercise-4" class="slide section level1">
-<h1>In class exercise (4)</h1>
-<ul>
-<li>assume the Bird2 class (in exercise 2) is the parent class, let’s define a child class (i.e., SongBird2) with an additional attribute and method.
-<ul>
-<li>attribute: sound (with default value TWEET)</li>
-<li>method: sing</li>
-<li>also allow to specify color and hungry when constructing the object. E.g.,</li>
-</ul>
-<pre><code>SongBird2(color=&quot;yellow&quot;, hungry=True, sound = &quot;TWEET&quot;)</code></pre></li>
-<li>pseudocode for the sing method</li>
-</ul>
-<pre><code>def sing(self):
-    print(self.sound * 3)</code></pre>
-</div>
-<div id="songbird-class-1" class="slide section level1">
-<h1>SongBird Class</h1>
-<div class="sourceCode" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">class</span> Bird2:</a>
-<a class="sourceLine" id="cb97-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb97-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, color<span class="op">=</span><span class="st">&quot;yellow&quot;</span>, hungry<span class="op">=</span><span class="va">True</span>):</a>
-<a class="sourceLine" id="cb97-4" data-line-number="4">        <span class="va">self</span>.color <span class="op">=</span> color</a>
-<a class="sourceLine" id="cb97-5" data-line-number="5">        <span class="va">self</span>.hungry <span class="op">=</span> hungry</a>
-<a class="sourceLine" id="cb97-6" data-line-number="6">    </a>
-<a class="sourceLine" id="cb97-7" data-line-number="7">    <span class="kw">def</span> getColor(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb97-8" data-line-number="8">        <span class="cf">return</span>(<span class="va">self</span>.color)</a>
-<a class="sourceLine" id="cb97-9" data-line-number="9">    </a>
-<a class="sourceLine" id="cb97-10" data-line-number="10">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb97-11" data-line-number="11">        <span class="cf">if</span> <span class="va">self</span>.hungry:</a>
-<a class="sourceLine" id="cb97-12" data-line-number="12">            <span class="bu">print</span>(<span class="st">&quot;Aaah&quot;</span>)</a>
-<a class="sourceLine" id="cb97-13" data-line-number="13">            <span class="va">self</span>.hungry <span class="op">=</span> <span class="va">False</span></a>
-<a class="sourceLine" id="cb97-14" data-line-number="14">        <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb97-15" data-line-number="15">            <span class="bu">print</span>(<span class="st">&quot;No, thanks&quot;</span>)    </a>
-<a class="sourceLine" id="cb97-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb97-17" data-line-number="17"><span class="co">## bBird = Bird2(&quot;red&quot;)</span></a>
-<a class="sourceLine" id="cb97-18" data-line-number="18"><span class="co">## bBird.getColor()</span></a>
-<a class="sourceLine" id="cb97-19" data-line-number="19"><span class="co">## bBird.eat()</span></a>
-<a class="sourceLine" id="cb97-20" data-line-number="20"><span class="co">## bBird.eat()</span></a></code></pre></div>
-</div>
-<div class="slide section level1">
-
-<div class="sourceCode" id="cb98"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">class</span> SongBird2(Bird2):</a>
-<a class="sourceLine" id="cb98-2" data-line-number="2">    </a>
-<a class="sourceLine" id="cb98-3" data-line-number="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, color<span class="op">=</span><span class="st">&quot;yellow&quot;</span>, hungry<span class="op">=</span><span class="va">True</span>, sound<span class="op">=</span><span class="st">&quot;TWEET&quot;</span>):</a>
-<a class="sourceLine" id="cb98-4" data-line-number="4">        <span class="bu">super</span>(SongBird2, <span class="va">self</span>).<span class="fu">__init__</span>(color<span class="op">=</span>color, hungry<span class="op">=</span>hungry)</a>
-<a class="sourceLine" id="cb98-5" data-line-number="5">        <span class="va">self</span>.sound <span class="op">=</span> sound</a>
-<a class="sourceLine" id="cb98-6" data-line-number="6">    </a>
-<a class="sourceLine" id="cb98-7" data-line-number="7">    <span class="kw">def</span> sing(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb98-8" data-line-number="8">        <span class="bu">print</span>(<span class="va">self</span>.sound <span class="op">*</span> <span class="dv">3</span>)</a></code></pre></div>
-</div>
-<div class="slide section level1">
-
-<div class="sourceCode" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb99-1" data-line-number="1">bSongBird <span class="op">=</span> SongBird2(color<span class="op">=</span><span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb99-2" data-line-number="2">bSongBird.sing()</a></code></pre></div>
-<pre><code>## TWEETTWEETTWEET</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="bu">print</span>(bSongBird.getColor())</a></code></pre></div>
-<pre><code>## red</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb103-1" data-line-number="1">bSongBird.eat()</a></code></pre></div>
-<pre><code>## Aaah</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb105-1" data-line-number="1">bSongBird.eat()</a></code></pre></div>
-<pre><code>## No, thanks</code></pre>
-</div>
-<div id="verify-inheritance" class="slide section level1">
-<h1>verify inheritance</h1>
-<div class="sourceCode" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="bu">issubclass</span>(Bird, SongBird)</a></code></pre></div>
-<pre><code>## False</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="bu">issubclass</span>(SongBird, Bird)</a></code></pre></div>
-<pre><code>## True</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="bu">issubclass</span>(SongBird2, Bird)</a></code></pre></div>
-<pre><code>## False</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="bu">issubclass</span>(SongBird2, Bird2)</a></code></pre></div>
-<pre><code>## True</code></pre>
 </div>
 <div id="exercise-will-be-part-of-hw4" class="slide section level1">
 <h1>Exercise (will be part of HW4)</h1>
@@ -1220,14 +1298,16 @@ s3.filter([1, 2, &quot;SPAM&quot;])</code></pre>
 <ul>
 <li>introduction()
 <ul>
-<li>Hello, this is <strong>Dan</strong>. I am a <strong>freshman</strong>. My hobby is <strong>Football</strong>!</li>
+<li>Hello, this is <strong>Dan</strong>. I am a
+<strong>freshman</strong>. My hobby is <strong>Football</strong>!</li>
 </ul></li>
 <li>getGPA()</li>
 <li>getName()</li>
 <li>update_GPA()
 <ul>
 <li>The new GPA = old GPA + log10(study_time) - 1.</li>
-<li>Note that the new GPA should not be above 4.0. If it is above, just set it to be 4.0.</li>
+<li>Note that the new GPA should not be above 4.0. If it is above, just
+set it to be 4.0.</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -1238,10 +1318,13 @@ s3.filter([1, 2, &quot;SPAM&quot;])</code></pre>
 <ul>
 <li>read in file
 <ul>
-<li>The targetted file is located here: <a href="https://caleb-huo.github.io/teaching/data/python/Student_data.csv" class="uri">https://caleb-huo.github.io/teaching/data/python/Student_data.csv</a>.</li>
-<li>Read in this file and skip the header line (‘Name’, ‘Hobby’, ‘Year_in_colledge’, ‘Initial_GPA’, ‘Study_time’).</li>
-<li>Prepare the data in the format of a list, with each element of the list being a tuple.</li>
-<li>The first element of the list should be (‘Dan’, ‘Football’, ‘freshman’, ‘3.1’, ‘10’).</li>
+<li>The targetted file is located here: <a href="https://caleb-huo.github.io/teaching/data/Python/Student_data.csv" class="uri">https://caleb-huo.github.io/teaching/data/Python/Student_data.csv</a>.</li>
+<li>Read in this file and skip the header line (‘Name’, ‘Hobby’,
+‘Year_in_colledge’, ‘Initial_GPA’, ‘Study_time’).</li>
+<li>Prepare the data in the format of a list, with each element of the
+list being a tuple.</li>
+<li>The first element of the list should be (‘Dan’, ‘Football’,
+‘freshman’, ‘3.1’, ‘10’).</li>
 <li>Print out the result.</li>
 </ul></li>
 <li>construct a student object using Dan’s information</li>
@@ -1270,7 +1353,8 @@ s3.filter([1, 2, &quot;SPAM&quot;])</code></pre>
 <ul>
 <li>print out the introduction of each student line by line.</li>
 <li>The order of the introduction should be the alphabetic order.</li>
-<li>For example, the first introduction should come from student Amy.</li>
+<li>For example, the first introduction should come from student
+Amy.</li>
 </ul></li>
 <li>get_high_GPA()
 <ul>
@@ -1279,7 +1363,8 @@ s3.filter([1, 2, &quot;SPAM&quot;])</code></pre>
 <li>get_ave_GPA()</li>
 <li>group_study()
 <ul>
-<li>This method will let each student in the class study according to their study time.</li>
+<li>This method will let each student in the class study according to
+their study time.</li>
 </ul></li>
 </ul></li>
 </ul></li>
