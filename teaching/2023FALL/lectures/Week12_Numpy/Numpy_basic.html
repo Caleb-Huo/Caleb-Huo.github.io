@@ -829,7 +829,7 @@ my_list = list(range(n))</code></pre>
 </ul>
 <div class="sourceCode" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" tabindex="-1"></a>rfloat <span class="op">=</span> rng.random() <span class="co">## also specify size inside</span></span>
 <span id="cb90-2"><a href="#cb90-2" tabindex="-1"></a>rfloat</span></code></pre></div>
-<pre><code>## 0.45346477915978967</code></pre>
+<pre><code>## 0.21659168820945018</code></pre>
 <div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" tabindex="-1"></a><span class="bu">type</span>(rfloat)</span></code></pre></div>
 <pre><code>## &lt;class &#39;float&#39;&gt;</code></pre>
 <ul>
@@ -837,7 +837,7 @@ my_list = list(range(n))</code></pre>
 </ul>
 <div class="sourceCode" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" tabindex="-1"></a>rints <span class="op">=</span> rng.integers(low<span class="op">=</span><span class="dv">0</span>, high<span class="op">=</span><span class="dv">10</span>, size<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb94-2"><a href="#cb94-2" tabindex="-1"></a>rints </span></code></pre></div>
-<pre><code>## array([1, 9, 7])</code></pre>
+<pre><code>## array([3, 1, 7])</code></pre>
 <div class="sourceCode" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" tabindex="-1"></a><span class="bu">type</span>(rints)</span></code></pre></div>
 <pre><code>## &lt;class &#39;numpy.ndarray&#39;&gt;</code></pre>
 </div>
@@ -906,7 +906,7 @@ my_list = list(range(n))</code></pre>
 <ul>
 <li>Randomly permute a sequence, and return the result</li>
 <li>axis = 0: permute rows</li>
-<li>axis = 1: permute columns (within each row)</li>
+<li>axis = 1: permute columns</li>
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>)</span>
@@ -929,7 +929,7 @@ my_list = list(range(n))</code></pre>
 <ul>
 <li><strong>in place</strong> operation, modify the original array</li>
 <li>axis = 0: permute rows</li>
-<li>axis = 1: permute columns (within each row)</li>
+<li>axis = 1: permute columns</li>
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb120"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">5442</span>)</span>
@@ -955,8 +955,8 @@ my_list = list(range(n))</code></pre>
 <ul>
 <li>axis = None (default): , randomly shuffle the entire data
 matrix</li>
-<li>axis = 0: permute rows fixing colunms</li>
-<li>axis = 1: permute columns fixing rows</li>
+<li>axis = 0: permute rows (within each column)</li>
+<li>axis = 1: permute columns (within each row)</li>
 </ul></li>
 </ul>
 <div class="sourceCode" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>)</span>
@@ -976,16 +976,16 @@ matrix</li>
 </ul>
 <div class="sourceCode" id="cb127"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span>
 <span id="cb127-2"><a href="#cb127-2" tabindex="-1"></a>rng.standard_normal(size<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## array([ 0.01685113,  1.00519305,  1.44810315, -0.33840624, -0.80427171,
-##         0.229436  ,  2.97255096, -0.78665603, -1.22622497,  0.9664086 ])</code></pre>
+<pre><code>## array([ 0.21409389,  1.22708461, -0.95858637,  1.1204244 , -0.57909022,
+##         0.42956404, -1.50635136, -1.03336681, -0.98637857, -0.9437289 ])</code></pre>
 <div class="sourceCode" id="cb129"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" tabindex="-1"></a>rng.standard_normal(size<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## array([[ 0.37507192,  0.47815787, -0.53788103],
-##        [-0.15063446,  0.10663815,  1.56600404]])</code></pre>
+<pre><code>## array([[ 1.41974814, -0.37742038,  1.1079552 ],
+##        [-0.11548843,  0.70612016, -0.55047195]])</code></pre>
 <ul>
 <li>general normal distribution</li>
 </ul>
 <div class="sourceCode" id="cb131"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" tabindex="-1"></a>rng.normal(loc<span class="op">=</span><span class="dv">4</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div>
-<pre><code>## array([5.84895474, 4.88575315, 4.99654508, 6.27138821])</code></pre>
+<pre><code>## array([3.55334725, 4.90761414, 2.83178996, 0.91243366])</code></pre>
 <ul>
 <li>more distributions:
 <ul>
@@ -1097,33 +1097,33 @@ the original array arr:
 <span id="cb173-4"><a href="#cb173-4" tabindex="-1"></a>names</span></code></pre></div>
 <pre><code>## array([&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;, &#39;Bob&#39;, &#39;Will&#39;, &#39;James&#39;], dtype=&#39;&lt;U5&#39;)</code></pre>
 <div class="sourceCode" id="cb175"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" tabindex="-1"></a>data</span></code></pre></div>
-<pre><code>## array([[-1.09609805,  0.03302999, -0.03365374],
-##        [ 0.06522803, -1.16794445, -1.09400333],
-##        [-0.03905922, -1.24956775,  1.24401996],
-##        [ 1.96853719,  0.8917729 ,  1.11201952],
-##        [-1.62268263, -0.02287539,  1.63137   ],
-##        [ 0.60973111, -1.35857181,  2.16604536]])</code></pre>
+<pre><code>## array([[ 1.19167583, -0.12885116,  1.03198519],
+##        [ 0.96210664,  0.32416914,  0.35553721],
+##        [ 1.47360777, -0.21979707,  0.55706949],
+##        [ 1.03443407,  1.08359143, -0.16322612],
+##        [ 0.97912621, -1.96768607,  0.32006562],
+##        [-0.10479479,  3.06244143, -0.94485631]])</code></pre>
 <div class="sourceCode" id="cb177"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" tabindex="-1"></a>names <span class="op">==</span> <span class="st">&quot;Bob&quot;</span></span></code></pre></div>
 <pre><code>## array([ True, False, False,  True, False, False])</code></pre>
 </div>
 <div class="slide section level1">
 
 <div class="sourceCode" id="cb179"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb179-1"><a href="#cb179-1" tabindex="-1"></a>data[names <span class="op">==</span> <span class="st">&quot;Bob&quot;</span>]</span></code></pre></div>
-<pre><code>## array([[-1.09609805,  0.03302999, -0.03365374],
-##        [ 1.96853719,  0.8917729 ,  1.11201952]])</code></pre>
+<pre><code>## array([[ 1.19167583, -0.12885116,  1.03198519],
+##        [ 1.03443407,  1.08359143, -0.16322612]])</code></pre>
 <div class="sourceCode" id="cb181"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb181-1"><a href="#cb181-1" tabindex="-1"></a>data[names <span class="op">==</span> <span class="st">&quot;Bob&quot;</span>, <span class="dv">1</span>:]</span></code></pre></div>
-<pre><code>## array([[ 0.03302999, -0.03365374],
-##        [ 0.8917729 ,  1.11201952]])</code></pre>
+<pre><code>## array([[-0.12885116,  1.03198519],
+##        [ 1.08359143, -0.16322612]])</code></pre>
 <div class="sourceCode" id="cb183"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb183-1"><a href="#cb183-1" tabindex="-1"></a>names <span class="op">!=</span> <span class="st">&quot;Bob&quot;</span></span></code></pre></div>
 <pre><code>## array([False,  True,  True, False,  True,  True])</code></pre>
 <div class="sourceCode" id="cb185"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb185-1"><a href="#cb185-1" tabindex="-1"></a><span class="op">~</span>(names <span class="op">==</span> <span class="st">&quot;Bob&quot;</span>)</span></code></pre></div>
 <pre><code>## array([False,  True,  True, False,  True,  True])</code></pre>
 <div class="sourceCode" id="cb187"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb187-1"><a href="#cb187-1" tabindex="-1"></a>cond <span class="op">=</span> names <span class="op">==</span> <span class="st">&quot;Bob&quot;</span></span>
 <span id="cb187-2"><a href="#cb187-2" tabindex="-1"></a>data[<span class="op">~</span>cond]</span></code></pre></div>
-<pre><code>## array([[ 0.06522803, -1.16794445, -1.09400333],
-##        [-0.03905922, -1.24956775,  1.24401996],
-##        [-1.62268263, -0.02287539,  1.63137   ],
-##        [ 0.60973111, -1.35857181,  2.16604536]])</code></pre>
+<pre><code>## array([[ 0.96210664,  0.32416914,  0.35553721],
+##        [ 1.47360777, -0.21979707,  0.55706949],
+##        [ 0.97912621, -1.96768607,  0.32006562],
+##        [-0.10479479,  3.06244143, -0.94485631]])</code></pre>
 </div>
 <div class="slide section level1">
 
@@ -1131,10 +1131,10 @@ the original array arr:
 <span id="cb189-2"><a href="#cb189-2" tabindex="-1"></a>mask</span></code></pre></div>
 <pre><code>## array([ True, False,  True,  True,  True, False])</code></pre>
 <div class="sourceCode" id="cb191"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb191-1"><a href="#cb191-1" tabindex="-1"></a>data[mask]</span></code></pre></div>
-<pre><code>## array([[-1.09609805,  0.03302999, -0.03365374],
-##        [-0.03905922, -1.24956775,  1.24401996],
-##        [ 1.96853719,  0.8917729 ,  1.11201952],
-##        [-1.62268263, -0.02287539,  1.63137   ]])</code></pre>
+<pre><code>## array([[ 1.19167583, -0.12885116,  1.03198519],
+##        [ 1.47360777, -0.21979707,  0.55706949],
+##        [ 1.03443407,  1.08359143, -0.16322612],
+##        [ 0.97912621, -1.96768607,  0.32006562]])</code></pre>
 <div class="sourceCode" id="cb193"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb193-1"><a href="#cb193-1" tabindex="-1"></a>mask2 <span class="op">=</span> (names <span class="op">==</span> <span class="st">&quot;Bob&quot;</span>) <span class="op">&amp;</span> (names <span class="op">==</span> <span class="st">&quot;Will&quot;</span>)</span>
 <span id="cb193-2"><a href="#cb193-2" tabindex="-1"></a>mask2</span></code></pre></div>
 <pre><code>## array([False, False, False, False, False, False])</code></pre>
@@ -1145,19 +1145,19 @@ the original array arr:
 
 <div class="sourceCode" id="cb197"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb197-1"><a href="#cb197-1" tabindex="-1"></a>data[data<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb197-2"><a href="#cb197-2" tabindex="-1"></a>data</span></code></pre></div>
-<pre><code>## array([[0.        , 0.03302999, 0.        ],
-##        [0.06522803, 0.        , 0.        ],
-##        [0.        , 0.        , 1.24401996],
-##        [1.96853719, 0.8917729 , 1.11201952],
-##        [0.        , 0.        , 1.63137   ],
-##        [0.60973111, 0.        , 2.16604536]])</code></pre>
+<pre><code>## array([[1.19167583, 0.        , 1.03198519],
+##        [0.96210664, 0.32416914, 0.35553721],
+##        [1.47360777, 0.        , 0.55706949],
+##        [1.03443407, 1.08359143, 0.        ],
+##        [0.97912621, 0.        , 0.32006562],
+##        [0.        , 3.06244143, 0.        ]])</code></pre>
 <div class="sourceCode" id="cb199"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb199-1"><a href="#cb199-1" tabindex="-1"></a>data[names <span class="op">!=</span> <span class="st">&quot;Will&quot;</span>] <span class="op">=</span> <span class="dv">99</span></span>
 <span id="cb199-2"><a href="#cb199-2" tabindex="-1"></a>data</span></code></pre></div>
 <pre><code>## array([[99.        , 99.        , 99.        ],
 ##        [99.        , 99.        , 99.        ],
-##        [ 0.        ,  0.        ,  1.24401996],
+##        [ 1.47360777,  0.        ,  0.55706949],
 ##        [99.        , 99.        , 99.        ],
-##        [ 0.        ,  0.        ,  1.63137   ],
+##        [ 0.97912621,  0.        ,  0.32006562],
 ##        [99.        , 99.        , 99.        ]])</code></pre>
 </div>
 <div id="fancy-indexing" class="slide section level1">
