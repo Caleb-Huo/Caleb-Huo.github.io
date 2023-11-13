@@ -6,139 +6,156 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Zhiguang Huo (Caleb)" />
-  <title>Introduction to Biostatistical Computing PHC 6937</title>
+  <title>Programming basics for Biostatistics 6099</title>
   <style type="text/css">
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-            a.sourceLine { display: inline-block; line-height: 1.25; }
-    a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-    a.sourceLine:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode { white-space: pre; position: relative; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    code.sourceCode { white-space: pre-wrap; }
-    a.sourceLine { text-indent: -1em; padding-left: 1em; }
-    }
-    pre.numberSource a.sourceLine
-      { position: relative; left: -4em; }
-    pre.numberSource a.sourceLine::before
-      { content: attr(data-line-number);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; pointer-events: all; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {  }
-    @media screen {
-    a.sourceLine::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-          </style>
-  <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {  }
+{ }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
   <style type="text/css">
 body
 {
@@ -504,12 +521,12 @@ list-style-type: none;
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Introduction to Biostatistical Computing PHC 6937</h1>
+  <h1 class="title">Programming basics for Biostatistics 6099</h1>
   <h1 class="subtitle">Pandas data manipulation</h1>
   <p class="author">
 Zhiguang Huo (Caleb)
   </p>
-  <p class="date">Monday Nov 21st, 2022</p>
+  <p class="date">Monday Nov 14th, 2023</p>
 </div>
 <div id="outlines" class="slide section level1">
 <h1>Outlines</h1>
@@ -528,10 +545,11 @@ Zhiguang Huo (Caleb)
 <div id="hierarchical-indexing" class="slide section level1">
 <h1>Hierarchical Indexing</h1>
 <ul>
-<li>The hierarchical indexing enables two or more index level on axis</li>
+<li>The hierarchical indexing enables two or more index level on
+axis</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">data <span class="op">=</span> pd.Series(np.arange(<span class="dv">6</span>), index <span class="op">=</span> [[<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>], <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>) <span class="op">*</span> <span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">data</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>data <span class="op">=</span> pd.Series(np.arange(<span class="dv">6</span>), index <span class="op">=</span> [[<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>], <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>) <span class="op">*</span> <span class="dv">2</span>])</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>data</span></code></pre></div>
 <pre><code>## l1  a    0
 ##     b    1
 ##     c    2
@@ -539,13 +557,13 @@ Zhiguang Huo (Caleb)
 ##     b    4
 ##     c    5
 ## dtype: int64</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1">data.index</a></code></pre></div>
-<pre><code>## MultiIndex([('l1', 'a'),
-##             ('l1', 'b'),
-##             ('l1', 'c'),
-##             ('l2', 'a'),
-##             ('l2', 'b'),
-##             ('l2', 'c')],
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>data.index</span></code></pre></div>
+<pre><code>## MultiIndex([(&#39;l1&#39;, &#39;a&#39;),
+##             (&#39;l1&#39;, &#39;b&#39;),
+##             (&#39;l1&#39;, &#39;c&#39;),
+##             (&#39;l2&#39;, &#39;a&#39;),
+##             (&#39;l2&#39;, &#39;b&#39;),
+##             (&#39;l2&#39;, &#39;c&#39;)],
 ##            )</code></pre>
 </div>
 <div class="slide section level1">
@@ -553,22 +571,22 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>selection by index</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1">data[<span class="st">&quot;l1&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>data[<span class="st">&quot;l1&quot;</span>]</span></code></pre></div>
 <pre><code>## a    0
 ## b    1
 ## c    2
 ## dtype: int64</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" data-line-number="1">data.loc[<span class="st">&quot;l2&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>data.loc[<span class="st">&quot;l2&quot;</span>]</span></code></pre></div>
 <pre><code>## a    3
 ## b    4
 ## c    5
 ## dtype: int64</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" data-line-number="1">data.loc[<span class="st">&quot;l2&quot;</span>, <span class="st">&quot;b&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>data.loc[<span class="st">&quot;l2&quot;</span>, <span class="st">&quot;b&quot;</span>]</span></code></pre></div>
 <pre><code>## 4</code></pre>
 <ul>
 <li>selection by inner index</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" data-line-number="1">data.loc[:,<span class="st">&quot;a&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>data.loc[:,<span class="st">&quot;a&quot;</span>]</span></code></pre></div>
 <pre><code>## l1    0
 ## l2    3
 ## dtype: int64</code></pre>
@@ -578,14 +596,14 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>transform a multiIndex Series to a DataFrame</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" data-line-number="1">data.unstack()</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>data.unstack()</span></code></pre></div>
 <pre><code>##     a  b  c
 ## l1  0  1  2
 ## l2  3  4  5</code></pre>
 <ul>
 <li>transform a DataFrame to a multiIndex Series</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" data-line-number="1">data.unstack().stack()</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>data.unstack().stack()</span></code></pre></div>
 <pre><code>## l1  a    0
 ##     b    1
 ##     c    2
@@ -596,9 +614,9 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="swap-index" class="slide section level1">
 <h1>Swap index</h1>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" data-line-number="1">data <span class="op">=</span> pd.Series(np.arange(<span class="dv">6</span>), index <span class="op">=</span> [[<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>], <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>) <span class="op">*</span> <span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">data.index.names <span class="op">=</span> [<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]</a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">data.swaplevel(<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>data <span class="op">=</span> pd.Series(np.arange(<span class="dv">6</span>), index <span class="op">=</span> [[<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>], <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>) <span class="op">*</span> <span class="dv">2</span>])</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>data.index.names <span class="op">=</span> [<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>data.swaplevel(<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>)</span></code></pre></div>
 <pre><code>## Key2  Key1
 ## a     l1      0
 ## b     l1      1
@@ -607,7 +625,7 @@ Zhiguang Huo (Caleb)
 ## b     l2      4
 ## c     l2      5
 ## dtype: int64</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb19-1" data-line-number="1">data.swaplevel(<span class="dv">0</span>, <span class="dv">1</span>).sort_index()</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>data.swaplevel(<span class="dv">0</span>, <span class="dv">1</span>).sort_index()</span></code></pre></div>
 <pre><code>## Key2  Key1
 ## a     l1      0
 ##       l2      3
@@ -622,12 +640,12 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>Hierarchical indexing for both row index and column names</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb21-1" data-line-number="1">data2 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">16</span>).reshape((<span class="dv">4</span>, <span class="dv">-1</span>)),</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">    index<span class="op">=</span>[[<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>], [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>]],</a>
-<a class="sourceLine" id="cb21-3" data-line-number="3">    columns<span class="op">=</span>[[<span class="st">&quot;TX&quot;</span>, <span class="st">&quot;TX&quot;</span>, <span class="st">&quot;FL&quot;</span>, <span class="st">&quot;FL&quot;</span>],[<span class="st">&quot;Red&quot;</span>, <span class="st">&quot;Blue&quot;</span>, <span class="st">&quot;Red&quot;</span>,  <span class="st">&quot;Blue&quot;</span>]])</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">data2.index.names <span class="op">=</span> [<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]</a>
-<a class="sourceLine" id="cb21-5" data-line-number="5">data2.columns.names <span class="op">=</span> [<span class="st">&quot;State&quot;</span>, <span class="st">&quot;Color&quot;</span>]</a>
-<a class="sourceLine" id="cb21-6" data-line-number="6">data2</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>data2 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">16</span>).reshape((<span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>)),</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>    index<span class="op">=</span>[[<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>], [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>]],</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>    columns<span class="op">=</span>[[<span class="st">&quot;TX&quot;</span>, <span class="st">&quot;TX&quot;</span>, <span class="st">&quot;FL&quot;</span>, <span class="st">&quot;FL&quot;</span>],[<span class="st">&quot;Red&quot;</span>, <span class="st">&quot;Blue&quot;</span>, <span class="st">&quot;Red&quot;</span>,  <span class="st">&quot;Blue&quot;</span>]])</span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>data2.index.names <span class="op">=</span> [<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]</span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>data2.columns.names <span class="op">=</span> [<span class="st">&quot;State&quot;</span>, <span class="st">&quot;Color&quot;</span>]</span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a>data2</span></code></pre></div>
 <pre><code>## State      TX       FL     
 ## Color     Red Blue Red Blue
 ## Key1 Key2                  
@@ -635,7 +653,7 @@ Zhiguang Huo (Caleb)
 ##      b      4    5   6    7
 ## l2   a      8    9  10   11
 ##      b     12   13  14   15</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb23-1" data-line-number="1">data2[<span class="st">&quot;FL&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>data2[<span class="st">&quot;FL&quot;</span>]</span></code></pre></div>
 <pre><code>## Color      Red  Blue
 ## Key1 Key2           
 ## l1   a       2     3
@@ -648,31 +666,46 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>row index</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb25-1" data-line-number="1">data2.index.get_level_values(<span class="dv">0</span>)</a></code></pre></div>
-<pre><code>## Index(['l1', 'l1', 'l2', 'l2'], dtype='object', name='Key1')</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb27-1" data-line-number="1">data2.index.get_level_values(<span class="st">&quot;Key1&quot;</span>)</a></code></pre></div>
-<pre><code>## Index(['l1', 'l1', 'l2', 'l2'], dtype='object', name='Key1')</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb29-1" data-line-number="1">data2.index.get_level_values(<span class="dv">1</span>)</a></code></pre></div>
-<pre><code>## Index(['a', 'b', 'a', 'b'], dtype='object', name='Key2')</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>data2.index.get_level_values(<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;l1&#39;, &#39;l1&#39;, &#39;l2&#39;, &#39;l2&#39;], dtype=&#39;object&#39;, name=&#39;Key1&#39;)</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>data2.index.get_level_values(<span class="st">&quot;Key1&quot;</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;l1&#39;, &#39;l1&#39;, &#39;l2&#39;, &#39;l2&#39;], dtype=&#39;object&#39;, name=&#39;Key1&#39;)</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>data2.index.get_level_values(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;a&#39;, &#39;b&#39;, &#39;a&#39;, &#39;b&#39;], dtype=&#39;object&#39;, name=&#39;Key2&#39;)</code></pre>
 <ul>
 <li>column index</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb31-1" data-line-number="1">data2.columns.get_level_values(<span class="dv">0</span>)</a></code></pre></div>
-<pre><code>## Index(['TX', 'TX', 'FL', 'FL'], dtype='object', name='State')</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb33-1" data-line-number="1">data2.columns.get_level_values(<span class="st">&quot;State&quot;</span>)</a></code></pre></div>
-<pre><code>## Index(['TX', 'TX', 'FL', 'FL'], dtype='object', name='State')</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb35-1" data-line-number="1">data2.columns.get_level_values(<span class="dv">1</span>)</a></code></pre></div>
-<pre><code>## Index(['Red', 'Blue', 'Red', 'Blue'], dtype='object', name='Color')</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>data2.columns.get_level_values(<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;TX&#39;, &#39;TX&#39;, &#39;FL&#39;, &#39;FL&#39;], dtype=&#39;object&#39;, name=&#39;State&#39;)</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>data2.columns.get_level_values(<span class="st">&quot;State&quot;</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;TX&#39;, &#39;TX&#39;, &#39;FL&#39;, &#39;FL&#39;], dtype=&#39;object&#39;, name=&#39;State&#39;)</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>data2.columns.get_level_values(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;Red&#39;, &#39;Blue&#39;, &#39;Red&#39;, &#39;Blue&#39;], dtype=&#39;object&#39;, name=&#39;Color&#39;)</code></pre>
+</div>
+<div id="drop-levels" class="slide section level1">
+<h1>Drop levels</h1>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>data2.index.droplevel()</span></code></pre></div>
+<pre><code>## Index([&#39;a&#39;, &#39;b&#39;, &#39;a&#39;, &#39;b&#39;], dtype=&#39;object&#39;, name=&#39;Key2&#39;)</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>data2.index.droplevel(<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;a&#39;, &#39;b&#39;, &#39;a&#39;, &#39;b&#39;], dtype=&#39;object&#39;, name=&#39;Key2&#39;)</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>data2.index.droplevel(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;l1&#39;, &#39;l1&#39;, &#39;l2&#39;, &#39;l2&#39;], dtype=&#39;object&#39;, name=&#39;Key1&#39;)</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>data2.columns.droplevel()</span></code></pre></div>
+<pre><code>## Index([&#39;Red&#39;, &#39;Blue&#39;, &#39;Red&#39;, &#39;Blue&#39;], dtype=&#39;object&#39;, name=&#39;Color&#39;)</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>data2.columns.droplevel(<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;Red&#39;, &#39;Blue&#39;, &#39;Red&#39;, &#39;Blue&#39;], dtype=&#39;object&#39;, name=&#39;Color&#39;)</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>data2.columns.droplevel(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Index([&#39;TX&#39;, &#39;TX&#39;, &#39;FL&#39;, &#39;FL&#39;], dtype=&#39;object&#39;, name=&#39;State&#39;)</code></pre>
 </div>
 <div id="creating-index-with-dataframes-columns" class="slide section level1">
 <h1>Creating index with DataFrame’s columns</h1>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb37-1" data-line-number="1">adata <span class="op">=</span> pd.DataFrame({<span class="st">&quot;c1&quot;</span>: [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb37-2" data-line-number="2">        <span class="st">&quot;c2&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abcdefg&quot;</span>),</a>
-<a class="sourceLine" id="cb37-3" data-line-number="3">        <span class="st">&quot;c3&quot;</span>: <span class="bu">range</span>(<span class="dv">7</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb37-4" data-line-number="4">        <span class="st">&quot;c4&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abababa&quot;</span>)}</a>
-<a class="sourceLine" id="cb37-5" data-line-number="5">)</a>
-<a class="sourceLine" id="cb37-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb37-7" data-line-number="7">adata.set_index(<span class="st">&quot;c1&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>adata <span class="op">=</span> pd.DataFrame({<span class="st">&quot;c1&quot;</span>: [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>],</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>        <span class="st">&quot;c2&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abcdefg&quot;</span>),</span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a>        <span class="st">&quot;c3&quot;</span>: <span class="bu">range</span>(<span class="dv">7</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>),</span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a>        <span class="st">&quot;c4&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abababa&quot;</span>)}</span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a>)</span>
+<span id="cb49-6"><a href="#cb49-6" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" tabindex="-1"></a>adata.set_index(<span class="st">&quot;c1&quot;</span>)</span></code></pre></div>
 <pre><code>##    c2  c3 c4
 ## c1          
 ## 1   a   7  a
@@ -682,7 +715,7 @@ Zhiguang Huo (Caleb)
 ## 2   e   3  a
 ## 2   f   2  b
 ## 2   g   1  a</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb39-1" data-line-number="1">adata.set_index([<span class="st">&quot;c1&quot;</span>], drop<span class="op">=</span><span class="va">False</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>adata.set_index([<span class="st">&quot;c1&quot;</span>], drop<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
 <pre><code>##     c1 c2  c3 c4
 ## c1              
 ## 1    1  a   7  a
@@ -695,8 +728,8 @@ Zhiguang Huo (Caleb)
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb41-1" data-line-number="1">bdata <span class="op">=</span> adata.set_index([<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c4&quot;</span>])</a>
-<a class="sourceLine" id="cb41-2" data-line-number="2">bdata</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>bdata <span class="op">=</span> adata.set_index([<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c4&quot;</span>])</span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a>bdata</span></code></pre></div>
 <pre><code>##       c2  c3
 ## c1 c4       
 ## 1  a   a   7
@@ -706,7 +739,7 @@ Zhiguang Huo (Caleb)
 ##    a   e   3
 ##    b   f   2
 ##    a   g   1</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb43-1" data-line-number="1">bdata.reset_index()</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>bdata.reset_index()</span></code></pre></div>
 <pre><code>##    c1 c4 c2  c3
 ## 0   1  a  a   7
 ## 1   1  b  b   6
@@ -724,9 +757,9 @@ Zhiguang Huo (Caleb)
 <li>by default, pd.merge will search for the common column</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb45-1" data-line-number="1">data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</a>
-<a class="sourceLine" id="cb45-2" data-line-number="2">data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</a>
-<a class="sourceLine" id="cb45-3" data-line-number="3">pd.merge(data1, data2)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</span>
+<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a>data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</span>
+<span id="cb57-3"><a href="#cb57-3" tabindex="-1"></a>pd.merge(data1, data2)</span></code></pre></div>
 <pre><code>##   key  value1  value2
 ## 0   b       0       1
 ## 1   b       5       1
@@ -737,7 +770,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>specify the common column explicitly</li>
 </ul>
-<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb47-1" data-line-number="1">pd.merge(data1, data2, on <span class="op">=</span> <span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a>pd.merge(data1, data2, on <span class="op">=</span> <span class="st">&quot;key&quot;</span>)</span></code></pre></div>
 <pre><code>##   key  value1  value2
 ## 0   b       0       1
 ## 1   b       5       1
@@ -749,7 +782,8 @@ Zhiguang Huo (Caleb)
 <div id="merge-based-on-common-column-1" class="slide section level1">
 <h1>merge based on common column</h1>
 <ul>
-<li>if the two columns (column to merge) has different values, we can specify the “how” method
+<li>if the two columns (column to merge) has different values, we can
+specify the “how” method
 <ul>
 <li>inner: observations existed in both tables (default)</li>
 <li>left: observations in the left table</li>
@@ -757,15 +791,15 @@ Zhiguang Huo (Caleb)
 <li>outer: observations existed in either tables</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb49-1" data-line-number="1">data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</a>
-<a class="sourceLine" id="cb49-2" data-line-number="2">data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abd&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">pd.merge(data1, data2, how<span class="op">=</span><span class="st">&quot;inner&quot;</span>) <span class="co">## default</span></a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a>data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</span>
+<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a>data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abd&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</span>
+<span id="cb61-3"><a href="#cb61-3" tabindex="-1"></a>pd.merge(data1, data2, how<span class="op">=</span><span class="st">&quot;inner&quot;</span>) <span class="co">## default</span></span></code></pre></div>
 <pre><code>##   key  value1  value2
 ## 0   b       0       1
 ## 1   b       5       1
 ## 2   a       3       0
 ## 3   a       4       0</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb51-1" data-line-number="1">pd.merge(data1, data2, how<span class="op">=</span><span class="st">&quot;left&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a>pd.merge(data1, data2, how<span class="op">=</span><span class="st">&quot;left&quot;</span>)</span></code></pre></div>
 <pre><code>##   key  value1  value2
 ## 0   b       0     1.0
 ## 1   c       1     NaN
@@ -776,14 +810,14 @@ Zhiguang Huo (Caleb)
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb53-1" data-line-number="1">pd.merge(data1, data2, how<span class="op">=</span><span class="st">&quot;right&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a>pd.merge(data1, data2, how<span class="op">=</span><span class="st">&quot;right&quot;</span>)</span></code></pre></div>
 <pre><code>##   key  value1  value2
 ## 0   a     3.0       0
 ## 1   a     4.0       0
 ## 2   b     0.0       1
 ## 3   b     5.0       1
 ## 4   d     NaN       2</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb55-1" data-line-number="1">pd.merge(data1, data2, how<span class="op">=</span><span class="st">&quot;outer&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a>pd.merge(data1, data2, how<span class="op">=</span><span class="st">&quot;outer&quot;</span>)</span></code></pre></div>
 <pre><code>##   key  value1  value2
 ## 0   b     0.0     1.0
 ## 1   b     5.0     1.0
@@ -798,9 +832,9 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>the common column may have different names in two columns</li>
 </ul>
-<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb57-1" data-line-number="1">data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</a>
-<a class="sourceLine" id="cb57-2" data-line-number="2">data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key2&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</a>
-<a class="sourceLine" id="cb57-3" data-line-number="3">pd.merge(data1, data2, left_on<span class="op">=</span><span class="st">&quot;key1&quot;</span>, right_on<span class="op">=</span><span class="st">&quot;key2&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a>data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</span>
+<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key2&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</span>
+<span id="cb69-3"><a href="#cb69-3" tabindex="-1"></a>pd.merge(data1, data2, left_on<span class="op">=</span><span class="st">&quot;key1&quot;</span>, right_on<span class="op">=</span><span class="st">&quot;key2&quot;</span>) </span></code></pre></div>
 <pre><code>##   key1  value1 key2  value2
 ## 0    b       0    b       1
 ## 1    b       5    b       1
@@ -809,62 +843,16 @@ Zhiguang Huo (Caleb)
 ## 4    a       3    a       0
 ## 5    a       4    a       0</code></pre>
 </div>
-<div id="merge-based-on-common-column-3" class="slide section level1">
-<h1>merge based on common column</h1>
-<ul>
-<li>merge based on two common columns</li>
-</ul>
-<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb59-1" data-line-number="1">data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;keyA&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;keyB&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AABBCC&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</a>
-<a class="sourceLine" id="cb59-2" data-line-number="2">data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;keyA&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>), <span class="st">&quot;keyB&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;CBA&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</a>
-<a class="sourceLine" id="cb59-3" data-line-number="3">pd.merge(data1, data2, on<span class="op">=</span>[<span class="st">&quot;keyA&quot;</span>, <span class="st">&quot;keyB&quot;</span>]) </a>
-<a class="sourceLine" id="cb59-4" data-line-number="4"><span class="co">#pd.merge(data1, data2, left_on=[&quot;keyA&quot;, &quot;keyB&quot;], right_on=[&quot;keyA&quot;, &quot;keyB&quot;]) </span></a></code></pre></div>
-<pre><code>##   keyA keyB  value1  value2
-## 0    c    A       1       2
-## 1    a    C       4       0</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb61-1" data-line-number="1">pd.merge(data1, data2, on<span class="op">=</span>[<span class="st">&quot;keyA&quot;</span>, <span class="st">&quot;keyB&quot;</span>], how<span class="op">=</span><span class="st">&quot;outer&quot;</span>) </a></code></pre></div>
-<pre><code>##   keyA keyB  value1  value2
-## 0    b    A     0.0     NaN
-## 1    c    A     1.0     2.0
-## 2    c    B     2.0     NaN
-## 3    a    B     3.0     NaN
-## 4    a    C     4.0     0.0
-## 5    b    C     5.0     NaN
-## 6    b    B     NaN     1.0</code></pre>
-</div>
-<div id="merge-based-on-common-column-4" class="slide section level1">
-<h1>merge based on common column</h1>
-<ul>
-<li>if there exists other columns with identical names from two dataFrames</li>
-</ul>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb63-1" data-line-number="1">data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;keyA&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;keyB&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AABBCC&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</a>
-<a class="sourceLine" id="cb63-2" data-line-number="2">data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;keyA&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>), <span class="st">&quot;keyB&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;CBA&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</a>
-<a class="sourceLine" id="cb63-3" data-line-number="3">pd.merge(data1, data2, on<span class="op">=</span>[<span class="st">&quot;keyA&quot;</span>]) </a></code></pre></div>
-<pre><code>##   keyA keyB_x  value1 keyB_y  value2
-## 0    b      A       0      B       1
-## 1    b      C       5      B       1
-## 2    c      A       1      A       2
-## 3    c      B       2      A       2
-## 4    a      B       3      C       0
-## 5    a      C       4      C       0</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb65-1" data-line-number="1">pd.merge(data1, data2, on<span class="op">=</span>[<span class="st">&quot;keyA&quot;</span>], suffixes <span class="op">=</span> [<span class="st">&quot;_1&quot;</span>, <span class="st">&quot;_2&quot;</span>]) </a></code></pre></div>
-<pre><code>##   keyA keyB_1  value1 keyB_2  value2
-## 0    b      A       0      B       1
-## 1    b      C       5      B       1
-## 2    c      A       1      A       2
-## 3    c      B       2      A       2
-## 4    a      B       3      C       0
-## 5    a      C       4      C       0</code></pre>
-</div>
 <div id="merge-based-on-index" class="slide section level1">
 <h1>merge based on index</h1>
 <ul>
 <li>based on indexes from both dataFrame</li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb67-1" data-line-number="1">data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</a>
-<a class="sourceLine" id="cb67-2" data-line-number="2">data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abd&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</a>
-<a class="sourceLine" id="cb67-3" data-line-number="3">data1_key <span class="op">=</span> data1.set_index(<span class="st">&quot;key&quot;</span>)</a>
-<a class="sourceLine" id="cb67-4" data-line-number="4">data2_key <span class="op">=</span> data2.set_index(<span class="st">&quot;key&quot;</span>)</a>
-<a class="sourceLine" id="cb67-5" data-line-number="5">pd.merge(data1_key,data2_key, left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a>data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</span>
+<span id="cb71-2"><a href="#cb71-2" tabindex="-1"></a>data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abd&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</span>
+<span id="cb71-3"><a href="#cb71-3" tabindex="-1"></a>data1_key <span class="op">=</span> data1.set_index(<span class="st">&quot;key&quot;</span>)</span>
+<span id="cb71-4"><a href="#cb71-4" tabindex="-1"></a>data2_key <span class="op">=</span> data2.set_index(<span class="st">&quot;key&quot;</span>)</span>
+<span id="cb71-5"><a href="#cb71-5" tabindex="-1"></a>pd.merge(data1_key,data2_key, left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <pre><code>##      value1  value2
 ## key                
 ## a         3       0
@@ -872,83 +860,29 @@ Zhiguang Huo (Caleb)
 ## b         0       1
 ## b         5       1</code></pre>
 <ul>
-<li>based on index from one dataFrame, and a column from another dataFrame</li>
+<li>based on index from one dataFrame, and a column from another
+dataFrame</li>
 </ul>
-<div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb69-1" data-line-number="1">pd.merge(data1,data2_key, left_on<span class="op">=</span><span class="st">&quot;key&quot;</span>, right_index<span class="op">=</span><span class="va">True</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a>pd.merge(data1,data2_key, left_on<span class="op">=</span><span class="st">&quot;key&quot;</span>, right_index<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <pre><code>##   key  value1  value2
 ## 0   b       0       1
 ## 5   b       5       1
 ## 3   a       3       0
 ## 4   a       4       0</code></pre>
 </div>
-<div id="merge-based-on-hierarchical-index" class="slide section level1">
-<h1>merge based on hierarchical-index</h1>
-<div class="sourceCode" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb71-1" data-line-number="1">df_left <span class="op">=</span> pd.DataFrame({<span class="st">&quot;Key1&quot;</span>: [<span class="st">&quot;l1&quot;</span>,<span class="st">&quot;l2&quot;</span>,<span class="st">&quot;l3&quot;</span>], </a>
-<a class="sourceLine" id="cb71-2" data-line-number="2">        <span class="st">&quot;Key2&quot;</span>: [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>], </a>
-<a class="sourceLine" id="cb71-3" data-line-number="3">        <span class="st">&quot;value&quot;</span>:[<span class="dv">11</span>,<span class="dv">22</span>,<span class="dv">33</span>]})</a>
-<a class="sourceLine" id="cb71-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb71-5" data-line-number="5">df_right <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">6</span>), index <span class="op">=</span> [[<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l2&quot;</span>], <span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>) <span class="op">*</span> <span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb71-6" data-line-number="6">df_right.index.names <span class="op">=</span> [<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]</a>
-<a class="sourceLine" id="cb71-7" data-line-number="7">pd.merge(df_left,df_right, left_on<span class="op">=</span>[<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], right_index<span class="op">=</span><span class="va">True</span>, how<span class="op">=</span><span class="st">&quot;outer&quot;</span>)</a></code></pre></div>
-<pre><code>##   Key1 Key2  value    0
-## 0   l1    a   11.0  0.0
-## 1   l2    b   22.0  4.0
-## 2   l3    c   33.0  NaN
-## 2   l1    b    NaN  1.0
-## 2   l1    c    NaN  2.0
-## 2   l2    a    NaN  3.0
-## 2   l2    c    NaN  5.0</code></pre>
-</div>
-<div id="exercise" class="slide section level1">
-<h1>Exercise:</h1>
-<p>Based on df_left and df_right in the previous slides</p>
-<ul>
-<li>Part 1
-<ul>
-<li>unstack df_right such that only Key1 is the index</li>
-<li>merge df_left and unstacked df_right</li>
-</ul></li>
-<li>Part 2
-<ul>
-<li>unstack df_right such that only Key2 is the index</li>
-<li>merge df_left and unstacked df_right</li>
-</ul></li>
-</ul>
-</div>
-<div class="slide section level1">
-
-<ul>
-<li>solution:</li>
-<li>part 1</li>
-</ul>
-<div class="sourceCode" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb73-1" data-line-number="1">df_right2 <span class="op">=</span> df_right.unstack(<span class="st">&quot;Key2&quot;</span>)[<span class="dv">0</span>]</a>
-<a class="sourceLine" id="cb73-2" data-line-number="2">pd.merge(df_left,df_right2, left_on<span class="op">=</span>[<span class="st">&quot;Key1&quot;</span>], right_index<span class="op">=</span><span class="va">True</span>)</a></code></pre></div>
-<pre><code>##   Key1 Key2  value  a  b  c
-## 0   l1    a     11  0  1  2
-## 1   l2    b     22  3  4  5</code></pre>
-<ul>
-<li>part 2</li>
-</ul>
-<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb75-1" data-line-number="1">df_right2 <span class="op">=</span> df_right.unstack(<span class="st">&quot;Key1&quot;</span>)[<span class="dv">0</span>]</a>
-<a class="sourceLine" id="cb75-2" data-line-number="2">pd.merge(df_left,df_right2, left_on<span class="op">=</span>[<span class="st">&quot;Key2&quot;</span>], right_index<span class="op">=</span><span class="va">True</span>)</a></code></pre></div>
-<pre><code>##   Key1 Key2  value  l1  l2
-## 0   l1    a     11   0   3
-## 1   l2    b     22   1   4
-## 2   l3    c     33   2   5</code></pre>
-</div>
 <div id="merge-using-the-join-method" class="slide section level1">
 <h1>merge using the join method</h1>
-<div class="sourceCode" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb77-1" data-line-number="1">data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</a>
-<a class="sourceLine" id="cb77-2" data-line-number="2">data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abd&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</a>
-<a class="sourceLine" id="cb77-3" data-line-number="3">data1_key <span class="op">=</span> data1.set_index(<span class="st">&quot;key&quot;</span>)</a>
-<a class="sourceLine" id="cb77-4" data-line-number="4">data2_key <span class="op">=</span> data2.set_index(<span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a>data1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;bccaab&quot;</span>), <span class="st">&quot;value1&quot;</span>: <span class="bu">range</span>(<span class="dv">6</span>)})</span>
+<span id="cb75-2"><a href="#cb75-2" tabindex="-1"></a>data2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;key&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;abd&quot;</span>), <span class="st">&quot;value2&quot;</span>: <span class="bu">range</span>(<span class="dv">3</span>)})</span>
+<span id="cb75-3"><a href="#cb75-3" tabindex="-1"></a>data1_key <span class="op">=</span> data1.set_index(<span class="st">&quot;key&quot;</span>)</span>
+<span id="cb75-4"><a href="#cb75-4" tabindex="-1"></a>data2_key <span class="op">=</span> data2.set_index(<span class="st">&quot;key&quot;</span>)</span></code></pre></div>
 <ul>
 <li>join method: allows to perform left join
 <ul>
 <li>both DataFrame have the same index</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb78"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb78-1" data-line-number="1">data2_key.join(data1_key)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" tabindex="-1"></a>data2_key.join(data1_key)</span></code></pre></div>
 <pre><code>##      value2  value1
 ## key                
 ## a         0     3.0
@@ -962,7 +896,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>swap arguments based on the previous example</li>
 </ul>
-<div class="sourceCode" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb80-1" data-line-number="1">data1_key.join(data2_key)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" tabindex="-1"></a>data1_key.join(data2_key)</span></code></pre></div>
 <pre><code>##      value1  value2
 ## key                
 ## a         3     0.0
@@ -978,7 +912,7 @@ Zhiguang Huo (Caleb)
 <li>right dataFrame uses the index</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb82"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb82-1" data-line-number="1">data1.join(data2_key, on<span class="op">=</span><span class="st">&quot;key&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" tabindex="-1"></a>data1.join(data2_key, on<span class="op">=</span><span class="st">&quot;key&quot;</span>)</span></code></pre></div>
 <pre><code>##   key  value1  value2
 ## 0   b       0     1.0
 ## 1   c       1     NaN
@@ -995,10 +929,10 @@ Zhiguang Huo (Caleb)
 <li>concatenate rows</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb84"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb84-1" data-line-number="1">series1 <span class="op">=</span> pd.Series([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>))</a>
-<a class="sourceLine" id="cb84-2" data-line-number="2">series2 <span class="op">=</span> pd.Series([<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>], index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;abd&quot;</span>))</a>
-<a class="sourceLine" id="cb84-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb84-4" data-line-number="4">pd.concat([series1, series2])</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" tabindex="-1"></a>series1 <span class="op">=</span> pd.Series([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;abc&quot;</span>))</span>
+<span id="cb82-2"><a href="#cb82-2" tabindex="-1"></a>series2 <span class="op">=</span> pd.Series([<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>], index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;abd&quot;</span>))</span>
+<span id="cb82-3"><a href="#cb82-3" tabindex="-1"></a></span>
+<span id="cb82-4"><a href="#cb82-4" tabindex="-1"></a>pd.concat([series1, series2])</span></code></pre></div>
 <pre><code>## a    1
 ## b    2
 ## c    3
@@ -1006,8 +940,8 @@ Zhiguang Huo (Caleb)
 ## b    5
 ## d    7
 ## dtype: int64</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb86-1" data-line-number="1">res <span class="op">=</span> pd.concat([series1, series2], keys<span class="op">=</span>[<span class="st">&quot;data1&quot;</span>, <span class="st">&quot;data2&quot;</span>])</a>
-<a class="sourceLine" id="cb86-2" data-line-number="2">res</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" tabindex="-1"></a>res <span class="op">=</span> pd.concat([series1, series2], keys<span class="op">=</span>[<span class="st">&quot;data1&quot;</span>, <span class="st">&quot;data2&quot;</span>])</span>
+<span id="cb84-2"><a href="#cb84-2" tabindex="-1"></a>res</span></code></pre></div>
 <pre><code>## data1  a    1
 ##        b    2
 ##        c    3
@@ -1015,7 +949,7 @@ Zhiguang Huo (Caleb)
 ##        b    5
 ##        d    7
 ## dtype: int64</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb88-1" data-line-number="1">res.unstack()</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" tabindex="-1"></a>res.unstack()</span></code></pre></div>
 <pre><code>##          a    b    c    d
 ## data1  1.0  2.0  3.0  NaN
 ## data2  3.0  5.0  NaN  7.0</code></pre>
@@ -1028,13 +962,13 @@ Zhiguang Huo (Caleb)
 <li>concatenate columns</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb90-1" data-line-number="1">pd.concat([series1, series2], axis<span class="op">=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" tabindex="-1"></a>pd.concat([series1, series2], axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##      0    1
 ## a  1.0  3.0
 ## b  2.0  5.0
 ## c  3.0  NaN
 ## d  NaN  7.0</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb92-1" data-line-number="1">pd.concat([series1, series2], axis<span class="op">=</span><span class="dv">1</span>, join<span class="op">=</span><span class="st">&quot;inner&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" tabindex="-1"></a>pd.concat([series1, series2], axis<span class="op">=</span><span class="dv">1</span>, join<span class="op">=</span><span class="st">&quot;inner&quot;</span>)</span></code></pre></div>
 <pre><code>##    0  1
 ## a  1  3
 ## b  2  5</code></pre>
@@ -1047,17 +981,17 @@ Zhiguang Huo (Caleb)
 <li>concatenate rows</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb94-1" data-line-number="1">df1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">6</span>).reshape(<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;ABC&quot;</span>), columns<span class="op">=</span> [<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>])</a>
-<a class="sourceLine" id="cb94-2" data-line-number="2">df2 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">4</span>).reshape(<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;AB&quot;</span>), columns<span class="op">=</span> [<span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>])</a>
-<a class="sourceLine" id="cb94-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb94-4" data-line-number="4">pd.concat([df1, df2])</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">6</span>).reshape(<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;ABC&quot;</span>), columns<span class="op">=</span> [<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>])</span>
+<span id="cb92-2"><a href="#cb92-2" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">4</span>).reshape(<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;AB&quot;</span>), columns<span class="op">=</span> [<span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>])</span>
+<span id="cb92-3"><a href="#cb92-3" tabindex="-1"></a></span>
+<span id="cb92-4"><a href="#cb92-4" tabindex="-1"></a>pd.concat([df1, df2])</span></code></pre></div>
 <pre><code>##     C1  C2   C3
 ## A  0.0   1  NaN
 ## B  2.0   3  NaN
 ## C  4.0   5  NaN
 ## A  NaN   0  1.0
 ## B  NaN   2  3.0</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb96-1" data-line-number="1">pd.concat([df1, df2], ignore_index<span class="op">=</span><span class="va">True</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" tabindex="-1"></a>pd.concat([df1, df2], ignore_index<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <pre><code>##     C1  C2   C3
 ## 0  0.0   1  NaN
 ## 1  2.0   3  NaN
@@ -1073,21 +1007,21 @@ Zhiguang Huo (Caleb)
 <li>concatenate columns</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb98"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb98-1" data-line-number="1">df1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">6</span>).reshape(<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;ABC&quot;</span>), columns<span class="op">=</span> [<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>])</a>
-<a class="sourceLine" id="cb98-2" data-line-number="2">df2 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">4</span>).reshape(<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;AB&quot;</span>), columns<span class="op">=</span> [<span class="st">&quot;D1&quot;</span>, <span class="st">&quot;D2&quot;</span>])</a>
-<a class="sourceLine" id="cb98-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb98-4" data-line-number="4">pd.concat([df1, df2], axis<span class="op">=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">6</span>).reshape(<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;ABC&quot;</span>), columns<span class="op">=</span> [<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>])</span>
+<span id="cb96-2"><a href="#cb96-2" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">4</span>).reshape(<span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;AB&quot;</span>), columns<span class="op">=</span> [<span class="st">&quot;D1&quot;</span>, <span class="st">&quot;D2&quot;</span>])</span>
+<span id="cb96-3"><a href="#cb96-3" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="#cb96-4" tabindex="-1"></a>pd.concat([df1, df2], axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##    C1  C2   D1   D2
 ## A   0   1  0.0  1.0
 ## B   2   3  2.0  3.0
 ## C   4   5  NaN  NaN</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb100-1" data-line-number="1">pd.concat([df1, df2], axis<span class="op">=</span><span class="dv">1</span>, keys<span class="op">=</span>[<span class="st">&quot;Level1&quot;</span>, <span class="st">&quot;Level2&quot;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" tabindex="-1"></a>pd.concat([df1, df2], axis<span class="op">=</span><span class="dv">1</span>, keys<span class="op">=</span>[<span class="st">&quot;Level1&quot;</span>, <span class="st">&quot;Level2&quot;</span>])</span></code></pre></div>
 <pre><code>##   Level1    Level2     
 ##       C1 C2     D1   D2
 ## A      0  1    0.0  1.0
 ## B      2  3    2.0  3.0
 ## C      4  5    NaN  NaN</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb102-1" data-line-number="1">pd.concat({<span class="st">&quot;Level1&quot;</span>: df1, <span class="st">&quot;Level2&quot;</span>: df2}, axis<span class="op">=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" tabindex="-1"></a>pd.concat({<span class="st">&quot;Level1&quot;</span>: df1, <span class="st">&quot;Level2&quot;</span>: df2}, axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##   Level1    Level2     
 ##       C1 C2     D1   D2
 ## A      0  1    0.0  1.0
@@ -1103,12 +1037,12 @@ Zhiguang Huo (Caleb)
 <li>if s1 contains missing values, return the elements in s2</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb104-1" data-line-number="1">s1 <span class="op">=</span> pd.Series([np.nan,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,np.nan], index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;abcde&quot;</span>))</a>
-<a class="sourceLine" id="cb104-2" data-line-number="2">s2 <span class="op">=</span> pd.Series([<span class="dv">1</span>,np.nan,<span class="dv">6</span>,<span class="dv">7</span>, np.nan], index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;bcdea&quot;</span>))</a>
-<a class="sourceLine" id="cb104-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb104-4" data-line-number="4">np.where(pd.isna(s1), s2, s1) <span class="co">## this will ignore index</span></a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" tabindex="-1"></a>s1 <span class="op">=</span> pd.Series([np.nan,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,np.nan], index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;abcde&quot;</span>))</span>
+<span id="cb102-2"><a href="#cb102-2" tabindex="-1"></a>s2 <span class="op">=</span> pd.Series([<span class="dv">1</span>,np.nan,<span class="dv">6</span>,<span class="dv">7</span>, np.nan], index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;bcdea&quot;</span>))</span>
+<span id="cb102-3"><a href="#cb102-3" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="#cb102-4" tabindex="-1"></a>np.where(pd.isna(s1), s2, s1) <span class="co">## this will ignore index</span></span></code></pre></div>
 <pre><code>## array([ 1.,  1.,  2.,  3., nan])</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb106-1" data-line-number="1">s1.combine_first(s2) <span class="co">## also match index</span></a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" tabindex="-1"></a>s1.combine_first(s2) <span class="co">## also match index</span></span></code></pre></div>
 <pre><code>## a    NaN
 ## b    1.0
 ## c    2.0
@@ -1125,24 +1059,24 @@ Zhiguang Huo (Caleb)
 <li>if pd1 contains missing values, return the elements in pd2</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb108-1" data-line-number="1">df1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;C1&quot;</span>: [np.nan, <span class="dv">1</span>, <span class="dv">2</span>], </a>
-<a class="sourceLine" id="cb108-2" data-line-number="2">                    <span class="st">&quot;C2&quot;</span>: [<span class="dv">5</span>, np.nan, <span class="dv">3</span>],</a>
-<a class="sourceLine" id="cb108-3" data-line-number="3">                    <span class="st">&quot;C3&quot;</span>: [np.nan, <span class="dv">9</span>, np.nan]</a>
-<a class="sourceLine" id="cb108-4" data-line-number="4">}, index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;ABC&quot;</span>))</a>
-<a class="sourceLine" id="cb108-5" data-line-number="5">df2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;C1&quot;</span>: [<span class="dv">1</span>,<span class="dv">2</span>,], </a>
-<a class="sourceLine" id="cb108-6" data-line-number="6">                    <span class="st">&quot;C2&quot;</span>: [<span class="dv">4</span>,<span class="dv">5</span>,]</a>
-<a class="sourceLine" id="cb108-7" data-line-number="7">}, index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;AB&quot;</span>))</a>
-<a class="sourceLine" id="cb108-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb108-9" data-line-number="9">df1</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;C1&quot;</span>: [np.nan, <span class="dv">1</span>, <span class="dv">2</span>], </span>
+<span id="cb106-2"><a href="#cb106-2" tabindex="-1"></a>                    <span class="st">&quot;C2&quot;</span>: [<span class="dv">5</span>, np.nan, <span class="dv">3</span>],</span>
+<span id="cb106-3"><a href="#cb106-3" tabindex="-1"></a>                    <span class="st">&quot;C3&quot;</span>: [np.nan, <span class="dv">9</span>, np.nan]</span>
+<span id="cb106-4"><a href="#cb106-4" tabindex="-1"></a>}, index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;ABC&quot;</span>))</span>
+<span id="cb106-5"><a href="#cb106-5" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">&quot;C1&quot;</span>: [<span class="dv">1</span>,<span class="dv">2</span>,], </span>
+<span id="cb106-6"><a href="#cb106-6" tabindex="-1"></a>                    <span class="st">&quot;C2&quot;</span>: [<span class="dv">4</span>,<span class="dv">5</span>,]</span>
+<span id="cb106-7"><a href="#cb106-7" tabindex="-1"></a>}, index<span class="op">=</span><span class="bu">list</span>(<span class="st">&quot;AB&quot;</span>))</span>
+<span id="cb106-8"><a href="#cb106-8" tabindex="-1"></a></span>
+<span id="cb106-9"><a href="#cb106-9" tabindex="-1"></a>df1</span></code></pre></div>
 <pre><code>##     C1   C2   C3
 ## A  NaN  5.0  NaN
 ## B  1.0  NaN  9.0
 ## C  2.0  3.0  NaN</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb110-1" data-line-number="1">df2</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" tabindex="-1"></a>df2</span></code></pre></div>
 <pre><code>##    C1  C2
 ## A   1   4
 ## B   2   5</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb112-1" data-line-number="1">df1.combine_first(df2)</a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" tabindex="-1"></a>df1.combine_first(df2)</span></code></pre></div>
 <pre><code>##     C1   C2   C3
 ## A  1.0  5.0  NaN
 ## B  1.0  5.0  9.0
@@ -1156,17 +1090,17 @@ Zhiguang Huo (Caleb)
 <li>move the data from the columns to rows</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb114-1" data-line-number="1">pd1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">9</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>), columns <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;bdc&quot;</span>), index <span class="op">=</span> [<span class="st">&quot;Florida&quot;</span>, <span class="st">&quot;Texax&quot;</span>, <span class="st">&quot;Utah&quot;</span>])</a>
-<a class="sourceLine" id="cb114-2" data-line-number="2">pd1.columns.name<span class="op">=</span><span class="st">&quot;Columns&quot;</span></a>
-<a class="sourceLine" id="cb114-3" data-line-number="3">pd1.index.name<span class="op">=</span><span class="st">&quot;States&quot;</span></a>
-<a class="sourceLine" id="cb114-4" data-line-number="4">pd1</a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" tabindex="-1"></a>pd1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">9</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>), columns <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;bdc&quot;</span>), index <span class="op">=</span> [<span class="st">&quot;Florida&quot;</span>, <span class="st">&quot;Texax&quot;</span>, <span class="st">&quot;Utah&quot;</span>])</span>
+<span id="cb112-2"><a href="#cb112-2" tabindex="-1"></a>pd1.columns.name<span class="op">=</span><span class="st">&quot;Columns&quot;</span></span>
+<span id="cb112-3"><a href="#cb112-3" tabindex="-1"></a>pd1.index.name<span class="op">=</span><span class="st">&quot;States&quot;</span></span>
+<span id="cb112-4"><a href="#cb112-4" tabindex="-1"></a>pd1</span></code></pre></div>
 <pre><code>## Columns  b  d  c
 ## States          
 ## Florida  0  1  2
 ## Texax    3  4  5
 ## Utah     6  7  8</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb116-1" data-line-number="1">pd1_stacked <span class="op">=</span> pd1.stack()</a>
-<a class="sourceLine" id="cb116-2" data-line-number="2">pd1_stacked</a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" tabindex="-1"></a>pd1_stacked <span class="op">=</span> pd1.stack()</span>
+<span id="cb114-2"><a href="#cb114-2" tabindex="-1"></a>pd1_stacked</span></code></pre></div>
 <pre><code>## States   Columns
 ## Florida  b          0
 ##          d          1
@@ -1188,13 +1122,13 @@ Zhiguang Huo (Caleb)
 <li>can specify the level of index to be unstacked</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb118-1" data-line-number="1">pd1_stacked.unstack()</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" tabindex="-1"></a>pd1_stacked.unstack()</span></code></pre></div>
 <pre><code>## Columns  b  d  c
 ## States          
 ## Florida  0  1  2
 ## Texax    3  4  5
 ## Utah     6  7  8</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb120-1" data-line-number="1">pd1_stacked.unstack(<span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" tabindex="-1"></a>pd1_stacked.unstack(<span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## States   Florida  Texax  Utah
 ## Columns                      
 ## b              0      3     6
@@ -1203,13 +1137,13 @@ Zhiguang Huo (Caleb)
 </div>
 <div class="slide section level1">
 
-<div class="sourceCode" id="cb122"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb122-1" data-line-number="1">pd1_stacked.unstack(<span class="st">&quot;Columns&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" tabindex="-1"></a>pd1_stacked.unstack(<span class="st">&quot;Columns&quot;</span>)</span></code></pre></div>
 <pre><code>## Columns  b  d  c
 ## States          
 ## Florida  0  1  2
 ## Texax    3  4  5
 ## Utah     6  7  8</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb124-1" data-line-number="1">pd1_stacked.unstack(<span class="st">&quot;States&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" tabindex="-1"></a>pd1_stacked.unstack(<span class="st">&quot;States&quot;</span>)</span></code></pre></div>
 <pre><code>## States   Florida  Texax  Utah
 ## Columns                      
 ## b              0      3     6
@@ -1218,11 +1152,11 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="specify-the-levels-in-both-stack-and-unstack" class="slide section level1">
 <h1>Specify the levels in both stack and unstack</h1>
-<div class="sourceCode" id="cb126"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb126-1" data-line-number="1">pd1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">9</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>), columns <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;bdc&quot;</span>), index <span class="op">=</span> [<span class="st">&quot;Florida&quot;</span>, <span class="st">&quot;Texax&quot;</span>, <span class="st">&quot;Utah&quot;</span>])</a>
-<a class="sourceLine" id="cb126-2" data-line-number="2">pd1.columns.name<span class="op">=</span><span class="st">&quot;Columns&quot;</span></a>
-<a class="sourceLine" id="cb126-3" data-line-number="3">pd1.index.name<span class="op">=</span><span class="st">&quot;States&quot;</span></a>
-<a class="sourceLine" id="cb126-4" data-line-number="4"><span class="co"># pd1</span></a>
-<a class="sourceLine" id="cb126-5" data-line-number="5">pd1.stack(<span class="st">&quot;Columns&quot;</span>).unstack(<span class="st">&quot;States&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" tabindex="-1"></a>pd1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">9</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>), columns <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;bdc&quot;</span>), index <span class="op">=</span> [<span class="st">&quot;Florida&quot;</span>, <span class="st">&quot;Texax&quot;</span>, <span class="st">&quot;Utah&quot;</span>])</span>
+<span id="cb124-2"><a href="#cb124-2" tabindex="-1"></a>pd1.columns.name<span class="op">=</span><span class="st">&quot;Columns&quot;</span></span>
+<span id="cb124-3"><a href="#cb124-3" tabindex="-1"></a>pd1.index.name<span class="op">=</span><span class="st">&quot;States&quot;</span></span>
+<span id="cb124-4"><a href="#cb124-4" tabindex="-1"></a><span class="co"># pd1</span></span>
+<span id="cb124-5"><a href="#cb124-5" tabindex="-1"></a>pd1.stack(<span class="st">&quot;Columns&quot;</span>).unstack(<span class="st">&quot;States&quot;</span>)</span></code></pre></div>
 <pre><code>## States   Florida  Texax  Utah
 ## Columns                      
 ## b              0      3     6
@@ -1231,7 +1165,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>this is the same as transpose</li>
 </ul>
-<div class="sourceCode" id="cb128"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb128-1" data-line-number="1">pd1.T</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" tabindex="-1"></a>pd1.T</span></code></pre></div>
 <pre><code>## States   Florida  Texax  Utah
 ## Columns                      
 ## b              0      3     6
@@ -1245,12 +1179,9 @@ Zhiguang Huo (Caleb)
 <li>wide format to long format</li>
 <li>example data</li>
 </ul>
-<div class="sourceCode" id="cb130"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="im">import</span> io</a>
-<a class="sourceLine" id="cb130-2" data-line-number="2"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb130-3" data-line-number="3">url<span class="op">=</span><span class="st">&quot;https://caleb-huo.github.io/teaching/data/sleep/sleepstudy.csv&quot;</span></a>
-<a class="sourceLine" id="cb130-4" data-line-number="4">s<span class="op">=</span>requests.get(url).content</a>
-<a class="sourceLine" id="cb130-5" data-line-number="5">sleepdata<span class="op">=</span>pd.read_csv(io.StringIO(s.decode(<span class="st">'utf-8'</span>)))</a>
-<a class="sourceLine" id="cb130-6" data-line-number="6">sleepdata.head()</a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" tabindex="-1"></a>url<span class="op">=</span><span class="st">&quot;https://caleb-huo.github.io/teaching/data/sleep/sleepstudy.csv&quot;</span></span>
+<span id="cb128-2"><a href="#cb128-2" tabindex="-1"></a>sleepdata<span class="op">=</span>pd.read_csv(url)</span>
+<span id="cb128-3"><a href="#cb128-3" tabindex="-1"></a>sleepdata.head()</span></code></pre></div>
 <pre><code>##    Reaction  Days  Subject
 ## 0  249.5600     0      308
 ## 1  258.7047     1      308
@@ -1267,8 +1198,8 @@ Zhiguang Huo (Caleb)
 <li>columns: Column to use to make new frame’s columns</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb132"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb132-1" data-line-number="1">sleepdata_wide <span class="op">=</span> sleepdata.pivot(index<span class="op">=</span><span class="st">&quot;Subject&quot;</span>, columns<span class="op">=</span><span class="st">&quot;Days&quot;</span>)</a>
-<a class="sourceLine" id="cb132-2" data-line-number="2">sleepdata_wide.head()</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" tabindex="-1"></a>sleepdata_wide <span class="op">=</span> sleepdata.pivot(index<span class="op">=</span><span class="st">&quot;Subject&quot;</span>, columns<span class="op">=</span><span class="st">&quot;Days&quot;</span>)</span>
+<span id="cb130-2"><a href="#cb130-2" tabindex="-1"></a>sleepdata_wide.head()</span></code></pre></div>
 <pre><code>##          Reaction                      ...                              
 ## Days            0         1         2  ...         7         8         9
 ## Subject                                ...                              
@@ -1290,18 +1221,19 @@ Zhiguang Huo (Caleb)
 <li>melt (toy example)
 <ul>
 <li>id_vars: Column(s) to use as identifier variables</li>
-<li>value_vars: Column(s) to unpivot. If not specified, uses all columns that are not set as id_vars</li>
+<li>value_vars: Column(s) to unpivot. If not specified, uses all columns
+that are not set as id_vars</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb135"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb135-1" data-line-number="1">pd1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">9</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>), columns <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;bdc&quot;</span>), index <span class="op">=</span> [<span class="st">&quot;Florida&quot;</span>, <span class="st">&quot;Texax&quot;</span>, <span class="st">&quot;Utah&quot;</span>])</a>
-<a class="sourceLine" id="cb135-2" data-line-number="2">pd1.index.name <span class="op">=</span> <span class="st">&quot;State&quot;</span></a>
-<a class="sourceLine" id="cb135-3" data-line-number="3">pd2 <span class="op">=</span> pd1.reset_index()</a>
-<a class="sourceLine" id="cb135-4" data-line-number="4">pd2</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" tabindex="-1"></a>pd1 <span class="op">=</span> pd.DataFrame(np.arange(<span class="dv">9</span>).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>), columns <span class="op">=</span> <span class="bu">list</span>(<span class="st">&quot;bdc&quot;</span>), index <span class="op">=</span> [<span class="st">&quot;Florida&quot;</span>, <span class="st">&quot;Texax&quot;</span>, <span class="st">&quot;Utah&quot;</span>])</span>
+<span id="cb133-2"><a href="#cb133-2" tabindex="-1"></a>pd1.index.name <span class="op">=</span> <span class="st">&quot;State&quot;</span></span>
+<span id="cb133-3"><a href="#cb133-3" tabindex="-1"></a>pd2 <span class="op">=</span> pd1.reset_index()</span>
+<span id="cb133-4"><a href="#cb133-4" tabindex="-1"></a>pd2</span></code></pre></div>
 <pre><code>##      State  b  d  c
 ## 0  Florida  0  1  2
 ## 1    Texax  3  4  5
 ## 2     Utah  6  7  8</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb137-1" data-line-number="1">pd2.melt(id_vars<span class="op">=</span><span class="st">&quot;State&quot;</span>, value_vars<span class="op">=</span>[<span class="st">&quot;b&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;c&quot;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" tabindex="-1"></a>pd2.melt(id_vars<span class="op">=</span><span class="st">&quot;State&quot;</span>, value_vars<span class="op">=</span>[<span class="st">&quot;b&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;c&quot;</span>])</span></code></pre></div>
 <pre><code>##      State variable  value
 ## 0  Florida        b      0
 ## 1    Texax        b      3
@@ -1318,11 +1250,11 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>melt for the sleeping data</li>
 </ul>
-<div class="sourceCode" id="cb139"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb139-1" data-line-number="1">sleepdata_wide3 <span class="op">=</span> sleepdata_wide</a>
-<a class="sourceLine" id="cb139-2" data-line-number="2">sleepdata_wide3.columns <span class="op">=</span> sleepdata_wide.columns.get_level_values(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb139-3" data-line-number="3">sleepdata_wide3.reset_index(inplace<span class="op">=</span><span class="va">True</span>)</a>
-<a class="sourceLine" id="cb139-4" data-line-number="4">sleepdata_long <span class="op">=</span> pd.melt(sleepdata_wide3, id_vars <span class="op">=</span> [<span class="st">&quot;Subject&quot;</span>], value_vars <span class="op">=</span> <span class="bu">range</span>(<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb139-5" data-line-number="5">sleepdata_long</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" tabindex="-1"></a>sleepdata_wide3 <span class="op">=</span> sleepdata_wide</span>
+<span id="cb137-2"><a href="#cb137-2" tabindex="-1"></a>sleepdata_wide3.columns <span class="op">=</span> sleepdata_wide.columns.droplevel()</span>
+<span id="cb137-3"><a href="#cb137-3" tabindex="-1"></a>sleepdata_wide3.reset_index(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb137-4"><a href="#cb137-4" tabindex="-1"></a>sleepdata_long <span class="op">=</span> pd.melt(sleepdata_wide3, id_vars <span class="op">=</span> [<span class="st">&quot;Subject&quot;</span>], value_vars <span class="op">=</span> <span class="bu">range</span>(<span class="dv">10</span>))</span>
+<span id="cb137-5"><a href="#cb137-5" tabindex="-1"></a>sleepdata_long</span></code></pre></div>
 <pre><code>##      Subject Days     value
 ## 0        308    0  249.5600
 ## 1        309    0  222.7339
@@ -1343,7 +1275,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>using stack() method</li>
 </ul>
-<div class="sourceCode" id="cb141"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb141-1" data-line-number="1">sleepdata_wide.set_index(<span class="st">&quot;Subject&quot;</span>).stack().reset_index()</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" tabindex="-1"></a>sleepdata_wide3.set_index(<span class="st">&quot;Subject&quot;</span>).stack().reset_index()</span></code></pre></div>
 <pre><code>##      Subject  Days         0
 ## 0        308     0  249.5600
 ## 1        308     1  258.7047
@@ -1364,11 +1296,11 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>single group key</li>
 </ul>
-<div class="sourceCode" id="cb143"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb143-1" data-line-number="1">adata <span class="op">=</span> pd.DataFrame({</a>
-<a class="sourceLine" id="cb143-2" data-line-number="2">    <span class="st">&quot;Key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AAABBB&quot;</span>),</a>
-<a class="sourceLine" id="cb143-3" data-line-number="3">    <span class="st">&quot;value1&quot;</span>: np.arange(<span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb143-4" data-line-number="4">})</a>
-<a class="sourceLine" id="cb143-5" data-line-number="5">adata</a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" tabindex="-1"></a>adata <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb141-2"><a href="#cb141-2" tabindex="-1"></a>    <span class="st">&quot;Key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AAABBB&quot;</span>),</span>
+<span id="cb141-3"><a href="#cb141-3" tabindex="-1"></a>    <span class="st">&quot;value1&quot;</span>: np.arange(<span class="dv">6</span>),</span>
+<span id="cb141-4"><a href="#cb141-4" tabindex="-1"></a>})</span>
+<span id="cb141-5"><a href="#cb141-5" tabindex="-1"></a>adata</span></code></pre></div>
 <pre><code>##   Key1  value1
 ## 0    A       0
 ## 1    A       1
@@ -1379,12 +1311,12 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>groupby</li>
 </ul>
-<div class="sourceCode" id="cb145"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb145-1" data-line-number="1">adata.groupby(<span class="st">&quot;Key1&quot;</span>).mean()</a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" tabindex="-1"></a>adata.groupby(<span class="st">&quot;Key1&quot;</span>).mean()</span></code></pre></div>
 <pre><code>##       value1
 ## Key1        
 ## A        1.0
 ## B        4.0</code></pre>
-<div class="sourceCode" id="cb147"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb147-1" data-line-number="1">adata[<span class="st">&quot;value1&quot;</span>].groupby(adata[<span class="st">&quot;Key1&quot;</span>]).mean() <span class="co">## this may be more interpretable</span></a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" tabindex="-1"></a>adata[<span class="st">&quot;value1&quot;</span>].groupby(adata[<span class="st">&quot;Key1&quot;</span>]).mean() <span class="co">## this may be more interpretable</span></span></code></pre></div>
 <pre><code>## Key1
 ## A    1.0
 ## B    4.0
@@ -1392,15 +1324,15 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="iteration-over-groups" class="slide section level1">
 <h1>Iteration over groups</h1>
-<div class="sourceCode" id="cb149"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb149-1" data-line-number="1">adata <span class="op">=</span> pd.DataFrame({</a>
-<a class="sourceLine" id="cb149-2" data-line-number="2">    <span class="st">&quot;Key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AAABBB&quot;</span>),</a>
-<a class="sourceLine" id="cb149-3" data-line-number="3">    <span class="st">&quot;value1&quot;</span>: np.arange(<span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb149-4" data-line-number="4">})</a>
-<a class="sourceLine" id="cb149-5" data-line-number="5">grouped_data <span class="op">=</span> adata.groupby(<span class="st">&quot;Key1&quot;</span>)</a>
-<a class="sourceLine" id="cb149-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb149-7" data-line-number="7"><span class="cf">for</span> name, data <span class="kw">in</span> grouped_data:</a>
-<a class="sourceLine" id="cb149-8" data-line-number="8">    <span class="bu">print</span>(name)</a>
-<a class="sourceLine" id="cb149-9" data-line-number="9">    <span class="bu">print</span>(data)</a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" tabindex="-1"></a>adata <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb147-2"><a href="#cb147-2" tabindex="-1"></a>    <span class="st">&quot;Key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AAABBB&quot;</span>),</span>
+<span id="cb147-3"><a href="#cb147-3" tabindex="-1"></a>    <span class="st">&quot;value1&quot;</span>: np.arange(<span class="dv">6</span>),</span>
+<span id="cb147-4"><a href="#cb147-4" tabindex="-1"></a>})</span>
+<span id="cb147-5"><a href="#cb147-5" tabindex="-1"></a>grouped_data <span class="op">=</span> adata.groupby(<span class="st">&quot;Key1&quot;</span>)</span>
+<span id="cb147-6"><a href="#cb147-6" tabindex="-1"></a></span>
+<span id="cb147-7"><a href="#cb147-7" tabindex="-1"></a><span class="cf">for</span> name, data <span class="kw">in</span> grouped_data:</span>
+<span id="cb147-8"><a href="#cb147-8" tabindex="-1"></a>    <span class="bu">print</span>(name)</span>
+<span id="cb147-9"><a href="#cb147-9" tabindex="-1"></a>    <span class="bu">print</span>(data)</span></code></pre></div>
 <pre><code>## A
 ##   Key1  value1
 ## 0    A       0
@@ -1414,16 +1346,16 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="groupby-and-dictionary" class="slide section level1">
 <h1>Groupby and dictionary</h1>
-<div class="sourceCode" id="cb151"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb151-1" data-line-number="1">adata <span class="op">=</span> pd.DataFrame({</a>
-<a class="sourceLine" id="cb151-2" data-line-number="2">    <span class="st">&quot;Key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AAABBB&quot;</span>),</a>
-<a class="sourceLine" id="cb151-3" data-line-number="3">    <span class="st">&quot;value1&quot;</span>: np.arange(<span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb151-4" data-line-number="4">})</a>
-<a class="sourceLine" id="cb151-5" data-line-number="5">grouped_data <span class="op">=</span> adata.groupby(<span class="st">&quot;Key1&quot;</span>)</a>
-<a class="sourceLine" id="cb151-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb151-7" data-line-number="7">adict <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">list</span>(grouped_data))</a>
-<a class="sourceLine" id="cb151-8" data-line-number="8">adict.keys()</a></code></pre></div>
-<pre><code>## dict_keys(['A', 'B'])</code></pre>
-<div class="sourceCode" id="cb153"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb153-1" data-line-number="1">adict[<span class="st">&quot;A&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" tabindex="-1"></a>adata <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb149-2"><a href="#cb149-2" tabindex="-1"></a>    <span class="st">&quot;Key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AAABBB&quot;</span>),</span>
+<span id="cb149-3"><a href="#cb149-3" tabindex="-1"></a>    <span class="st">&quot;value1&quot;</span>: np.arange(<span class="dv">6</span>),</span>
+<span id="cb149-4"><a href="#cb149-4" tabindex="-1"></a>})</span>
+<span id="cb149-5"><a href="#cb149-5" tabindex="-1"></a>grouped_data <span class="op">=</span> adata.groupby(<span class="st">&quot;Key1&quot;</span>)</span>
+<span id="cb149-6"><a href="#cb149-6" tabindex="-1"></a></span>
+<span id="cb149-7"><a href="#cb149-7" tabindex="-1"></a>adict <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">list</span>(grouped_data))</span>
+<span id="cb149-8"><a href="#cb149-8" tabindex="-1"></a>adict.keys()</span></code></pre></div>
+<pre><code>## dict_keys([&#39;A&#39;, &#39;B&#39;])</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" tabindex="-1"></a>adict[<span class="st">&quot;A&quot;</span>]</span></code></pre></div>
 <pre><code>##   Key1  value1
 ## 0    A       0
 ## 1    A       1
@@ -1434,13 +1366,13 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>multiple group keys</li>
 </ul>
-<div class="sourceCode" id="cb155"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb155-1" data-line-number="1">bdata <span class="op">=</span> pd.DataFrame({</a>
-<a class="sourceLine" id="cb155-2" data-line-number="2">    <span class="st">&quot;Key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AAABBB&quot;</span>),</a>
-<a class="sourceLine" id="cb155-3" data-line-number="3">    <span class="st">&quot;Key2&quot;</span>: [<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>],</a>
-<a class="sourceLine" id="cb155-4" data-line-number="4">    <span class="st">&quot;value1&quot;</span>: np.arange(<span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb155-5" data-line-number="5">    <span class="st">&quot;value2&quot;</span>: np.arange(<span class="dv">10</span>,<span class="dv">16</span>)</a>
-<a class="sourceLine" id="cb155-6" data-line-number="6">})</a>
-<a class="sourceLine" id="cb155-7" data-line-number="7">bdata</a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" tabindex="-1"></a>bdata <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb153-2"><a href="#cb153-2" tabindex="-1"></a>    <span class="st">&quot;Key1&quot;</span>: <span class="bu">list</span>(<span class="st">&quot;AAABBB&quot;</span>),</span>
+<span id="cb153-3"><a href="#cb153-3" tabindex="-1"></a>    <span class="st">&quot;Key2&quot;</span>: [<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>],</span>
+<span id="cb153-4"><a href="#cb153-4" tabindex="-1"></a>    <span class="st">&quot;value1&quot;</span>: np.arange(<span class="dv">6</span>),</span>
+<span id="cb153-5"><a href="#cb153-5" tabindex="-1"></a>    <span class="st">&quot;value2&quot;</span>: np.arange(<span class="dv">10</span>,<span class="dv">16</span>)</span>
+<span id="cb153-6"><a href="#cb153-6" tabindex="-1"></a>})</span>
+<span id="cb153-7"><a href="#cb153-7" tabindex="-1"></a>bdata</span></code></pre></div>
 <pre><code>##   Key1    Key2  value1  value2
 ## 0    A    blue       0      10
 ## 1    A  orange       1      11
@@ -1451,14 +1383,14 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>apply functions after groupby</li>
 </ul>
-<div class="sourceCode" id="cb157"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb157-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]).mean()</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]).mean()</span></code></pre></div>
 <pre><code>##              value1  value2
 ## Key1 Key2                  
 ## A    blue       1.0    11.0
 ##      orange     1.0    11.0
 ## B    blue       4.0    14.0
 ##      orange     4.0    14.0</code></pre>
-<div class="sourceCode" id="cb159"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb159-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]).size()</a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]).size()</span></code></pre></div>
 <pre><code>## Key1  Key2  
 ## A     blue      2
 ##       orange    1
@@ -1471,14 +1403,14 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>apply functions to a specific column</li>
 </ul>
-<div class="sourceCode" id="cb161"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb161-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value1&quot;</span>].mean()</a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value1&quot;</span>].mean()</span></code></pre></div>
 <pre><code>## Key1  Key2  
 ## A     blue      1.0
 ##       orange    1.0
 ## B     blue      4.0
 ##       orange    4.0
 ## Name: value1, dtype: float64</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb163-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value2&quot;</span>].size()</a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value2&quot;</span>].size()</span></code></pre></div>
 <pre><code>## Key1  Key2  
 ## A     blue      2
 ##       orange    1
@@ -1491,8 +1423,8 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>length of the index</li>
 </ul>
-<div class="sourceCode" id="cb165"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb165-1" data-line-number="1">bdata.index <span class="op">=</span> [<span class="st">&quot;Amy&quot;</span>, <span class="st">&quot;Beth&quot;</span>, <span class="st">&quot;Carl&quot;</span>, <span class="st">&quot;Dan&quot;</span>, <span class="st">&quot;Emily&quot;</span>, <span class="st">&quot;Frank&quot;</span>]</a>
-<a class="sourceLine" id="cb165-2" data-line-number="2">bdata</a></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" tabindex="-1"></a>bdata.index <span class="op">=</span> [<span class="st">&quot;Amy&quot;</span>, <span class="st">&quot;Beth&quot;</span>, <span class="st">&quot;Carl&quot;</span>, <span class="st">&quot;Dan&quot;</span>, <span class="st">&quot;Emily&quot;</span>, <span class="st">&quot;Frank&quot;</span>]</span>
+<span id="cb163-2"><a href="#cb163-2" tabindex="-1"></a>bdata</span></code></pre></div>
 <pre><code>##       Key1    Key2  value1  value2
 ## Amy      A    blue       0      10
 ## Beth     A  orange       1      11
@@ -1500,7 +1432,7 @@ Zhiguang Huo (Caleb)
 ## Dan      B  orange       3      13
 ## Emily    B    blue       4      14
 ## Frank    B  orange       5      15</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb167-1" data-line-number="1">bdata.groupby(<span class="bu">len</span>)[[<span class="st">&quot;value1&quot;</span>, <span class="st">&quot;value2&quot;</span>]].<span class="bu">min</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb165-1"><a href="#cb165-1" tabindex="-1"></a>bdata.groupby(<span class="bu">len</span>)[[<span class="st">&quot;value1&quot;</span>, <span class="st">&quot;value2&quot;</span>]].<span class="bu">min</span>()</span></code></pre></div>
 <pre><code>##    value1  value2
 ## 3       0      10
 ## 4       1      11
@@ -1511,7 +1443,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>agg function: to apply a function</li>
 </ul>
-<div class="sourceCode" id="cb169"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb169-1" data-line-number="1">bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg(np.median)</a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb167-1"><a href="#cb167-1" tabindex="-1"></a>bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg(<span class="st">&quot;median&quot;</span>)</span></code></pre></div>
 <pre><code>##       value1  value2
 ## Key1                
 ## A        1.0    11.0
@@ -1522,15 +1454,15 @@ Zhiguang Huo (Caleb)
 <li>maxDiff</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb171"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="kw">def</span> maxDiff(arr):</a>
-<a class="sourceLine" id="cb171-2" data-line-number="2">    <span class="cf">return</span>(arr.<span class="bu">max</span>() <span class="op">-</span> arr.<span class="bu">min</span>())</a>
-<a class="sourceLine" id="cb171-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb171-4" data-line-number="4">bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg(maxDiff)</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" tabindex="-1"></a><span class="kw">def</span> maxDiff(arr):</span>
+<span id="cb169-2"><a href="#cb169-2" tabindex="-1"></a>    <span class="cf">return</span>(arr.<span class="bu">max</span>() <span class="op">-</span> arr.<span class="bu">min</span>())</span>
+<span id="cb169-3"><a href="#cb169-3" tabindex="-1"></a></span>
+<span id="cb169-4"><a href="#cb169-4" tabindex="-1"></a>bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg(maxDiff)</span></code></pre></div>
 <pre><code>##       value1  value2
 ## Key1                
 ## A          2       2
 ## B          2       2</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb173-1" data-line-number="1">bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg(<span class="kw">lambda</span> x: x.<span class="bu">max</span>() <span class="op">-</span> x.<span class="bu">min</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb171-1"><a href="#cb171-1" tabindex="-1"></a>bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg(<span class="kw">lambda</span> x: x.<span class="bu">max</span>() <span class="op">-</span> x.<span class="bu">min</span>())</span></code></pre></div>
 <pre><code>##       value1  value2
 ## Key1                
 ## A          2       2
@@ -1541,7 +1473,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>multiple functions</li>
 </ul>
-<div class="sourceCode" id="cb175"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb175-1" data-line-number="1">bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg([np.median, np.mean, maxDiff])</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb173-1"><a href="#cb173-1" tabindex="-1"></a>bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg([<span class="st">&quot;median&quot;</span>, <span class="st">&quot;mean&quot;</span>, maxDiff])</span></code></pre></div>
 <pre><code>##      value1              value2              
 ##      median mean maxDiff median  mean maxDiff
 ## Key1                                         
@@ -1550,7 +1482,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>set names for the result</li>
 </ul>
-<div class="sourceCode" id="cb177"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb177-1" data-line-number="1">bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg([(<span class="st">&quot;mymedian&quot;</span>,np.median), (<span class="st">&quot;mymean&quot;</span>, np.mean), (<span class="st">&quot;mymaxDiff&quot;</span>, maxDiff)])</a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" tabindex="-1"></a>bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg([(<span class="st">&quot;mymedian&quot;</span>,<span class="st">&quot;median&quot;</span>), (<span class="st">&quot;mymean&quot;</span>, <span class="st">&quot;mean&quot;</span>), (<span class="st">&quot;mymaxDiff&quot;</span>, maxDiff)])</span></code></pre></div>
 <pre><code>##        value1                    value2                 
 ##      mymedian mymean mymaxDiff mymedian mymean mymaxDiff
 ## Key1                                                    
@@ -1562,13 +1494,13 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>multiple functions with different columns</li>
 </ul>
-<div class="sourceCode" id="cb179"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb179-1" data-line-number="1">bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg({<span class="st">&quot;value1&quot;</span>: [np.median, np.mean], <span class="st">&quot;value2&quot;</span>: [maxDiff]})</a></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" tabindex="-1"></a>bdata.drop(columns <span class="op">=</span> <span class="st">&quot;Key2&quot;</span>).groupby(<span class="st">&quot;Key1&quot;</span>).agg({<span class="st">&quot;value1&quot;</span>: [<span class="st">&quot;median&quot;</span>, <span class="st">&quot;mean&quot;</span>], <span class="st">&quot;value2&quot;</span>: [maxDiff]})</span></code></pre></div>
 <pre><code>##      value1       value2
 ##      median mean maxDiff
 ## Key1                    
 ## A       1.0  1.0       2
 ## B       4.0  4.0       2</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb181-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]).agg({<span class="st">&quot;value1&quot;</span>: [np.median, np.mean], <span class="st">&quot;value2&quot;</span>: [maxDiff]})</a></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb179-1"><a href="#cb179-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>]).agg({<span class="st">&quot;value1&quot;</span>: [<span class="st">&quot;median&quot;</span>, <span class="st">&quot;mean&quot;</span>], <span class="st">&quot;value2&quot;</span>: [maxDiff]})</span></code></pre></div>
 <pre><code>##             value1       value2
 ##             median mean maxDiff
 ## Key1 Key2                      
@@ -1582,7 +1514,7 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>as_index = False</li>
 </ul>
-<div class="sourceCode" id="cb183"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb183-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).agg(np.mean)</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb181-1"><a href="#cb181-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).agg(<span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <pre><code>##   Key1    Key2  value1  value2
 ## 0    A    blue     1.0    11.0
 ## 1    A  orange     1.0    11.0
@@ -1592,21 +1524,15 @@ Zhiguang Huo (Caleb)
 <div id="data-aggregation-2" class="slide section level1">
 <h1>Data Aggregation</h1>
 <ul>
-<li>three ways to calculate mean value</li>
+<li>two ways to calculate mean value</li>
 </ul>
-<div class="sourceCode" id="cb185"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb185-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).agg(<span class="st">&quot;mean&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb183-1"><a href="#cb183-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).agg(<span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <pre><code>##   Key1    Key2  value1  value2
 ## 0    A    blue     1.0    11.0
 ## 1    A  orange     1.0    11.0
 ## 2    B    blue     4.0    14.0
 ## 3    B  orange     4.0    14.0</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb187-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).agg(np.mean)</a></code></pre></div>
-<pre><code>##   Key1    Key2  value1  value2
-## 0    A    blue     1.0    11.0
-## 1    A  orange     1.0    11.0
-## 2    B    blue     4.0    14.0
-## 3    B  orange     4.0    14.0</code></pre>
-<div class="sourceCode" id="cb189"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb189-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).mean()</a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb185-1"><a href="#cb185-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).mean()</span></code></pre></div>
 <pre><code>##   Key1    Key2  value1  value2
 ## 0    A    blue     1.0    11.0
 ## 1    A  orange     1.0    11.0
@@ -1615,16 +1541,16 @@ Zhiguang Huo (Caleb)
 </div>
 <div id="data-aggregation-for-functions-with-extra-argument" class="slide section level1">
 <h1>Data Aggregation for functions with extra argument</h1>
-<div class="sourceCode" id="cb191"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="kw">def</span> myMean(arr, offset <span class="op">=</span> <span class="dv">5</span>):</a>
-<a class="sourceLine" id="cb191-2" data-line-number="2">    <span class="cf">return</span>(arr.mean() <span class="op">-</span> offset)</a>
-<a class="sourceLine" id="cb191-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb191-4" data-line-number="4">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).agg(myMean)</a></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb187-1"><a href="#cb187-1" tabindex="-1"></a><span class="kw">def</span> myMean(arr, offset <span class="op">=</span> <span class="dv">5</span>):</span>
+<span id="cb187-2"><a href="#cb187-2" tabindex="-1"></a>    <span class="cf">return</span>(arr.mean() <span class="op">-</span> offset)</span>
+<span id="cb187-3"><a href="#cb187-3" tabindex="-1"></a></span>
+<span id="cb187-4"><a href="#cb187-4" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).agg(myMean)</span></code></pre></div>
 <pre><code>##   Key1    Key2  value1  value2
 ## 0    A    blue    -4.0     6.0
 ## 1    A  orange    -4.0     6.0
 ## 2    B    blue    -1.0     9.0
 ## 3    B  orange    -1.0     9.0</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb193-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).agg(myMean, offset<span class="op">=</span><span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb189-1"><a href="#cb189-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>).agg(myMean, offset<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##   Key1    Key2  value1  value2
 ## 0    A    blue    -3.0     7.0
 ## 1    A  orange    -3.0     7.0
@@ -1636,89 +1562,33 @@ Zhiguang Huo (Caleb)
 <ul>
 <li>apply function is similar to the agg function</li>
 </ul>
-<div class="sourceCode" id="cb195"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb195-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value1&quot;</span>].<span class="bu">apply</span>(np.mean)</a></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb191-1"><a href="#cb191-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value1&quot;</span>].<span class="bu">apply</span>(np.mean)</span></code></pre></div>
 <pre><code>## Key1  Key2  
 ## A     blue      1.0
 ##       orange    1.0
 ## B     blue      4.0
 ##       orange    4.0
 ## Name: value1, dtype: float64</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb197-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">&quot;value1&quot;</span>].<span class="bu">apply</span>(np.mean)</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb193-1"><a href="#cb193-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">&quot;value1&quot;</span>].<span class="bu">apply</span>(np.mean)</span></code></pre></div>
 <pre><code>##   Key1    Key2  value1
 ## 0    A    blue     1.0
 ## 1    A  orange     1.0
 ## 2    B    blue     4.0
 ## 3    B  orange     4.0</code></pre>
-<div class="sourceCode" id="cb199"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb199-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value2&quot;</span>].<span class="bu">apply</span>(myMean)</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb195-1"><a href="#cb195-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value2&quot;</span>].<span class="bu">apply</span>(myMean)</span></code></pre></div>
 <pre><code>## Key1  Key2  
 ## A     blue      6.0
 ##       orange    6.0
 ## B     blue      9.0
 ##       orange    9.0
 ## Name: value2, dtype: float64</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb201-1" data-line-number="1">bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value2&quot;</span>].<span class="bu">apply</span>(myMean, offset<span class="op">=</span><span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb197-1"><a href="#cb197-1" tabindex="-1"></a>bdata.groupby([<span class="st">&quot;Key1&quot;</span>, <span class="st">&quot;Key2&quot;</span>])[<span class="st">&quot;value2&quot;</span>].<span class="bu">apply</span>(myMean, offset<span class="op">=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## Key1  Key2  
 ## A     blue       8.0
 ##       orange     8.0
 ## B     blue      11.0
 ##       orange    11.0
 ## Name: value2, dtype: float64</code></pre>
-</div>
-<div id="exercise-1" class="slide section level1">
-<h1>Exercise</h1>
-<ul>
-<li>For each subject of the sleep data, calculate the
-<ul>
-<li>mean</li>
-<li>std</li>
-<li>max</li>
-<li>second largest reaction time</li>
-<li>maxDiff</li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb203"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb203-1" data-line-number="1">sleepdata.head()</a></code></pre></div>
-<pre><code>##    Reaction  Days  Subject
-## 0  249.5600     0      308
-## 1  258.7047     1      308
-## 2  250.8006     2      308
-## 3  321.4398     3      308
-## 4  356.8519     4      308</code></pre>
-</div>
-<div class="slide section level1">
-
-<ul>
-<li>solution</li>
-</ul>
-<div class="sourceCode" id="cb205"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="kw">def</span> maxDiff(arr):</a>
-<a class="sourceLine" id="cb205-2" data-line-number="2">    <span class="cf">return</span>(arr.<span class="bu">max</span>() <span class="op">-</span> arr.<span class="bu">min</span>())</a>
-<a class="sourceLine" id="cb205-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb205-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb205-5" data-line-number="5"><span class="kw">def</span> secMax(arr):</a>
-<a class="sourceLine" id="cb205-6" data-line-number="6">    <span class="cf">return</span>(np.sort(arr)[::<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb205-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb205-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb205-9" data-line-number="9">sleepdata.drop(columns<span class="op">=</span><span class="st">&quot;Days&quot;</span>).groupby([<span class="st">&quot;Subject&quot;</span>]).agg([np.mean, np.std, np.<span class="bu">max</span>, secMax, maxDiff])</a></code></pre></div>
-<pre><code>##           Reaction                                         
-##               mean        std      amax    secMax   maxDiff
-## Subject                                                    
-## 308      342.13383  79.821763  466.3535  430.5853  216.7935
-## 309      215.23298  10.812193  237.3142  224.2957   34.3364
-## 310      231.00127  21.855996  261.0125  255.7511   66.6803
-## 330      303.22142  22.909199  354.0487  321.5426   73.8091
-## 331      309.43605  27.242607  371.5811  334.8177   86.5811
-## 332      307.30207  64.306126  454.1619  346.8311  219.3013
-## 333      316.15831  30.068208  362.0428  348.8399   85.2735
-## 334      295.30205  41.855607  377.2990  335.7469  133.9343
-## 335      250.07004  13.833852  273.9472  270.8021   38.6362
-## 337      375.72101  59.623789  458.9167  455.8643  167.3055
-## 349      275.83447  42.937942  351.6451  336.2806  121.3284
-## 350      313.60268  63.360558  394.4872  389.0527  151.0329
-## 351      290.09775  28.978811  347.5655  321.5418   97.0390
-## 352      337.42154  47.602380  388.5417  375.6406  166.8646
-## 369      306.03464  37.460429  366.5131  348.1229  109.2707
-## 370      291.70177  59.208212  372.2288  365.1630  146.9648
-## 371      294.98404  36.505989  369.4692  350.7807  110.2034
-## 372      317.88613  35.822804  369.1417  364.1236   99.7300</code></pre>
 </div>
 <div id="reference" class="slide section level1">
 <h1>Reference</h1>
